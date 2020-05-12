@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "main.h"
 
+int Player;
 // WinMainä÷êî
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -129,6 +130,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 			GameOverInit();
 			break;
 		}*/
+
 	}
 
 	DxLib_End();

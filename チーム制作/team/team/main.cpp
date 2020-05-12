@@ -1,7 +1,7 @@
 #include "DxLib.h"
 #include "main.h"
 
-int Player;
+
 // WinMainä÷êî
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

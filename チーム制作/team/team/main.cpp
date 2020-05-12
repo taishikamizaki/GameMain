@@ -3,7 +3,7 @@
 
 
 // WinMainä÷êî
-int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int main(void)
 {
 	/*if (!SysInit())
 	{

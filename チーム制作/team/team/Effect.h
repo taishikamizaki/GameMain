@@ -4,6 +4,7 @@
 void EffectInit(void);					// ´Ìª¸Ä‰Šú‰»—p
 bool FadeInScreen(int fadeStep);		// Ìª°ÄŞ²İˆ—
 bool FadeOutScreen(int fadeStep);		// Ìª°ÄŞ±³Äˆ—
+void EffectDraw(Pos playerPos);			// ·¬×‚Ì´Ìª¸Ä•\¦
 
 // ´¸½ÀİéŒ¾
 extern int gameCounter;

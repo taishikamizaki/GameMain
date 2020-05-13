@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include "main.h"
 #include "Effect.h"
 
 // ｴﾌｪｸﾄ関連
@@ -55,3 +56,9 @@ bool FadeOutScreen(int fadeStep)
 		return false;
 	}
 }
+
+void EffectDraw(Pos playerPos)
+{
+	// DrawGraph(playerPos.x, playerPos.y, EFFCT_ID[CHAR_ID][SKILL_ID], true);		// ｴﾌｪｸﾄ画像の表示例（適当）
+}
+

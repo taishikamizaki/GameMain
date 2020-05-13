@@ -1,5 +1,5 @@
 #pragma once
 
-bool GmaeInit(void);
-bool GmaeScene(void);
-void GameDraw(void);
+bool GmaeInit(void);			// ‰Šú‰»
+bool GmaeScene(void);			// ¼°İ
+void GameDraw(void);			// •`‰æ

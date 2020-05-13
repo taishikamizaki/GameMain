@@ -1,7 +1,11 @@
 #include "DxLib.h"
 #include "Init.h"
+#include "GetKeyState.h"
+#include "Effect.h"
 #include "main.h"
 
+
+SCN_ID scnID;
 
 // WinMainä÷êî
 int main(void)
@@ -18,11 +22,11 @@ int main(void)
 	while (ProcessMessage() == 0 &&
 		CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
-		/*KeyCheck();
-		gameCounter++;*/
+		KeyCheck();
+		/*gamecounter++;*/
 
 		// º∞›ëJà⁄ópΩ≤Ø¡ï∂
-		/*switch (scnID)
+		switch (scnID)
 		{
 		case SCN_ID_INIT:
 			InitScene();
@@ -65,6 +69,9 @@ int main(void)
 			}
 			SelectInit();
 			break;
+		case SCN_ID_PAUSE:
+			PauseInit();
+			break;
 		case SCN_ID_GAME:
 			if (fadeIn)
 			{
@@ -96,10 +103,6 @@ int main(void)
 				if (!FadeOutScreen(5))
 				{
 					fadeIn = true;
-					if (titleFlag)
-					{
-						scnID = SCN_ID_TITLE;
-					}
 					if (selectFlag)
 					{
 						scnID = SCN_ID_SELECT;
@@ -130,10 +133,10 @@ int main(void)
 			}
 			GameOverInit();
 			break;
-		}*/
-
+		}
 	}
 
 	DxLib_End();
 	return 0;
 }
+

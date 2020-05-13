@@ -10,6 +10,35 @@
 #define AST()
 #endif
 
+// º∞›ID
+enum SCN_ID
+{
+	SCN_ID_INIT,		// ≤∆Øƒ
+	SCN_ID_TITLE,		// ¿≤ƒŸ
+	SCN_ID_SELECT,		// æ⁄∏ƒ
+	SCN_ID_GAME,		// πﬁ∞—
+	SCN_ID_PAUSE,		// Œﬂ∞Ωﬁ
+	SCN_ID_RESULT,		// ÿªﬁŸƒ
+	SCN_ID_GAMEOVER,	// πﬁ∞—µ∞ ﬁ∞
+	SCN_ID_MAX
+};
+
+// ï˚å¸
+enum DIR
+{
+	DIR_UP,			// è„
+	DIR_RIGHT,		// âE
+	DIR_DOWN,		// â∫
+	DIR_LEFT,		// ç∂
+	DIR_MAX
+};
+
 #define SCREEN_SIZE_X 1000
 #define SCREEN_SIZE_Y 600
 
+// XY
+struct Pos
+{
+	int x;
+	int y;
+};

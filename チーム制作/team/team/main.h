@@ -10,5 +10,6 @@
 #define AST()
 #endif
 
-
+#define SCREEN_SIZE_X 
+#define SCREEN_SIZE_Y 
 

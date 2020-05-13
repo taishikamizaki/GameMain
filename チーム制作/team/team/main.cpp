@@ -1,14 +1,15 @@
 #include "DxLib.h"
+#include "Init.h"
 #include "main.h"
 
 
 // WinMainŠÖ”
 int main(void)
 {
-	/*if (!SysInit())
+	if (!SysInit())
 	{
 		return 0;
-	}*/
+	}
 
 	// ‰Šú‰»ŠÖ”ŒÄ‚Ño‚µ
 	/*SysInit();*/

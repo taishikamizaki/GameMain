@@ -1,0 +1,18 @@
+bool Init(void)
+{
+	bool rtnFlag = true;
+
+	return rtnFlag;
+}
+
+bool Scene(void)
+{
+	bool rtnFlag = true;
+
+	return rtnFlag;
+}
+
+void Draw(void)
+{
+
+}

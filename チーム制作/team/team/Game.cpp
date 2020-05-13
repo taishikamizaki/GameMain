@@ -8,8 +8,15 @@
 
 Pos playerPos[CHAR_ID];
 
+bool InitScene(void)
+{
+	bool rtnFlag = true;
+
+	return rtnFlag;
+}
+
 // èâä˙âª
-bool GmaeInit(void)
+bool GameInit(void)
 {
 	bool rtnFlag = true;
 
@@ -17,7 +24,7 @@ bool GmaeInit(void)
 }
 
 // º∞›
-bool GmaeScene(void)
+bool GameScene(void)
 {
 	bool rtnFlag = true;
 

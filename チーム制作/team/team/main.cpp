@@ -1,9 +1,14 @@
 #include "DxLib.h"
 #include "Init.h"
 #include "GetKeyState.h"
+#include "Title.h"
+#include "Select.h"
+#include "Game.h"
+#include "Pause.h"
+#include "Result.h"
+#include "GameOver.h"
 #include "Effect.h"
 #include "main.h"
-
 
 SCN_ID scnID;
 

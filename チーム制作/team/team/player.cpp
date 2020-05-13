@@ -4,7 +4,7 @@
 //•Ï”‚Ì’è‹`
 
 
-void	PlayerSystemInit(void)
+void	PlayerSysInit(void)
 {
 
 }
@@ -14,12 +14,12 @@ void	PlayerGameInit(void)
 
 }
 
-void	PlayerControl(void)
+void	PlayerCtl(void)
 {
 
 }
 
-void	PlayerGameDraw(void)
+void	PlayerDraw(void)
 {
 
 }

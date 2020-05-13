@@ -1,5 +1,6 @@
 #pragma once
 
-bool GmaeInit(void);			// ‰Šú‰»
-bool GmaeScene(void);			// ¼°İ
+bool InitScene(void);
+bool GameInit(void);			// ‰Šú‰»
+bool GameScene(void);			// ¼°İ
 void GameDraw(void);			// •`‰æ

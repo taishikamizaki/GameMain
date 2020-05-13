@@ -6,8 +6,7 @@
   Result.cpp
   Select.cpp
   Stage.cpp
-  System.cpp
+  Init.cpp
   Title.cpp
   コードを生成中...
-LIBCMTD.lib(exe_main.obj) : error LNK2019: 未解決の外部シンボル main が関数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) で参照されました。
-C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe : fatal error LNK1120: 1 件の未解決の外部参照
+  team.vcxproj -> C:\Users\タカヨシ\Desktop\チーム制作\GameMain\チーム制作\team\x64\Debug\team.exe

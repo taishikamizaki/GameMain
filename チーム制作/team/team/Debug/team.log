@@ -2,13 +2,28 @@
   Game.cpp
 c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(8): error C2011: 'DIR': 'enum' 型の再定義
   c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.h(27): note: 'DIR' の宣言を確認してください
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(9): error C2275: 'CHAR_ID': この型は演算子として使用できません
-  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(16): note: 'CHAR_ID' の宣言を確認してください
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2059: 構文エラー: ']'
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2143: 構文エラー: ';' が '{' の前にありません。
 c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2059: 構文エラー: ','
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(36): error C2660: 'EffectDraw': 関数に 0 個の引数を指定できません。
-  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): note: 'EffectDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C2556: 'int GameDraw(void)': オーバーロード関数は、'void GameDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.h(6): note: 'GameDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C2371: 'GameDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.h(6): note: 'GameDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C2556: 'int StageDraw(void)': オーバーロード関数は、'void StageDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.h(12): note: 'StageDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C2371: 'StageDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.h(12): note: 'StageDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C2556: 'int PlayerDraw(void)': オーバーロード関数は、'void PlayerDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(49): note: 'PlayerDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C2371: 'PlayerDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(49): note: 'PlayerDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(36): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(37): error C2059: 構文エラー: 'return'
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(38): error C2059: 構文エラー: '}'
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(38): error C2143: 構文エラー: ';' が '}' の前にありません。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(42): error C2143: 構文エラー: ';' が '{' の前にありません。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(42): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
   GameOver.cpp
   GetKeyState.cpp
   main.cpp

@@ -24,8 +24,6 @@ enum CHAR_ID
 };
 
 //構造体
-
-
 struct CHARACTER 
 {
 	DIR moveDir;		//向いている方向
@@ -40,11 +38,18 @@ struct CHARACTER
 	int life;			//キャラクタの体力
 	int lifeMax;		//キャラクタの体力最大
 	int animCnt;		//キャラクタのアニメーション用カウンタ
-
+	int imgLockCnt;		//キャラクタのイメージ固定用カウンタ
+	int type;			//何らかの属性を格納できる。
 };
 
 //プロトタイプ宣言
-void	PlayerSystemInit(void);
+void PlayerSysInit(void);
+void PlayerGameInit(void);
+void PlayerCtl(void);
+void PlayerDraw(void);
+
+//プロトタイプ宣言
+void	PlayerSysInit(void);
 void	PlayerGameInit(void);
-void	PlayerControl(void);
-void	PlayerGameDraw(void);
+void	PlayerCtl(void);
+void	PlayerDraw(void);

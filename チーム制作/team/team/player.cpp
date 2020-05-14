@@ -1,11 +1,12 @@
 #include "DxLib.h"
-#include"main.h"
+#include "main.h"
+#include "GetKeyState.h"
 #include "player.h"
 
 //変数の定義
 CHARACTER	player1;
 
-void	PlayerSystemInit(void)
+void	PlayerSysInit(void)
 {
 	player1.moveDir = DIR_RIGHT;						//向いている方向
 	player1.pos = {96,417};								//キャラクタの位置（中心）
@@ -27,7 +28,7 @@ void	PlayerGameInit(void)
 
 }
 
-void	PlayerControl(void)
+void	PlayerCtl(void)
 {
 	bool	moveFlag = false;
 
@@ -63,7 +64,7 @@ void	PlayerControl(void)
 	}
 }
 
-void	PlayerGameDraw(void)
+void	PlayerDraw(void)
 {
 	DrawBox(player1.pos.x - player1.sizeOffset.x 
 		, player1.pos.y - player1.sizeOffset.y 

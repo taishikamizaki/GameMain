@@ -18,7 +18,7 @@ bool SysInit(void)
 	}
 
 	SetDrawScreen(DX_SCREEN_BACK);
-
+	scnID = SCN_ID_INIT;
 	/*TitleInit();*/
 
 	return rtnFlag;

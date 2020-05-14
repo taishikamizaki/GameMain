@@ -42,3 +42,5 @@ struct Pos
 	int x;
 	int y;
 };
+
+extern SCN_ID scnID;

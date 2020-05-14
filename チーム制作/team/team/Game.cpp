@@ -19,7 +19,12 @@ bool InitScene(void)
 bool GameInit(void)
 {
 	bool rtnFlag = true;
-
+	scnID = SCN_ID_GAME;
+	if (keyDownTrigger[KEY_ID_SPACE])
+	{
+		fadeOut = true;
+		
+	}
 	return rtnFlag;
 }
 
@@ -28,18 +33,18 @@ bool GameScene(void)
 {
 	bool rtnFlag = true;
 
-	playerPos[4] = { , };
+	playerPos[4] = { 0, 0};
 
 	GameDraw();
 	StageDraw();
 	PlayerDraw();
-	EffectDraw();
+	//EffectDraw(playerPos[4]);
 	return rtnFlag;
 }
 
 // •`‰æ
 void GameDraw(void)
 {
-
+	DrawFormatString(0, 0, 0xFFFFFF, "GameScene");
 }
 

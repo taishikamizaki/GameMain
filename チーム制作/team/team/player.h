@@ -4,14 +4,6 @@
 
 //—ñ‹“Œ^
 
-enum DIR 
-{
-	DIR_UP,
-	DIR_RIGHT,
-	DIR_DOWN,
-	DIR_LEFT,
-	DIR_MAX
-};
 
 enum CHAR_ID
 {

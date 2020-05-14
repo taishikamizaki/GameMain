@@ -42,19 +42,20 @@ int main(void)
 			{
 				if (!FadeInScreen(5))
 				{
-
+					// ﾌｪｰﾄﾞｲﾝが終了した後に行う処理を書く
 				}
 			}
 			if (fadeOut)
 			{
 				if (!FadeOutScreen(5))
 				{
+					// ﾌｪｰﾄﾞｱｳﾄが終了した後に行う処理を書く
 					fadeIn = true;
 					scnID = SCN_ID_SELECT;
 				}
 			}
 
-			TitleInit();
+			TitleScene();
 			break;
 		case SCN_ID_SELECT:
 			if (fadeIn)
@@ -108,17 +109,19 @@ int main(void)
 				if (!FadeOutScreen(5))
 				{
 					fadeIn = true;
-					if (selectFlag)
-					{
-						scnID = SCN_ID_SELECT;
-					}
-					if (gameOverFlag)
-					{
-						scnID = SCN_ID_GAMEOVER;
-					}
+					//if (selectFlag)
+					//{
+					//	// キャラセレへ移行
+					//	scnID = SCN_ID_SELECT;
+					//}
+					//if (gameOverFlag)
+					//{
+					//	// ゲームオーバーへ移行
+					//	scnID = SCN_ID_GAMEOVER;
+					//}
 				}
 			}
-			ResultInit();
+			ResultScene();
 			break;
 		case SCN_ID_GAMEOVER:
 			if (fadeIn)
@@ -133,10 +136,10 @@ int main(void)
 				if (!FadeOutScreen(5))
 				{
 					fadeIn = true;
-					scnID = SCN_ID_TITLE;
+					scnID = SCN_ID_INIT;
 				}
 			}
-			GameOverInit();
+			GameOverScene();
 			break;
 		}
 	}

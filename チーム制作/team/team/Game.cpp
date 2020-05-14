@@ -6,7 +6,7 @@
 #include "Effect.h"
 #include "Game.h"
 
-Pos playerPos[CHAR_ID];
+Pos playerPos[4];
 
 bool InitScene(void)
 {
@@ -28,7 +28,7 @@ bool GameScene(void)
 {
 	bool rtnFlag = true;
 
-	playerPos[] = { , };
+	playerPos[4] = { , };
 
 	GameDraw();
 	StageDraw();

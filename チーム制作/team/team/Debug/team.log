@@ -1,19 +1,25 @@
 ﻿  Effect.cpp
   Game.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(8): error C2011: 'DIR': 'enum' 型の再定義
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.h(27): note: 'DIR' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(9): error C2275: 'CHAR_ID': この型は演算子として使用できません
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(16): note: 'CHAR_ID' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2059: 構文エラー: ']'
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2143: 構文エラー: ';' が '{' の前にありません。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2059: 構文エラー: ','
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(36): error C2660: 'EffectDraw': 関数に 0 個の引数を指定できません。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): note: 'EffectDraw' の宣言を確認してください
   GameOver.cpp
   GetKeyState.cpp
   main.cpp
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(32): error C3861: 'InitScene': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(52): error C3861: 'TitleInit': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(70): error C3861: 'SelectInit': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(73): error C3861: 'PauseInit': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(91): error C3861: 'GameInit': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(106): error C2065: 'selectFlag': 定義されていない識別子です。
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(110): error C2065: 'gameOverFlag': 定義されていない識別子です。
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(116): error C3861: 'ResultInit': 識別子が見つかりませんでした
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(134): error C3861: 'GameOverInit': 識別子が見つかりませんでした
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): error C2065: 'Pos': 定義されていない識別子です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): error C2146: 構文エラー: ')' が、識別子 'playerPos' の前に必要です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(111): error C2065: 'selectFlag': 定義されていない識別子です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(115): error C2065: 'gameOverFlag': 定義されていない識別子です。
   Pause.cpp
   player.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(8): error C2011: 'DIR': 'enum' 型の再定義
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.h(27): note: 'DIR' の宣言を確認してください
   Result.cpp
   Select.cpp
   Stage.cpp

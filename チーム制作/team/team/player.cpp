@@ -1,5 +1,6 @@
 #include "DxLib.h"
-#include"main.h"
+#include "main.h"
+#include "GetKeyState.h"
 #include "player.h"
 
 //•Ï”‚Ì’è‹`

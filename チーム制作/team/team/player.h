@@ -24,19 +24,12 @@ enum CHAR_ID
 };
 
 //構造体
-
-<<<<<<< HEAD
-struct CHARACTER 
-{
-=======
-
 struct CHARACTER 
 {
 	DIR moveDir;		//向いている方向
 	Pos pos;			//キャラクタの位置（中心）
 	Pos size;			//キャラクタ画像のサイズ
 	Pos sizeOffset;		//キャラクタ中央からの左上位置
->>>>>>> cdc52835e72d010a7654657e2869079f04b2fd7a
 	bool runFlag;		//キャラクタの状態（走っているか？）
 	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）
@@ -45,7 +38,6 @@ struct CHARACTER
 	int life;			//キャラクタの体力
 	int lifeMax;		//キャラクタの体力最大
 	int animCnt;		//キャラクタのアニメーション用カウンタ
-<<<<<<< HEAD
 	int imgLockCnt;		//キャラクタのイメージ固定用カウンタ
 	int type;			//何らかの属性を格納できる。
 };
@@ -55,13 +47,9 @@ void PlayerSysInit(void);
 void PlayerGameInit(void);
 void PlayerCtl(void);
 void PlayerDraw(void);
-=======
-
-};
 
 //プロトタイプ宣言
-void	PlayerSystemInit(void);
+void	PlayerSysInit(void);
 void	PlayerGameInit(void);
-void	PlayerControl(void);
-void	PlayerGameDraw(void);
->>>>>>> cdc52835e72d010a7654657e2869079f04b2fd7a
+void	PlayerCtl(void);
+void	PlayerDraw(void);

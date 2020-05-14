@@ -1,2 +1,48 @@
+<<<<<<< HEAD
 ﻿  Init.cpp
   team.vcxproj -> D:\kamizaki\Git\GameMain\チーム制作\team\Debug\team.exe
+=======
+﻿  Effect.cpp
+  Game.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(8): error C2011: 'DIR': 'enum' 型の再定義
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.h(27): note: 'DIR' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(31): error C2059: 構文エラー: ','
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C2556: 'int GameDraw(void)': オーバーロード関数は、'void GameDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.h(6): note: 'GameDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(33): error C2371: 'GameDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.h(6): note: 'GameDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C2556: 'int StageDraw(void)': オーバーロード関数は、'void StageDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.h(12): note: 'StageDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(34): error C2371: 'StageDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.h(12): note: 'StageDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C2556: 'int PlayerDraw(void)': オーバーロード関数は、'void PlayerDraw(void)' と戻り値の型のみが異なります。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(49): note: 'PlayerDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(35): error C2371: 'PlayerDraw': 再定義されています。異なる基本型です。
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(49): note: 'PlayerDraw' の宣言を確認してください
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(36): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(37): error C2059: 構文エラー: 'return'
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(38): error C2059: 構文エラー: '}'
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(38): error C2143: 構文エラー: ';' が '}' の前にありません。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(42): error C2143: 構文エラー: ';' が '{' の前にありません。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\game.cpp(42): error C2447: '{': 対応する関数ヘッダーがありません (旧形式の仮引数リスト?)
+  GameOver.cpp
+  GetKeyState.cpp
+  main.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): error C2065: 'Pos': 定義されていない識別子です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\effect.h(7): error C2146: 構文エラー: ')' が、識別子 'playerPos' の前に必要です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(111): error C2065: 'selectFlag': 定義されていない識別子です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.cpp(115): error C2065: 'gameOverFlag': 定義されていない識別子です。
+  Pause.cpp
+  player.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.h(8): error C2011: 'DIR': 'enum' 型の再定義
+  c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\main.h(27): note: 'DIR' の宣言を確認してください
+  Result.cpp
+  Select.cpp
+  Stage.cpp
+  Init.cpp
+  Title.cpp
+  コードを生成中...
+>>>>>>> 8a98ca7354ba40539c49b069f61757267e698c8e

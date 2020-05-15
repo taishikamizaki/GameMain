@@ -2,6 +2,7 @@
 // ’è”éŒ¾
 
 
+//½·Ù‚Ì¸×½
 class Skill
 {
 private:
@@ -38,7 +39,25 @@ public:
 	void DeleteSkill1(int index);
 	void DeleteSkill4(int index);
 
+	Pos   GetPos1(int index);
+	Pos   GetPos2(int index);
 
+	bool SkillFlag1(int index);
+	bool SkillFlag2(int index);
+	bool SkillFlag3(int index);
+	bool SkillFlag4(int index);
+	bool SkillFlag5(int index);
+	bool SkillFlag6(int index);
+	bool SkillFlag7(int index);
+	bool SkillFlag8(int index);
+	bool SkillFlag9(int index);
+	bool SkillFlag10(int index);
+	bool SkillFlag11(int index);
+	bool SkillFlag12(int index);
+	bool SkillFlag13(int index);
+	bool SkillFlag14(int index);
+	bool SkillFlag15(int index);
+	bool SkillFlag16(int index);
 
 
 	Skill();

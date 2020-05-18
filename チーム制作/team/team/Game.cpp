@@ -12,7 +12,6 @@ bool InitScene(void)
 {
 	bool rtnFlag = true;
 
-	PlayerSysInit();
 
 
 	return rtnFlag;
@@ -23,6 +22,9 @@ bool GameInit(void)
 {
 	bool rtnFlag = true;
 	scnID = SCN_ID_GAME;
+
+	PlayerSysInit();
+
 	if (keyDownTrigger[KEY_ID_SPACE])
 	{
 		fadeOut = true;

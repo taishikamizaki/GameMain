@@ -1,20 +1,2 @@
-﻿  skill.cpp
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(21): error C4716: 'Skill::SkillGameInit': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(67): error C4716: 'Skill::SkillFlag1': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(72): error C4716: 'Skill::SkillFlag2': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(57): error C4716: 'Skill::GetPos1': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(62): error C4716: 'Skill::GetPos2': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(77): error C4716: 'Skill::SkillFlag3': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(82): error C4716: 'Skill::SkillFlag4': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(87): error C4716: 'Skill::SkillFlag5': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(92): error C4716: 'Skill::SkillFlag6': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(97): error C4716: 'Skill::SkillFlag7': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(102): error C4716: 'Skill::SkillFlag8': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(107): error C4716: 'Skill::SkillFlag9': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(112): error C4716: 'Skill::SkillFlag10': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(117): error C4716: 'Skill::SkillFlag11': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(122): error C4716: 'Skill::SkillFlag12': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(127): error C4716: 'Skill::SkillFlag13': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(132): error C4716: 'Skill::SkillFlag14': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(137): error C4716: 'Skill::SkillFlag15': 値を返さなければいけません
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\skill.cpp(142): error C4716: 'Skill::SkillFlag16': 値を返さなければいけません
+﻿  main.cpp
+  team.vcxproj -> C:\Users\タカヨシ\Desktop\新しいフォルダー (2)\GameMain\チーム制作\team\Debug\team.exe

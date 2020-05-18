@@ -12,6 +12,9 @@ bool InitScene(void)
 {
 	bool rtnFlag = true;
 
+	PlayerSysInit();
+
+
 	return rtnFlag;
 }
 
@@ -35,9 +38,10 @@ bool GameScene(void)
 
 	playerPos[4] = { 0, 0};
 
+	PlayerCtl();
+
 	GameDraw();
-	StageDraw();
-	PlayerDraw();
+	
 	//EffectDraw(playerPos[4]);
 	return rtnFlag;
 }
@@ -46,5 +50,8 @@ bool GameScene(void)
 void GameDraw(void)
 {
 	DrawFormatString(0, 0, 0xFFFFFF, "GameScene");
+
+	StageDraw();
+	PlayerDraw();
 }
 

@@ -96,7 +96,6 @@ int main(void)
 		//	}
 			GameInit();
 			
-			GameDraw();
 		//	break;
 		//case SCN_ID_RESULT:
 		//	if (fadeIn)

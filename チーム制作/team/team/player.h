@@ -35,12 +35,6 @@ struct CHARACTER
 };
 
 //プロトタイプ宣言
-void PlayerSysInit(void);
-void PlayerGameInit(void);
-void PlayerCtl(void);
-void PlayerDraw(void);
-
-//プロトタイプ宣言
 void	PlayerSysInit(void);
 void	PlayerGameInit(void);
 void	PlayerCtl(void);

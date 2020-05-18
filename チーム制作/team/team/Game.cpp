@@ -25,6 +25,8 @@ bool GameInit(void)
 
 	PlayerSysInit();
 
+	GameScene();
+
 	if (keyDownTrigger[KEY_ID_SPACE])
 	{
 		fadeOut = true;

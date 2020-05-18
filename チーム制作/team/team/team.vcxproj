@@ -147,6 +147,7 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="Select.cpp" />
     <ClCompile Include="skill.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Init.cpp" />
     <ClCompile Include="Title.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="Select.h" />
     <ClInclude Include="skill.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Init.h" />
     <ClInclude Include="Title.h" />

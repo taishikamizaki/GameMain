@@ -1,17 +1,1 @@
-﻿  Effect.cpp
-  Game.cpp
-  GameOver.cpp
-  GetKeyState.cpp
-  main.cpp
-  Pause.cpp
-  player.cpp
-  Result.cpp
-  Select.cpp
-  skill.cpp
-  Sound.cpp
-  Stage.cpp
-  Init.cpp
-  Title.cpp
-  コードを生成中...
-  LINK : 前回のインクリメンタル リンクで C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\Debug\team.exe が見つからなかったか、ビルドされませんでした。フル リンクを行います。
-  team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\Debug\team.exe
+﻿  team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\Debug\team.exe

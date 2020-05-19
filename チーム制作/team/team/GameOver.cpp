@@ -7,7 +7,7 @@
 bool GameOverInit(void)
 {
 	bool rtnFlag = true;
-
+	GameOverScene();
 	return rtnFlag;
 }
 
@@ -17,6 +17,7 @@ bool GameOverScene(void)
 	{
 		fadeOut = true;
 	}
+	GameOverDraw();
 	return false;
 }
 

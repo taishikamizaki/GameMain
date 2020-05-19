@@ -7,7 +7,7 @@
 bool SelectInit(void)
 {
 	bool rtnFlag = true;
-
+	SelectScene();
 	return rtnFlag;
 }
 
@@ -17,7 +17,7 @@ bool SelectScene(void)
 	{
 		fadeOut = true;
 	}
-
+	SelectDraw();
 	return false;
 }
 

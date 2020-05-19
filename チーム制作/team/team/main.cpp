@@ -66,11 +66,12 @@ int main(void)
 			TitleInit();
 			break;
 		case SCN_ID_SELECT:
+			
 			if (fadeIn)
 			{
 				if (!FadeInScreen(5))
 				{
-
+					
 				}
 			}
 			if (fadeOut)

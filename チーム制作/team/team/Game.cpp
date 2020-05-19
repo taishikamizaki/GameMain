@@ -24,11 +24,7 @@ bool GameInit(void)
 
 	GameScene();
 
-	if (keyDownTrigger[KEY_ID_SPACE])
-	{
-		fadeOut = true;
-		
-	}
+	
 	return false;
 }
 
@@ -41,6 +37,11 @@ bool GameScene(void)
 
 	PlayerCtl();
 
+	if (keyDownTrigger[KEY_ID_SPACE])
+	{
+		fadeOut = true;
+
+	}
 	GameDraw();
 	
 	//EffectDraw(playerPos[4]);

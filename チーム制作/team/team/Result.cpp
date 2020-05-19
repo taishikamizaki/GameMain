@@ -7,7 +7,7 @@
 bool ResultInit(void)
 {
 	bool rtnFlag = true;
-
+	ResultScene();
 	return rtnFlag;
 }
 
@@ -17,6 +17,7 @@ bool ResultScene(void)
 	{
 		fadeOut = true;
 	}
+	ResultDraw();
 	return false;
 }
 

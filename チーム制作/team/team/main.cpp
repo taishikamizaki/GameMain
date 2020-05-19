@@ -27,6 +27,7 @@ int main(void)
 	while (ProcessMessage() == 0 &&
 		CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
+		ClsDrawScreen();
 		KeyCheck();
 		/*gamecounter++;*/
 
@@ -143,6 +144,8 @@ int main(void)
 		//	GameOverScene();
 		//	break;
 		//}
+			ScreenFlip();//裏画面を表画面に瞬間コピー
+
 	}
 
 	DxLib_End();

@@ -13,14 +13,12 @@ bool SelectInit(void)
 
 bool SelectScene(void)
 {
-	bool rtnFlag = true;
-	scnID = SCN_ID_SELECT;
 	if (keyDownTrigger[KEY_ID_SPACE])
 	{
 		fadeOut = true;
-		
 	}
-	return rtnFlag;
+
+	return false;
 }
 
 void SelectDraw(void)

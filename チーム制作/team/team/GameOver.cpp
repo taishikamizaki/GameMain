@@ -13,14 +13,11 @@ bool GameOverInit(void)
 
 bool GameOverScene(void)
 {
-	bool rtnFlag = true;
-	scnID = SCN_ID_GAMEOVER;
 	if (keyDownTrigger[KEY_ID_SPACE])
 	{
 		fadeOut = true;
-		
 	}
-	return rtnFlag;
+	return false;
 }
 
 void GameOverDraw(void)

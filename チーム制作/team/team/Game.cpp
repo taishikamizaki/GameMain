@@ -20,9 +20,6 @@ bool InitScene(void)
 // èâä˙âª
 bool GameInit(void)
 {
-	bool rtnFlag = true;
-	scnID = SCN_ID_GAME;
-
 	PlayerSysInit();
 
 	GameScene();
@@ -32,7 +29,7 @@ bool GameInit(void)
 		fadeOut = true;
 		
 	}
-	return rtnFlag;
+	return false;
 }
 
 // º∞›

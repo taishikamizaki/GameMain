@@ -8,23 +8,19 @@
 
 bool TitleInit(void)
 {
-	bool rtnFlag = true;
-	
-
-	return rtnFlag;
+	TitleScene();
+	return 0;
 }
 
 bool TitleScene(void)
 {
-	bool rtnFlag = true;
-	scnID = SCN_ID_TITLE;
 	if (keyDownTrigger[KEY_ID_SPACE])
 		{
 			fadeOut = true;
-			SysInit();
+			/*SysInit();*/
 		}
 	TitleDraw();
-	return rtnFlag;
+	return false;
 }
 
 void TitleDraw(void)

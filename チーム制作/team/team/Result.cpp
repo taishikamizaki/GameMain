@@ -13,14 +13,11 @@ bool ResultInit(void)
 
 bool ResultScene(void)
 {
-	bool rtnFlag = true;
-	scnID = SCN_ID_RESULT;
 	if (keyDownTrigger[KEY_ID_SPACE])
 	{
 		fadeOut = true;
-		
 	}
-	return rtnFlag;
+	return false;
 }
 
 void ResultDraw(void)

@@ -151,7 +151,6 @@ int main(void)
 			break;
 		}
 			ScreenFlip();//裏画面を表画面に瞬間コピー
-
 	}
 
 	DxLib_End();

@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "main.h"
+#include "Effect.h"
 #include "Init.h"
 
 // ‰Šú‰»
@@ -18,8 +19,13 @@ bool SysInit(void)
 	}
 
 	SetDrawScreen(DX_SCREEN_BACK);
-	scnID = SCN_ID_INIT;
+
+	// ‰Šú‰»
+	EffectInit();
 	/*TitleInit();*/
+
+	scnID = SCN_ID_INIT;
+	scnIDOld = SCN_ID_MAX;
 
 	return rtnFlag;
 }

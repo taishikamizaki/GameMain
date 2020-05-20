@@ -72,4 +72,7 @@ void	PlayerDraw(void)
 		, player1.pos.y + player1.size.y - player1.sizeOffset.y
 		, 0xFFFFF
 		, false);
+
+	DrawFormatString(0, 32, 0xFFFFFF, "test");
+
 }

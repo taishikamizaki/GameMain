@@ -2,6 +2,9 @@
 
 //’è”‚Ì’è‹`
 
+#define ACC_G		10 //d—Í‰Á‘¬“x
+#define	FRAME_TIME	0.3f
+
 //—ñ‹“Œ^
 
 

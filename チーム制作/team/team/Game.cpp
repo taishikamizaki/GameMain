@@ -12,6 +12,7 @@ bool InitScene(void)
 {
 	bool rtnFlag = true;
 
+	PlayerSysInit();
 
 
 	return rtnFlag;
@@ -20,7 +21,6 @@ bool InitScene(void)
 // èâä˙âª
 bool GameInit(void)
 {
-	PlayerSysInit();
 
 	GameScene();
 
@@ -34,6 +34,7 @@ bool GameScene(void)
 	bool rtnFlag = true;
 
 	playerPos[4] = { 0, 0};
+
 
 	PlayerCtl();
 

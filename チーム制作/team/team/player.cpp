@@ -25,7 +25,7 @@ void	PlayerSysInit(void)
 
 void	PlayerGameInit(void)
 {
-
+	
 }
 
 void	PlayerCtl(void)
@@ -73,6 +73,6 @@ void	PlayerDraw(void)
 		, 0xFFFFF
 		, false);
 
-	DrawFormatString(0, 32, 0xFFFFFF, "test");
+	DrawFormatString(0, 32, 0xFFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 
 }

@@ -1,16 +1,4 @@
-﻿  Effect.cpp
-  Game.cpp
-  GameOver.cpp
-  GetKeyState.cpp
-  Init.cpp
-  Pause.cpp
-  Result.cpp
-  Select.cpp
-  Sound.cpp
-  Stage.cpp
-  Title.cpp
-  main.cpp
+﻿  Game.cpp
   player.cpp
-  skill.cpp
   コードを生成中...
   team.vcxproj -> C:\Users\タカヨシ\Desktop\新しいフォルダー\GameMain\チーム制作\team\Debug\team.exe

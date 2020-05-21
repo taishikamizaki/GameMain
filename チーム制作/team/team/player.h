@@ -2,6 +2,8 @@
 
 //定数の定義
 
+#define INIT_VELOCITY	50.0f //初速度
+
 #define ACC_G		10 //重力加速度
 #define	FRAME_TIME	0.3f
 
@@ -25,6 +27,9 @@ struct CHARACTER
 	Pos pos;			//キャラクタの位置（中心）
 	Pos size;			//キャラクタ画像のサイズ
 	Pos sizeOffset;		//キャラクタ中央からの左上位置
+	Pos hitPosS;		//当たり判定用の左上
+	Pos hitPosE;		//当たり判定用の右下
+	Pos_F	velocity;
 	bool runFlag;		//キャラクタの状態（走っているか？）
 	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）

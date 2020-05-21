@@ -43,6 +43,12 @@ struct Pos
 	int y;
 };
 
+struct Pos_F
+{
+	float x;
+	float	y;
+};
+
 // ｴｸｽﾀﾝ宣言
 extern SCN_ID scnID;		// ｼｰﾝ識別用
 extern SCN_ID scnIDOld;		// ｼｰﾝ識別（ﾌﾚｰﾑ前）

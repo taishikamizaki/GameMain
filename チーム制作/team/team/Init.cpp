@@ -22,6 +22,7 @@ bool SysInit(void)
 
 	// ‰Šú‰»
 	EffectInit();
+	
 	/*TitleInit();*/
 
 	scnID = SCN_ID_INIT;

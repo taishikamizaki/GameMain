@@ -9,8 +9,8 @@ CHARACTER	player1;
 void	PlayerSysInit(void)
 {
 	player1.moveDir = DIR_RIGHT;						//向いている方向
-	player1.pos = {96,417};								//キャラクタの位置（中心）
-	player1.size = {96,64};								//キャラクタ画像のサイズ
+	player1.pos = {96,SCREEN_SIZE_Y-100};								//キャラクタの位置（中心）
+	player1.size = {96,100};								//キャラクタ画像のサイズ
 	player1.sizeOffset.x =  player1.size.x / 2 ;		//キャラクタ中央からの左上位置のX座標
 	player1.sizeOffset.y = player1.size.y / 2;			//キャラクタ中央からの左上位置のY座標
 	player1.runFlag = false;							//キャラクタの状態（走っているか？）

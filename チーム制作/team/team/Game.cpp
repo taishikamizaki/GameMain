@@ -13,7 +13,7 @@ bool InitScene(void)
 	bool rtnFlag = true;
 
 	PlayerSysInit();
-
+	StageInit();
 
 	return rtnFlag;
 }

@@ -21,6 +21,7 @@ void	PlayerSysInit(void)
 	player1.jumpFlag = false;							//キャラクタの状態（ジャンプしているか？）
 	player1.shotFlag = false;							//キャラクタの状態（弾撃っているか？）
 	player1.damageFlag = false;							//キャラクタの状態（ダメージ受けているか？）
+	player1.surinukeFlag=false;							//1部ブロックすり抜け用
 	player1.moveSpeed=4;								//キャラクタの移動量
 	player1.life=4;										//キャラクタの体力
 	player1.lifeMax=4;									//キャラクタの体力最大
@@ -40,6 +41,8 @@ void	PlayerCtl(void)
 	Pos	playerPosHit = player1.pos;
 	Pos	playerPosHitLeft = player1.pos;
 	Pos	playerPosHitRight = player1.pos;
+	Pos	playerPosHitUp = player1.pos;
+	Pos	playerPosHitDown = player1.pos;
 
 	player1.runFlag = false;
 	player1.shotFlag = false;
@@ -140,12 +143,62 @@ void	PlayerCtl(void)
 		{
 			if (player1.moveDir == DIR_RIGHT)
 			{
-				player1.pos.x += player1.moveSpeed;
+				player1.moveSpeed = 4;
 			}
 			else if (player1.moveDir == DIR_LEFT)
 			{
-				player1.pos.x -= player1.moveSpeed;
+				player1.moveSpeed = -4;
 			}
+		}
+
+		//右に進んでいるとき
+		if (player1.moveSpeed == 4)
+		{
+			playerPosBK.x += player1.moveSpeed;
+			playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
+
+			playerPosHitUp = playerPosHit;
+			playerPosHitUp.y -= player1.hitPosS.y;
+
+			playerPosHitDown = playerPosHit;
+			playerPosHitDown.y += player1.hitPosE.y - 1;//1は床の上に足を乗せるよう
+
+			if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
+			{
+				player1.pos.x = playerPosBK.x;
+			}
+			else
+			{
+				player1.moveSpeed = 0;
+			}
+		}
+
+
+		//左に進んでいるとき
+		if (player1.moveSpeed == -4)
+		{
+			playerPosBK.x += player1.moveSpeed;
+			playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
+
+			playerPosHitUp = playerPosHit;
+			playerPosHitUp.y -= player1.hitPosS.y;
+
+			playerPosHitDown = playerPosHit;
+			playerPosHitDown.y += player1.hitPosE.y - 1;//1は床の上に足を乗せるよう
+
+
+			//if (player1.velocity.x < -6) { player1.velocity.x = -6; }
+
+
+			if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
+			{
+				player1.pos.x = playerPosBK.x;
+			}
+			else
+			{
+				player1.moveSpeed = 0;
+			}
+
 		}
 	}
 }
@@ -159,6 +212,6 @@ void	PlayerDraw(void)
 		, 0xFFFFF
 		, false);
 
-	DrawFormatString(0, 32, 0xFFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
+	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 
 }

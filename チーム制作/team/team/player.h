@@ -34,6 +34,7 @@ struct CHARACTER
 	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）
 	bool damageFlag;	//キャラクタの状態（ダメージ受けているか？）
+	bool surinukeFlag;	//1部ブロックすり抜け用
 	int moveSpeed;		//キャラクタの移動量
 	int life;			//キャラクタの体力
 	int lifeMax;		//キャラクタの体力最大

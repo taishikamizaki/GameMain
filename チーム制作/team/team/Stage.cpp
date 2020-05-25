@@ -77,6 +77,12 @@ bool IsPass(Pos pos)
 	index = PosToIndex(pos);
 	switch (maphamaguri[index.y][index.x])
 	{
+	case 0:
+		return	true;
+		break;
+	case 1:
+		return	true;
+		break;
 	case 2:
 		return false;
 		break;
@@ -89,5 +95,4 @@ bool IsPass(Pos pos)
 	default:
 		break;
 	}
-	return true;
 }

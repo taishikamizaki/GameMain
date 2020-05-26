@@ -22,7 +22,7 @@ void	PlayerSysInit(void)
 	player1.shotFlag = false;							//キャラクタの状態（弾撃っているか？）
 	player1.damageFlag = false;							//キャラクタの状態（ダメージ受けているか？）
 	player1.surinukeFlag=false;							//1部ブロックすり抜け用
-	player1.moveSpeed=4;								//キャラクタの移動量
+	player1.moveSpeed=0;								//キャラクタの移動量
 	player1.life=4;										//キャラクタの体力
 	player1.lifeMax=4;									//キャラクタの体力最大
 	player1.animCnt=0;									//キャラクタのアニメーション用カウンタ
@@ -44,6 +44,7 @@ void	PlayerCtl(void)
 	Pos	playerPosHitUp = player1.pos;
 	Pos	playerPosHitDown = player1.pos;
 
+	player1.moveSpeed = 0;
 	player1.runFlag = false;
 	player1.shotFlag = false;
 	player1.jumpFlag = true;

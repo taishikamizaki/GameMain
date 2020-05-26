@@ -137,7 +137,8 @@ void	PlayerCtl(void)
 		}
 
 
-
+		playerPosBK = player1.pos;
+		playerPosHit = player1.pos;
 
 		if (moveFlag)
 		{

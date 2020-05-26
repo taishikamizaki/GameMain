@@ -10,8 +10,8 @@ CHARACTER	player1;
 void	PlayerSysInit(void)
 {
 	player1.moveDir = DIR_RIGHT;						//向いている方向
-	player1.pos = {96,SCREEN_SIZE_Y-100};								//キャラクタの位置（中心）
-	player1.size = {96,100};								//キャラクタ画像のサイズ
+	player1.pos = {96,40};								//キャラクタの位置（中心）
+	player1.size = {96,64};								//キャラクタ画像のサイズ
 	player1.hitPosS = { 15,16 };		//当たり判定用の左上
 	player1.hitPosE = { 15,32 };		//当たり判定用の右下
 	player1.velocity = { 0.0f,0 };
@@ -212,6 +212,15 @@ void	PlayerDraw(void)
 		, 0xFFFFF
 		, false);
 
+	//プレイヤーの当たり判定枠表示
+	DrawBox(player1.pos.x - player1.hitPosS.x 
+		, player1.pos.y - player1.hitPosS.y
+		, player1.pos.x + player1.hitPosE.x 
+		, player1.pos.y + player1.hitPosE.y 
+		, 0xFFFFF
+		, false);
+
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
+	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
 
 }

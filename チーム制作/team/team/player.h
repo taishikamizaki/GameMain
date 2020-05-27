@@ -2,9 +2,11 @@
 
 //定数の定義
 
-#define INIT_VELOCITY	50.0f //初速度
+#define	P_DSP	4				//プレイヤーの基本スピード
 
-#define ACC_G		10 //重力加速度
+#define INIT_VELOCITY	50.0f	//初速度
+
+#define ACC_G		10			//重力加速度
 #define	FRAME_TIME	0.3f
 
 //列挙型

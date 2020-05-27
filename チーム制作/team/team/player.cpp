@@ -145,63 +145,55 @@ void	PlayerCtl(void)
 		{
 			if (player1.moveDir == DIR_RIGHT)
 			{
-				player1.moveSpeed = 4;
+				player1.moveSpeed = P_DSP;
+
+				playerPosBK.x += player1.moveSpeed;
+				playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
+
+				playerPosHitUp = playerPosHit;
+				playerPosHitUp.y -= player1.hitPosS.y;
+
+				playerPosHitDown = playerPosHit;
+				playerPosHitDown.y += player1.hitPosE.y - 1;//1ÇÕè∞ÇÃè„Ç…ë´ÇèÊÇπÇÈÇÊÇ§
+
+				if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
+				{
+					player1.pos.x = playerPosBK.x;
+				}
+				else
+				{
+					player1.moveSpeed = 0;
+				}
 			}
 			else if (player1.moveDir == DIR_LEFT)
 			{
-				player1.moveSpeed = -4;
+				player1.moveSpeed = P_DSP;
+
+				playerPosBK.x -= player1.moveSpeed;
+				playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
+
+				playerPosHitUp = playerPosHit;
+				playerPosHitUp.y -= player1.hitPosS.y;
+
+				playerPosHitDown = playerPosHit;
+				playerPosHitDown.y += player1.hitPosE.y - 1;//1ÇÕè∞ÇÃè„Ç…ë´ÇèÊÇπÇÈÇÊÇ§
+
+
+				//if (player1.velocity.x < -6) { player1.velocity.x = -6; }
+
+
+				if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
+				{
+					player1.pos.x = playerPosBK.x;
+				}
+				else
+				{
+					player1.moveSpeed = 0;
+				}
 			}
 		}
 
-		//âEÇ…êiÇÒÇ≈Ç¢ÇÈÇ∆Ç´
-		if (player1.moveSpeed == 4)
-		{
-			playerPosBK.x += player1.moveSpeed;
-			playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
-
-			playerPosHitUp = playerPosHit;
-			playerPosHitUp.y -= player1.hitPosS.y;
-
-			playerPosHitDown = playerPosHit;
-			playerPosHitDown.y += player1.hitPosE.y - 1;//1ÇÕè∞ÇÃè„Ç…ë´ÇèÊÇπÇÈÇÊÇ§
-
-			if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
-			{
-				player1.pos.x = playerPosBK.x;
-			}
-			else
-			{
-				player1.moveSpeed = 0;
-			}
-		}
-
-
-		//ç∂Ç…êiÇÒÇ≈Ç¢ÇÈÇ∆Ç´
-		if (player1.moveSpeed == -4)
-		{
-			playerPosBK.x += player1.moveSpeed;
-			playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
-
-			playerPosHitUp = playerPosHit;
-			playerPosHitUp.y -= player1.hitPosS.y;
-
-			playerPosHitDown = playerPosHit;
-			playerPosHitDown.y += player1.hitPosE.y - 1;//1ÇÕè∞ÇÃè„Ç…ë´ÇèÊÇπÇÈÇÊÇ§
-
-
-			//if (player1.velocity.x < -6) { player1.velocity.x = -6; }
-
-
-			if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
-			{
-				player1.pos.x = playerPosBK.x;
-			}
-			else
-			{
-				player1.moveSpeed = 0;
-			}
-
-		}
+	
 	}
 }
 

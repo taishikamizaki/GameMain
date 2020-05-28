@@ -1,5 +1,2 @@
-﻿  Game.cpp
-  player.cpp
-c:\users\タカヨシ\desktop\新しいフォルダー\gamemain\チーム制作\team\team\player.cpp(74): warning C4244: '-=': 'float' から 'int' への変換です。データが失われる可能性があります。
-  コードを生成中...
-  team.vcxproj -> C:\Users\タカヨシ\Desktop\新しいフォルダー\GameMain\チーム制作\team\Debug\team.exe
+﻿  Stage.cpp
+  team.vcxproj -> D:\kamizaki\Git\GameMain\チーム制作\team\Debug\team.exe

@@ -47,7 +47,10 @@ SceneMng::~SceneMng()
 // •`‰æ—p
 void SceneMng::ListDraw(void)
 {
+	std::string tmptmpA;
+	tmptmpA = "ABC";
 	ClsDrawScreen();
+
 	for (auto a : drawList)
 	{
 		int x;
@@ -61,7 +64,10 @@ void SceneMng::ListDraw(void)
 			DrawFormatString(x, y + 50, coller, "txt == %d", txt.c_str());
 			std::cout << "\n txt == %d " << txt.c_str() << std::endl;
 			printf("\n\n\n\n%s\n", txt.c_str());
+			
 	}
+
+	std::cout << tmptmpA << std::endl;
 
 	ScreenFlip();
 }

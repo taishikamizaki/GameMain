@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Effect.cpp" />
-    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GetKeyState.cpp" />
@@ -146,7 +145,6 @@
     </ClCompile>
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="Result.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SceneMng.cpp" />
     <ClCompile Include="SelectScene.cpp" />
@@ -158,14 +156,12 @@
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Effect.h" />
-    <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GetKeyState.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="Result.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneMng.h" />
     <ClInclude Include="SelectScene.h" />

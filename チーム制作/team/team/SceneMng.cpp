@@ -54,13 +54,15 @@ void SceneMng::ListDraw(void)
 		int y;
 		int coller;
 		std::string txt;
-		
-		std::tie(x, y, coller,txt) = a;
 
-		DrawFormatString(x, y, coller,"%d",txt);	// •¶š•`‰æˆ—
-		std::cout << "" << std::endl;
-		std::cout << "\n txt==%d"<<txt << std::endl;
+		std::tie(x, y, coller, txt) = a;
+		//for (auto b : txt)
+			DrawFormatString(x, y, coller, "%d", txt.c_str());				// •¶š•`‰æˆ—
+			DrawFormatString(x, y + 50, coller, "txt == %d", txt.c_str());
+			std::cout << "\n txt == %d " << txt.c_str() << std::endl;
+			printf("\n\n\n\n%s\n", txt.c_str());
 	}
+
 	ScreenFlip();
 }
 

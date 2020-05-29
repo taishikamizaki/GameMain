@@ -5,19 +5,19 @@
 
 ScnBase GameOverScene::update(ScnBase scnID)
 {
-	now = GetNowHiPerformanceCount();
-	//フレッシュレートが60の時、1000000で1秒
-	if (GetNowHiPerformanceCount() - now >= 6000000)
+	//フレッシュレートが60の時、1000 で1秒
+	if (GetNowHiPerformanceCount() - now >= 6000 )
 	{
 		return std::make_unique<TitleScene>();		// シーンをタイトルに差し替え
 	}
-	SCN_MNG.addList(0, 0, 0xffffff, "GameOverScene");
+	SCN_MNG.addList(0, 0, 0xffa0cf, "GameOverScene");
 
 	return std::move(scnID);
 }
 
 GameOverScene::GameOverScene()
 {
+	now = GetNowCount();
 }
 
 GameOverScene::~GameOverScene()

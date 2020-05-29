@@ -1,3 +1,2 @@
-﻿  GameOverScene.cpp
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\gameoverscene.cpp(8): warning C4244: '=': 'LONGLONG' から 'int' への変換です。データが失われる可能性があります。
+﻿  SceneMng.cpp
   team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe

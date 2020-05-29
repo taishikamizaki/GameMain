@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{BABF5C68-6C08-4472-BA59-0D861DF8B0BD}</ProjectGuid>
     <RootNamespace>team</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -138,6 +138,7 @@
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GetKeyState.cpp" />
     <ClCompile Include="main.cpp">
@@ -146,34 +147,31 @@
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SceneMng.cpp" />
-    <ClCompile Include="Select.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Init.cpp" />
-    <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GetKeyState.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneMng.h" />
-    <ClInclude Include="Select.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Stage.h" />
-    <ClInclude Include="Init.h" />
-    <ClInclude Include="Title.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

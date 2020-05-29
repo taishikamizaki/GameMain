@@ -7,8 +7,10 @@ class GameScene :
 {
 public:
 	ScnBase update(ScnBase scnID) override;
-private:
+	GameScene();
+	~GameScene();
 
+private:
 
 };
 

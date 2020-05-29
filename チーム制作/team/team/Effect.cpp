@@ -9,8 +9,8 @@ int gameCounter;		// ｹﾞｰﾑｼｰﾝｶｳﾝﾀｰ
 int testCounter;		// ｹﾞｰﾑｼｰﾝのﾎﾟｰｽﾞ確認用ｶｳﾝﾀ
 
 bool fadeIn;			// ﾌｪｰﾄﾞｲﾝ
-bool fadeOut;			// ﾌｪｰﾄﾞｱｳﾄ
-int  fadeCnt;			// ﾌｪｰﾄﾞｶｳﾝﾀ
+bool fadeOut;		// ﾌｪｰﾄﾞｱｳﾄ
+int  fadeCnt;		// ﾌｪｰﾄﾞｶｳﾝﾀ
 
 
 // ｴﾌｪｸﾄ初期化用

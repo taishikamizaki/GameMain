@@ -9,4 +9,5 @@ class ResultScene :
 	~ResultScene();
 
 private:
+
 };

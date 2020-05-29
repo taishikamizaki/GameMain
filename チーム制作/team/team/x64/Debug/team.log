@@ -1,2 +1,5 @@
-﻿  GameOverScene.cpp
-  team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe
+﻿  SelectScene.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\selectscene.cpp(24): error C2065: 'GameScene': 定義されていない識別子です。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\selectscene.cpp(24): error C2672: 'std::make_unique': 一致するオーバーロードされた関数が見つかりませんでした。
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\selectscene.cpp(24): error C2974: 'std::make_unique': テンプレート 引数が '_Ty' に対して無効です。型が必要です
+  d:\vs\vc\tools\msvc\14.16.27023\include\memory(2553): note: 'std::make_unique' の宣言を確認してください

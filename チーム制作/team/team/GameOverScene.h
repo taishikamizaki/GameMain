@@ -10,7 +10,6 @@ public:
 	GameOverScene();
 	~GameOverScene();
 private:
-	//int  GameOverCnt;		// 自動遷移用カウント
-	//bool GameOverFlag;		// 自動遷移用フラグ
+	int now;
 };
 

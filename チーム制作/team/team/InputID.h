@@ -1,7 +1,6 @@
 #pragma once
 
-// ｷｰ押下判定用
-enum KEY_ID_
+enum class KEY_ID	//キーの種類
 {
 	KEY_ID_SPACE,		// ｽﾍﾟｰｽ押下用
 	KEY_ID_PAUSE,		// ﾎﾟｰｽﾞﾎﾞﾀﾝ設定用
@@ -20,12 +19,8 @@ enum KEY_ID_
 	KEY_ID_MAX
 };
 
-// ﾌﾟﾛﾄﾀｲﾌﾟ宣言
-void KeyInit(void);								// 初期化
-void KeyCheck(void);							// ｷｰ判定
+KEY_ID begin(KEY_ID);
+KEY_ID end(KEY_ID);
+KEY_ID operator*(KEY_ID key);
+KEY_ID operator++(KEY_ID&key);
 
-// ｴｸｽﾀﾝ宣言
-extern bool keyNew[KEY_ID_MAX];							// ｷｰ押下判定（現在）
-extern bool keyOld[KEY_ID_MAX];								// ｷｰ押下判定（ﾌﾚｰﾑ前）
-extern bool keyDownTrigger[KEY_ID_MAX];		// ｷｰ押下時判定
-extern bool keyUpTrigger[KEY_ID_MAX];				// ｷｰを離した時の判定

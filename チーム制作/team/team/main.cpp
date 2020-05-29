@@ -45,6 +45,7 @@ int main(void)
 		{
 		case SCN_ID_INIT:
 			InitScene();
+			fadeIn = true;
 			scnID = SCN_ID_TITLE;
 			break;
 		case SCN_ID_TITLE:

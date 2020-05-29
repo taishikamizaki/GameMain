@@ -1,15 +1,4 @@
-﻿  Effect.cpp
-  Game.cpp
-  GameOver.cpp
-  Init.cpp
-  Result.cpp
-  Select.cpp
-  Stage.cpp
-  Title.cpp
+﻿  GameOver.cpp
   main.cpp
-  player.cpp
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\player.cpp(74): warning C4244: '-=': 'float' から 'int' への変換です。データが失われる可能性があります。
-  skill.cpp
   コードを生成中...
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.cpp(234): warning C4715: 'IsPass': 値を返さないコントロール パスがあります。
   team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe

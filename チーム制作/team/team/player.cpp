@@ -7,6 +7,7 @@
 //変数の定義
 CHARACTER	player1;
 
+// 初期化
 void	PlayerSysInit(void)
 {
 	player1.moveDir = DIR_RIGHT;						//向いている方向
@@ -28,11 +29,13 @@ void	PlayerSysInit(void)
 	player1.animCnt=0;									//キャラクタのアニメーション用カウンタ
 }
 
+// ゲーム中の初期化
 void	PlayerGameInit(void)
 {
 	
 }
 
+// ｺﾝﾄﾛｰﾙ
 void	PlayerCtl(void)
 {
 	bool	moveFlag = false;
@@ -49,7 +52,7 @@ void	PlayerCtl(void)
 	player1.shotFlag = false;
 	player1.jumpFlag = true;
 
-
+	// 右
 	if (keyNew[KEY_ID_RIGHT])
 	{
 		player1.runFlag = true;
@@ -58,6 +61,7 @@ void	PlayerCtl(void)
 		player1.moveDir = DIR_RIGHT;
 	}
 
+	// 左
 	if (keyNew[KEY_ID_LEFT])
 	{
 		player1.runFlag = true;
@@ -66,6 +70,7 @@ void	PlayerCtl(void)
 		player1.moveDir = DIR_LEFT;
 	}
 
+	// ｼﾞｬﾝﾌﾟ判定
 	if (player1.jumpFlag)
 	{
 		//重力による移動処理
@@ -197,8 +202,10 @@ void	PlayerCtl(void)
 	}
 }
 
+// 描画
 void	PlayerDraw(void)
 {
+	// プレイヤー枠
 	DrawBox(player1.pos.x - player1.sizeOffset.x 
 		, player1.pos.y - player1.sizeOffset.y 
 		, player1.pos.x + player1.size.x - player1.sizeOffset.x 
@@ -214,6 +221,7 @@ void	PlayerDraw(void)
 		, 0xFFFFF
 		, false);
 
+	// プレイヤー座標
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
 

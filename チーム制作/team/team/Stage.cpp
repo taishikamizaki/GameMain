@@ -9,6 +9,8 @@ int tougiImage[12];
 int yamaImage[23];
 Pos mapSize;
 STAGE_ID map;
+
+
 int maphamaguri[MAP_Y][MAP_X] = {
 {6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},
 {6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},
@@ -25,6 +27,8 @@ int maphamaguri[MAP_Y][MAP_X] = {
 {6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},
 {6,6,6,6 ,6,6,6,6 ,6,6,6,6 ,6,6,6,6 ,6,6,6,6,},
 };
+
+
 int mapyama[MAP_Y][MAP_X] = {
 {0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 {13,14,8,8 ,8,8,8,8 ,11,13,14,8 ,8,13,14,8 ,8,8,8,8,},
@@ -57,6 +61,8 @@ int mapmati[MAP_Y][MAP_X] = {
 {9,9,8,9 ,1,1,8,8 ,24,25,25,26 ,22,22,14,9 ,1,1,6,8,},
 {0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 };
+
+
 int maptougi[MAP_Y][MAP_X] = {
 {10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10,},
 {11,11,11,11 ,11,11,11,11 ,11,11,11,11 ,11,11,11,11 ,11,11,11,11,},
@@ -73,9 +79,12 @@ int maptougi[MAP_Y][MAP_X] = {
 {0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 {7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7,},
 };
+
+// 初期化
 bool StageInit(void)
 {
 	bool rtnFlag = true;
+
 	LoadDivGraph("image/stage/hamaguriroom.png",7,7,1
 		,CHIP_SIZE_X,CHIP_SIZE_Y
 		,hamaroomImage,false);
@@ -91,9 +100,11 @@ bool StageInit(void)
 	map = STAGE_ID_YAMA;
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
+
 	return rtnFlag;
 }
 
+// ｽﾃｰｼﾞｼｰﾝ
 bool StageScene(void)
 {
 	bool rtnFlag = true;
@@ -143,6 +154,7 @@ bool StageScene(void)
 	return rtnFlag;
 }
 
+// 描画
 void StageDraw(void)
 {
 	for (int y = 0; y< mapSize.y;y++)
@@ -152,9 +164,10 @@ void StageDraw(void)
 			DrawGraph(x*CHIP_SIZE_X, y*CHIP_SIZE_Y, yamaImage[mapyama[y][x]],true);
 		}
 	}
-	DrawGraph(SCREEN_SIZE_X, SCREEN_SIZE_Y, stageID[STAGE_ID_MAX], true);		// 配列の亜種みたいな奴で回してくれ
+	DrawGraph(SCREEN_SIZE_X, SCREEN_SIZE_Y, stageID[STAGE_ID_MAX], true);
 	
 }
+
 // ﾋﾟｸｾﾙの座標をﾏｯﾌﾟ配列の座標に変換する
 Pos PosToIndex(Pos pos)
 {
@@ -163,6 +176,7 @@ Pos PosToIndex(Pos pos)
 	index.y = pos.y / CHIP_SIZE_Y;
 	return index;
 }
+
 // ﾏｯﾌﾟ配列の座標をﾋﾟｸｾﾙの座標(左上)に変換する
 Pos IndexToPos(Pos index)
 {
@@ -171,11 +185,13 @@ Pos IndexToPos(Pos index)
 	pos.y = index.y*CHIP_SIZE_Y;
 	return pos;
 }
+
 // 指定された座標が通過可能かを判断する(true:通ってよい)
 bool IsPass(Pos pos)
 {
 	Pos index;
 	index = PosToIndex(pos);
+
 	// ハマグリ
 	/*switch (maphamaguri[index.y][index.x])
 	{
@@ -197,6 +213,7 @@ bool IsPass(Pos pos)
 	default:
 		break;
 	}*/
+
 	// 山
 	switch (mapyama[index.y][index.x])
 	{
@@ -209,6 +226,7 @@ bool IsPass(Pos pos)
 	default:
 		break;
 	}
+
 	//// 街
 	//switch (mapmati[index.y][index.x])
 	//{
@@ -221,6 +239,7 @@ bool IsPass(Pos pos)
 	//default:
 	//	break;
 	//}
+
 	//// 闘技場
 	//switch (maptougi[index.y][index.x])
 	//{
@@ -230,5 +249,6 @@ bool IsPass(Pos pos)
 	//default:
 	//	break;
 	//}
+
 	//return true;
 }

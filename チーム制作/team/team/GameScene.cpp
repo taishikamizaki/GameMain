@@ -13,3 +13,11 @@ ScnBase GameScene::update(ScnBase scnID)
 	}*/
 	return std::move(scnID);
 }
+
+GameScene::GameScene()
+{
+}
+
+GameScene::~GameScene()
+{
+}

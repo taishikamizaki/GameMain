@@ -1,5 +1,6 @@
 #include <DxLib.h>
 //#include "SceneMng.h"
+#include "GameScene.h"
 #include "SelectScene.h"
 
 
@@ -21,7 +22,7 @@ ScnBase SelectScene::update(ScnBase scnID)
 {
 	if (CheckHitKey(KEY_INPUT_SPACE))
 	{
-		return std::make_unique<GameScene>();
+		return std::make_unique<GameScene>();		// シーンをゲームオーバーに差し替え
 	}
 	return std::move(scnID);
 }

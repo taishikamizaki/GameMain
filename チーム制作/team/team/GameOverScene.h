@@ -3,18 +3,14 @@
 
 
 class GameOverScene :
-    public BaseScene
+	public BaseScene
 {
 public:
+	ScnBase update(ScnBase scnID) override;
 	GameOverScene();
 	~GameOverScene();
-
-	ScnBase update(ScnBase scnID) override;
-	void GameOverDraw(void);
-
 private:
-	
-int  GameOverCnt;		// 自動遷移用カウント
-bool GameOverFlag;		// 自動遷移用フラグ
+	//int  GameOverCnt;		// 自動遷移用カウント
+	//bool GameOverFlag;		// 自動遷移用フラグ
 };
 

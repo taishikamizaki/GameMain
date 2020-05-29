@@ -1,6 +1,7 @@
 #include "DxLib.h"
 #include "Pause.h"
 
+
 bool PauseInit(void)
 {
 	bool rtnFlag = true;
@@ -17,5 +18,4 @@ bool PauseScene(void)
 
 void PauseDraw(void)
 {
-
 }

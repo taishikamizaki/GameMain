@@ -1,21 +1,2 @@
-﻿  BaseScene.cpp
-  Effect.cpp
-  GameOver.cpp
-  GameScene.cpp
-  GetKeyState.cpp
-  main.cpp
-  Pause.cpp
-  player.cpp
-  Result.cpp
-  SceneMng.cpp
-  Select.cpp
-  SelectScene.cpp
-  skill.cpp
-  Sound.cpp
-  Stage.cpp
-  Init.cpp
-  Title.cpp
-  TitleScene.cpp
-  コードを生成中...
-c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\stage.cpp(254): warning C4715: 'IsPass': 値を返さないコントロール パスがあります。
+﻿  GameOverScene.cpp
   team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe

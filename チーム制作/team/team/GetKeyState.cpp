@@ -4,10 +4,10 @@
 // ·°‘€ìŠÖ˜A
 
 // •Ï”’è‹`
-bool keyNew[KEY_ID_MAX];			// ·°”»’èÌ×¸Ş
-bool keyOld[KEY_ID_MAX];			// ·°Œã”»’èÌ×¸Ş
+bool keyNew[KEY_ID_MAX];						// ·°”»’èÌ×¸Ş
+bool keyOld[KEY_ID_MAX];							// ·°Œã”»’èÌ×¸Ş
 bool keyDownTrigger[KEY_ID_MAX];	// ·°‰Ÿ‰º”»’èÌ×¸Ş
-bool keyUpTrigger[KEY_ID_MAX];		// ·°‚ğ—£‚µ‚½uŠÔ‚Ì”»’èÌ×¸Ş
+bool keyUpTrigger[KEY_ID_MAX];			// ·°‚ğ—£‚µ‚½uŠÔ‚Ì”»’èÌ×¸Ş
 
 // ·°î•ñˆ—
 void KeyInit(void)

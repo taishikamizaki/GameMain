@@ -10,13 +10,14 @@ ScnBase ResultScene::update(ScnBase scnID)
 		return std::make_unique<GameOverScene>();		// シーンをゲームオーバーに差し替え
 	}
 	
-	//SCN_MNG.addList(0, 0, 0);
+	SCN_MNG.addList(0, 0, "rsi");
 	return std::move(scnID);
 	//return ScnBase();
 }
 
 ResultScene::ResultScene()
 {
+	SCN_MNG.GetId("rsi", "image/TestGraph/Result.png");		//鍵　場所
 }
 
 ResultScene::~ResultScene()

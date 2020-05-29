@@ -23,7 +23,7 @@ ScnBase TitleScene::update(ScnBase scnID)
 	/*keyDownTrigger[KEY_ID_SPACE]*/
 
 	// キーチェック
-	if (CheckHitKeyAll())
+	if (CheckHitKey(KEY_INPUT_Q))
 	{
 		/*fadeOut = true;*/
 		return std::make_unique<SelectScene>();			// シーンをセレクトに飛ばす

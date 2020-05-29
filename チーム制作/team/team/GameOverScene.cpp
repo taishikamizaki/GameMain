@@ -6,11 +6,11 @@
 ScnBase GameOverScene::update(ScnBase scnID)
 {
 	//フレッシュレートが60の時、1000 で1秒
-	if (GetNowHiPerformanceCount() - now >= 6000 )
+	if (GetNowCount() - now >= 6000 )
 	{
 		return std::make_unique<TitleScene>();		// シーンをタイトルに差し替え
 	}
-	//SCN_MNG.addList(0, 0, 0);
+	SCN_MNG.addList(0, 0, "goi");
 
 	return std::move(scnID);
 }
@@ -18,6 +18,7 @@ ScnBase GameOverScene::update(ScnBase scnID)
 GameOverScene::GameOverScene()
 {
 	now = GetNowCount();
+	SCN_MNG.GetId("goi", "image/TestGraph/GameOver.png");		//鍵　場所
 }
 
 GameOverScene::~GameOverScene()

@@ -20,6 +20,7 @@
 
 SelectScene::SelectScene()
 {
+	SCN_MNG.GetId("sli", "image/TestGraph/Select.png");		//鍵　場所
 }
 
 SelectScene::~SelectScene()
@@ -32,6 +33,6 @@ ScnBase SelectScene::update(ScnBase scnID)
 	{
 		return std::make_unique<GameScene>();		// シーンをゲームオーバーに差し替え
 	}
-	//SCN_MNG.addList(0, 0, );
+	SCN_MNG.addList(0, 0, "sli");
 	return std::move(scnID);
 }

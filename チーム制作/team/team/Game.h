@@ -2,5 +2,5 @@
 
 bool InitScene(void);
 bool GameInit(void);			// ‰Šú‰»
-bool GameScene(void);			// ¼°İ
+bool Game(void);				// Œ³¼°İ
 void GameDraw(void);			// •`‰æ

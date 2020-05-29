@@ -94,7 +94,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>C:\dxlib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -135,9 +135,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GetKeyState.cpp" />
     <ClCompile Include="main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebug</RuntimeLibrary>
@@ -145,6 +147,7 @@
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Result.cpp" />
+    <ClCompile Include="SceneMng.cpp" />
     <ClCompile Include="Select.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="Sound.cpp" />
@@ -153,14 +156,17 @@
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="GetKeyState.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="Result.h" />
+    <ClInclude Include="SceneMng.h" />
     <ClInclude Include="Select.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="Sound.h" />

@@ -13,8 +13,10 @@
 SCN_ID scnID;
 SCN_ID scnIDOld;
 
+
+
 // WinMain関数
-int main(void)
+int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 {
 	if (!SysInit())
 	{
@@ -39,123 +41,127 @@ int main(void)
 			/*sceneCnt = 0;
 			gameCounter = 0;*/
 		}
+		
+		// シーンマネージャー様
 
-		// ｼｰﾝ遷移用ｽｲｯﾁ文
-		switch (scnID)
-		{
-		case SCN_ID_INIT:
-			InitScene();
-			fadeIn = true;
-			scnID = SCN_ID_TITLE;
-			break;
-		case SCN_ID_TITLE:
-			if (fadeIn)
-			{
-				if (!FadeInScreen(5))
-				{
-					
-				}
-			}
-			if (fadeOut)
-			{
-				if (!FadeOutScreen(5))
-				{
-					fadeIn = true;
-					scnID = SCN_ID_SELECT;
-				}
-			}
-			TitleInit();
-			break;
-		case SCN_ID_SELECT:
-			
-			if (fadeIn)
-			{
-				if (!FadeInScreen(5))
-				{
-					
-				}
-			}
-			if (fadeOut)
-			{
-				if (!FadeOutScreen(5))
-				{
-					fadeIn = true;
-					scnID = SCN_ID_GAME;
-				}
-			}
-			SelectInit();
-			break;
-		case SCN_ID_PAUSE:
-			PauseInit();
-			break;
-		case SCN_ID_GAME:
-			if (fadeIn)
-			{
-				if (!FadeInScreen(5))
-				{
 
-				}
-			}
-			if (fadeOut)
-			{
-				if (!FadeOutScreen(5))
-				{
-					fadeIn = true;
-					scnID = SCN_ID_RESULT;
-				}
-			}
-			GameInit();
-			
-			break;
-		case SCN_ID_RESULT:
-			if (fadeIn)
-			{
-				if (!FadeInScreen(5))
-				{
+		// 用済み
+		//switch (scnID)
+		//{
+		//case SCN_ID_INIT:
+		//	InitScene();
+		//	fadeIn = true;
+		//	scnID = SCN_ID_TITLE;
+		//	break;
+		//case SCN_ID_TITLE:
+		//	if (fadeIn)
+		//	{
+		//		if (!FadeInScreen(5))
+		//		{
+		//			
+		//		}
+		//	}
+		//	if (fadeOut)
+		//	{
+		//		if (!FadeOutScreen(5))
+		//		{
+		//			fadeIn = true;
+		//			scnID = SCN_ID_SELECT;
+		//		}
+		//	}
+		//	TitleInit();
+		//	break;
+		//case SCN_ID_SELECT:
+		//	
+		//	if (fadeIn)
+		//	{
+		//		if (!FadeInScreen(5))
+		//		{
+		//			
+		//		}
+		//	}
+		//	if (fadeOut)
+		//	{
+		//		if (!FadeOutScreen(5))
+		//		{
+		//			fadeIn = true;
+		//			scnID = SCN_ID_GAME;
+		//		}
+		//	}
+		//	SelectInit();
+		//	break;
+		//case SCN_ID_PAUSE:
+		//	PauseInit();
+		//	break;
+		//case SCN_ID_GAME:
+		//	if (fadeIn)
+		//	{
+		//		if (!FadeInScreen(5))
+		//		{
 
-				}
-			}
-			if (fadeOut)
-			{
-				if (!FadeOutScreen(5))
-				{
-					fadeIn = true;
-					//if (selectFlag)
-					//{
-					//	// キャラセレへ移行
-					//	scnID = SCN_ID_SELECT;
-					//}
-					//if (gameOverFlag)
-					//{
-					scnID = SCN_ID_GAMEOVER;
-					//}
-				}
-			}
-			ResultScene();
-			break;
-		case SCN_ID_GAMEOVER:
-			if (fadeIn)
-			{
-				if (!FadeInScreen(5))
-				{
+		//		}
+		//	}
+		//	if (fadeOut)
+		//	{
+		//		if (!FadeOutScreen(5))
+		//		{
+		//			fadeIn = true;
+		//			scnID = SCN_ID_RESULT;
+		//		}
+		//	}
+		//	GameInit();
+		//	
+		//	break;
+		//case SCN_ID_RESULT:
+		//	if (fadeIn)
+		//	{
+		//		if (!FadeInScreen(5))
+		//		{
 
-				}
-			}
-			if (fadeOut)
-			{
-				if (!FadeOutScreen(5))
-				{
-					fadeIn = true;
-					scnID = SCN_ID_INIT;
-				}
-			}
-			GameOverScene();
-			break;
-		}
+		//		}
+		//	}
+		//	if (fadeOut)
+		//	{
+		//		if (!FadeOutScreen(5))
+		//		{
+		//			fadeIn = true;
+		//			//if (selectFlag)
+		//			//{
+		//			//	// キャラセレへ移行
+		//			//	scnID = SCN_ID_SELECT;
+		//			//}
+		//			//if (gameOverFlag)
+		//			//{
+		//			scnID = SCN_ID_GAMEOVER;
+		//			//}
+		//		}
+		//	}
+		//	ResultScene();
+		//	break;
+		//case SCN_ID_GAMEOVER:
+		//	if (fadeIn)
+		//	{
+		//		if (!FadeInScreen(5))
+		//		{
+
+		//		}
+		//	}
+		//	if (fadeOut)
+		//	{
+		//		if (!FadeOutScreen(5))
+		//		{
+		//			fadeIn = true;
+		//			scnID = SCN_ID_INIT;
+		//		}
+		//	}
+		//	GameOverScene();
+		//	break;
+		//}
 			ScreenFlip();//裏画面を表画面に瞬間コピー
 	}
 
 	DxLib_End();
 	return 0;
 }
+
 

@@ -61,7 +61,6 @@ KeyState::KeyState()
 	modekeyOld = true;
 }
 
-
 KeyState::~KeyState()
 {
 	

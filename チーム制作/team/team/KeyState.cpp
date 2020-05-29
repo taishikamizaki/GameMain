@@ -12,12 +12,25 @@ KeyState::KeyState()
 	}
 	_confId = KEY_ID::KEY_ID_SPACE;
 
-	_keyConDef.reserve(static_cast<size_t>(end(KEY_ID())));	
-	_keyConDef.emplace_back(KEY_INPUT_UP);
-	_keyConDef.emplace_back(KEY_INPUT_RIGHT);
-	_keyConDef.emplace_back(KEY_INPUT_LEFT);
-	_keyConDef.emplace_back(KEY_INPUT_DOWN);
-	_keyConDef.emplace_back();
+	// キーインプット
+	_keyConDef.reserve(static_cast<size_t>(end(KEY_ID())));
+	_keyConDef.emplace_back(KEY_INPUT_SPACE);		// シーン遷移用
+	_keyConDef.emplace_back(KEY_INPUT_P);					// ポーズ
+	_keyConDef.emplace_back(KEY_INPUT_UP);				// ↑
+	_keyConDef.emplace_back(KEY_INPUT_RIGHT);		// →
+	_keyConDef.emplace_back(KEY_INPUT_DOWN);		// ↓
+	_keyConDef.emplace_back(KEY_INPUT_LEFT);			// ←
+	_keyConDef.emplace_back(KEY_INPUT_1);					// スキル１
+	_keyConDef.emplace_back(KEY_INPUT_2);					// スキル2
+	_keyConDef.emplace_back(KEY_INPUT_3);					// スキル３
+	_keyConDef.emplace_back(KEY_INPUT_4);					// スキル4（必殺）
+	_keyConDef.emplace_back(KEY_INPUT_E);					// 気弾（魔法使い用）
+	_keyConDef.emplace_back(KEY_INPUT_J);					// ジャンプ
+	_keyConDef.emplace_back(KEY_INPUT_S);					// 何かのセーブ
+	_keyConDef.emplace_back(KEY_INPUT_L);					// 何かのロード
+	_keyConDef.emplace_back(KEY_INPUT_A);					// 掴み
+	_keyConDef.emplace_back(KEY_INPUT_Q);				// 弱
+	_keyConDef.emplace_back(KEY_INPUT_W);				// 強
 
 	FILE *fileptr =0;
 

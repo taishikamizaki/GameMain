@@ -13,7 +13,7 @@ ScnBase GameScene::update(ScnBase scnID)
 		return std::make_unique<ResultScene>();		// シーンをゲームオーバーに差し替え
 	}
 
-	SCN_MNG.addList(0,0,0xffff00, static_cast<std::string>("GAMESCENE"));
+	//SCN_MNG.addList(0, 0, 0);
 	return std::move(scnID);
 }
 

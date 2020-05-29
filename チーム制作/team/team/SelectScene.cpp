@@ -32,6 +32,6 @@ ScnBase SelectScene::update(ScnBase scnID)
 	{
 		return std::make_unique<GameScene>();		// シーンをゲームオーバーに差し替え
 	}
-	SCN_MNG.addList(0, 0, 0x00ffff, "SelectScene");
+	//SCN_MNG.addList(0, 0, );
 	return std::move(scnID);
 }

@@ -10,7 +10,7 @@ ScnBase GameOverScene::update(ScnBase scnID)
 	{
 		return std::make_unique<TitleScene>();		// シーンをタイトルに差し替え
 	}
-	SCN_MNG.addList(0, 0, 0xffa0cf, "GameOverScene");
+	//SCN_MNG.addList(0, 0, 0);
 
 	return std::move(scnID);
 }

@@ -26,9 +26,10 @@ void SceneMng::ScnCtl(void)
 }
 
 // •¶š•`‰æ—pƒ^ƒXƒN
-int SceneMng::addList(int x, int y, unsigned int coller, std::string txt)
+int SceneMng::addList(int x, int y, std::string id)
 {
-	drawList.emplace_back(x, y, coller, txt);
+	drawList.emplace_back(x, y, id);
+
 	return 0;
 }
 
@@ -47,27 +48,15 @@ SceneMng::~SceneMng()
 // •`‰æ—p
 void SceneMng::ListDraw(void)
 {
-	std::string tmptmpA;
-	tmptmpA = "ABC";
 	ClsDrawScreen();
-
-	for (auto a : drawList)
+	int x, y;
+	std::string id;
+	for(auto dl:drawList)
 	{
-		int x;
-		int y;
-		int coller;
-		std::string txt;
-
-		std::tie(x, y, coller, txt) = a;
-		//for (auto b : txt)
-			DrawFormatString(x, y, coller, "%d", txt.c_str());				// •¶š•`‰æˆ—
-			DrawFormatString(x, y + 50, coller, "txt == %d", txt.c_str());
-			std::cout << "\n txt == %d " << txt.c_str() << std::endl;
-			printf("\n\n\n\n%s\n", txt.c_str());
-			
+		std::tie(x, y, id) = dl;
+		
+		DrawGraph(x,y,GetId(id),true);
 	}
-
-	std::cout << tmptmpA << std::endl;
 
 	ScreenFlip();
 }
@@ -95,4 +84,19 @@ bool SceneMng::ScnInit(void)
 	//scnID = SCN_ID_INIT;
 	//scnIDOld = SCN_ID_MAX;
 	return 0;
+}
+
+int SceneMng::GetId(const std::string& key,const std::string filename)
+{
+	if (imgMng.find(key) == imgMng.end())
+	{
+		imgMng[key] = LoadGraph(filename.c_str());
+	}
+	return imgMng[key];
+}
+
+int SceneMng::GetId(const std::string& key)
+{
+	GetId(key, key);
+	return imgMng[key];
 }

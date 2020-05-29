@@ -1,14 +1,12 @@
 #pragma once
 #include <vector>
 #include <tuple>
+#include <map>
 #include "BaseScene.h"
 
 #define SCN_MNG SceneMng::ScnGeter()								// マクロ
 
-/*using drawQue = std::tuple<int, int, int>();*/						// 文字特化
-using drawQue = std::tuple<int, int, int, std::string>;
-
-/*using drawGraph = std::tuple<int, int, int>();*/					// 画像特化(DrawGraph)
+using drawQue = std::tuple<int, int, std::string>;
 
 // シーンマネージャー
 class SceneMng
@@ -45,16 +43,18 @@ public:
 	// ｼｰﾝｺﾝﾄﾛｰﾙ
 	void ScnCtl(void);
 
-	int addList(int x, int y, unsigned int coller, std::string txt);
+	int addList(int x, int y, std::string id);
 
+	int GetId(const std::string& key,const std::string filename);
+
+	int GetId(const std::string& key);
 private:
 	SceneMng();
 	~SceneMng();
 	
-	/*std::vector<drawQue> drawList;*/	
-	std::vector<drawQue> drawList;	// 画像とか文字とか入れるとこ （文字特化）
-	/*std::vector<drawQue> List;*/
-	void ListDraw(void);			// 描画用
+	std::vector<drawQue> drawList;		// 画像とか入れるとこ
+
+	void ListDraw(void);				// 描画用
 
 	static SceneMng*sinstance;		// ﾎﾟｲﾝﾀ（動的に作る静的な何か）
 
@@ -65,6 +65,8 @@ private:
 
 	const int screenSizeX;			// 画面サイズX
 	const int screenSizeY;			// 画面サイズY
+
+	std::map<std::string, int> imgMng;
 
 };
 

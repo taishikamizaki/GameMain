@@ -1,4 +1,5 @@
 #include <DxLib.h>
+#include "SceneMng.h"
 #include "SelectScene.h"
 #include "TitleScene.h"
 
@@ -7,7 +8,8 @@
 TitleScene::TitleScene()
 {
 	titleLogoImage = NULL;		// タイトルロゴ
-	titleMesImage  = NULL;		// タイトルメッセージ
+	titleMesImage  = NULL;			// タイトルメッセージ
+	SCN_MNG.GetId("ti", "image/TestGraph/Title.png");		//鍵　場所
 }
 
 // デストラクタ
@@ -26,5 +28,8 @@ ScnBase TitleScene::update(ScnBase scnID)
 		/*fadeOut = true;*/
 		return std::make_unique<SelectScene>();			// シーンをセレクトに飛ばす
 	}
-	return std::move(scnID);	// 場所の宣言(フラグ)
+
+	SCN_MNG.addList(0, 0, "ti");											// xy鍵
+
+	return std::move(scnID);														// 場所の宣言(フラグ)
 }

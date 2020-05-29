@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="Effect.cpp" />
-    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GetKeyState.cpp" />
@@ -149,16 +148,17 @@
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneMng.cpp" />
     <ClCompile Include="Select.cpp" />
+    <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="Init.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseScene.h" />
     <ClInclude Include="Effect.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GetKeyState.h" />
@@ -168,11 +168,13 @@
     <ClInclude Include="Result.h" />
     <ClInclude Include="SceneMng.h" />
     <ClInclude Include="Select.h" />
+    <ClInclude Include="SelectScene.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="Sound.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="Init.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

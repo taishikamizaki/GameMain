@@ -59,7 +59,7 @@ void KeyCheck(void)
 		// ÄØ¶Ş°‰Šú‰»
 		keyDownTrigger[keyID] = false;
 		keyUpTrigger[keyID]   = false;
-
+		
 		// ÄØ¶Ş°ÌÚ°Ñ”»’è
 		if (keyNew[keyID] && !keyOld[keyID])
 		{

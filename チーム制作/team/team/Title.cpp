@@ -14,11 +14,7 @@ bool TitleInit(void)
 
 bool TitleScene(void)
 {
-	if (keyDownTrigger[KEY_ID_SPACE])
-		{
-			fadeOut = true;
-			/*SysInit();*/
-		}
+	
 	TitleDraw();
 	return false;
 }

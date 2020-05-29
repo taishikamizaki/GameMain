@@ -11,30 +11,30 @@
 #endif
 
 // ｼｰﾝID
-enum SCN_ID
-{
-	SCN_ID_INIT,		// ｲﾆｯﾄ
-	SCN_ID_TITLE,		// ﾀｲﾄﾙ
-	SCN_ID_SELECT,		// ｾﾚｸﾄ
-	SCN_ID_GAME,		// ｹﾞｰﾑ
-	SCN_ID_PAUSE,		// ﾎﾟｰｽﾞ
-	SCN_ID_RESULT,		// ﾘｻﾞﾙﾄ
-	SCN_ID_GAMEOVER,	// ｹﾞｰﾑｵｰﾊﾞｰ
-	SCN_ID_MAX
-};
+//enum SCN_ID
+//{
+//	SCN_ID_INIT,		// ｲﾆｯﾄ
+//	SCN_ID_TITLE,		// ﾀｲﾄﾙ
+//	SCN_ID_SELECT,		// ｾﾚｸﾄ
+//	SCN_ID_GAME,		// ｹﾞｰﾑ
+//	SCN_ID_PAUSE,		// ﾎﾟｰｽﾞ
+//	SCN_ID_RESULT,		// ﾘｻﾞﾙﾄ
+//	SCN_ID_GAMEOVER,	// ｹﾞｰﾑｵｰﾊﾞｰ
+//	SCN_ID_MAX
+//};
 
 // 方向
-enum DIR
-{
-	DIR_UP,			// 上
-	DIR_RIGHT,		// 右
-	DIR_DOWN,		// 下
-	DIR_LEFT,		// 左
-	DIR_MAX
-};
+//enum DIR
+//{
+//	DIR_UP,			// 上
+//	DIR_RIGHT,		// 右
+//	DIR_DOWN,		// 下
+//	DIR_LEFT,		// 左
+//	DIR_MAX
+//};
 
-#define SCREEN_SIZE_X 1000
-#define SCREEN_SIZE_Y 600
+//#define SCREEN_SIZE_X 1000
+//#define SCREEN_SIZE_Y 600
 
 // XY
 struct Pos
@@ -46,9 +46,9 @@ struct Pos
 struct Pos_F
 {
 	float x;
-	float	y;
+	float y;
 };
 
 // ｴｸｽﾀﾝ宣言
-extern SCN_ID scnID;		// ｼｰﾝ識別用
-extern SCN_ID scnIDOld;		// ｼｰﾝ識別（ﾌﾚｰﾑ前）
+//extern SCN_ID scnID;		// ｼｰﾝ識別用
+//extern SCN_ID scnIDOld;		// ｼｰﾝ識別（ﾌﾚｰﾑ前）

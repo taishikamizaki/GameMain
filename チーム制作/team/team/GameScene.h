@@ -6,11 +6,7 @@ class GameScene :
 	public BaseScene		// eƒNƒ‰ƒX
 {
 public:
-	bool InitScene(void);
-	bool GameInit(void);			// ‰Šú‰»
-	bool Game(void);				// Œ³¼°İ
-	void GameDraw(void);			// •`‰æ
-
+	ScnBase update(ScnBase scnID) override;
 private:
 
 

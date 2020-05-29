@@ -1,26 +1,15 @@
 #include "GameScene.h"
 
-// ‰Šú‰»
-bool GameScene::InitScene(void)
-{
-	return false;
-}
-
-// ‰Šú‰»
-bool GameScene::GameInit(void)
-{
-	return false;
-}
 
 // ƒV[ƒ“
-bool GameScene::Game(void)
+ScnBase GameScene::update(ScnBase scnID)
 {
-	return false;
-}
+	/*PlayerCtl();
 
-// •`‰æ
-void GameScene::GameDraw(void)
-{
+	if (keyDownTrigger[KEY_ID_SPACE])
+	{
+		fadeOut = true;
 
-
+	}*/
+	return std::move(scnID);
 }

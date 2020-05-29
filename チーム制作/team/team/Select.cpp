@@ -13,10 +13,7 @@ bool SelectInit(void)
 
 bool SelectScene(void)
 {
-	if (keyDownTrigger[KEY_ID_SPACE])
-	{
-		fadeOut = true;
-	}
+	
 	SelectDraw();
 	return false;
 }

@@ -25,7 +25,7 @@ enum CHAR_ID
 //構造体
 struct CHARACTER 
 {
-	DIR moveDir;		//向いている方向
+	/*DIR moveDir;*/		//向いている方向
 	Pos pos;			//キャラクタの位置（中心）
 	Pos size;			//キャラクタ画像のサイズ
 	Pos sizeOffset;		//キャラクタ中央からの左上位置

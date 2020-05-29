@@ -58,6 +58,8 @@ void SceneMng::ListDraw(void)
 		std::tie(x, y, coller,txt) = a;
 
 		DrawFormatString(x, y, coller,"%d",txt);	// •¶š•`‰æˆ—
+		std::cout << "" << std::endl;
+		std::cout << "\n txt==%d"<<txt << std::endl;
 	}
 	ScreenFlip();
 }

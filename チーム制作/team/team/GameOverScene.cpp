@@ -5,9 +5,9 @@
 
 ScnBase GameOverScene::update(ScnBase scnID)
 {
-	now = GetNowCount();
-	
-	if (GetNowCount() - now < 3000)
+	now = GetNowHiPerformanceCount();
+	//フレッシュレートが60の時、1000000で1秒
+	if (GetNowHiPerformanceCount() - now >= 6000000)
 	{
 		return std::make_unique<TitleScene>();		// シーンをタイトルに差し替え
 	}

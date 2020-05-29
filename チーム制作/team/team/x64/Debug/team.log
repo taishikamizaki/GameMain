@@ -1,3 +1,3 @@
-﻿  SelectScene.cpp
-SelectScene.obj : error LNK2019: 未解決の外部シンボル "public: __cdecl GameScene::GameScene(void)" (??0GameScene@@QEAA@XZ) が関数 "class std::unique_ptr<class GameScene,struct std::default_delete<class GameScene> > __cdecl std::make_unique<class GameScene,0>(void)" (??$make_unique@VGameScene@@$$V$0A@@std@@YA?AV?$unique_ptr@VGameScene@@U?$default_delete@VGameScene@@@std@@@0@XZ) で参照されました。
-C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe : fatal error LNK1120: 1 件の未解決の外部参照
+﻿  GameOverScene.cpp
+c:\users\秋山\desktop\チーム制作(git)\gamemain\チーム制作\team\team\gameoverscene.cpp(8): warning C4244: '=': 'LONGLONG' から 'int' への変換です。データが失われる可能性があります。
+  team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe

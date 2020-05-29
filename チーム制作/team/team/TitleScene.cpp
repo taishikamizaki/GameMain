@@ -24,7 +24,7 @@ ScnBase TitleScene::update(ScnBase scnID)
 	if (CheckHitKeyAll())
 	{
 		/*fadeOut = true;*/
-		//return std::make_unique<SelectScene>();			// シーンをセレクトに飛ばす
+		return std::make_unique<SelectScene>();			// シーンをセレクトに飛ばす
 	}
 	return std::move(scnID);	// 場所の宣言(フラグ)
 }

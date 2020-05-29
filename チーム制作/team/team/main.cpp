@@ -5,7 +5,8 @@
 // WinMain関数
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 {
-	SCN_MNG.ScnCtl();		// シーンマネージャー様
+	SceneMng::ScnGeter().ScnCreate();	// マネージャーを直接クリエイト
+	SCN_MNG.ScnCtl();		// シーンマネージャー召喚
 	DxLib_End();
 	return 0;
 }

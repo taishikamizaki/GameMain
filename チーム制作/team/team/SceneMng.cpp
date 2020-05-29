@@ -1,3 +1,5 @@
+#include <iostream>
+#include <string>
 #include <DxLib.h>
 #include "SceneMng.h"
 #include "TitleScene.h"
@@ -18,13 +20,15 @@ void SceneMng::ScnCtl(void)
 
 		/*KeyCheck();*/
 		nowScn = (*nowScn).update(std::move(nowScn));// シーン移行
+
+		SceneMng::ListDraw();
 	}
 }
 
 // 文字描画用タスク
-int SceneMng::addList(drawQue dList)
+int SceneMng::addList(int x, int y, unsigned int coller, std::string txt)
 {
-	drawList.emplace_back(dList);
+	drawList.emplace_back(x, y, coller, txt);
 	return 0;
 }
 
@@ -43,15 +47,18 @@ SceneMng::~SceneMng()
 // 描画用
 void SceneMng::ListDraw(void)
 {
+	ClsDrawScreen();
 	for (auto a : drawList)
 	{
 		int x;
 		int y;
 		int coller;
-		int txt;
-
-		std::tie(x, y, coller, txt) = a;
+		std::string txt;
+		
+		std::tie(x, y, coller,txt) = a;
+		DrawFormatString(x, y, coller,"%d",txt);	// 文字描画処理
 	}
+	ScreenFlip();
 }
 
 // 初期化
@@ -76,4 +83,5 @@ bool SceneMng::ScnInit(void)
 
 	//scnID = SCN_ID_INIT;
 	//scnIDOld = SCN_ID_MAX;
+	return 0;
 }

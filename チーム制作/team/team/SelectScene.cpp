@@ -1,3 +1,4 @@
+#include "SceneMng.h"
 #include "SelectScene.h"
 
 // コンストラクタ
@@ -19,6 +20,9 @@ ScnBase SelectScene::update(ScnBase scnID)
 	{
 		fadeOut = true;
 	}*/
+
+	SCN_MNG.addList(0, 0, 0xffffff, "SelectScene");
+
 	return std::move(scnID);
 }
 

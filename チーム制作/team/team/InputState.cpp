@@ -1,25 +1,17 @@
-#include <_DubugConOut.h>
+#include "InputID.h"
 #include "InputState.h"
 
 InputState::InputState()
 {
-
-	for (auto key : INPUT_ID())
+	for (auto key : KEY_ID())
 	{
-
 		_state.try_emplace(key, KeyPir{0,1});
-
 	}
-
-
-
-
-
 }
-
 
 InputState::~InputState()
 {
+
 }
 
 const KeyMap & InputState::state(void) const
@@ -27,9 +19,9 @@ const KeyMap & InputState::state(void) const
 	return _state;
 }
 
-const KeyPir & InputState::state(INPUT_ID id)const
+const KeyPir & InputState::state(KEY_ID id)const
 {
-	static KeyPir defDate = { 0,0 };		//他では使いたくないから、ここに作る。
+	static KeyPir defDate = { 0,0 };
 
 	try
 	{
@@ -37,29 +29,23 @@ const KeyPir & InputState::state(INPUT_ID id)const
 	}
 	catch(...)
 	{
-		AST();
-		return defDate;						//｛0,0｝を、そのまま使うのはよくないので、参照できる,実体が存在するものを用意する。
+		return defDate;	
 	}
-
-
 }
 
-bool InputState::state(INPUT_ID id, int kf)
+bool InputState::state(KEY_ID id, int kf)
 {
 	if (_state.find(id) != _state.end())
 	{
 		_state[id].first = kf;
 		return true;
 	}
-
-
 	return false;
 }
 
 void InputState::SetOld(void)
 {
-
-	for (auto key : INPUT_ID())
+	for (auto key : KEY_ID::KEY_ID_MAX)
 	{
 		try
 		{
@@ -67,10 +53,8 @@ void InputState::SetOld(void)
 		}
 		catch (const std::exception&)
 		{
-			AST();
 			_state.emplace(key, KeyPir{ 0,1 });
 		}
-
 	}
 }
 

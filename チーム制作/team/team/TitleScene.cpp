@@ -22,10 +22,19 @@ ScnBase TitleScene::update(ScnBase scnID)
 {
 	/*keyDownTrigger[KEY_ID_SPACE]*/
 
-	// キーチェック
-	if (CheckHitKey(KEY_INPUT_Q))
+	auto move = [](std::weak_ptr<InputState> KeyID,const KEY_ID id) {
+		if (!KeyID.expired())
+		{
+			if ((*KeyID.lock()).state(id).first)
+			{
+				return true;
+			}
+		}
+		return false;
+	};
+
+	if(move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
 	{
-		/*fadeOut = true;*/
 		return std::make_unique<SelectScene>();			// シーンをセレクトに飛ばす
 	}
 

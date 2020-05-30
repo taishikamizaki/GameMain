@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <DxLib.h>
 #include "KeyState.h"
-#include "InputID.h"
+#include "KeyID.h"
 
 KeyState::KeyState()
 {
@@ -98,6 +98,7 @@ void KeyState::SetKeyConfig(void)
 {
 	if (_buf[KEY_INPUT_F1] && !modekeyOld)
 	{
+		
 		func = &KeyState::RefKeyData;
 		FILE* fileptr = 0;
 		fopen_s(&fileptr, "data/key.dat", "r");
@@ -106,17 +107,21 @@ void KeyState::SetKeyConfig(void)
 			fread(_keyCon.data(), sizeof(_keyCon[0]), _keyCon.size(), fileptr);
 			fclose(fileptr);
 		}
+		//TRACE("キーコンフィグ中断\n");
 		return;
 	}
 
+
 	auto checkkey = [&](int id)
 	{
+
 		for (auto cid = KEY_ID::KEY_ID_SPACE; cid < _confId; ++cid)
 		{
 			if (_keyCon[static_cast<int>(cid)] == id)
 			{
 				return false;
 			}
+
 		}
 		return true;
 	};
@@ -129,9 +134,14 @@ void KeyState::SetKeyConfig(void)
 		}
 		if (_buf[id] &&( !_buf[KEY_INPUT_F1]))
 		{
+			
+
 			_keyCon[static_cast<int>(_confId)] = id;
 			++_confId;
-			
+			//TRACE("%d個中%dこめ\n", _keyCon.size(),_confId);
+			//TRACE("%d:%d\n", _confId, id);
+
+
 			if (_confId==end(_confId))
 			{
 				FILE* fileptr;
@@ -145,10 +155,12 @@ void KeyState::SetKeyConfig(void)
 				}
 
 				func = &KeyState::RefKeyData;
-			
+				//TRACE("キーコンフィグ終了\n");
 				break;
 			}
 		}
 	}
+
 	return;
 }
+

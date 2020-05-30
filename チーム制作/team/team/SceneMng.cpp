@@ -17,7 +17,7 @@ void SceneMng::ScnCtl(void)
 		CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
 		drawList.clear();		// リストの初期化
-
+		(*input).Update();
 		/*KeyCheck();*/
 		nowScn = (*nowScn).update(std::move(nowScn));// シーン移行
 
@@ -83,6 +83,7 @@ bool SceneMng::ScnInit(void)
 
 	//scnID = SCN_ID_INIT;
 	//scnIDOld = SCN_ID_MAX;
+	input = std::make_shared<KeyState>();
 	return 0;
 }
 

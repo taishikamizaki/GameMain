@@ -5,11 +5,24 @@
 
 ScnBase ResultScene::update(ScnBase scnID)
 {
-	if (CheckHitKey(KEY_INPUT_B))
-	{
-		return std::make_unique<GameOverScene>();		// シーンをゲームオーバーに差し替え
-	}
-	
+	auto move = [](std::weak_ptr<InputState> KeyID, const KEY_ID id) {
+		if (!KeyID.expired())
+		{
+			if (!(*KeyID.lock()).state(id).first)
+			{
+				return true;
+			}
+		}
+		return false;
+	};
+
+
+
+		if (move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+		{
+			return std::make_unique<GameOverScene>();		// シーンをゲームオーバーに差し替え
+		}
+
 	SCN_MNG.addList(0, 0, "rsi");
 	return std::move(scnID);
 	//return ScnBase();

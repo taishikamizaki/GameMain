@@ -81,7 +81,7 @@ void KeyState::RefKeyData(void)
 {
 	for (auto id : KEY_ID())
 	{
-		
+		InputState::state(id,_buf[_keyCon[static_cast<size_t>(id)]]);
 	}
 
 	if (_buf[KEY_INPUT_F1]&&!modekeyOld)

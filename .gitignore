@@ -32,3 +32,11 @@
 *.app
 /test.txt
 /チーム制作/team/.vs
+/チーム制作/team/team/Title.cpp
+/チーム制作/team/team/Title.h
+/チーム制作/team/team/Select.cpp
+/チーム制作/team/team/Select.h
+/チーム制作/team/team/Result.cpp
+/チーム制作/team/team/Result.h
+/チーム制作/team/team/GameOver.h
+/チーム制作/team/team/GameOver.cpp

@@ -152,5 +152,3 @@ void KeyState::SetKeyConfig(void)
 	}
 	return;
 }
-
-

@@ -35,6 +35,11 @@ const KeyPir & InputState::state(KEY_ID id)const
 
 bool InputState::state(KEY_ID id, int kf)
 {
+	if(kf==true)
+	{
+		int a=0;
+		a++;
+	}
 	if (_state.find(id) != _state.end())
 	{
 		_state[id].first = kf;

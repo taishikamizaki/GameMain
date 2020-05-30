@@ -34,14 +34,14 @@ KeyState::KeyState()
 
 	FILE *fileptr =0;
 
-	fopen_s(&fileptr, "data/key.dat","rb");
+	fopen_s(&fileptr, "key.dat","rb");
 
 	//ÉLÅ[ê›íË
 	if (fileptr == NULL)
 	{
 		_keyCon = _keyConDef;
 
-		fopen_s(&fileptr, "data/key.dat", "wb");
+		fopen_s(&fileptr, "key.dat", "wb");
 
 		if (fileptr != NULL)
 		{
@@ -84,14 +84,14 @@ void KeyState::RefKeyData(void)
 		InputState::state(id,_buf[_keyCon[static_cast<size_t>(id)]]);
 	}
 
-	if (_buf[KEY_INPUT_F1]&&!modekeyOld)
-	{
-		func = &KeyState::SetKeyConfig;
-		for (auto id : KEY_ID())
-		{
-			InputState::state(id, 0);
-		}
-	}
+	//if (_buf[KEY_INPUT_F1]&&!modekeyOld)
+	//{
+	//	func = &KeyState::SetKeyConfig;
+	//	for (auto id : KEY_ID())
+	//	{
+	//		InputState::state(id, 0);
+	//	}
+	//}
 }
 
 void KeyState::SetKeyConfig(void)

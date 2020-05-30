@@ -1,6 +1,7 @@
 #include "KeyID.h"
 #include "InputState.h"
 
+
 InputState::InputState()
 {
 	for (auto key : KEY_ID())
@@ -14,32 +15,10 @@ InputState::~InputState()
 
 }
 
-const KeyMap & InputState::state(void) const
-{
-	return _state;
-}
 
-const KeyPir & InputState::state(KEY_ID id)const
-{
-	static KeyPir defDate = { 0,0 };
 
-	try
-	{
-		return	_state.at(id);
-	}
-	catch(...)
-	{
-		return defDate;	
-	}
-}
-
-bool InputState::state(KEY_ID id, int kf)
+bool InputState::state(KEY_ID id, bool kf)
 {
-	if(kf==true)
-	{
-		int a=0;
-		a++;
-	}
 	if (_state.find(id) != _state.end())
 	{
 		_state[id].first = kf;
@@ -59,6 +38,22 @@ void InputState::SetOld(void)
 		catch (const std::exception&)
 		{
 			_state.emplace(key, KeyPir{ 0,1 });
+		}
+	}
+}
+
+const KeyPir InputState::state(KEY_ID id) const
+{
+	{
+		static KeyPir defDate = { 0,0 };
+
+		try
+		{
+			return	_state.at(id);
+		}
+		catch (...)
+		{
+			return defDate;
 		}
 	}
 }

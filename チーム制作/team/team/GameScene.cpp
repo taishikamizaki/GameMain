@@ -11,7 +11,7 @@ ScnBase GameScene::update(ScnBase scnID)
 	auto move = [](std::weak_ptr<InputState> KeyID, const KEY_ID id) {
 		if (!KeyID.expired())
 		{
-			if ((*KeyID.lock()).state(id).first)
+			if ((*KeyID.lock()).state(id).first == true && (*KeyID.lock()).state(id).second == false)
 			{
 				return true;
 			}

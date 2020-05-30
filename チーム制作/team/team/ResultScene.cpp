@@ -8,15 +8,13 @@ ScnBase ResultScene::update(ScnBase scnID)
 	auto move = [](std::weak_ptr<InputState> KeyID, const KEY_ID id) {
 		if (!KeyID.expired())
 		{
-			if ((*KeyID.lock()).state(id).first)
+			if ((*KeyID.lock()).state(id).first == true && (*KeyID.lock()).state(id).second == false)
 			{
 				return true;
 			}
 		}
 		return false;
 	};
-
-
 
 		if (move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
 		{
@@ -35,4 +33,5 @@ ResultScene::ResultScene()
 
 ResultScene::~ResultScene()
 {
+
 }

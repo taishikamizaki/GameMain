@@ -6,12 +6,11 @@
 
 // 変数宣言
 int gameCounter;		// ｹﾞｰﾑｼｰﾝｶｳﾝﾀｰ
-int testCounter;		// ｹﾞｰﾑｼｰﾝのﾎﾟｰｽﾞ確認用ｶｳﾝﾀ
+int testCounter;			// ｹﾞｰﾑｼｰﾝのﾎﾟｰｽﾞ確認用ｶｳﾝﾀ
 
-bool fadeIn;			// ﾌｪｰﾄﾞｲﾝ
-bool fadeOut;		// ﾌｪｰﾄﾞｱｳﾄ
-int  fadeCnt;		// ﾌｪｰﾄﾞｶｳﾝﾀ
-
+bool fadeIn;					// ﾌｪｰﾄﾞｲﾝ
+bool fadeOut;				// ﾌｪｰﾄﾞｱｳﾄ
+int  fadeCnt;					// ﾌｪｰﾄﾞｶｳﾝﾀ
 
 // ｴﾌｪｸﾄ初期化用
 void EffectInit(void)
@@ -20,8 +19,8 @@ void EffectInit(void)
 	fadeIn = true;
 	fadeOut = false;
 	fadeCnt = 0;
-
 }
+
 // ﾌｪｰﾄﾞｲﾝ関数
 bool FadeInScreen(int fadeStep)
 {
@@ -39,6 +38,7 @@ bool FadeInScreen(int fadeStep)
 		return false; // 戻り値
 	}
 }
+
 // ﾌｪｰﾄﾞｱｳﾄ関数
 bool FadeOutScreen(int fadeStep)
 {
@@ -55,10 +55,5 @@ bool FadeOutScreen(int fadeStep)
 		fadeCnt = 0;
 		return false;
 	}
-}
-
-void EffectDraw(Pos playerPos)
-{
-	// DrawGraph(playerPos.x, playerPos.y, EFFCT_ID[CHAR_ID][SKILL_ID], true);		// ｴﾌｪｸﾄ画像の表示例（適当）
 }
 

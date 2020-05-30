@@ -3,7 +3,7 @@
 #include <map>
 
 
-using KeyPir = std::pair<int, int>;							//キーNEWとOLD
+using KeyPir = std::pair<bool, bool>;							//キーNEWとOLD
 using KeyMap = std::map<KEY_ID, KeyPir>;		//種類,｛NEW、OLD｝
 
 class InputState
@@ -13,12 +13,9 @@ public:
 	virtual ~InputState();
 
 	virtual void Update(void)=0;
-
-	const KeyMap& state(void)const;				//キーマップを丸ごと返す。
-	const KeyPir& state(KEY_ID id)const;		//IDに対応するものを返す
-	bool state(KEY_ID id,int kf);							//キーデータをセット
+	bool state(KEY_ID id,bool kf);				//キーデータをセット
 	void SetOld(void);
-
+	const KeyPir state(KEY_ID id)const;
 private:
 	KeyMap _state;														//キーデータを入れるやつ。
 

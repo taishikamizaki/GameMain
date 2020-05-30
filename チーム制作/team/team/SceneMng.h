@@ -51,6 +51,15 @@ public:
 	int GetId(const std::string& key);
 	
 	std::shared_ptr<InputState> input;
+
+
+bool FadeInScreen(int fadeStep);			// Ìª°ÄŞ²İˆ—
+bool FadeOutScreen(int fadeStep);		// Ìª°ÄŞ±³Äˆ—
+
+
+	 bool fadeIn;
+	 bool fadeOut;
+
 private:
 	SceneMng();
 	~SceneMng();
@@ -70,5 +79,10 @@ private:
 	const int screenSizeY;			// ‰æ–ÊƒTƒCƒYY
 
 	std::map<std::string, int> imgMng;
+
+
+	 int gameCounter;
+	 int testCounter;
+
 };
 

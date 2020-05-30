@@ -55,6 +55,7 @@ void SceneMng::ListDraw(void)
 	{
 		std::tie(x, y, id) = dl;
 		
+		if(fadeIn)
 		DrawGraph(x,y,GetId(id),true);
 	}
 
@@ -84,6 +85,11 @@ bool SceneMng::ScnInit(void)
 	//scnID = SCN_ID_INIT;
 	//scnIDOld = SCN_ID_MAX;
 	input = std::make_shared<KeyState>();
+
+	// ´Ìª¸Ä‰Šú‰»ˆ—
+	fadeIn = true;
+	fadeOut = false;
+	fadeCnt = 0;
 	return 0;
 }
 
@@ -101,3 +107,40 @@ int SceneMng::GetId(const std::string& key)
 	GetId(key, key);
 	return imgMng[key];
 }
+
+// Ìª°ÄŞ²İŠÖ”
+bool SceneMng::FadeInScreen(int fadeStep)
+{
+	if (fadeCnt <= 255)
+	{
+		SetDrawBright(fadeCnt, fadeCnt, fadeCnt);
+		fadeCnt += fadeStep;
+		return true; // –ß‚è’l
+	}
+	else
+	{
+		SetDrawBright(255, 255, 255);
+		fadeIn = false;
+		fadeCnt = 0;
+		return false; // –ß‚è’l
+	}
+}
+
+// Ìª°ÄŞ±³ÄŠÖ”
+bool SceneMng::FadeOutScreen(int fadeStep)
+{
+	if (fadeCnt <= 255)
+	{
+		SetDrawBright(255 - fadeCnt, 255 - fadeCnt, 255 - fadeCnt);
+		fadeCnt += fadeStep;
+		return true;
+	}
+	else
+	{
+		SetDrawBright(0, 0, 0);
+		fadeOut = false;
+		fadeCnt = 0;
+		return false;
+	}
+}
+

@@ -78,10 +78,20 @@ void KeyState::Update(void)
 }
 
 void KeyState::RefKeyData(void)
-{
+{	int a;
 	for (auto id : KEY_ID())
 	{
-		InputState::state(id,_buf[_keyCon[static_cast<size_t>(id)]]);
+
+		if (CheckHitKey(_keyCon[static_cast<size_t>(id)])==1)
+		{
+			a = true;
+		}
+		else
+		{
+			a = false;
+		}
+
+		InputState::state(id, a);
 	}
 
 	//if (_buf[KEY_INPUT_F1]&&!modekeyOld)

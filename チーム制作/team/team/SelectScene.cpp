@@ -21,6 +21,7 @@
 SelectScene::SelectScene()
 {
 	SCN_MNG.GetId("sli", "image/TestGraph/Select.png");		//鍵　場所
+	selEnd=false;
 }
 
 SelectScene::~SelectScene()
@@ -39,10 +40,18 @@ ScnBase SelectScene::update(ScnBase scnID)
 		return false;
 	};
 
-	
-		if(move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+	if(move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+	{
+		selEnd=true;
+		SCN_MNG.fadeOut=true;
+	}
+	if(selEnd)
+	{
+		if(!SCN_MNG.fadeOut)
 		{
+			SCN_MNG.fadeIn=true;
 			return std::make_unique<GameScene>();		// シーンをゲームオーバーに差し替え
+		}
 		}
 
 	SCN_MNG.addList(0, 0, "sli");

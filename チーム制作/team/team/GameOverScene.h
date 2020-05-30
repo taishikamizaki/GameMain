@@ -11,5 +11,6 @@ public:
 	~GameOverScene();
 private:
 	int now;
+	bool	goEnd;
 };
 

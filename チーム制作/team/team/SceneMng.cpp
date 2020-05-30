@@ -49,13 +49,15 @@ SceneMng::~SceneMng()
 void SceneMng::ListDraw(void)
 {
 	ClsDrawScreen();
+	if(fadeIn)fadeIn=FadeInScreen(5);
+	if(fadeOut)fadeOut=FadeOutScreen(5);
+
 	int x, y;
 	std::string id;
 	for(auto dl:drawList)
 	{
 		std::tie(x, y, id) = dl;
 		
-		if(fadeIn)
 		DrawGraph(x,y,GetId(id),true);
 	}
 

@@ -11,6 +11,6 @@ public:
 	~GameScene();
 
 private:
-
+	bool gamEnd;
 };
 

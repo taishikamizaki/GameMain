@@ -11,6 +11,6 @@ public:
 
 	ScnBase update(ScnBase scnID) override;
 private:
-	
+	bool selEnd;
 };
 

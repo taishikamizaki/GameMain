@@ -15,10 +15,18 @@ ScnBase ResultScene::update(ScnBase scnID)
 		}
 		return false;
 	};
-
-		if (move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+		if(move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+	{
+		resEnd=true;
+		SCN_MNG.fadeOut=true;
+	}
+	if(resEnd)
+	{
+		if(!SCN_MNG.fadeOut)
 		{
+			SCN_MNG.fadeIn=true;
 			return std::make_unique<GameOverScene>();		// シーンをゲームオーバーに差し替え
+		}
 		}
 
 	SCN_MNG.addList(0, 0, "rsi");
@@ -29,6 +37,7 @@ ScnBase ResultScene::update(ScnBase scnID)
 ResultScene::ResultScene()
 {
 	SCN_MNG.GetId("rsi", "image/TestGraph/Result.png");		//鍵　場所
+	resEnd=false;
 }
 
 ResultScene::~ResultScene()

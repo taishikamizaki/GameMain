@@ -15,5 +15,7 @@ private:
 	int titleLogoImage;		// タイトルロゴ
 	int titleMesImage;		// タイトルメッセージ
 
+	bool titleEnd;
+
 };
 

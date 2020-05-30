@@ -1,6 +1,2 @@
-﻿  GameScene.cpp
-  ResultScene.cpp
-  SelectScene.cpp
-  TitleScene.cpp
-  コードを生成中...
+﻿  GameOverScene.cpp
   team.vcxproj -> C:\Users\秋山\Desktop\チーム制作(Git)\GameMain\チーム制作\team\x64\Debug\team.exe

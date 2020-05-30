@@ -20,10 +20,18 @@ ScnBase GameScene::update(ScnBase scnID)
 	};
 
 
-
-		if (move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+	if(move(SCN_MNG.input, KEY_ID::KEY_ID_SPACE))
+	{
+		gamEnd=true;
+		SCN_MNG.fadeOut=true;
+	}
+	if(gamEnd)
+	{
+		if(!SCN_MNG.fadeOut)
 		{
+			SCN_MNG.fadeIn=true;
 			return std::make_unique<ResultScene>();		// シーンをゲームオーバーに差し替え
+		}
 		}
 	SCN_MNG.addList(0, 0, "gsi");
 	return std::move(scnID);
@@ -32,6 +40,7 @@ ScnBase GameScene::update(ScnBase scnID)
 GameScene::GameScene()
 {
 	SCN_MNG.GetId("gsi", "image/TestGraph/Game.png");		//鍵　場所
+	gamEnd=false;
 }
 
 GameScene::~GameScene()

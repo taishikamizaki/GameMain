@@ -1,0 +1,7 @@
+char_p_f04.png
+char_p_magi01.png
+char_p_hero01.png
+char_p_ninja01.png
+
+上記キャラクターグラフィックは白螺子屋様(http://hi79.web.fc2.com/)より
+

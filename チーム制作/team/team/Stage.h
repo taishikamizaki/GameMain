@@ -1,5 +1,5 @@
 #pragma once
-
+#include"Vector2.h"
 
 #define MAP_X 20
 #define MAP_Y 12
@@ -25,9 +25,9 @@ public:
 		static Stage s_instance;
 		return s_instance;
 	}
-	Pos PosToIndex(Pos pos);
-	Pos IndexToPos(Pos index);
-	bool IsPass(Pos pos);
+	Vector2 PosToIndex(Vector2 pos);
+	Vector2 IndexToPos(Vector2 index);
+	bool IsPass(Vector2 pos);
 	
 private:
 	bool StageInit(void);
@@ -39,7 +39,7 @@ private:
 	int matiImage[43];
 	int tougiImage[12];
 	int yamaImage[23];
-	Pos mapSize;
+	Vector2 mapSize;
 	int map;
 
 	int maphamaguri[MAP_Y][MAP_X] = {

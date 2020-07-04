@@ -8,10 +8,9 @@ public:
 	Vector2();
 	Vector2(int x, int y);
 	~Vector2();
-
+	
 	int x;
 	int y;
-
 	// int* z; ポインター変数
 	// int& p; 参照変数
 

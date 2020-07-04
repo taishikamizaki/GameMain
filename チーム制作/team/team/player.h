@@ -1,5 +1,8 @@
 #pragma once
 #include <map>
+#include"Vector2.h"
+#include"Vector2f.h"
+
 
 //定数の定義
 #define	P_DSP	4				//プレイヤーの基本スピード
@@ -22,27 +25,27 @@ enum CHAR_ID
 };
 
 //構造体
-//struct CHARACTER 
-//{
-//	/*DIR moveDir;*/		//向いている方向
-//	Pos pos;			//キャラクタの位置（中心）
-//	Pos size;			//キャラクタ画像のサイズ
-//	Pos sizeOffset;		//キャラクタ中央からの左上位置
-//	Pos hitPosS;		//当たり判定用の左上
-//	Pos hitPosE;		//当たり判定用の右下
-//	Pos_F	velocity;
-//	bool runFlag;		//キャラクタの状態（走っているか？）
-//	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
-//	bool shotFlag;		//キャラクタの状態（弾撃っているか？）
-//	bool damageFlag;	//キャラクタの状態（ダメージ受けているか？）
-//	bool surinukeFlag;	//1部ブロックすり抜け用
-//	int moveSpeed;		//キャラクタの移動量
-//	int life;			//キャラクタの体力
-//	int lifeMax;		//キャラクタの体力最大
-//	int animCnt;		//キャラクタのアニメーション用カウンタ
-//	int imgLockCnt;		//キャラクタのイメージ固定用カウンタ
-//	int type;			//何らかの属性を格納できる。
-//};
+struct CHARACTER 
+{
+	DIR moveDir;		//向いている方向
+	Vector2 pos;			//キャラクタの位置（中心）
+	Vector2 size;			//キャラクタ画像のサイズ
+	Vector2 sizeOffset;		//キャラクタ中央からの左上位置
+	Vector2 hitPosS;		//当たり判定用の左上
+	Vector2 hitPosE;		//当たり判定用の右下
+	Vector2f velocity;
+	bool runFlag;		//キャラクタの状態（走っているか？）
+	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
+	bool shotFlag;		//キャラクタの状態（弾撃っているか？）
+	bool damageFlag;	//キャラクタの状態（ダメージ受けているか？）
+	bool surinukeFlag;	//1部ブロックすり抜け用
+	int moveSpeed;		//キャラクタの移動量
+	int life;			//キャラクタの体力
+	int lifeMax;		//キャラクタの体力最大
+	int animCnt;		//キャラクタのアニメーション用カウンタ
+	int imgLockCnt;		//キャラクタのイメージ固定用カウンタ
+	int type;			//何らかの属性を格納できる。
+};
 
 //プロトタイプ宣言
 //void	PlayerSysInit(void);
@@ -67,18 +70,14 @@ public:
 
 private:
 
-	//Pos pos;			//キャラクタの位置（中心）
-	//Pos size;			//キャラクタ画像のサイズ
-	//Pos sizeOffset;		//キャラクタ中央からの左上位置
-	//Pos hitPosS;		//当たり判定用の左上
-	//Pos hitPosE;		//当たり判定用の右下
-	//Pos velocity;
+	
+	//Vector2 velocity;
 
 	int playerPosX;
 	int playerPosY;
 
 	MapInt charcter;
-
+	CHARACTER player1;
 	bool runFlag;		//キャラクタの状態（走っているか？）
 	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）

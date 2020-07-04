@@ -31,6 +31,7 @@ public:
 		return s_instance;
 	}
 
+
 	int ix;
 	int iy;
 

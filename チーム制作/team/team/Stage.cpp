@@ -27,8 +27,8 @@ bool Stage::StageInit(void)
 
 	map =  STAGE_ID_YAMA;
 
-	mapSize.ix = MAP_X;
-	mapSize.iy = MAP_Y;
+	mapSize.x = MAP_X;
+	mapSize.y = MAP_Y;
 
 	return rtnFlag;
 }
@@ -41,36 +41,36 @@ bool Stage::StageScene(void)
 	switch (map)
 	{
 	case STAGE_ID_YAMA:
-		for (int y = 0; y < mapSize.iy; y++)
+		for (int y = 0; y < mapSize.y; y++)
 		{
-			for (int x = 0; x < mapSize.ix; x++)
+			for (int x = 0; x < mapSize.x; x++)
 			{
 				yamaImage[mapyama[y][x]];
 			}
 		}
 		break;
 	case STAGE_ID_MACHI:
-		for (int y = 0; y < mapSize.iy; y++)
+		for (int y = 0; y < mapSize.y; y++)
 		{
-			for (int x = 0; x < mapSize.ix; x++)
+			for (int x = 0; x < mapSize.x; x++)
 			{
 				matiImage[mapmati[y][x]];
 			}
 		}
 		break;
 	case STAGE_ID_COLOSSEUM:
-		for (int y = 0; y < mapSize.iy; y++)
+		for (int y = 0; y < mapSize.y; y++)
 		{
-			for (int x = 0; x < mapSize.ix; x++)
+			for (int x = 0; x < mapSize.x; x++)
 			{
 				tougiImage[maptougi[y][x]];
 			}
 		}
 		break;
 	case STAGE_ID_HAMAGURI:
-		for (int y = 0; y < mapSize.iy; y++)
+		for (int y = 0; y < mapSize.y; y++)
 		{
-			for (int x = 0; x < mapSize.ix; x++)
+			for (int x = 0; x < mapSize.x; x++)
 			{
 				hamaroomImage[maphamaguri[y][x]];
 			}
@@ -86,9 +86,9 @@ bool Stage::StageScene(void)
 // 描画
 void Stage::StageDraw(void)
 {
-	for (int y = 0; y< mapSize.iy;y++)
+	for (int y = 0; y< mapSize.y;y++)
 	{
-		for (int x = 0; x < mapSize.ix;x++)
+		for (int x = 0; x < mapSize.x;x++)
 		{
 			DrawGraph(x*CHIP_SIZE_X, y*CHIP_SIZE_Y, yamaImage[mapyama[y][x]],true);
 		}
@@ -98,27 +98,27 @@ void Stage::StageDraw(void)
 }
 
 // ﾋﾟｸｾﾙの座標をﾏｯﾌﾟ配列の座標に変換する
-Pos Stage::PosToIndex(Pos pos)
+Vector2 Stage::PosToIndex(Vector2 pos)
 {
-	Pos index;
-	index.ix = pos.ix / CHIP_SIZE_X;
-	index.iy = pos.iy / CHIP_SIZE_Y;
+	Vector2 index;
+	index.x = pos.x / CHIP_SIZE_X;
+	index.y = pos.y / CHIP_SIZE_Y;
 	return index;
 }
 
 // ﾏｯﾌﾟ配列の座標をﾋﾟｸｾﾙの座標(左上)に変換する
-Pos Stage::IndexToPos(Pos index)
+Vector2 Stage::IndexToPos(Vector2 index)
 {
-	Pos pos;
-	pos.ix = index.ix*CHIP_SIZE_X;
-	pos.iy = index.iy*CHIP_SIZE_Y;
+	Vector2 pos;
+	pos.x = index.x*CHIP_SIZE_X;
+	pos.y = index.y*CHIP_SIZE_Y;
 	return pos;
 }
 
 // 指定された座標が通過可能かを判断する(true:通ってよい)
-bool Stage::IsPass(Pos pos)
+bool Stage::IsPass(Vector2 pos)
 {
-	Pos index;
+	Vector2 index;
 	index = PosToIndex(pos);
 
 	// ハマグリ
@@ -144,7 +144,7 @@ bool Stage::IsPass(Pos pos)
 	}*/
 
 	// 山
-	switch (mapyama[index.iy][index.ix])
+	switch (mapyama[index.y][index.x])
 	{
 	case 1:
 	case 20:

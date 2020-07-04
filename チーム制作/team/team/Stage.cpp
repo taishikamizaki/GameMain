@@ -8,8 +8,7 @@ int matiImage[43];
 int tougiImage[12];
 int yamaImage[23];
 Pos mapSize;
-STAGE_ID map;
-
+int map;
 
 int maphamaguri[MAP_Y][MAP_X] = {
 {6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},
@@ -28,7 +27,6 @@ int maphamaguri[MAP_Y][MAP_X] = {
 {6,6,6,6 ,6,6,6,6 ,6,6,6,6 ,6,6,6,6 ,6,6,6,6,},
 };
 
-
 int mapyama[MAP_Y][MAP_X] = {
 {0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 {13,14,8,8 ,8,8,8,8 ,11,13,14,8 ,8,13,14,8 ,8,8,8,8,},
@@ -45,6 +43,7 @@ int mapyama[MAP_Y][MAP_X] = {
 {15,15,15,15 ,15,15,15,15 ,15,15,15,15 ,15,15,15,15 ,15,15,15,15,},
 {1,1,1,1 ,1,1,1,1 ,1,1,1,1 ,1,1,1,1 ,1,1,1,1,},
 };
+
 int mapmati[MAP_Y][MAP_X] = {
 {16,16,16,16 ,16,16,16,16 ,16,16,16,16 ,16,16,16,16 ,16,16,16,16,},
 {19,19,19,19 ,19,19,19,19 ,20,21,19,19 ,19,19,19,19 ,19,19,19,19,},
@@ -61,7 +60,6 @@ int mapmati[MAP_Y][MAP_X] = {
 {9,9,8,9 ,1,1,8,8 ,24,25,25,26 ,22,22,14,9 ,1,1,6,8,},
 {0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 };
-
 
 int maptougi[MAP_Y][MAP_X] = {
 {10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10,},
@@ -88,16 +86,21 @@ bool StageInit(void)
 	LoadDivGraph("image/stage/hamaguriroom.png",7,7,1
 		,CHIP_SIZE_X,CHIP_SIZE_Y
 		,hamaroomImage,false);
+
 	LoadDivGraph("image/stage/mati.png", 43, 43, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, matiImage, false);
+
 	LoadDivGraph("image/stage/tougizyou.png", 12, 12, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, tougiImage, false);
+
 	LoadDivGraph("image/stage/yama.png", 23, 23, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, yamaImage, false);
-	map = STAGE_ID_YAMA;
+
+	map =  STAGE_ID_YAMA;
+
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
 
@@ -249,6 +252,7 @@ bool IsPass(Pos pos)
 	//default:
 	//	break;
 	//}
+	//
 
-	//return true;
+	return true;
 }

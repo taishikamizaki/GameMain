@@ -36,7 +36,10 @@ int SceneMng::addList(int x, int y, std::string id)
 // コンストラクタ
 SceneMng::SceneMng():screenSizeX(1000),screenSizeY(600)
 {
-	
+	fadeIn  = false;
+	fadeOut = false;
+
+	fadeCnt = 0;
 }
 
 // デストラクタ

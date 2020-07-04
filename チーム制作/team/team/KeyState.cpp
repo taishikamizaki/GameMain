@@ -8,7 +8,7 @@ KeyState::KeyState()
 	//‰Šú‰»
 	for (int i = 0; i < sizeof(_buf); i++)
 	{
-		_buf[0]={ 0 };
+		_buf[i]={ 0 };
 	}
 	_confId = KEY_ID::KEY_ID_SPACE;
 

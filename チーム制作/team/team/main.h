@@ -12,12 +12,7 @@
 #define AST()
 #endif
 
-enum class DIR
-{
-	DIR_ID_RIGHT,
-	DIR_ID_LEFT,
-	DIR_MAX
-};
+
 
 #define lpPos Pos::GetInstance()
 

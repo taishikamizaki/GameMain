@@ -8,23 +8,23 @@
 void Player::PlayerSysInit(void)
 {
 	lpPos;
-	//player.moveDir = DIR_RIGHT;						//向いている方向
-	Pos* pos;												//キャラクタの位置（中心）
+	player1.moveDir = DIR::DIR_ID_RIGHT;						//向いている方向
+	Vector2 pos;												//キャラクタの位置（中心）
 	player1.size = {96,64};										//キャラクタ画像のサイズ
 	player1.hitPosS = { 15,16 };						//当たり判定用の左上
 	player1.hitPosE = { 15,32 };						//当たり判定用の右下
-	//player1.velocity = { 0.0f,0 };
+	player1.velocity = { 0.0f,0 };
 	player1.sizeOffset.x =  player1.size.x / 2 ;		//キャラクタ中央からの左上位置のX座標
 	player1.sizeOffset.y = player1.size.y / 2;			//キャラクタ中央からの左上位置のY座標
-	runFlag = false;							//キャラクタの状態（走っているか？）
-	jumpFlag = false;							//キャラクタの状態（ジャンプしているか？）
-	shotFlag = false;							//キャラクタの状態（弾撃っているか？）
-	damageFlag = false;							//キャラクタの状態（ダメージ受けているか？）
-	surinukeFlag=false;							//1部ブロックすり抜け用
-	moveSpeed=0;								//キャラクタの移動量
-	life=4;										//キャラクタの体力
-	lifeMax=4;									//キャラクタの体力最大
-	animCnt=0;									//キャラクタのアニメーション用カウンタ
+	player1.runFlag = false;							//キャラクタの状態（走っているか？）
+	player1.jumpFlag = false;							//キャラクタの状態（ジャンプしているか？）
+	player1.shotFlag = false;							//キャラクタの状態（弾撃っているか？）
+	player1.damageFlag = false;							//キャラクタの状態（ダメージ受けているか？）
+	player1.surinukeFlag=false;							//1部ブロックすり抜け用
+	player1.moveSpeed=0;								//キャラクタの移動量
+	player1.life=4;										//キャラクタの体力
+	player1.lifeMax=4;									//キャラクタの体力最大
+	player1.animCnt=0;									//キャラクタのアニメーション用カウンタ
 }
 
 // ゲーム中の初期化
@@ -84,15 +84,15 @@ void Player::PlayerCtl(void)
 		playerPosHitRight = playerPosHit;
 		playerPosHitRight.x += player1.hitPosE.x;
 	
-		if (!Stage::IsPass(playerPosHit) || !Stage::IsPass(playerPosHitRight) || !Stage::IsPass(playerPosHitLeft))
+		if (!lpStage.IsPass(playerPosHit) || !lpStage.IsPass(playerPosHitRight) || !lpStage.IsPass(playerPosHitLeft))
 		{
 			//移動キャンセル
-			Vector2	blockIndex = Stage::PosToIndex(playerPosHit);		//ブロックの配列座標
+			Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
 			blockIndex.y = blockIndex.y + 1;
-			Vector2	blockPos = Stage::IndexToPos(blockIndex);		//ブロックの左上のピクセル座標
+			Vector2	blockPos = lpStage.IndexToPos(blockIndex);		//ブロックの左上のピクセル座標
 														//足元の座標からプレイヤーの座標を計算する
 			playerPosBK.y = blockPos.y + player1.hitPosS.y;
-			player1.velocity.y = 0;
+			player1.velocity.fy = 0;
 	
 		}
 	
@@ -106,7 +106,7 @@ void Player::PlayerCtl(void)
 		playerPosHitRight.x += player1.hitPosE.x;
 	
 		//足元チェック
-		if (Stage::IsPass(playerPosHit) && Stage::IsPass(playerPosHitRight) && Stage::IsPass(playerPosHitLeft))
+		if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitRight) && lpStage.IsPass(playerPosHitLeft))
 		{
 			//ブロックない時
 			player1.pos.y = playerPosBK.y;
@@ -120,8 +120,8 @@ void Player::PlayerCtl(void)
 			//PosIndex(playerPosHit)をすると自分が乗るブロックがわかる
 			//そのブロックの上の面のY座標がプレイヤーの足元の座標
 			//ブロックの上の面のY座標は？
-			Vector2	blockIndex = Stage::PosToIndex(playerPosHit);		//ブロックの配列座標
-			Vector2	blockPos = Stage::IndexToPos(blockIndex);		//ブロックの左上のピクセル座標
+			Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
+			Vector2	blockPos = lpStage.IndexToPos(blockIndex);		//ブロックの左上のピクセル座標
 														//足元の座標からプレイヤーの座標を計算する
 			player1.pos.y = blockPos.y - player1.hitPosE.y;
 	
@@ -159,7 +159,7 @@ void Player::PlayerCtl(void)
 				playerPosHitDown = playerPosHit;
 				playerPosHitDown.y += player1.hitPosE.y - 1;//1は床の上に足を乗せるよう
 	
-				if (IsPass(playerPosHit) && IsPass(playerPosHitUp) && IsPass(playerPosHitDown))
+				if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
 				{
 					player1.pos.x = playerPosBK.x;
 				}
@@ -185,7 +185,7 @@ void Player::PlayerCtl(void)
 				if (player1.velocity.fx < -6) { player1.velocity.fx = -6; }
 	
 	
-				if (Stage::IsPass(playerPosHit) && Stage::IsPass(playerPosHitUp) && Stage::IsPass(playerPosHitDown))
+				if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
 				{
 					player1.pos.x = playerPosBK.x;
 				}
@@ -227,7 +227,7 @@ void Player::PlayerDraw(void)
 
 Player::Player()
 {
-
+	PlayerSysInit();
 }
 
 Player::~Player()

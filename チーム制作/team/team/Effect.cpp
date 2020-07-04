@@ -5,12 +5,12 @@
 // ｴﾌｪｸﾄ関連
 
 // 変数宣言
-int gameCounter;		// ｹﾞｰﾑｼｰﾝｶｳﾝﾀｰ
+int gameCounter;			// ｹﾞｰﾑｼｰﾝｶｳﾝﾀｰ
 int testCounter;			// ｹﾞｰﾑｼｰﾝのﾎﾟｰｽﾞ確認用ｶｳﾝﾀ
 
-bool fadeIn;					// ﾌｪｰﾄﾞｲﾝ
+bool fadeIn;				// ﾌｪｰﾄﾞｲﾝ
 bool fadeOut;				// ﾌｪｰﾄﾞｱｳﾄ
-int  fadeCnt;					// ﾌｪｰﾄﾞｶｳﾝﾀ
+int  fadeCnt;				// ﾌｪｰﾄﾞｶｳﾝﾀ
 
 // ｴﾌｪｸﾄ初期化用
 void EffectInit(void)

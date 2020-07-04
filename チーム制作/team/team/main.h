@@ -1,4 +1,6 @@
 #pragma once
+#include <map>
+
 //アサートの定義
 #ifdef _DEBUG
 #define AST() {\
@@ -10,43 +12,34 @@
 #define AST()
 #endif
 
-// ｼｰﾝID
-//enum SCN_ID
-//{
-//	SCN_ID_INIT,		// ｲﾆｯﾄ
-//	SCN_ID_TITLE,		// ﾀｲﾄﾙ
-//	SCN_ID_SELECT,		// ｾﾚｸﾄ
-//	SCN_ID_GAME,		// ｹﾞｰﾑ
-//	SCN_ID_PAUSE,		// ﾎﾟｰｽﾞ
-//	SCN_ID_RESULT,		// ﾘｻﾞﾙﾄ
-//	SCN_ID_GAMEOVER,	// ｹﾞｰﾑｵｰﾊﾞｰ
-//	SCN_ID_MAX
-//};
-
-// 方向
-//enum DIR
-//{
-//	DIR_UP,			// 上
-//	DIR_RIGHT,		// 右
-//	DIR_DOWN,		// 下
-//	DIR_LEFT,		// 左
-//	DIR_MAX
-//};
-
-//#define SCREEN_SIZE_X 1000
-//#define SCREEN_SIZE_Y 600
-
-// XY
-struct Pos
+enum class DIR
 {
-	int x;
-	int y;
+	DIR_ID_RIGHT,
+	DIR_ID_LEFT,
+	DIR_MAX
 };
 
-struct Pos_F
+#define lpPos Pos::GetInstance()
+
+// XY
+class Pos
 {
-	float x;
-	float y;
+public:
+	static Pos& GetInstance()
+	{
+		static Pos s_instance;
+		return s_instance;
+	}
+
+	int ix;
+	int iy;
+
+	float fx;
+	float fy;
+
+private:
+	Pos();
+	~Pos();
 };
 
 // ｴｸｽﾀﾝ宣言

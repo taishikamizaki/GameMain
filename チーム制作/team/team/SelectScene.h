@@ -11,6 +11,9 @@ public:
 
 	ScnBase update(ScnBase scnID) override;
 private:
+	bool selectStage();
+	bool selectChar();
+
 	bool selEnd;
 };
 

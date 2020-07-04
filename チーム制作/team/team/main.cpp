@@ -11,4 +11,15 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR,int)
 	return 0;
 }
 
+Pos::Pos()
+{
+	ix = 0;
+	iy = 0;
 
+	fx = 0;
+	fy = 0;
+}
+Pos::~Pos()
+{
+
+}

@@ -1,5 +1,4 @@
 #include "DxLib.h"
-#include "main.h"
 #include "Effect.h"
 
 // ´Ìª¸ÄŠÖ˜A

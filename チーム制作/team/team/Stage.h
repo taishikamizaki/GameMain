@@ -7,8 +7,7 @@
 #define CHIP_SIZE_Y 50
 
 #define lpStage Stage::GetInstance()
-
-enum STAGE_ID
+ enum STAGE_ID
 {
 	STAGE_ID_YAMA,
 	STAGE_ID_MACHI,
@@ -28,19 +27,21 @@ public:
 	Vector2 PosToIndex(Vector2 pos);
 	Vector2 IndexToPos(Vector2 index);
 	bool IsPass(Vector2 pos);
+	int map;
 	
-private:
-	bool StageInit(void);
-	bool StageScene(void);
+	bool StageCtl(void);
 	void StageDraw(void);
 
+private:
+	bool StageInit(void);
+	
 	int stageID[STAGE_ID_MAX];
 	int hamaroomImage[7];
 	int matiImage[43];
 	int tougiImage[12];
 	int yamaImage[23];
 	Vector2 mapSize;
-	int map;
+
 
 	int maphamaguri[MAP_Y][MAP_X] = {
 	{6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},

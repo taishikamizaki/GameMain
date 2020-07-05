@@ -1,5 +1,8 @@
 #pragma once
+#include<string>
 #include "BaseScene.h"
+#include "player.h"
+#include "Stage.h"
 
 // セレクトクラス
 class SelectScene :
@@ -10,9 +13,10 @@ public:
 	~SelectScene();			// デストラクタ
 
 	ScnBase update(ScnBase scnID) override;
+
+	void SelectInit(void);
+	void SelectDraw(void);
 private:
-	bool selectStage();
-	bool selectChar();
 
 	bool selEnd;
 };

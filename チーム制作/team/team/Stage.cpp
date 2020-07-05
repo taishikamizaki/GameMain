@@ -1,8 +1,5 @@
 #include "DxLib.h"
-#include "main.h"
 #include "Stage.h"
-
-
 
 // ‰Šú‰»
 bool Stage::StageInit(void)
@@ -34,7 +31,7 @@ bool Stage::StageInit(void)
 }
 
 // ½Ã°¼Ş¼°İ
-bool Stage::StageScene(void)
+bool Stage::StageCtl(void)
 {
 	bool rtnFlag = true;
 

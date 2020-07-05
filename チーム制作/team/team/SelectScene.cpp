@@ -8,8 +8,7 @@
 
 SelectScene::SelectScene()
 {
-	SCN_MNG.GetId("sli", "image/TestGraph/Select.png");		//Œ®@êŠ
-	selEnd=false;
+	SelectScene::SelectInit();
 }
 
 SelectScene::~SelectScene()
@@ -42,16 +41,19 @@ ScnBase SelectScene::update(ScnBase scnID)
 		}
 	}
 
-	SCN_MNG.addList(0, 0, "sli");
+	SelectScene::SelectDraw();
 	return std::move(scnID);
 }
 
-	bool selectStage()
-	{
-		return true;
-	}
-	bool selectChar()
-	{
-		return true;
-	}
+// ‰Šú‰»
+void SelectScene::SelectInit(void)
+{
+	SCN_MNG.GetId("sli", "image/TestGraph/Select.png");		//Œ®@êŠ
+	selEnd = false;
+}
 
+// •`‰æ 
+void SelectScene::SelectDraw(void)
+{
+	SCN_MNG.addList(0, 0, "sli");
+}

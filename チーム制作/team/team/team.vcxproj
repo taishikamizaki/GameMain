@@ -176,7 +176,6 @@
     <ClInclude Include="keyID.h" />
     <ClInclude Include="InputState.h" />
     <ClInclude Include="KeyState.h" />
-    <ClInclude Include="main.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="ResultScene.h" />

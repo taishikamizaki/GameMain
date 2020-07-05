@@ -7,6 +7,8 @@ class GameScene :
 {
 public:
 	ScnBase update(ScnBase scnID) override;
+	void GameInit(void);
+	void GameDraw(void);
 	GameScene();
 	~GameScene();
 

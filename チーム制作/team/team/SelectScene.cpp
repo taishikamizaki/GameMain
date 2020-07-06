@@ -5,7 +5,6 @@
 #include "player.h"
 #include "SelectScene.h"
 
-
 SelectScene::SelectScene()
 {
 	SelectScene::SelectInit();
@@ -57,3 +56,4 @@ void SelectScene::SelectDraw(void)
 {
 	SCN_MNG.addList(0, 0, "sli");
 }
+

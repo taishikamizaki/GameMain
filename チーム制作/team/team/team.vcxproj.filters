@@ -13,126 +13,149 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{84baed0e-8c65-4258-909e-344477d2de2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{87ae4287-1c64-4fc9-ab3b-d5fa3bf090d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Effect">
+      <UniqueIdentifier>{87888690-ac1e-47cf-b822-afc351f96b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vecetor2">
+      <UniqueIdentifier>{2f98ab92-aae5-4ece-83ad-64885e7730e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stage">
+      <UniqueIdentifier>{02b784f9-8107-4f40-9463-00b76eb764a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Key">
+      <UniqueIdentifier>{c2e61350-45d2-4396-b2c4-83e1c746f758}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Pause.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Effect\Effect.cpp">
+      <Filter>Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Effect.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Effect\Sound.cpp">
+      <Filter>Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Vector2\Vector2.cpp">
+      <Filter>Vecetor2</Filter>
     </ClCompile>
-    <ClCompile Include="GetKeyState.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Vector2\Vector2f.cpp">
+      <Filter>Vecetor2</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Player\player.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="skill.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Player\skill.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
-    <ClCompile Include="Sound.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\BaseScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="BaseScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\GameOverScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\GameScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMng.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\Pause.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\ResultScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="SelectScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\SceneMng.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="ResultScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\SelectScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="GameOverScene.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Scene\TitleScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="InputState.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Stage\Stage.cpp">
+      <Filter>Stage</Filter>
     </ClCompile>
-    <ClCompile Include="KeyState.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Key\GetKeyState.cpp">
+      <Filter>Key</Filter>
     </ClCompile>
-    <ClCompile Include="keyID.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Key\InputState.cpp">
+      <Filter>Key</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Key\keyID.cpp">
+      <Filter>Key</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="Key\KeyState.cpp">
+      <Filter>Key</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Pause.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Effect\Effect.h">
+      <Filter>Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Effect.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Vector2\Vector2.h">
+      <Filter>Vecetor2</Filter>
     </ClInclude>
-    <ClInclude Include="Stage.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Vector2\Vector2f.h">
+      <Filter>Vecetor2</Filter>
     </ClInclude>
-    <ClInclude Include="GetKeyState.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Player\player.h">
+      <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Player\skill.h">
+      <Filter>Player</Filter>
     </ClInclude>
-    <ClInclude Include="skill.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\BaseScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Sound.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\GameOverScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="BaseScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\GameScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="GameScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\Pause.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneMng.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\ResultScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\SceneMng.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SelectScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\SelectScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="ResultScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Effect\Sound.h">
+      <Filter>Effect</Filter>
     </ClInclude>
-    <ClInclude Include="GameOverScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Scene\TitleScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="InputState.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Stage\Stage.h">
+      <Filter>Stage</Filter>
     </ClInclude>
-    <ClInclude Include="KeyState.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Key\GetKeyState.h">
+      <Filter>Key</Filter>
     </ClInclude>
-    <ClInclude Include="keyID.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Key\InputState.h">
+      <Filter>Key</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Key\keyID.h">
+      <Filter>Key</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2f.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Key\KeyState.h">
+      <Filter>Key</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Key\key.dat">
+      <Filter>Key</Filter>
+    </None>
   </ItemGroup>
 </Project>

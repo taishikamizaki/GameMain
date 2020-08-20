@@ -1,4 +1,6 @@
 #pragma once
+
+class Player;
 class playerMng
 {
 public:
@@ -7,6 +9,8 @@ public:
 	~playerMng();
 
 private:
+	Player* player = nullptr;
+
 	int charID_1;
 	int charID_2;
 	

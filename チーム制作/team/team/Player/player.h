@@ -63,6 +63,8 @@ public:
 		return s_Instance;
 	}
 
+	int KisiImage[13];
+
 	//ÉÅÉìÉoä÷êî
 	void PlayerSysInit(void);
 	void PlayerGameInit(void);
@@ -80,6 +82,12 @@ private:
 
 	CHARACTER player1;
 	CHARACTER player2;
+
+	int charID_1;
+	int charID_2;
+
+	int pID_1;
+	int pID_2;
 
 	DIR dir;
 	CHAR_ID charID;

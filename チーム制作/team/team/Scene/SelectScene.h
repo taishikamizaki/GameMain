@@ -17,6 +17,7 @@ public:
 	void SelectInit(void);
 	void SelectDraw(void);
 private:
+	std::map<std::string, int> images;
 
 	bool selEnd;
 };

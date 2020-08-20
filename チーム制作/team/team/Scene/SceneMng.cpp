@@ -3,6 +3,8 @@
 #include <DxLib.h>
 #include "SceneMng.h"
 #include "TitleScene.h"
+#include "../Player/playerMng.h"
+
 
 // 静的で動的な何か
 SceneMng* SceneMng::sinstance = nullptr;
@@ -95,6 +97,15 @@ bool SceneMng::ScnInit(void)
 	fadeIn = true;
 	fadeOut = false;
 	fadeCnt = 0;
+
+
+	//プレイヤー画像
+	a = LoadGraph("./image/char/char_p_hero01.png");
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kisi);
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, majo);
+	LoadDivGraph("./image/char/char_p_f04.png", 12, 3, 4, 25, 33, buto);
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);
+
 	return 0;
 }
 

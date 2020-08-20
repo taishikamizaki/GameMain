@@ -1,8 +1,8 @@
+#include <DxLib.h>
 #include "playerMng.h"
 
 int playerMng::Init()
 {
-
 
 	return 0;
 }

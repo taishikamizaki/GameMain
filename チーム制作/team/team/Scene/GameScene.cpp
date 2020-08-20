@@ -54,10 +54,10 @@ void GameScene::GameInit(void)
 // •`‰æ
 void GameScene::GameDraw(void)
 {
-	lpPlayer.PlayerDraw();
-	lpStage.StageDraw();
-
 	SCN_MNG.addList(0, 0, "gsi");
+	lpStage.StageDraw();
+	lpPlayer.PlayerDraw();
+
 }
 
 GameScene::GameScene()

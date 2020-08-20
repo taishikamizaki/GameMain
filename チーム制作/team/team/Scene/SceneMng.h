@@ -80,5 +80,12 @@ private:
 	std::map<std::string, int> imgMng;
 
 	int  fadeCnt;						// Ìª°ÄÞ¶³ÝÀ
+
+	int a;
+
+	int kisi[13];
+	int majo[13];
+	int buto[13];
+	int men[13];
 };
 

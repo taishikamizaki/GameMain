@@ -29,21 +29,7 @@ void Player::PlayerSysInit(void)
 // ゲーム中の初期化
 void Player::PlayerGameInit(void)
 {
-	images.try_emplace("kisi",	  LoadGraph("image/char/charsel icon/騎士選択(無し).png"));
-	images.try_emplace("kisi_1p", LoadGraph("image/char/charsel icon/騎士選択(1p).png"));
-	images.try_emplace("kisi_2p", LoadGraph("image/char/charsel icon/騎士選択(2p).png"));
 
-	images.try_emplace("majo",	  LoadGraph("image/char/charsel icon/魔法使い選択(無し).png"));
-	images.try_emplace("majo_1p", LoadGraph("image/char/charsel icon/魔法使い選択(1p).png"));
-	images.try_emplace("majo_2p", LoadGraph("image/char/charsel icon/魔法使い選択(2p).png"));
-
-	images.try_emplace("buto",	  LoadGraph("image/char/charsel icon/武闘家選択(無し).png"));
-	images.try_emplace("buto_1p", LoadGraph("image/char/charsel icon/武闘家選択(1p).png"));
-	images.try_emplace("buto_2p", LoadGraph("image/char/charsel icon/武闘家選択(2p).png"));
-
-	images.try_emplace("men",	 LoadGraph("image/char/charsel icon/謎の男選択(無し).png"));
-	images.try_emplace("men_1p", LoadGraph("image/char/charsel icon/謎の男選択(1p).png"));
-	images.try_emplace("men_2p", LoadGraph("image/char/charsel icon/謎の男選択(2p).png"));
 }
 
 // ｺﾝﾄﾛｰﾙ
@@ -213,6 +199,8 @@ void Player::PlayerDraw(void)
 	DrawBox(player1.pos.x - player1.hitPosS.x , player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFFFF, false);
 
+	DrawGraph(100, 100, KisiImage[1 ], true);
+
 	// プレイヤー座標
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
@@ -226,7 +214,13 @@ void Player::SetPlayerID(CHARACTER p1, CHARACTER p2)
 
 Player::Player(int charID_1, int ID_1, int charID_2, int ID_2)
 {
+	this->charID_1=charID_1;
+	this->charID_2=charID_2;
 
+	this->pID_1=ID_1;
+	this->pID_2=ID_2;
+
+	PlayerSysInit();
 }
 
 Player::Player()

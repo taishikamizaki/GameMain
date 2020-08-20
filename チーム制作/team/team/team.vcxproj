@@ -148,6 +148,7 @@
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <ClCompile Include="Player\player.cpp" />
+    <ClCompile Include="Player\playerMng.cpp" />
     <ClCompile Include="Player\skill.cpp" />
     <ClCompile Include="Scene\BaseScene.cpp" />
     <ClCompile Include="Scene\GameOverScene.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Key\keyID.h" />
     <ClInclude Include="Key\KeyState.h" />
     <ClInclude Include="Player\player.h" />
+    <ClInclude Include="Player\playerMng.h" />
     <ClInclude Include="Player\skill.h" />
     <ClInclude Include="Scene\BaseScene.h" />
     <ClInclude Include="Scene\GameOverScene.h" />

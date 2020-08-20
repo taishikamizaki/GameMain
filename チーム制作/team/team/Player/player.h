@@ -71,6 +71,8 @@ public:
 
 	void SetPlayerID(CHARACTER p1, CHARACTER p2);
 
+	Player(int charID_1, int ID_1, int charID_2, int ID_2);
+
 private:
 	std::map<std::string, int> images;
 	int playerPosX;

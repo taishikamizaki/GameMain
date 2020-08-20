@@ -93,6 +93,9 @@
     <ClCompile Include="Key\KeyState.cpp">
       <Filter>Key</Filter>
     </ClCompile>
+    <ClCompile Include="Player\playerMng.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Effect\Effect.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Key\KeyState.h">
       <Filter>Key</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\playerMng.h">
+      <Filter>Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

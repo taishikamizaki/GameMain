@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="Effect\Effect.cpp" />
     <ClCompile Include="Effect\Sound.cpp" />
+    <ClCompile Include="ImageMng.cpp" />
     <ClCompile Include="Key\GetKeyState.cpp" />
     <ClCompile Include="Key\InputState.cpp" />
     <ClCompile Include="Key\keyID.cpp" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="Effect\Effect.h" />
     <ClInclude Include="Effect\Sound.h" />
+    <ClInclude Include="ImageMng.h" />
     <ClInclude Include="Key\GetKeyState.h" />
     <ClInclude Include="Key\InputState.h" />
     <ClInclude Include="Key\keyID.h" />

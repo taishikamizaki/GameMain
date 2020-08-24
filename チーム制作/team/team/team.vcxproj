@@ -186,9 +186,6 @@
     <ClInclude Include="Vector2\Vector2.h" />
     <ClInclude Include="Vector2\Vector2f.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Key\key.dat" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

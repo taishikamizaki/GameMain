@@ -165,9 +165,4 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Key\key.dat">
-      <Filter>Key</Filter>
-    </None>
-  </ItemGroup>
 </Project>

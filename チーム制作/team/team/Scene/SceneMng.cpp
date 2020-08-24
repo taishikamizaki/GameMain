@@ -4,6 +4,8 @@
 #include "SceneMng.h"
 #include "TitleScene.h"
 #include "../Player/playerMng.h"
+#include "../Vector2/Vector2.h"
+#include "../ImageMng.h"
 
 
 // 静的で動的な何か
@@ -42,6 +44,8 @@ SceneMng::SceneMng():screenSizeX(1000),screenSizeY(600)
 	fadeOut = false;
 
 	fadeCnt = 0;
+
+	ScnInit();
 }
 
 // デストラクタ
@@ -105,6 +109,8 @@ bool SceneMng::ScnInit(void)
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, majo);
 	LoadDivGraph("./image/char/char_p_f04.png", 12, 3, 4, 25, 33, buto);
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);
+
+	lpImageMng.ImageMng::ImageMng(a, { 0,0 });
 
 	return 0;
 }

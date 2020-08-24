@@ -59,6 +59,7 @@ bool FadeOutScreen(int fadeStep);		// Ìª°ÄŞ±³Äˆ—
 
 	bool fadeIn;						// Ìª°ÄŞ²İ
 	bool fadeOut;						// Ìª°ÄŞ±³Ä
+
 private:
 	SceneMng();
 	~SceneMng();

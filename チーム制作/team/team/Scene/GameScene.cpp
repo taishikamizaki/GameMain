@@ -7,6 +7,7 @@
 #include "GameOverScene.h"
 #include "../Player/player.h"
 #include "../Stage/Stage.h"
+#include "../ImageMng.h"
 #include "GameScene.h"
 
 // ÉVÅ[Éì
@@ -48,15 +49,19 @@ ScnBase GameScene::update(ScnBase scnID)
 void GameScene::GameInit(void)
 {
 	SCN_MNG.GetId("gsi", "image/TestGraph/Game.png");		//åÆÅ@èÍèä
+	SCN_MNG.GetId("player", "image/char/char_p_f04.png");
 	gamEnd = false;
 }
 
 // ï`âÊ
 void GameScene::GameDraw(void)
-{
+{	
+	lpImageMng.Render();
 	SCN_MNG.addList(0, 0, "gsi");
+	SCN_MNG.addList(0, 0, "player");
 	lpStage.StageDraw();
 	lpPlayer.PlayerDraw();
+
 
 }
 

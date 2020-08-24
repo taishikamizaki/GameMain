@@ -10,7 +10,7 @@ void ImageMng::Init()
 
 void ImageMng::Render()
 {
-
+	DrawGraph(pos.x, pos.y, imageID, true);
 }
 
 void ImageMng::Update()

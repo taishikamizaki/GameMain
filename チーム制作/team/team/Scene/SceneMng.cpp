@@ -23,7 +23,7 @@ void SceneMng::ScnCtl(void)
 		drawList.clear();		// リストの初期化
 		(*input).Update();
 		/*KeyCheck();*/
-		nowScn = (*nowScn).update(std::move(nowScn));// シーン移行
+		nowScn = (*nowScn).Update(std::move(nowScn));// シーン移行
 
 		SceneMng::ListDraw();
 	}
@@ -109,8 +109,6 @@ bool SceneMng::ScnInit(void)
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, majo);
 	LoadDivGraph("./image/char/char_p_f04.png", 12, 3, 4, 25, 33, buto);
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);
-
-	lpImageMng.ImageMng::ImageMng(a, { 0,0 });
 
 	return 0;
 }

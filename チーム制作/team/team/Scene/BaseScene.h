@@ -14,7 +14,7 @@ public:
 	BaseScene();				// コンストラクタ
 	virtual ~BaseScene();		// デストラクタ
 
-	virtual ScnBase update(ScnBase scnID) = 0;			// 純粋な仮想関数
+	virtual ScnBase Update(ScnBase scnID) = 0;			// 純粋な仮想関数
 
 private:
 

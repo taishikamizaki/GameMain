@@ -3,7 +3,7 @@
 #include "GameOverScene.h"
 #include "ResultScene.h"
 
-ScnBase ResultScene::update(ScnBase scnID)
+ScnBase ResultScene::Update(ScnBase scnID)
 {
 	auto move = [](std::weak_ptr<InputState> KeyID, const KEY_ID id) {
 		if (!KeyID.expired())

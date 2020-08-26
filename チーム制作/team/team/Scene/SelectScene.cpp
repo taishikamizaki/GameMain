@@ -14,7 +14,7 @@ SelectScene::~SelectScene()
 {
 }
 
-ScnBase SelectScene::update(ScnBase scnID)
+ScnBase SelectScene::Update(ScnBase scnID)
 {	auto move = [](std::weak_ptr<InputState> KeyID,const KEY_ID id) {
 		if (!KeyID.expired())
 		{

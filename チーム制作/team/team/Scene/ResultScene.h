@@ -4,7 +4,7 @@ class ResultScene :
     public BaseScene
 {
 	public:
-	ScnBase update(ScnBase scnID) override;
+	ScnBase Update(ScnBase scnID) override;
 	ResultScene();
 	~ResultScene();
 

@@ -3,7 +3,7 @@
 #include "TitleScene.h"
 #include "GameOverScene.h"
 
-ScnBase GameOverScene::update(ScnBase scnID)
+ScnBase GameOverScene::Update(ScnBase scnID)
 {
 	//フレッシュレートが60の時、1000 で1秒
 	if (GetNowCount() - now >= 3000 )

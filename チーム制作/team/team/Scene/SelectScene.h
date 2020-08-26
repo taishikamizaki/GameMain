@@ -12,7 +12,7 @@ public:
 	SelectScene();			// コンストラクタ
 	~SelectScene();			// デストラクタ
 
-	ScnBase update(ScnBase scnID) override;
+	ScnBase Update(ScnBase scnID) override;
 
 	void SelectInit(void);
 	void SelectDraw(void);

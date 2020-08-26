@@ -63,17 +63,18 @@ public:
 		return s_Instance;
 	}
 
-	int KisiImage[13];
-
 	//ÉÅÉìÉoä÷êî
 	void PlayerSysInit(void);
 	void PlayerGameInit(void);
 	void PlayerCtl(void);
 	void PlayerDraw(void);
 
-	void SetPlayerID(CHARACTER p1, CHARACTER p2);
+	void SetPlayerID(Vector2 pos1, Vector2 pos2);
 
 	Player(int charID_1, int ID_1, int charID_2, int ID_2);
+
+	Player();
+	~Player();
 
 private:
 	std::map<std::string, int> images;
@@ -94,6 +95,4 @@ private:
 
 	MapInt charcter;
 
-	Player();
-	~Player();
 };

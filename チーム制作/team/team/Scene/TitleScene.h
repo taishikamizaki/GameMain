@@ -8,7 +8,7 @@ public:
 	TitleScene();
 	~TitleScene();
 
-	ScnBase update(ScnBase scnID) override;
+	ScnBase Update(ScnBase scnID) override;
 
 private:
 

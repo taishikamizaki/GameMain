@@ -199,26 +199,26 @@ void Player::PlayerDraw(void)
 	DrawBox(player1.pos.x - player1.hitPosS.x , player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFFFF, false);
 
-	DrawGraph(100, 100, KisiImage[1 ], true);
+	DrawGraph(player1.pos.x, player1.pos.y, charID_1, true);
 
 	// プレイヤー座標
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
 }
 
-void Player::SetPlayerID(CHARACTER p1, CHARACTER p2)
+void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 {
-	p1 = player1;
-	p2 = player2;
+	pos1 = player1.pos;
+	pos2 = player2.pos;
 }
 
 Player::Player(int charID_1, int ID_1, int charID_2, int ID_2)
 {
-	this->charID_1=charID_1;
-	this->charID_2=charID_2;
+	this->charID_1 = charID_1;
+	this->charID_2 = charID_2;
 
-	this->pID_1=ID_1;
-	this->pID_2=ID_2;
+	this->pID_1 = ID_1;
+	this->pID_2 = ID_2;
 
 	PlayerSysInit();
 }

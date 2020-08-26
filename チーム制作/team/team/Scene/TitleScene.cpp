@@ -19,7 +19,7 @@ TitleScene::~TitleScene()
 	
 }
 
-ScnBase TitleScene::update(ScnBase scnID)
+ScnBase TitleScene::Update(ScnBase scnID)
 {
 	/*keyDownTrigger[KEY_ID_SPACE]*/
 	if(titleEnd)

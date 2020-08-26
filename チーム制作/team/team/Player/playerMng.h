@@ -1,16 +1,18 @@
 #pragma once
 
 class Player;
-class playerMng
+class PlayerMng
 {
 public:
 
-	playerMng(int charID_1,int ID_1,int charID_2,int ID_2);
-	~playerMng();
+	void Render();
+	void Update();
+
+	PlayerMng(int charID_1,int ID_1,int charID_2,int ID_2);
+	~PlayerMng();
+	Player* player;
 
 private:
-	Player* player = nullptr;
-
 	int charID_1;
 	int charID_2;
 	

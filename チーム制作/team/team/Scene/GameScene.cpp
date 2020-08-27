@@ -48,7 +48,7 @@ ScnBase GameScene::Update(ScnBase scnID)
 // ‰Šú‰»‚Æ‚©
 void GameScene::GameInit(void)
 {
-	SCN_MNG.GetId("gsi", "image/TestGraph/Game.png");		//Œ®@êŠ
+	/*SCN_MNG.GetID("gsi", "image/TestGraph/Game.png");*/		//Œ®@êŠ
 
 	if (player == nullptr) player = new PlayerMng(charID_1, ID_1, charID_2, ID_2);
 
@@ -63,6 +63,8 @@ void GameScene::GameDraw(void)
 	SCN_MNG.addList(0, 0, "player");
 	lpStage.StageDraw();
 	lpPlayer.PlayerDraw();*/
+
+	SCN_MNG.addList(0, 0, "kishi");
 
 	if (player != nullptr)
 	{

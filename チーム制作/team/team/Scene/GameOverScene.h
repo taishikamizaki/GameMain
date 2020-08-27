@@ -10,7 +10,7 @@ public:
 	GameOverScene();
 	~GameOverScene();
 private:
-	int now;
-	bool	goEnd;
+	int  now;
+	bool goEnd;
 };
 

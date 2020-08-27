@@ -1,4 +1,5 @@
 #include <DxLib.h>
+#include "../Scene/SceneMng.h"
 #include "../Key/GetKeyState.h"
 #include "../Stage/Stage.h"
 #include "player.h"
@@ -24,6 +25,19 @@ void Player::PlayerSysInit(void)
 	player1.life		 = 4;						// キャラクタの体力
 	player1.lifeMax		 = 4;						// キャラクタの体力最大
 	player1.animCnt		 = 0;						// キャラクタのアニメーション用カウンタ
+
+	/*LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kisi);
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, majo);
+	LoadDivGraph("./image/char/char_p_f04.png", 12, 3, 4, 25, 33, buto);
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);*/
+
+	int kishi[12];
+	for (int i = 0; i < 12; i++)
+	{
+		kishi[i] = 0;
+	}
+
+	SCN_MNG.GetId_D("kishi", *"./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kishi);
 }
 
 // ゲーム中の初期化

@@ -8,7 +8,7 @@ TitleScene::TitleScene()
 {
 	titleLogoImage = NULL;		// タイトルロゴ
 	titleMesImage  = NULL;			// タイトルメッセージ
-	SCN_MNG.GetId("ti", "image/TestGraph/Title.png");		//鍵　場所
+	SCN_MNG.GetID("ti", "image/TestGraph/Title.png");		//鍵　場所
 	titleEnd=false;
 	SCN_MNG.fadeIn=true;
 }

@@ -36,7 +36,7 @@ ScnBase ResultScene::Update(ScnBase scnID)
 
 ResultScene::ResultScene()
 {
-	SCN_MNG.GetId("rsi", "image/TestGraph/Result.png");		//Œ®@êŠ
+	SCN_MNG.GetID("rsi", "image/TestGraph/Result.png");		//Œ®@êŠ
 	resEnd=false;
 }
 

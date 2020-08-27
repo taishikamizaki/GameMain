@@ -47,9 +47,13 @@ public:
 
 	int addList(int x, int y, std::string id);
 
-	int GetId(const std::string& key,const std::string filename);
+	int GetID(const std::string& key,const std::string filename);
 
-	int GetId(const std::string& key);
+	int GetId_D(const std::string& key, const TCHAR fileName, 
+			    int AllNum, int xNum, int yNum, int xSize, int ySize, 
+			    int* HandleArray);
+
+	int GetID(const std::string& key);
 	
 	std::shared_ptr<InputState> input;
 

@@ -67,7 +67,7 @@ void SceneMng::ListDraw(void)
 	{
 		std::tie(x, y, id) = dl;
 		
-		DrawGraph(x,y,GetId(id),true);
+		DrawGraph(x,y,GetID(id),true);
 	}
 
 	ScreenFlip();
@@ -104,16 +104,16 @@ bool SceneMng::ScnInit(void)
 
 
 	//ÉvÉåÉCÉÑÅ[âÊëú
-	a = LoadGraph("./image/char/char_p_hero01.png");
+	/*a = LoadGraph("./image/char/char_p_hero01.png");
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kisi);
 	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, majo);
 	LoadDivGraph("./image/char/char_p_f04.png", 12, 3, 4, 25, 33, buto);
-	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);
+	LoadDivGraph("./image/char/char_p_hero01.png", 12, 3, 4, 24, 34, men);*/
 
 	return 0;
 }
 
-int SceneMng::GetId(const std::string& key,const std::string filename)
+int SceneMng::GetID(const std::string& key,const std::string filename)
 {
 	if (imgMng.find(key) == imgMng.end())
 	{
@@ -122,9 +122,19 @@ int SceneMng::GetId(const std::string& key,const std::string filename)
 	return imgMng[key];
 }
 
-int SceneMng::GetId(const std::string& key)
+int SceneMng::GetId_D(const std::string& key, const TCHAR fileName,
+	int AllNum,int xNum,int yNum,int xSize, int ySize,int* HandleArray)
 {
-	GetId(key, key);
+	if (imgMng.find(key) == imgMng.end())
+	{
+		imgMng[key] = LoadDivGraph(&fileName, AllNum, xNum, yNum, xSize, ySize, HandleArray);
+	}
+	return imgMng[key];
+}
+
+int SceneMng::GetID(const std::string& key)
+{
+	GetID(key, key);
 	return imgMng[key];
 }
 

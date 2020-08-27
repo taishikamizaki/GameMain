@@ -47,7 +47,7 @@ ScnBase SelectScene::Update(ScnBase scnID)
 // ‰Šú‰»
 void SelectScene::SelectInit(void)
 {
-	SCN_MNG.GetId("sli", "image/TestGraph/Select.png");		//Œ®@êŠ
+	SCN_MNG.GetID("sli", "image/TestGraph/Select.png");		//Œ®@êŠ
 	selEnd = false;
 
 	images.try_emplace("kisi", LoadGraph("image/char/charsel icon/‹Rm‘I‘ğ(–³‚µ).png"));

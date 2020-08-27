@@ -49,7 +49,7 @@ public:
 
 	int GetID(const std::string& key,const std::string filename);
 
-	int GetId_D(const std::string& key, const TCHAR fileName, 
+	int GetID_D(const std::string& key, const TCHAR fileName, 
 			    int AllNum, int xNum, int yNum, int xSize, int ySize, 
 			    int* HandleArray);
 

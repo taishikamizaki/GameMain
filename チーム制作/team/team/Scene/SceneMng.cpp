@@ -122,7 +122,7 @@ int SceneMng::GetID(const std::string& key,const std::string filename)
 	return imgMng[key];
 }
 
-int SceneMng::GetId_D(const std::string& key, const TCHAR fileName,
+int SceneMng::GetID_D(const std::string& key, const TCHAR fileName,
 	int AllNum,int xNum,int yNum,int xSize, int ySize,int* HandleArray)
 {
 	if (imgMng.find(key) == imgMng.end())

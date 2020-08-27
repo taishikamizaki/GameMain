@@ -37,7 +37,7 @@ void Player::PlayerSysInit(void)
 		kishi[i] = 0;
 	}
 
-	SCN_MNG.GetId_D("kishi", *"./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kishi);
+	SCN_MNG.GetID_D("kishi", *"./image/char/char_p_hero01.png", 12, 3, 4, 24, 33, kishi);
 }
 
 // ƒQ[ƒ€’†‚Ì‰Šú‰»

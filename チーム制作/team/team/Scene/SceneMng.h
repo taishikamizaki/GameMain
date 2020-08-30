@@ -58,11 +58,11 @@ public:
 	std::shared_ptr<InputState> input;
 
 
-bool FadeInScreen(int fadeStep);		// Ìª°ÄŞ²İˆ—
+bool FadeInScreen(int fadeStep);			// Ìª°ÄŞ²İˆ—
 bool FadeOutScreen(int fadeStep);		// Ìª°ÄŞ±³Äˆ—
 
 	bool fadeIn;						// Ìª°ÄŞ²İ
-	bool fadeOut;						// Ìª°ÄŞ±³Ä
+	bool fadeOut;					// Ìª°ÄŞ±³Ä
 
 private:
 	SceneMng();

@@ -1,27 +1,30 @@
 #pragma once
+
+// ゲームオーバークラス
 class GameOver
 {
 public:
 
+	// フラグゲッター
 	int GetFlag()
 	{
 		return goF;
 	}
 
-	int GameOverCtl();
-	int GameOverDraw();
+	int GameOverCtl();		// 操作系
+	int GameOverDraw();		// 描画系
 
-	GameOver();
-	~GameOver();
+	GameOver();		// コンストラクタ
+	~GameOver();	// デストラクタ
 
 private:
 
-	int Init();
+	int Init();		// 初期化
 
-	int gameOver;
+	int gameOver;	// 仮置き画像用
 
-	int now;
-	bool goF;
+	int now;		// 自動遷移用変数
+	bool goF;		// 遷移フラグ
 
 };
 

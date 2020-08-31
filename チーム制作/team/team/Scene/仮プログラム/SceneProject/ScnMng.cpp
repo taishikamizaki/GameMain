@@ -147,7 +147,7 @@ int ScnMng::ScnDraw()
 void ScnMng::GetKeyState(void)
 {
 	keyFlagOld = keyFlagSp;						// 1ÌÚ°Ñ‘O
-	keyFlagSp = CheckHitKey(KEY_INPUT_SPACE);		// Œ»İ
+	keyFlagSp = CheckHitKey(KEY_INPUT_SPACE);	// Œ»İ
 }
 
 // Ìª°ÄŞ²İŠÖ”

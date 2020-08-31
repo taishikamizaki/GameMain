@@ -1,26 +1,28 @@
 #pragma once
 
+// タイトルクラス
 class Title
 {
 public:
 
+	// フラグゲッター
 	int GetFlag()
 	{
 		return titleF;
 	}
 
-	int TitleCtl();
-	int TitleDraw();
+	int TitleCtl();		// 操作処理
+	int TitleDraw();	// 描画処理
 
-	Title();
-	~Title();
+	Title();	// コンストラクタ
+	~Title();	// デストラクタ
 
 private:
-	int Init();
+	int Init();		// 初期化
 
-	int title;
+	int title;		// 仮置き画像用
 
-	bool titleF;
+	bool titleF;	// 遷移フラグ
 
 };
 

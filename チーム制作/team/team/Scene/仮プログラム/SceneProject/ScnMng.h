@@ -1,22 +1,14 @@
 #pragma once
 
-
+// 呼び出しマクロ
 #define SCN_MNG ScnMng::GetInstance()
 
-// ｼｰﾝ種別
-enum SCN_ID
-{
-	SCN_ID_TITLE,				// ﾀｲﾄﾙ
-	SCN_ID_CHAR_SEL,		// ｷｬﾗ選択
-	SCN_ID_GAME,				// ｹﾞｰﾑ中
-	SCN_ID_GAMEOVER,	// ｹﾞｰﾑｵｰﾊﾞｰ
-	SCN_ID_MAX
-};
-
+// クラス呼び出し
 class Title;
 class Game;
 class GameOver;
 
+// シーンマネージャー
 class ScnMng
 {
 public:
@@ -26,33 +18,43 @@ public:
 		return s_instance;
 	}
 
-	int ScnCtl();
+	// ｼｰﾝ種別
+	enum SCN_ID
+	{
+		SCN_ID_TITLE,		// ﾀｲﾄﾙ
+		SCN_ID_CHAR_SEL,	// ｷｬﾗ選択
+		SCN_ID_GAME,		// ｹﾞｰﾑ中
+		SCN_ID_GAMEOVER,	// ｹﾞｰﾑｵｰﾊﾞｰ
+		SCN_ID_MAX
+	};
+
+	int ScnCtl();		// シーン操作用
 	
-	bool FadeInScreen(int fadeStep);			// ﾌｪｰﾄﾞｲﾝ処理
-	bool FadeOutScreen(int fadeStep);		// ﾌｪｰﾄﾞｱｳﾄ処理
+	bool FadeInScreen(int fadeStep);	// ﾌｪｰﾄﾞｲﾝ処理
+	bool FadeOutScreen(int fadeStep);	// ﾌｪｰﾄﾞｱｳﾄ処理
 
-	bool fadeIn;			// ﾌｪｰﾄﾞｲﾝ
-	bool fadeOut;		// ﾌｪｰﾄﾞｱｳﾄ
+	bool fadeIn;	// ﾌｪｰﾄﾞｲﾝ
+	bool fadeOut;	// ﾌｪｰﾄﾞｱｳﾄ
 
-	bool keyFlagSp;
-	bool keyFlagOld;
+	bool keyFlagSp;		// キー押下判定用前フラグ
+	bool keyFlagOld;	// キー押下判定用後フラグ
 
 private:
-	Title* title;
-	Game* game;
-	GameOver* gameOver;
+	Title*    title;		// class:Title
+	Game*     game;			// class:Game
+	GameOver* gameOver;		// class:GameOver
 
-	int Init();
-	int ScnDraw();
+	int Init();		// 初期化
+	int ScnDraw();	// 描画
 
-	void GetKeyState(void);
+	void GetKeyState(void);		// キー押下判定関数
 
-	int windowSizeX;
-	int windowSizeY;
+	int windowSizeX;	// 画面横サイズ
+	int windowSizeY;	// 画面縦サイズ
 
-	int  fadeCnt;						// ﾌｪｰﾄﾞｶｳﾝﾀ
+	int  fadeCnt;		// ﾌｪｰﾄﾞｶｳﾝﾀ
 
-	SCN_ID scnID;
+	SCN_ID scnID;		// シーン種別ID	
 
 	ScnMng();
 	~ScnMng();

@@ -56,6 +56,9 @@ private:
 
 	SCN_ID scnID;		// ƒV[ƒ“í•ÊID	
 
+	int scnCnt;
+	int scnCntOld;
+
 	ScnMng();
 	~ScnMng();
 

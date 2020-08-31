@@ -1,5 +1,6 @@
 
 #include <DxLib.h>
+#include "ScnMng.h"
 #include "GameOver.h"
 
 int GameOver::Init()
@@ -11,9 +12,13 @@ int GameOver::Init()
 
 int GameOver::GameOverCtl()
 {
-	if (GetNowCount() - now >= 3000)
+	/*if (GetNowCount() - now >= 6000)
 	{
 		now = GetNowCount();
+		goF = true;
+	}*/
+	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
+	{
 		goF = true;
 	}
 	return 0;

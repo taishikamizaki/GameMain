@@ -54,20 +54,37 @@ int ScnMng::ScnDraw()
 	switch (scnID)
 	{
 	case SCN_ID::SCN_ID_TITLE:
-		
-		if (fadeIn)
+		fadeOut = false;
+		if (title != nullptr)
+		{
+			scnCnt++;
+			scnCntOld = scnCnt;
+			if (scnCntOld > 10)
+			{
+				if (title->GetFlag())
+				{
+					fadeOut = true;
+					scnCnt = 0;
+				}
+			}
+		}
+		if (fadeIn && !fadeOut)
 		{
 			if (!FadeInScreen(5))
 			{
 				fadeOut = false;
 			}
 		}
-		if (fadeOut)
+		if (fadeOut && !fadeIn)
 		{
 			if (!FadeOutScreen(5))
 			{
 				fadeIn = true;
 				scnID = SCN_ID_GAME;
+				if (gameOver != nullptr)
+				{
+					gameOver->GameOver::GameOver();
+				}
 			}
 		}
 		if (title != nullptr)
@@ -81,20 +98,26 @@ int ScnMng::ScnDraw()
 		}
 		break;
 	case SCN_ID::SCN_ID_GAME:
-		
-		if (fadeIn)
+		fadeOut = false;
+		if (game != nullptr)
+		{
+			scnCntOld = scnCnt;
+			if (scnCntOld == 0)
+			{
+				game->Game::Game();
+				scnCnt++;
+			}
+			if (game->GetFlag())
+			{
+				scnID = SCN_ID_GAMEOVER;
+				scnCnt = 0;
+			}
+		}
+		if (fadeIn && !fadeOut)
 		{
 			if (!FadeInScreen(5))
 			{
 				fadeOut = false;
-			}
-		}
-		if (fadeOut)
-		{
-			if (!FadeOutScreen(5))
-			{
-				fadeIn = true;
-				scnID = SCN_ID_GAMEOVER;
 			}
 		}
 		if (game != nullptr)
@@ -103,25 +126,42 @@ int ScnMng::ScnDraw()
 			game->GameCtl();
 			if (game->GetFlag())
 			{
-				fadeOut = true;
+				scnID = SCN_ID_GAMEOVER;
 			}
 		}
 		break;
 	case SCN_ID::SCN_ID_GAMEOVER:
-
-		if (fadeIn)
+		fadeOut = false;
+		if (gameOver != nullptr)
+		{
+			scnCnt++;
+			scnCntOld = scnCnt;
+			if (scnCntOld > 5)
+			{
+				if (gameOver->GetFlag())
+				{
+					fadeOut = true;
+					scnCnt = 0;
+				}
+			}
+		}
+		if (fadeIn && !fadeOut)
 		{
 			if (!FadeInScreen(5))
 			{
 				fadeOut = false;
 			}
 		}
-		if (fadeOut)
+		if (fadeOut && !fadeIn)
 		{
 			if (!FadeOutScreen(5))
 			{
 				fadeIn = true;
 				scnID = SCN_ID_TITLE;
+				if (title != nullptr)
+				{
+					title->Title::Title();
+				}
 			}
 		}
 		if (gameOver != nullptr)
@@ -189,7 +229,9 @@ bool ScnMng::FadeOutScreen(int fadeStep)
 ScnMng::ScnMng():
 	windowSizeX(1000),
 	windowSizeY(600),
-	fadeCnt(0)
+	fadeCnt(0),
+	scnCnt(0),
+	scnCntOld(0)
 {
 	keyFlagSp = false;
 	keyFlagOld = false;

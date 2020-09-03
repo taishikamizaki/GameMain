@@ -11,23 +11,34 @@ int Game::Init()
 	return 0;
 }
 
-int Game::GameCtl()
+int Game::SelectCtl()
 {
 	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 	{
+		selectF = false;
 		gameF = true;
 	}
 	return 0;
 }
 
+int Game::GameCtl()
+{
+	
+	return 0;
+}
+
 int Game::GameDraw()
 {
-	DrawGraph(0, 0, select, true);
-	if (gameF)
+	if (selectF && !gameF)
+	{
+		DrawGraph(0, 0, select, true);
+	}
+	else if(!selectF && gameF)
 	{
 		DrawGraph(0, 0, game, true);
 		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 		{
+			gameF = false;
 			_gameF = true;
 		}
 	}
@@ -37,6 +48,7 @@ int Game::GameDraw()
 
 Game::Game()
 {
+	selectF = true;
 	gameF = false;
 	_gameF = false;
 	Init();

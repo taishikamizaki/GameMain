@@ -11,7 +11,8 @@ public:
 		return _gameF;
 	}
 
-	int GameCtl();		// 操作系
+	int SelectCtl();			// セレクト操作系
+	int GameCtl();				// ゲーム操作系
 	int GameDraw();		// 描画
 
 	Game();		// コンストラクタ
@@ -24,6 +25,7 @@ private:
 	int select;		// 仮置き画像用
 	int game;		// 仮置き画像用
 
+	bool selectF;	// 切り替え用
 	bool gameF;		// 切り替え用
 	bool _gameF;	// シーン遷移用
 

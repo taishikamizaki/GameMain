@@ -123,7 +123,7 @@ int ScnMng::ScnDraw()
 		if (game != nullptr)
 		{
 			game->GameDraw();
-			game->GameCtl();
+			game->SelectCtl();
 			if (game->GetFlag())
 			{
 				scnID = SCN_ID_GAMEOVER;

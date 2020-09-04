@@ -3,6 +3,7 @@
 #include "ScnMng.h"
 #include "Game.h"
 
+// 初期化処理
 int Game::Init()
 {
 	select = LoadGraph("image/TestGraph/Select.png");
@@ -12,6 +13,7 @@ int Game::Init()
 	return 0;
 }
 
+// セレクトの操作処理
 int Game::SelectCtl()
 {
 	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
@@ -22,13 +24,15 @@ int Game::SelectCtl()
 	return 0;
 }
 
+// ゲームの操作処理
 int Game::GameCtl()
 {
 	
 	return 0;
 }
 
-int Game::GameDraw()
+// 描画処理(セレクトとゲーム切り替え同梱)
+int Game::Draw()
 {
 	if (selectF && !gameF)
 	{
@@ -49,6 +53,7 @@ int Game::GameDraw()
 	return 0;
 }
 
+// コンストラクタ
 Game::Game()
 {
 	selectF = true;
@@ -57,6 +62,7 @@ Game::Game()
 	Init();
 }
 
+// デストラクタ
 Game::~Game()
 {
 

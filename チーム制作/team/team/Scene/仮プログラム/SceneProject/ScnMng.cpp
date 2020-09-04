@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "GameOver.h"
 
+// 初期化処理
 int ScnMng::Init()
 {
 	SetWindowText(WINDOW_TEXT);
@@ -24,7 +25,7 @@ int ScnMng::Init()
 	if (game == nullptr) game = new Game();
 	if (gameOver == nullptr) gameOver = new GameOver();
 
-	scnID = SCN_ID::SCN_ID_TITLE;
+	scnID = SCN_ID::SCN_ID_TITLE;		// 初期シーンをタイトルへ
 
 	fadeIn = true;
 	fadeOut = false;
@@ -32,6 +33,7 @@ int ScnMng::Init()
 	return 0;
 }
 
+// 操作処理
 int ScnMng::ScnCtl()
 {
     while (ProcessMessage() == 0 &&
@@ -49,10 +51,12 @@ int ScnMng::ScnCtl()
     return 0;
 }
 
+// 描画処理
 int ScnMng::ScnDraw()
 {
 	switch (scnID)
 	{
+		// タイトル
 	case SCN_ID::SCN_ID_TITLE:
 		fadeOut = false;
 		if (title != nullptr)
@@ -89,7 +93,7 @@ int ScnMng::ScnDraw()
 		}
 		if (title != nullptr)
 		{
-			title->TitleDraw();
+			title->Draw();
 			title->TitleCtl();
 			if (title->GetFlag())
 			{
@@ -97,6 +101,7 @@ int ScnMng::ScnDraw()
 			}
 		}
 		break;
+		// セレクト＆ゲーム
 	case SCN_ID::SCN_ID_GAME:
 		fadeOut = false;
 		if (game != nullptr)
@@ -122,7 +127,7 @@ int ScnMng::ScnDraw()
 		}
 		if (game != nullptr)
 		{
-			game->GameDraw();
+			game->Draw();
 			game->SelectCtl();
 			if (game->GetFlag())
 			{
@@ -130,6 +135,7 @@ int ScnMng::ScnDraw()
 			}
 		}
 		break;
+		// ゲームオーバー
 	case SCN_ID::SCN_ID_GAMEOVER:
 		fadeOut = false;
 		if (gameOver != nullptr)
@@ -166,7 +172,7 @@ int ScnMng::ScnDraw()
 		}
 		if (gameOver != nullptr)
 		{
-			gameOver->GameOverDraw();
+			gameOver->Draw();
 			gameOver->GameOverCtl();
 			if (gameOver->GetFlag())
 			{
@@ -184,6 +190,7 @@ int ScnMng::ScnDraw()
     return 0;
 }
 
+// キー判定用
 void ScnMng::GetKeyState(void)
 {
 	keyFlagOld = keyFlagSp;						// 1ﾌﾚｰﾑ前
@@ -226,6 +233,7 @@ bool ScnMng::FadeOutScreen(int fadeStep)
 	}
 }
 
+// コンストラクタ
 ScnMng::ScnMng():
 	windowSizeX(1000),
 	windowSizeY(600),
@@ -242,6 +250,7 @@ ScnMng::ScnMng():
     Init();
 }
 
+// デストラクタ
 ScnMng::~ScnMng()
 {
 	if (title != nullptr)

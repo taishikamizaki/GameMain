@@ -12,7 +12,7 @@ public:
 	}
 
 	int GameOverCtl();		// 操作系
-	int GameOverDraw();		// 描画系
+	int Draw();		// 描画系
 
 	GameOver();		// コンストラクタ
 	~GameOver();	// デストラクタ

@@ -13,7 +13,7 @@ public:
 
 	int SelectCtl();			// セレクト操作系
 	int GameCtl();				// ゲーム操作系
-	int GameDraw();		// 描画
+	int Draw();		// 描画
 
 	Game();		// コンストラクタ
 	~Game();	// デストラクタ

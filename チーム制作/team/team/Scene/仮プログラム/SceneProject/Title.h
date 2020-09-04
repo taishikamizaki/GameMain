@@ -12,7 +12,7 @@ public:
 	}
 
 	int TitleCtl();		// 操作処理
-	int TitleDraw();	// 描画処理
+	int Draw();	// 描画処理
 
 	Title();	// コンストラクタ
 	~Title();	// デストラクタ

@@ -3,6 +3,7 @@
 #include "ScnMng.h"
 #include "GameOver.h"
 
+// 初期化処理
 int GameOver::Init()
 {
 	gameOver = LoadGraph("image/TestGraph/GameOver.png");
@@ -11,6 +12,7 @@ int GameOver::Init()
 	return 0;
 }
 
+// 操作処理
 int GameOver::GameOverCtl()
 {
 	/*if (GetNowCount() - now >= 6000)
@@ -25,7 +27,8 @@ int GameOver::GameOverCtl()
 	return 0;
 }
 
-int GameOver::GameOverDraw()
+// 描画処理
+int GameOver::Draw()
 {
 	DrawGraph(0, 0, gameOver, true);
 	DrawGraph(250, 540, space, true);
@@ -33,6 +36,7 @@ int GameOver::GameOverDraw()
 	return 0;
 }
 
+// コンストラクタ
 GameOver::GameOver()
 {
 	now = GetNowCount();
@@ -40,6 +44,7 @@ GameOver::GameOver()
 	Init();
 }
 
+// デストラクタ
 GameOver::~GameOver()
 {
 

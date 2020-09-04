@@ -3,6 +3,7 @@
 #include "ScnMng.h"
 #include "Title.h"
 
+// ‰Šú‰»ˆ—
 int Title::Init()
 {
 	title = LoadGraph("image/TestGraph/Title.png");
@@ -11,6 +12,7 @@ int Title::Init()
 	return 0;
 }
 
+// ‘€ìˆ—
 int Title::TitleCtl()
 {
 	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
@@ -20,7 +22,8 @@ int Title::TitleCtl()
 	return 0;
 }
 
-int Title::TitleDraw()
+// •`‰æˆ—
+int Title::Draw()
 {
 	DrawGraph(0, 0, title, true);
 	DrawGraph(250, 540, space, true);

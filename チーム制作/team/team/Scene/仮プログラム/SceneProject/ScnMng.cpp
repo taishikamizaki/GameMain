@@ -61,14 +61,22 @@ int ScnMng::ScnDraw()
 		fadeOut = false;
 		if (title != nullptr)
 		{
-			scnCnt++;
-			scnCntOld = scnCnt;
-			if (scnCntOld > 10)
+			if (!fadeOut)
 			{
-				if (title->GetFlag())
+				scnCnt++;
+				scnCntOld = scnCnt;
+				if (scnCntOld == 10)
 				{
-					fadeOut = true;
 					scnCnt = 0;
+					scnCntOld = 0;
+				}
+				if (scnCntOld >= 5)
+				{
+					if (title->GetFlag())
+					{
+						fadeOut = true;
+						scnCnt = 0;
+					}
 				}
 			}
 		}
@@ -140,14 +148,22 @@ int ScnMng::ScnDraw()
 		fadeOut = false;
 		if (gameOver != nullptr)
 		{
-			scnCnt++;
-			scnCntOld = scnCnt;
-			if (scnCntOld > 10)
+			if (!fadeOut)
 			{
-				if (gameOver->GetFlag())
+				scnCnt++;
+				scnCntOld = scnCnt;
+				if (scnCntOld == 10)
 				{
-					fadeOut = true;
 					scnCnt = 0;
+					scnCntOld = 0;
+				}
+				if (scnCntOld > 5)
+				{
+					if (gameOver->GetFlag())
+					{
+						fadeOut = true;
+						scnCnt = 0;
+					}
 				}
 			}
 		}

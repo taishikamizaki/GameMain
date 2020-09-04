@@ -24,6 +24,7 @@ private:
 
 	int select;		// 仮置き画像用
 	int game;		// 仮置き画像用
+	int space;
 
 	bool selectF;	// 切り替え用
 	bool gameF;		// 切り替え用

@@ -6,6 +6,7 @@
 int Title::Init()
 {
 	title = LoadGraph("image/TestGraph/Title.png");
+	space = LoadGraph("image/TestGraph/space.png");
 
 	return 0;
 }
@@ -22,6 +23,8 @@ int Title::TitleCtl()
 int Title::TitleDraw()
 {
 	DrawGraph(0, 0, title, true);
+	DrawGraph(250, 540, space, true);
+
 	return 0;
 }
 

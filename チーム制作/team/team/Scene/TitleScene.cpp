@@ -9,6 +9,7 @@ TitleScene::TitleScene()
 	titleLogoImage = NULL;		// タイトルロゴ
 	titleMesImage  = NULL;			// タイトルメッセージ
 	SCN_MNG.GetID("ti", "image/TestGraph/Title.png");		//鍵　場所
+	SCN_MNG.GetID("title", "image/logo/title.png");		//鍵　場所
 	titleEnd=false;
 	SCN_MNG.fadeIn=true;
 }
@@ -47,6 +48,7 @@ ScnBase TitleScene::Update(ScnBase scnID)
 	}
 
 	SCN_MNG.addList(0, 0, "ti");											// xy鍵
+	SCN_MNG.addList(200, 0, "title");
 
 	return std::move(scnID);														// 場所の宣言(フラグ)
 }

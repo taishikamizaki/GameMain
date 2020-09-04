@@ -66,7 +66,7 @@ int ScnMng::ScnDraw()
 				fadeOut = true;
 			}
 		}
-		if (fadeIn && !fadeOut)
+		if (fadeIn)
 		{
 			if (!FadeInScreen(5))
 			{
@@ -140,7 +140,7 @@ int ScnMng::ScnDraw()
 				scnCnt = 0;
 			}
 		}
-		if (fadeIn && !fadeOut)
+		if (fadeIn)
 		{
 			if (!FadeInScreen(5))
 			{

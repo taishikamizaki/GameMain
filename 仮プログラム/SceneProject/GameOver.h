@@ -22,6 +22,7 @@ private:
 	int Init();		// ‰Šú‰»
 
 	int gameOver;	// ‰¼’u‚«‰æ‘œ—p
+	int thank;
 	int space;
 
 	int now;		// ©“®‘JˆÚ—p•Ï”

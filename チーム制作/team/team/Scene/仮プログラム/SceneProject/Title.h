@@ -21,7 +21,6 @@ private:
 	int Init();		// 初期化
 
 	int title;		// 仮置き画像用
-	int titleB;
 	int space;
 
 	bool titleF;	// 遷移フラグ

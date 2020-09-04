@@ -25,7 +25,7 @@ int Title::TitleCtl()
 // •`‰æˆ—
 int Title::Draw()
 {
-	DrawGraph(200, 100, title, true);
+	DrawGraph(0, 0, title, true);
 	DrawGraph(250, 540, space, true);
 
 	return 0;

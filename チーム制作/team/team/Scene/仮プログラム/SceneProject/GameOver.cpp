@@ -6,6 +6,7 @@
 int GameOver::Init()
 {
 	gameOver = LoadGraph("image/TestGraph/GameOver.png");
+	space = LoadGraph("image/TestGraph/please_space.png");
 
 	return 0;
 }

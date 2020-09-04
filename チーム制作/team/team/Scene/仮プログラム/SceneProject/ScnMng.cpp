@@ -136,7 +136,7 @@ int ScnMng::ScnDraw()
 		{
 			scnCnt++;
 			scnCntOld = scnCnt;
-			if (scnCntOld > 5)
+			if (scnCntOld > 10)
 			{
 				if (gameOver->GetFlag())
 				{

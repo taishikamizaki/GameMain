@@ -7,6 +7,7 @@ int Game::Init()
 {
 	select = LoadGraph("image/TestGraph/Select.png");
 	game = LoadGraph("image/TestGraph/Game.png");
+	space = LoadGraph("image/TestGraph/please_space.png");
 
 	return 0;
 }

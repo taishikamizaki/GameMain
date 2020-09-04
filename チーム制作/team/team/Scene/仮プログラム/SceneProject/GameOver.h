@@ -22,6 +22,7 @@ private:
 	int Init();		// 初期化
 
 	int gameOver;	// 仮置き画像用
+	int space;
 
 	int now;		// 自動遷移用変数
 	bool goF;		// 遷移フラグ

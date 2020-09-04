@@ -7,7 +7,7 @@ int Game::Init()
 {
 	select = LoadGraph("image/TestGraph/Select.png");
 	game = LoadGraph("image/TestGraph/Game.png");
-	space = LoadGraph("image/TestGraph/please_space.png");
+	space = LoadGraph("image/TestGraph/space.png");
 
 	return 0;
 }
@@ -33,10 +33,12 @@ int Game::GameDraw()
 	if (selectF && !gameF)
 	{
 		DrawGraph(0, 0, select, true);
+		DrawGraph(250, 540, space, true);
 	}
 	else if(!selectF && gameF)
 	{
 		DrawGraph(0, 0, game, true);
+		DrawGraph(250, 540, space, true);
 		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 		{
 			gameF = false;

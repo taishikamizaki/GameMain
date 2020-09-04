@@ -6,7 +6,7 @@
 int GameOver::Init()
 {
 	gameOver = LoadGraph("image/TestGraph/GameOver.png");
-	space = LoadGraph("image/TestGraph/please_space.png");
+	space = LoadGraph("image/TestGraph/space.png");
 
 	return 0;
 }
@@ -28,6 +28,7 @@ int GameOver::GameOverCtl()
 int GameOver::GameOverDraw()
 {
 	DrawGraph(0, 0, gameOver, true);
+	DrawGraph(250, 540, space, true);
 
 	return 0;
 }

@@ -1,6 +1,7 @@
 
 #include <DxLib.h>
 #include "ScnMng.h"
+#include "player.h"
 #include "Game.h"
 
 // 初期化処理
@@ -9,6 +10,12 @@ int Game::Init()
 	select = LoadGraph("image/TestGraph/Select.png");
 	game = LoadGraph("image/TestGraph/Game.png");
 	space = LoadGraph("image/TestGraph/space.png");
+
+	if (player == nullptr)
+	{
+		player = new Player(charID_1, pID_1, charID_2, pID_2);
+		if (player != nullptr) player->SetPlayerID({ 10,0 }, { 60,0 });
+	}
 
 	return 0;
 }
@@ -27,7 +34,8 @@ int Game::SelectCtl()
 // ゲームの操作処理
 int Game::GameCtl()
 {
-	
+
+	if (player != nullptr) player->PlayerCtl();
 	return 0;
 }
 
@@ -43,13 +51,13 @@ int Game::Draw()
 	{
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
+	    if (player != nullptr) player->PlayerDraw();
 		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 		{
 			gameF = false;
 			_gameF = true;
 		}
 	}
-
 	return 0;
 }
 
@@ -59,11 +67,18 @@ Game::Game()
 	selectF = true;
 	gameF = false;
 	_gameF = false;
+
+	
+
 	Init();
 }
 
 // デストラクタ
 Game::~Game()
 {
-
+	if (player != nullptr)
+	{
+		delete player;
+		player = nullptr;
+	}
 }

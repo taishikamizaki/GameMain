@@ -59,6 +59,12 @@ private:
 	int scnCnt;
 	int scnCntOld;
 
+	int charID_1;
+	int charID_2;
+
+	int pID_1;
+	int pID_2;
+
 	ScnMng();
 	~ScnMng();
 

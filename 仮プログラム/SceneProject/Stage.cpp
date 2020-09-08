@@ -6,19 +6,19 @@ bool Stage::StageInit(void)
 {
 	bool rtnFlag = true;
 
-	LoadDivGraph("image/stage/hamaguriroom.png",7,7,1
+	LoadDivGraph("image/TestGraph/hamaguriroom.png",7,7,1
 		,CHIP_SIZE_X,CHIP_SIZE_Y
 		,hamaroomImage,false);
 
-	LoadDivGraph("image/stage/mati.png", 43, 43, 1
+	LoadDivGraph("image/TestGraph/mati.png", 43, 43, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, matiImage, false);
 
-	LoadDivGraph("image/stage/tougizyou.png", 12, 12, 1
+	LoadDivGraph("image/TestGraph/tougizyou.png", 12, 12, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, tougiImage, false);
 
-	LoadDivGraph("image/stage/yama.png", 23, 23, 1
+	LoadDivGraph("image/TestGraph/yama.png", 23, 23, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, yamaImage, false);
 

@@ -415,9 +415,9 @@ void Player::PlayerDraw(void)
 	}
 
 	// プレイヤー座標
-	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
-	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
-	DrawFormatString(0, 60, 0xFFFFF, "player1.id(%d)", player1.charID);
+	DrawFormatString(10, 32, 0xff0000, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
+	DrawFormatString(10, 48, 0xff0000, "player1.moveSpeed(%d,)", player1.moveSpeed);
+	DrawFormatString(10, 60, 0xff0000, "player1.id(%d)", player1.charID);
 
 	// 2P
 	// プレイヤー枠
@@ -457,9 +457,9 @@ void Player::PlayerDraw(void)
 	}
 
 	// プレイヤー座標
-	DrawFormatString(500, 32, 0xFFFFF, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
-	DrawFormatString(500, 48, 0xFFFFF, "player2.moveSpeed(%d,)", player2.moveSpeed);
-	DrawFormatString(500, 60, 0xFFFFF, "player2.id(%d)", player2.charID);
+	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
+	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
+	DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
 }
 
 void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)

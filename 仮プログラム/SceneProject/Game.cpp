@@ -1,6 +1,7 @@
 
 #include <DxLib.h>
 #include "ScnMng.h"
+#include "Stage.h"
 #include "player.h"
 #include "Game.h"
 
@@ -33,6 +34,7 @@ int Game::SelectCtl()
 // ƒQ[ƒ€‚Ì‘€ìˆ—
 int Game::GameCtl()
 {
+	lpStage.StageCtl();
 	if (player != nullptr) player->charCtl(player1, player2);
 	if (player != nullptr) player->PlayerCtl();
 	return 0;
@@ -51,6 +53,7 @@ int Game::Draw()
 		GameCtl();
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
+		lpStage.StageDraw();
 		if (player != nullptr)
 		{
 			player->PlayerDraw();

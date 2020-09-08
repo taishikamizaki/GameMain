@@ -1,5 +1,6 @@
 #pragma once
-#include"Vector2.h"
+
+#include"../vector/Vector2.h"
 
 #define MAP_X 20
 #define MAP_Y 12
@@ -7,6 +8,8 @@
 #define CHIP_SIZE_Y 50
 
 #define lpStage Stage::GetInstance()
+
+// ステージ種別
  enum STAGE_ID
 {
 	STAGE_ID_YAMA,
@@ -16,6 +19,7 @@
 	STAGE_ID_MAX
 };
 
+ // ステージクラス
 class Stage
 {
 public:

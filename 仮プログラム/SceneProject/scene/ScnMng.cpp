@@ -1,7 +1,7 @@
 
 #include <DxLib.h>
 #include "ScnMng.h"
-#include "Common.h"
+#include "../Common.h"
 #include "Title.h"
 #include "Game.h"
 #include "GameOver.h"

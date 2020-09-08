@@ -13,75 +13,99 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{e5d82a28-ccd5-4e27-aa89-bab687978717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\key">
+      <UniqueIdentifier>{204934ce-9be1-401d-9ed9-36d82805f47e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\stage">
+      <UniqueIdentifier>{e2ec4ba3-f9ef-47fb-9288-087b592c57a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\vector">
+      <UniqueIdentifier>{1c83605f-5cf4-49b5-b36e-7fd366c62575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\player">
+      <UniqueIdentifier>{89bf2435-a76a-460b-aa1c-ba05ada04c6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\scene">
+      <UniqueIdentifier>{67f96bf9-ae7a-40df-97c4-fecfeb343348}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="key\GetKeyState.cpp">
+      <Filter>game\key</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="stage\Stage.cpp">
+      <Filter>game\stage</Filter>
     </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="vector\Vector2.cpp">
+      <Filter>game\vector</Filter>
     </ClCompile>
-    <ClCompile Include="ScnMng.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="vector\Vector2f.cpp">
+      <Filter>game\vector</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="player\player.cpp">
+      <Filter>game\player</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="player\playerMng.cpp">
+      <Filter>game\player</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="player\skill.cpp">
+      <Filter>game\player</Filter>
     </ClCompile>
-    <ClCompile Include="GetKeyState.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="scene\Game.cpp">
+      <Filter>game\scene</Filter>
     </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="scene\GameOver.cpp">
+      <Filter>game\scene</Filter>
     </ClCompile>
-    <ClCompile Include="skill.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="scene\ScnMng.cpp">
+      <Filter>game\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\Title.cpp">
+      <Filter>game\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ScnMng.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="key\GetKeyState.h">
+      <Filter>game\key</Filter>
     </ClInclude>
-    <ClInclude Include="Title.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="stage\Stage.h">
+      <Filter>game\stage</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="vector\Vector2.h">
+      <Filter>game\vector</Filter>
     </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="vector\Vector2f.h">
+      <Filter>game\vector</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="player\player.h">
+      <Filter>game\player</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="player\playerMng.h">
+      <Filter>game\player</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2f.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="player\skill.h">
+      <Filter>game\player</Filter>
     </ClInclude>
-    <ClInclude Include="GetKeyState.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="scene\Game.h">
+      <Filter>game\scene</Filter>
     </ClInclude>
-    <ClInclude Include="Stage.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="scene\GameOver.h">
+      <Filter>game\scene</Filter>
     </ClInclude>
-    <ClInclude Include="skill.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="scene\ScnMng.h">
+      <Filter>game\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\Title.h">
+      <Filter>game\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 
 #include  <DxLib.h>
-#include "ScnMng.h"
+#include "scene/ScnMng.h"
 
 // ƒƒCƒ“ŠÖ”
 int WINAPI WinMain (_In_ HINSTANCE, _In_opt_ HINSTANCE, _In_ LPSTR, _In_ int)

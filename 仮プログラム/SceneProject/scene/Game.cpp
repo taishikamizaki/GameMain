@@ -1,8 +1,8 @@
 
 #include <DxLib.h>
 #include "ScnMng.h"
-#include "Stage.h"
-#include "player.h"
+#include "../stage/Stage.h"
+#include "../player/player.h"
 #include "Game.h"
 
 // ‰Šú‰»ˆ—
@@ -10,7 +10,7 @@ int Game::Init()
 {
 	select = LoadGraph("image/TestGraph/Select.png");
 	game = LoadGraph("image/TestGraph/Game.png");
-	space = LoadGraph("image/TestGraph/space.png");
+	space = LoadGraph("image/logo/space.png");
 
 	player1 = CHAR_ID::CHAR_ID_BTOU;
 	player2 = CHAR_ID::CHAR_ID_4;

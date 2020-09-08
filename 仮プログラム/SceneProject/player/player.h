@@ -1,9 +1,9 @@
 #pragma once
 #include <map>
 #include <string>
-#include"Game.h"
-#include "Vector2.h"
-#include "Vector2f.h"
+#include"../scene/Game.h"
+#include "../vector/Vector2.h"
+#include "../vector/Vector2f.h"
 
 
 //’è”‚Ì’è‹`

@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{ac8347ea-365e-4df9-b9fc-6d08d295ad36}</ProjectGuid>
     <RootNamespace>SceneProject</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -142,30 +142,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameOver.cpp" />
-    <ClCompile Include="GetKeyState.cpp" />
+    <ClCompile Include="key\GetKeyState.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="ScnMng.cpp" />
-    <ClCompile Include="skill.cpp" />
-    <ClCompile Include="Stage.cpp" />
-    <ClCompile Include="Title.cpp" />
-    <ClCompile Include="Vector2.cpp" />
-    <ClCompile Include="Vector2f.cpp" />
+    <ClCompile Include="player\player.cpp" />
+    <ClCompile Include="player\playerMng.cpp" />
+    <ClCompile Include="player\skill.cpp" />
+    <ClCompile Include="scene\Game.cpp" />
+    <ClCompile Include="scene\GameOver.cpp" />
+    <ClCompile Include="scene\ScnMng.cpp" />
+    <ClCompile Include="scene\Title.cpp" />
+    <ClCompile Include="stage\Stage.cpp" />
+    <ClCompile Include="vector\Vector2.cpp" />
+    <ClCompile Include="vector\Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="GameOver.h" />
-    <ClInclude Include="GetKeyState.h" />
-    <ClInclude Include="player.h" />
-    <ClInclude Include="ScnMng.h" />
-    <ClInclude Include="skill.h" />
-    <ClInclude Include="Stage.h" />
-    <ClInclude Include="Title.h" />
-    <ClInclude Include="Vector2.h" />
-    <ClInclude Include="Vector2f.h" />
+    <ClInclude Include="key\GetKeyState.h" />
+    <ClInclude Include="player\player.h" />
+    <ClInclude Include="player\playerMng.h" />
+    <ClInclude Include="player\skill.h" />
+    <ClInclude Include="scene\Game.h" />
+    <ClInclude Include="scene\GameOver.h" />
+    <ClInclude Include="scene\ScnMng.h" />
+    <ClInclude Include="scene\Title.h" />
+    <ClInclude Include="stage\Stage.h" />
+    <ClInclude Include="vector\Vector2.h" />
+    <ClInclude Include="vector\Vector2f.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

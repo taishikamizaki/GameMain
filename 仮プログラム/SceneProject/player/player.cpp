@@ -1,9 +1,9 @@
 #include <DxLib.h>
-#include "GetKeyState.h"
-#include "Game.h"
+#include "../key/GetKeyState.h"
+#include "../scene/Game.h"
 #include "skill.h"
-#include "Stage.h"
-#include "Vector2.h"
+#include "../stage/Stage.h"
+#include "../vector/Vector2.h"
 #include "player.h"
 
 // 初期化
@@ -44,10 +44,10 @@ void Player::PlayerSysInit(void)
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
 	player2.charID = CHAR_ID::CHAR_ID_MAX;
-	LoadDivGraph("image/TestGraph/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
-	LoadDivGraph("image/TestGraph/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
-	LoadDivGraph("image/TestGraph/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
-	LoadDivGraph("image/TestGraph/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
+	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
+	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
+	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
+	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
 }
 void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
@@ -100,6 +100,8 @@ void Player::PlayerCtl(void)
 	{
 		player1.runFlag = true;
 	
+		player1.pos.x += player1.moveSpeed;
+
 		moveFlag1 = true;
 		player1.moveDir = DIR::DIR_ID_RIGHT;
 	}
@@ -109,6 +111,8 @@ void Player::PlayerCtl(void)
 	{
 		player1.runFlag = true;
 	
+		player1.pos.x -= player1.moveSpeed;
+
 		moveFlag1 = true;
 		player1.moveDir = DIR::DIR_ID_LEFT;
 	}
@@ -133,9 +137,9 @@ void Player::PlayerCtl(void)
 			//移動キャンセル
 			Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
 			blockIndex.y = blockIndex.y + 1;
-			Vector2	blockPos = lpStage.IndexToPos(blockIndex);		//ブロックの左上のピクセル座標
+			Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
 														
-			playerPosBK.y = blockPos.y + player1.hitPosS.y;			//足元の座標からプレイヤーの座標を計算する
+			playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
 			player1.velocity.fy = 0;
 		}
 	
@@ -239,6 +243,8 @@ void Player::PlayerCtl(void)
 	{
 		player2.runFlag = true;
 
+		player2.pos.x += player2.moveSpeed;
+
 		moveFlag2 = true;
 		player2.moveDir = DIR::DIR_ID_RIGHT;
 	}
@@ -247,6 +253,8 @@ void Player::PlayerCtl(void)
 	if (keyNew[KEY_ID_LEFT2])
 	{
 		player2.runFlag = true;
+
+		player2.pos.x -= player2.moveSpeed;
 
 		moveFlag2 = true;
 		player2.moveDir = DIR::DIR_ID_LEFT;
@@ -272,9 +280,9 @@ void Player::PlayerCtl(void)
 			//移動キャンセル
 			Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
 			blockIndex2.y = blockIndex2.y + 1;
-			Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		//ブロックの左上のピクセル座標
+			Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
 
-			playerPosBK2.y = blockPos2.y + player2.hitPosS.y;			//足元の座標からプレイヤーの座標を計算する
+			playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
 			player2.velocity.fy = 0;
 		}
 
@@ -467,8 +475,6 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos1 = player1.pos;
 	pos2 = player2.pos;
 }
-
-
 
 Player::Player()
 {

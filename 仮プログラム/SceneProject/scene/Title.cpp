@@ -6,9 +6,9 @@
 // ‰Šú‰»ˆ—
 int Title::Init()
 {
-	title = LoadGraph("image/TestGraph/titleB.png");
-	titleL = LoadGraph("image/TestGraph/Title.png");
-	space = LoadGraph("image/TestGraph/space.png");
+	title = LoadGraph("image/logo/titleB.png");
+	titleL = LoadGraph("image/logo/Title.png");
+	space = LoadGraph("image/logo/space.png");
 
 	return 0;
 }

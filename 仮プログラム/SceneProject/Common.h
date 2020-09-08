@@ -1,5 +1,5 @@
 #pragma once
 // マクロ用ヘッダ
 
-constexpr auto WINDOW_TEXT = "TEST_SCENE";
+constexpr auto WINDOW_TEXT = "チームはまぐり";
 

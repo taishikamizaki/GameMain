@@ -39,9 +39,6 @@ enum class SKILL_TYPE
 	Max
 };
 
-
-
-
 //#define SCREEN_SIZE_X 1000		//âÊñ ÇÃâ°ª≤Ωﬁ
 //#define SCREEN_SIZE_Y 600		//âÊñ ÇÃècª≤Ωﬁ
 //
@@ -84,7 +81,6 @@ struct player
 	int Scount;		//
 
 };
-
 
 //bool SysInit();
 

@@ -1,5 +1,14 @@
 #pragma once
 
+enum class CHAR_ID
+{
+	CHAR_ID_KISI,
+	CHAR_ID_MDOU,
+	CHAR_ID_BTOU,
+	CHAR_ID_4,
+	CHAR_ID_MAX
+};
+
 // ゲームクラス
 class Player;
 class Game
@@ -33,10 +42,9 @@ private:
 	bool gameF;		// 切り替え用
 	bool _gameF;	// シーン遷移用
 
-	int charID_1;
-	int charID_2;
+	CHAR_ID player1;
+	CHAR_ID player2;
+	friend class Player;
 
-	int pID_1;
-	int pID_2;
 };
 

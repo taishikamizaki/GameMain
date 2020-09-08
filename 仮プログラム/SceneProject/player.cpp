@@ -1,5 +1,6 @@
 #include <DxLib.h>
 #include "GetKeyState.h"
+#include "Game.h"
 #include "skill.h"
 #include "Stage.h"
 #include "Vector2.h"
@@ -11,7 +12,7 @@ void Player::PlayerSysInit(void)
 	Vector2 pos;									//キャラクタの位置（中心）
 	
 	player1.moveDir		 = DIR::DIR_ID_RIGHT;		// 向いている方向
-	player1.size		 = { 96,64 };				// キャラクタ画像のサイズ
+	player1.size		 = { 75,99 };				// キャラクタ画像のサイズ
 	player1.pos          = { 200,100 };
 	player1.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player1.hitPosE		 = { 15,32 };				// 当たり判定用の右下
@@ -25,9 +26,11 @@ void Player::PlayerSysInit(void)
 	player1.surinukeFlag = false;					// 1部ブロックすり抜け用
 	player1.moveSpeed	 = 0;						// キャラクタの移動量
 	player1.animCnt		 = 0;						// キャラクタのアニメーション用カウンタ
+	player1.charID = CHAR_ID::CHAR_ID_MAX;
 
 	player2.moveDir		 = DIR::DIR_ID_LEFT;		// 向いている方向
-	player2.size		 = { 96,64 };				// キャラクタ画像のサイズ
+	player2.size		 = { 75,99 };				// キャラクタ画像のサイズ
+	player2.pos          = { 500,100 };
 	player2.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player2.hitPosE		 = { 15,32 };				// 当たり判定用の右下
 	player2.velocity	 = { 0.0f,0 };				// 加速度
@@ -40,18 +43,24 @@ void Player::PlayerSysInit(void)
 	player2.surinukeFlag = false;				    // 1部ブロックすり抜け用
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
-
-	LoadDivGraph("image/TestGraph/KISHI.png,", 12, 3, 4, 25, 33, kisiImage);
-	LoadDivGraph("image/TestGraph/MAHO.png,", 12, 3, 4, 25, 33, mahoImage);
-	LoadDivGraph("image/TestGraph/BUTOU.png,", 12, 3, 4, 25, 33, butoImage);
-	LoadDivGraph("image/TestGraph/NAZO.png,", 12, 3, 4, 25, 33, nazoImage);
+	player2.charID = CHAR_ID::CHAR_ID_MAX;
+	LoadDivGraph("image/TestGraph/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
+	LoadDivGraph("image/TestGraph/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
+	LoadDivGraph("image/TestGraph/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
+	LoadDivGraph("image/TestGraph/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
 }
+void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
+{
+	player1.charID = p1;
+	player2.charID = p2;
 
+	//(player1.charID = p1, player2.charID = p2)
+}
 // ゲーム中の初期化
 void Player::PlayerGameInit(void)
 {
-	
+
 }
 
 // ｺﾝﾄﾛｰﾙ
@@ -87,7 +96,7 @@ void Player::PlayerCtl(void)
 	// 1P
 
 	//右
-	if (keyNew[KEY_ID_RIGHT])
+	if (keyNew[KEY_ID_RIGHT1])
 	{
 		player1.runFlag = true;
 	
@@ -96,7 +105,7 @@ void Player::PlayerCtl(void)
 	}
 	
 	//左
-	if (keyNew[KEY_ID_LEFT])
+	if (keyNew[KEY_ID_LEFT1])
 	{
 		player1.runFlag = true;
 	
@@ -158,7 +167,7 @@ void Player::PlayerCtl(void)
 	
 			if (player1.jumpFlag == false)
 			{
-				if (keyNew[KEY_ID_UP])
+				if (keyNew[KEY_ID_JUMP1])
 				{
 					player1.jumpFlag = true;
 					player1.velocity.fy = INIT_VELOCITY;
@@ -226,7 +235,7 @@ void Player::PlayerCtl(void)
 	// 2P
 
 	//右
-	if (keyNew[KEY_ID_RIGHT])
+	if (keyNew[KEY_ID_RIGHT2])
 	{
 		player2.runFlag = true;
 
@@ -235,7 +244,7 @@ void Player::PlayerCtl(void)
 	}
 
 	//左
-	if (keyNew[KEY_ID_LEFT])
+	if (keyNew[KEY_ID_LEFT2])
 	{
 		player2.runFlag = true;
 
@@ -297,7 +306,7 @@ void Player::PlayerCtl(void)
 
 			if (player2.jumpFlag == false)
 			{
-				if (keyNew[KEY_ID_UP])
+				if (keyNew[KEY_ID_JUMP2])
 				{
 					player2.jumpFlag = true;
 					player2.velocity.fy = INIT_VELOCITY;
@@ -361,6 +370,7 @@ void Player::PlayerCtl(void)
 			}
 		}
 	}
+	PlayerGameInit();
 }
 
 // 描画
@@ -377,11 +387,37 @@ void Player::PlayerDraw(void)
 	DrawBox(player1.pos.x - player1.hitPosS.x , player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFF000, false);
 
- 		DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);
+ 		/*DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);*/
+
+	switch (player1.charID)
+	{
+	case CHAR_ID::CHAR_ID_KISI:
+		DrawExtendGraph(player1.pos.x-(player1.size.x/2), player1.pos.y-(player1.size.y/2),
+			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_MDOU:
+		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_BTOU:
+		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_4:
+		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[5], true);
+		break;
+	default:
+		break;
+	}
 
 	// プレイヤー座標
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
 	DrawFormatString(0, 48, 0xFFFFF, "player1.moveSpeed(%d,)", player1.moveSpeed);
+	DrawFormatString(0, 60, 0xFFFFF, "player1.id(%d)", player1.charID);
 
 	// 2P
 	// プレイヤー枠
@@ -393,11 +429,37 @@ void Player::PlayerDraw(void)
 	DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
 		player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
-	DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);
+	/*DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);*/
+
+	switch (player2.charID)
+	{
+	case CHAR_ID::CHAR_ID_KISI:
+	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_MDOU:
+	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_BTOU:
+	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[5], true);
+		break;
+
+	case CHAR_ID::CHAR_ID_4:
+	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[5], true);
+		break;
+	default:
+		break;
+	}
 
 	// プレイヤー座標
 	DrawFormatString(500, 32, 0xFFFFF, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
 	DrawFormatString(500, 48, 0xFFFFF, "player2.moveSpeed(%d,)", player2.moveSpeed);
+	DrawFormatString(500, 60, 0xFFFFF, "player2.id(%d)", player2.charID);
 }
 
 void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
@@ -406,16 +468,7 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos2 = player2.pos;
 }
 
-Player::Player(int charID_1, int ID_1, int charID_2, int ID_2)
-{
-	this->charID_1 = charID_1;
-	this->charID_2 = charID_2;
 
-	this->pID_1 = ID_1;
-	this->pID_2 = ID_2;
-
-	PlayerSysInit();
-}
 
 Player::Player()
 {

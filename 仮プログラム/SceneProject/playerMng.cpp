@@ -6,7 +6,7 @@ int PlayerMng::Init()
 {
 	if (player == nullptr)
 	{
-		player = new Player(charID_1, pID_1, charID_2, pID_2);
+		//player = new Player(charID_1, pID_1, charID_2, pID_2);
 		if (player != nullptr) player->SetPlayerID({ 10,0 }, { 60,0 });
 	}
 	return 0;

@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include"Game.h"
 #include "Vector2.h"
 #include "Vector2f.h"
 
@@ -14,16 +15,8 @@
 #define	lpPlayer Player::GetInstance()
 
 using MapInt = std::map<int, int>;
-
-//列挙型
-enum class CHAR_ID
-{
-	CHAR_ID_KISI,
-	CHAR_ID_MDOU,
-	CHAR_ID_BTOU,
-	CHAR_ID_4,
-	CHAR_ID_MAX
-};
+using PairChar = std::pair<CHAR_ID, CHAR_ID>;
+//列挙
 enum class DIR
 {
 	DIR_ID_RIGHT,
@@ -48,6 +41,7 @@ struct CHARACTER
 	bool surinukeFlag;	//1部ブロックすり抜け用
 	int moveSpeed;		//キャラクタの移動量
 	int animCnt;		//キャラクタのアニメーション用カウンタ
+	CHAR_ID charID;
 };
 
 class Player
@@ -72,8 +66,7 @@ public:
 	void PlayerDraw(void);
 
 	void SetPlayerID(Vector2 pos1, Vector2 pos2);
-
-	Player(int charID_1, int ID_1, int charID_2, int ID_2);
+	void charCtl(CHAR_ID p1, CHAR_ID p2);
 
 	Player();
 	~Player();
@@ -86,15 +79,9 @@ private:
 	CHARACTER player1;
 	CHARACTER player2;
 
-	int charID_1;
-	int charID_2;
-
-	int pID_1;
-	int pID_2;
 
 	DIR dir;
-	CHAR_ID charID;
 
 	MapInt charcter;
-
+	PairChar charID_;
 };

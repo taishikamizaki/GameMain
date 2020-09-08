@@ -147,7 +147,6 @@
     <ClCompile Include="GetKeyState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="playerMng.cpp" />
     <ClCompile Include="ScnMng.cpp" />
     <ClCompile Include="skill.cpp" />
     <ClCompile Include="Stage.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="GetKeyState.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="playerMng.h" />
     <ClInclude Include="ScnMng.h" />
     <ClInclude Include="skill.h" />
     <ClInclude Include="Stage.h" />

@@ -11,11 +11,10 @@ int Game::Init()
 	game = LoadGraph("image/TestGraph/Game.png");
 	space = LoadGraph("image/TestGraph/space.png");
 
-	if (player == nullptr)
-	{
-		player = new Player(charID_1, pID_1, charID_2, pID_2);
-		if (player != nullptr) player->SetPlayerID({ 10,0 }, { 60,0 });
-	}
+	player1 = CHAR_ID::CHAR_ID_BTOU;
+	player2 = CHAR_ID::CHAR_ID_4;
+
+	if (player == nullptr) player = new Player();
 
 	return 0;
 }
@@ -34,7 +33,7 @@ int Game::SelectCtl()
 // ƒQ[ƒ€‚Ì‘€ìˆ—
 int Game::GameCtl()
 {
-
+	if (player != nullptr) player->charCtl(player1, player2);
 	if (player != nullptr) player->PlayerCtl();
 	return 0;
 }
@@ -49,12 +48,14 @@ int Game::Draw()
 	}
 	else if(!selectF && gameF)
 	{
+		GameCtl();
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
 		if (player != nullptr)
 		{
 			player->PlayerDraw();
 		}
+
 		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 		{
 			gameF = false;
@@ -70,8 +71,6 @@ Game::Game()
 	selectF = true;
 	gameF = false;
 	_gameF = false;
-
-	
 
 	Init();
 }

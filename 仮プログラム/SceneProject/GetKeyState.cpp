@@ -37,17 +37,38 @@ void KeyCheck(void)
 	// 追加ｷｰ設定
 	keyNew[KEY_ID_PAUSE] = CheckHitKey(KEY_INPUT_P);			// Pｷｰでﾎﾟｰｽﾞ起動
 
-	// ﾀﾞｯｼｭ
-	keyNew[KEY_ID_JUMP]  = CheckHitKey(KEY_INPUT_LSHIFT);
+	// 1P
+	// ジャンプ
+	keyNew[KEY_ID_JUMP1]  = CheckHitKey(KEY_INPUT_W);
 
 	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
-	keyNew[KEY_ID_UP]    = CheckHitKey(KEY_INPUT_UP);
-	keyNew[KEY_ID_RIGHT] = CheckHitKey(KEY_INPUT_RIGHT);
-	keyNew[KEY_ID_DOWN]  = CheckHitKey(KEY_INPUT_DOWN);
-	keyNew[KEY_ID_LEFT]  = CheckHitKey(KEY_INPUT_LEFT);
+	keyNew[KEY_ID_RIGHT1] = CheckHitKey(KEY_INPUT_A);
+	keyNew[KEY_ID_LEFT1]  = CheckHitKey(KEY_INPUT_D);
 
 	// 弾発射用ｷｰ
-	keyNew[KEY_ID_SHOT]  = CheckHitKey(KEY_INPUT_LCONTROL);
+	keyNew[KEY_ID_SHOT1]  = CheckHitKey(KEY_INPUT_LCONTROL);
+
+	keyNew[KEY_ID_1SKILL1] = CheckHitKey(KEY_INPUT_1);
+	keyNew[KEY_ID_1SKILL2] = CheckHitKey(KEY_INPUT_2);
+	keyNew[KEY_ID_1SKILL3] = CheckHitKey(KEY_INPUT_3);
+	keyNew[KEY_ID_1SKILL4] = CheckHitKey(KEY_INPUT_4);
+
+	// 2P
+	// ジャンプ
+	keyNew[KEY_ID_JUMP2] = CheckHitKey(KEY_INPUT_UP);
+
+	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
+	keyNew[KEY_ID_RIGHT2] = CheckHitKey(KEY_INPUT_RIGHT);
+	keyNew[KEY_ID_LEFT2] = CheckHitKey(KEY_INPUT_LEFT);
+
+	// 弾発射用ｷｰ
+	keyNew[KEY_ID_SHOT2] = CheckHitKey(KEY_INPUT_RCONTROL);
+
+	keyNew[KEY_ID_2SKILL1] = CheckHitKey(KEY_INPUT_NUMPAD1);
+	keyNew[KEY_ID_2SKILL2] = CheckHitKey(KEY_INPUT_NUMPAD2);
+	keyNew[KEY_ID_2SKILL3] = CheckHitKey(KEY_INPUT_NUMPAD3);
+	keyNew[KEY_ID_2SKILL4] = CheckHitKey(KEY_INPUT_NUMPAD4);
+
 
 	// ｾｰﾌﾞ&ﾛｰﾄﾞ用ｷｰ
 	keyNew[KEY_ID_SAVE]  = CheckHitKey(KEY_INPUT_S);		// ｾｰﾌﾞ

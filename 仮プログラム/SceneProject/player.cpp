@@ -12,6 +12,7 @@ void Player::PlayerSysInit(void)
 	
 	player1.moveDir		 = DIR::DIR_ID_RIGHT;		// 向いている方向
 	player1.size		 = { 96,64 };				// キャラクタ画像のサイズ
+	player1.pos          = { 200,100 };
 	player1.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player1.hitPosE		 = { 15,32 };				// 当たり判定用の右下
 	player1.velocity	 = { 0.0f,0 };				// 加速度
@@ -40,12 +41,17 @@ void Player::PlayerSysInit(void)
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
 
+	LoadDivGraph("image/TestGraph/KISHI.png,", 12, 3, 4, 25, 33, kisiImage);
+	LoadDivGraph("image/TestGraph/MAHO.png,", 12, 3, 4, 25, 33, mahoImage);
+	LoadDivGraph("image/TestGraph/BUTOU.png,", 12, 3, 4, 25, 33, butoImage);
+	LoadDivGraph("image/TestGraph/NAZO.png,", 12, 3, 4, 25, 33, nazoImage);
+
 }
 
 // ゲーム中の初期化
 void Player::PlayerGameInit(void)
 {
-
+	
 }
 
 // ｺﾝﾄﾛｰﾙ
@@ -360,6 +366,7 @@ void Player::PlayerCtl(void)
 // 描画
 void Player::PlayerDraw(void)
 {
+
 	// 1P
 	// プレイヤー枠
 	DrawBox(player1.pos.x - player1.sizeOffset.x , player1.pos.y - player1.sizeOffset.y ,
@@ -368,9 +375,9 @@ void Player::PlayerDraw(void)
 
 	//プレイヤーの当たり判定枠表示
 	DrawBox(player1.pos.x - player1.hitPosS.x , player1.pos.y - player1.hitPosS.y,
-			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFFFF, false);
+			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFF000, false);
 
-	DrawGraph(player1.pos.x, player1.pos.y, charID_1, true);
+ 		DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);
 
 	// プレイヤー座標
 	DrawFormatString(0, 32, 0xFFFFF, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
@@ -386,7 +393,7 @@ void Player::PlayerDraw(void)
 	DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
 		player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
-	DrawGraph(player2.pos.x, player2.pos.y, charID_2, true);
+	DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);
 
 	// プレイヤー座標
 	DrawFormatString(500, 32, 0xFFFFF, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);

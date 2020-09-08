@@ -53,6 +53,12 @@ struct CHARACTER
 class Player
 {
 public:
+
+	int kisiImage[12];
+	int mahoImage[12];
+	int butoImage[12];
+	int nazoImage[12];
+
 	static Player& GetInstance()
 	{
 		static Player s_Instance;

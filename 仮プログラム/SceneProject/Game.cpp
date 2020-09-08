@@ -51,7 +51,10 @@ int Game::Draw()
 	{
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
-	    if (player != nullptr) player->PlayerDraw();
+		if (player != nullptr)
+		{
+			player->PlayerDraw();
+		}
 		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
 		{
 			gameF = false;

@@ -69,7 +69,15 @@ void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
 // ƒQ[ƒ€’†‚Ì‰Šú‰»
 void Player::PlayerGameInit(void)
 {
-	skill->PlayerInit(player1.pos, player1.hitPosS, player1.hitPosE, player1.sizeOffset, player1.size, player2.pos, player2.hitPosS, player2.hitPosE, player2.sizeOffset, player2.size);
+	if (skill != nullptr)
+	{
+		skill->PlayerInit(player1.pos, player1.hitPosS,
+						 player1.hitPosE, player1.sizeOffset, player1.size, 
+						 player2.pos, player2.hitPosS, 
+						 player2.hitPosE, player2.sizeOffset, player2.size);
+
+		skill->StageGameInit();
+	}
 }
 
 // ºİÄÛ°Ù

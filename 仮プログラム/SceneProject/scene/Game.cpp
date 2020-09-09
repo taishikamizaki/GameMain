@@ -12,7 +12,7 @@ int Game::Init()
 	game = LoadGraph("image/TestGraph/Game.png");
 	space = LoadGraph("image/logo/space.png");
 
-	player1 = CHAR_ID::CHAR_ID_BTOU;
+	player1 = CHAR_ID::CHAR_ID_KISI;
 	player2 = CHAR_ID::CHAR_ID_4;
 
 	if (player == nullptr) player = new Player();

@@ -87,6 +87,7 @@ struct player
 	int attack;		// player‚ÌUŒ‚—Í(•t—^‚³‚ê‚½”’l)
 	int defense;	// player‚Ì–hŒä—Í(•t—^‚³‚ê‚½”’l)
 	int speed;		// player‚ÌˆÚ“®‘¬“x
+	int count;
 	SScount kisi;
 	SScount maho;
 	SScount buto;
@@ -110,6 +111,7 @@ public:
 	}
 
 	void StageSysInit(void);
+	void StageGameInit(void);
 
 	void PlayerInit(Vector2 pos, Vector2 hitposS, Vector2 hitposE, Vector2 offset, Vector2 size, Vector2 pos2, Vector2 hitposS2, Vector2 hitposE2, Vector2 offset2, Vector2 size2);
 	void CharInit(CHAR_ID player1, CHAR_ID player2);
@@ -156,7 +158,7 @@ private:
 	SKILL_ID skill;
 	player P1;
 	player P2;
-	int count;
+
 	/*SScount kisi;
 	SScount maho;
 	SScount buto;

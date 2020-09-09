@@ -1,5 +1,6 @@
 #pragma once
 
+
 enum class CHAR_ID
 {
 	CHAR_ID_KISI,
@@ -44,6 +45,7 @@ private:
 
 	CHAR_ID player1;
 	CHAR_ID player2;
+
 	friend class Player;
 
 };

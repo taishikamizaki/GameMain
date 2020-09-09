@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include "skill.h"
 #include"../scene/Game.h"
 #include "../vector/Vector2.h"
 #include "../vector/Vector2f.h"
@@ -44,6 +45,7 @@ struct CHARACTER
 	CHAR_ID charID;
 };
 
+class Skill;
 class Player
 {
 public:
@@ -84,4 +86,7 @@ private:
 
 	MapInt charcter;
 	PairChar charID_;
+
+	Skill* skill;
+
 };

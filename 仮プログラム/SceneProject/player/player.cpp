@@ -44,28 +44,38 @@ void Player::PlayerSysInit(void)
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
 	player2.charID = CHAR_ID::CHAR_ID_MAX;
+
 	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
 	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
+	if (skill == nullptr) skill = new Skill();
+
 }
 void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
 {
+
 	player1.charID = p1;
 	player2.charID = p2;
+	if ((skill != nullptr)&&
+		(player1.charID != CHAR_ID::CHAR_ID_MAX)&&
+		(player2.charID != CHAR_ID::CHAR_ID_MAX))
+	{
 
-	//(player1.charID = p1, player2.charID = p2)
+		skill->CharInit(player1.charID,player2.charID);
+	}
 }
 // ゲーム中の初期化
 void Player::PlayerGameInit(void)
 {
-
+	skill->PlayerInit(player1.pos, player1.hitPosS, player1.hitPosE, player1.sizeOffset, player1.size, player2.pos, player2.hitPosS, player2.hitPosE, player2.sizeOffset, player2.size);
 }
 
 // ｺﾝﾄﾛｰﾙ
 void Player::PlayerCtl(void)
 {
+	PlayerGameInit();
 	bool moveFlag1 = false;
 	bool moveFlag2 = false;
 	
@@ -378,7 +388,8 @@ void Player::PlayerCtl(void)
 			}
 		}
 	}
-	PlayerGameInit();
+	
+	skill->SkillCtl(player1.charID, player2.charID);
 }
 
 // 描画
@@ -468,6 +479,11 @@ void Player::PlayerDraw(void)
 	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
 	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
 	DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
+
+	if (skill != nullptr)
+	{
+		skill->StageDraw(player1.charID,player2.charID);
+	}
 }
 
 void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)

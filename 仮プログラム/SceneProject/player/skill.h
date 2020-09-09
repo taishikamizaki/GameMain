@@ -1,6 +1,8 @@
 #pragma once
-
+#include"../scene/Game.h"
 #include "player.h"
+#include"../vector/Vector2.h"
+
 
 #define lpSkill Skill::GetInstance()
 
@@ -79,8 +81,18 @@ struct player
 	XY AttackRange;	// playerの攻撃範囲
 	XY Attackoffset;// playerの攻撃範囲オフセット
 	int Scount;		//
-
+	int HP;			// playerHP
+	int LP;			// playerの初期ライフポイント
+	int dmage;		// playerが与えるダメージ
+	int attack;		// playerの攻撃力(付与された数値)
+	int defense;	// playerの防御力(付与された数値)
+	int speed;		// playerの移動速度
+	SScount kisi;
+	SScount maho;
+	SScount buto;
+	SScount nazo;
 };
+
 
 //bool SysInit();
 
@@ -99,23 +111,23 @@ public:
 
 	void StageSysInit(void);
 
-	void PlayerInit(void);
-	void CharInit(CHAR_ID id);
+	void PlayerInit(Vector2 pos, Vector2 hitposS, Vector2 hitposE, Vector2 offset, Vector2 size, Vector2 pos2, Vector2 hitposS2, Vector2 hitposE2, Vector2 offset2, Vector2 size2);
+	void CharInit(CHAR_ID player1, CHAR_ID player2);
 	void SScountInit(void);
 
-	void StageDraw(void);
+	void StageDraw(CHAR_ID player1, CHAR_ID player2);
 	void SkillDraw(void);
 	void HamaTime(void);
 
-	void SkillCtl(CHAR_ID id);
+	void SkillCtl(CHAR_ID player1, CHAR_ID player2);
 	void CheckHit();
 
-	bool P1skill(CHAR_ID id);
-	bool P2skill(CHAR_ID id);
-	bool P3skill(CHAR_ID id);
-	bool P4skill(CHAR_ID id);
+	bool P1skill(CHAR_ID player1, CHAR_ID player2);
+	bool P2skill(CHAR_ID player1, CHAR_ID player2);
+	bool P3skill(CHAR_ID player1, CHAR_ID player2);
+	bool P4skill(CHAR_ID player1, CHAR_ID player2);
 
-	Skill(CHAR_ID id);
+	Skill();
 private:
 	/*int chipImage[7];
 	int matiImage[43];
@@ -139,27 +151,20 @@ private:
 	//int hamaCnt;
 	//XY mapSize;
 	//XY hamaPos;
-	int HP;			// playerHP
-	int LP;			// playerの初期ライフポイント
-	int dmage;		// playerが与えるダメージ
-	int attack;		// playerの攻撃力(付与された数値)
-	int defense;	// playerの防御力(付与された数値)
-	int speed;		// playerの移動速度
+	
 	//enum MAP_ID mapID;
 	SKILL_ID skill;
 	player P1;
 	player P2;
 	int count;
-	SScount kisi;
+	/*SScount kisi;
 	SScount maho;
 	SScount buto;
-	SScount nazo;
+	SScount nazo;*/
 	bool SSflag;	//発動１回用
 	bool skillFlag;
 	bool hitFlag;
 	bool bufFlag;
-
-	Skill() {};
 	~Skill();
 
 };

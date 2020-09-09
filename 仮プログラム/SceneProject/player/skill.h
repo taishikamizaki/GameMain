@@ -159,7 +159,7 @@ private:
 	//XY hamaPos;
 	
 	//enum MAP_ID mapID;
-	SKILL_ID skill;
+	//SKILL_ID skill;
 	player P1;
 	player P2;
 

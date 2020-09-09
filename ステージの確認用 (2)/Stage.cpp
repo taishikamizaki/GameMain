@@ -374,31 +374,31 @@ void StageDraw()
 		}
 	}
 	DrawGraph(SCREEN_SIZE_X/2-TIME_SIZE_X,0,timeImage[0],true);
-	DrawFormatString(0, 0,0x000000,"%d", hamaCnt);
-	DrawFormatString(0, 20, 0x000000, "count:%d", count);
-	DrawFormatString(0, 40, 0x000000, "Scount:%d", P1.Scount);
-	DrawFormatString(0, 60, 0x000000, "HP:%d", HP);
-	DrawFormatString(0, 80, 0x000000, "LP:%d", LP);
-	DrawFormatString(0, 100, 0x000000, "dmege:%d", dmage);
-	DrawFormatString(0, 120, 0x000000, "attack:%d", attack);
-	DrawFormatString(0, 140, 0x000000, "defense:%d", defense);
-	DrawFormatString(0, 160, 0x000000, "speed:%d", speed);
-	DrawFormatString(0, 180, 0x000000, "s1:%d", kisi.s1);
-	DrawFormatString(0, 200, 0x000000, "s2:%d", kisi.s2);
-	DrawFormatString(0, 220, 0x000000, "s3:%d", kisi.s3);
-	DrawFormatString(0, 240, 0x000000, "s4:%d", kisi.s4);
-	DrawFormatString(70,180, 0x000000, "s1:%d", maho.s1);
-	DrawFormatString(70, 200, 0x000000, "s2:%d", maho.s2);
-	DrawFormatString(70, 220, 0x000000, "s3:%d", maho.s3);
-	DrawFormatString(70, 240, 0x000000, "s4:%d", maho.s4);
-	DrawFormatString(140, 180, 0x000000, "s1:%d", buto.s1);
-	DrawFormatString(140, 200, 0x000000, "s2:%d", buto.s2);
-	DrawFormatString(140, 220, 0x000000, "s3:%d", buto.s3);
-	DrawFormatString(140, 240, 0x000000, "s4:%d", buto.s4);
-	DrawFormatString(210, 180, 0x000000, "s1:%d", nazo.s1);
-	DrawFormatString(210, 200, 0x000000, "s2:%d", nazo.s2);
-	DrawFormatString(210, 220, 0x000000, "s3:%d", nazo.s3);
-	DrawFormatString(210, 240, 0x000000, "s4:%d", nazo.s4);
+	//DrawFormatString(0, 0,0x000000,"%d", hamaCnt);
+	//DrawFormatString(0, 20, 0x000000, "count:%d", count);
+	//DrawFormatString(0, 40, 0x000000, "Scount:%d", P1.Scount);
+	//DrawFormatString(0, 60, 0x000000, "HP:%d", HP);
+	//DrawFormatString(0, 80, 0x000000, "LP:%d", LP);
+	//DrawFormatString(0, 100, 0x000000, "dmege:%d", dmage);
+	//DrawFormatString(0, 120, 0x000000, "attack:%d", attack);
+	//DrawFormatString(0, 140, 0x000000, "defense:%d", defense);
+	//DrawFormatString(0, 160, 0x000000, "speed:%d", speed);
+	//DrawFormatString(0, 180, 0x000000, "s1:%d", kisi.s1);
+	//DrawFormatString(0, 200, 0x000000, "s2:%d", kisi.s2);
+	//DrawFormatString(0, 220, 0x000000, "s3:%d", kisi.s3);
+	//DrawFormatString(0, 240, 0x000000, "s4:%d", kisi.s4);
+	//DrawFormatString(70,180, 0x000000, "s1:%d", maho.s1);
+	//DrawFormatString(70, 200, 0x000000, "s2:%d", maho.s2);
+	//DrawFormatString(70, 220, 0x000000, "s3:%d", maho.s3);
+	//DrawFormatString(70, 240, 0x000000, "s4:%d", maho.s4);
+	//DrawFormatString(140, 180, 0x000000, "s1:%d", buto.s1);
+	//DrawFormatString(140, 200, 0x000000, "s2:%d", buto.s2);
+	//DrawFormatString(140, 220, 0x000000, "s3:%d", buto.s3);
+	//DrawFormatString(140, 240, 0x000000, "s4:%d", buto.s4);
+	//DrawFormatString(210, 180, 0x000000, "s1:%d", nazo.s1);
+	//DrawFormatString(210, 200, 0x000000, "s2:%d", nazo.s2);
+	//DrawFormatString(210, 220, 0x000000, "s3:%d", nazo.s3);
+	//DrawFormatString(210, 240, 0x000000, "s4:%d", nazo.s4);
 	if (hamaCnt > HAMA_CNT_1)
 	{
 		DrawGraph(hamaPos.x, hamaPos.y, hamaImage, true);

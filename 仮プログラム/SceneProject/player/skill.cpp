@@ -8,16 +8,7 @@
 	//LoadDivGraph("image/tougizyou.png", 12, 12, 1, CHIP_SIZE_X, CHIP_SIZE_Y, tougiImage, false);
 	//LoadDivGraph("image/yama.png", 23, 23, 1, CHIP_SIZE_X, CHIP_SIZE_Y, yamaImage, false);
 	//LoadDivGraph("image/É^ÉCÉÄ.png", 10, 10, 1, TIME_SIZE_X, TIME_SIZE_Y, timeImage, false);
-	//LoadDivGraph("image/Heal.png", 10, 10, 1, 120, 120, healImage, false);
-	//LoadDivGraph("image/Attackbuff.png", 10, 10, 1, 120, 120, buffAImage, false);
-	//LoadDivGraph("image/Defensebuff.png", 10, 10, 1, 120, 120, buffDImage, false);
-	//LoadDivGraph("image/Speedbuff.png", 10, 10, 1, 120, 120, buffSImage, false);
-	//LoadDivGraph("image/Uniquebuff.png", 10, 10, 1, 120, 120, buffUImage, false);
-	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
-	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
-	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
-	//LoadDivGraph("image/laser.png", 5, 1, 5, 320, 120, laserImage, false);
-	//(hamaImage = LoadGraph("image/yaku.png"));
+
 	//// ------ïœêîèâä˙âª------
 
 
@@ -40,7 +31,16 @@ void Skill::StageSysInit(void)
 	P2.Scount = 0;
 	P1.skill = SKILL_ID::SKILL_MAX;
 	P2.skill = SKILL_ID::SKILL_MAX;
-	/*mapID = MAP_ID::MAP_ID_MATI;*/
+	LoadDivGraph("image/skill/buff/Heal.png", 10, 10, 1, 120, 120, healImage, false);
+	LoadDivGraph("image/skill/buff/Attackbuff.png", 10, 10, 1, 120, 120, buffAImage, false);
+	LoadDivGraph("image/skill/buff/Defensebuff.png", 10, 10, 1, 120, 120, buffDImage, false);
+	LoadDivGraph("image/skill/buff/Speedbuff.png", 10, 10, 1, 120, 120, buffSImage, false);
+	LoadDivGraph("image/skill/buff/Uniquebuff.png", 10, 10, 1, 120, 120, buffUImage, false);
+	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
+	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
+	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
+	//LoadDivGraph("image/laser.png", 5, 1, 5, 320, 120, laserImage, false);
+	//mapID = MAP_ID::MAP_ID_MATI;
 }
 
 //void SoundSysInit(void)
@@ -245,7 +245,7 @@ void Skill::SScountInit(void)
 
 void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 {
-	int Anim = (P1.Scount / 5) % 10;
+	int Anim = (P1.Scount / 6) % 10;
 	int AnimS = (P1.Scount / 5) % 16;
 	int AnimI = (P1.Scount / 5) % 12;
 	int AnimL = (P1.Scount / 5) % 5;
@@ -365,7 +365,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, healImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -375,7 +375,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -407,7 +407,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffSImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffSImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -417,7 +417,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -449,7 +449,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -457,7 +457,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawBox(posp.x, posp.y, offsetPosp.x, offsetPosp.y,  0x88ffff, true);
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
 				}
 
 				//if (skillFlag == true)
@@ -471,7 +471,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, healImage[Anim], true);
 						//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, laserImage[AnimL], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
 				}
@@ -492,7 +492,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 10, P1.posp.y - 10, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -536,7 +536,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, healImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, healImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -546,7 +546,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -578,7 +578,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffSImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffSImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -588,7 +588,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -620,7 +620,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffDImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffDImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -628,7 +628,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawBox(posp.x, posp.y, offsetPosp.x, offsetPosp.y,  0x88ffff, true);
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
 				}
 
 				//if (skillFlag == true)
@@ -642,7 +642,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, healImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, healImage[Anim], true);
 					//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, laserImage[AnimL], true);
 				//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
 
@@ -664,7 +664,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 10, P2.posp.y - 10, buffDImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffDImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -752,12 +752,16 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 
 		if (CheckHitKey(KEY_INPUT_I) == 1)
 		{
-			if ((P1.kisi.s2 / 4200)==0)
+			if (P1.kisi.s2 / 4200)
 			{
 				P1.skill = SKILL_ID::SKILL_2;
 
 				P1.skillFlag = true;
-
+				P1.bufFlag = true;
+			}
+			else
+			{
+				P1.skillFlag = false;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_J) == 1)
@@ -767,6 +771,11 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P1.skill = SKILL_ID::SKILL_3;
 
 				P1.skillFlag = true;
+				P1.bufFlag = true;
+			}
+			else
+			{
+				P1.skillFlag = false;
 			}
 
 		}
@@ -861,7 +870,11 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P2.skill = SKILL_ID::SKILL_2;
 
 				P2.skillFlag = true;
-
+				P2.bufFlag = true;
+			}
+			else
+			{
+				P2.skillFlag = false;
 			}
 
 		}
@@ -872,6 +885,11 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P2.skill = SKILL_ID::SKILL_3;
 
 				P2.skillFlag = true;
+				P2.bufFlag = true;
+			}
+			else
+			{
+				P1.skillFlag = false;
 			}
 
 		}
@@ -951,6 +969,8 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			if (P1.maho.s2 / 1200)
 			{
 				P1.skillFlag = true;
+				P1.bufFlag = true;
+
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_J) == 1)
@@ -959,6 +979,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			if (P1.maho.s3 / 1000)
 			{
 				P1.skillFlag = true;
+				P1.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_K) == 1)
@@ -1034,6 +1055,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			if (P2.maho.s2 / 1200)
 			{
 				P2.skillFlag = true;
+				P2.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_A) == 1)
@@ -1042,6 +1064,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			if (P2.maho.s3 / 1000)
 			{
 				P2.skillFlag = true;
+				P2.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_S) == 1)
@@ -1132,6 +1155,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P1.skill = SKILL_ID::SKILL_2;
 
 				P1.skillFlag = true;
+				P1.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_J) == 1)
@@ -1140,6 +1164,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			{
 				P1.skill = SKILL_ID::SKILL_3;
 				P1.skillFlag = true;
+				P1.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_K) == 1)
@@ -1150,6 +1175,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				{
 					P1.skill = SKILL_ID::SKILL_4;
 					P1.skillFlag = true;
+					P1.bufFlag = true;
 				}
 			}
 		}
@@ -1201,6 +1227,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P2.skill = SKILL_ID::SKILL_2;
 
 				P2.skillFlag = true;
+				P2.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_A) == 1)
@@ -1209,6 +1236,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 			{
 				P2.skill = SKILL_ID::SKILL_3;
 				P2.skillFlag = true;
+				P2.bufFlag = true;
 			}
 		}
 		if (CheckHitKey(KEY_INPUT_S) == 1)
@@ -1219,6 +1247,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				{
 					P2.skill = SKILL_ID::SKILL_4;
 					P2.skillFlag = true;
+					P2.bufFlag = true;
 				}
 			}
 		}
@@ -1442,6 +1471,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 		}
 		if (P2.skill == SKILL_ID::SKILL_4)
 		{
+
 			if (P2.skillFlag == true)
 			{
 				if (P2.count / 60)
@@ -1573,6 +1603,13 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P1.kisi.s2 = 0;
 				P1.skillFlag = false;
 			}
+			else if (P1.skillFlag==false)
+			{
+				if (P1.kisi.s2 / 120)
+				{
+					P1.bufFlag = false;
+				}
+			}
 			//P1.Scount = 4200;//ëÂëÃ70ïb
 			break;
 		case SKILL_ID::SKILL_3:
@@ -1594,7 +1631,13 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P1.kisi.s3 = 0;
 				P1.skillFlag = false;
 			}
-
+			else if (P1.skillFlag == false)
+			{
+				if (P1.kisi.s3 / 120)
+				{
+					P1.bufFlag = false;
+				}
+			}
 
 			break;
 		case SKILL_ID::SKILL_4:
@@ -1648,6 +1691,13 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P2.kisi.s2 = 0;
 				P2.skillFlag = false;
 			}
+			else if (P1.skillFlag == false)
+			{
+				if (P1.kisi.s2 / 120)
+				{
+					P1.bufFlag = false;
+				}
+			}
 			//P1.Scount = 4200;//ëÂëÃ70ïb
 			break;
 		case SKILL_ID::SKILL_3:
@@ -1669,7 +1719,13 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P2.kisi.s3 = 0;
 				P2.skillFlag = false;
 			}
-
+			else if (P1.skillFlag == false)
+			{
+				if (P1.kisi.s3 / 120)
+				{
+					P1.bufFlag = false;
+				}
+			}
 
 			break;
 		case SKILL_ID::SKILL_4:
@@ -1718,6 +1774,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 				if (P1.maho.s2 / 300)
 				{
 					P1.speed = 0;
+					P1.bufFlag = false;
 				}
 
 			}
@@ -1743,6 +1800,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 				if (P1.maho.s3 / 300)
 				{
 					P1.defense = 0;
+					P1.bufFlag = false;
 				}
 
 			}
@@ -1873,6 +1931,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 				if (P1.buto.s2 / 180)
 				{
 					P1.defense = 0;
+					P1.bufFlag = false;
 				}
 			}
 			break;
@@ -1887,6 +1946,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 				if (P1.buto.s3 / 600)
 				{
 					P1.attack = 0;
+					P1.bufFlag = false;
 				}
 			}
 			break;
@@ -1908,6 +1968,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 				if (P1.buto.s4 / 300)
 				{
 					P1.speed = 0;
+					P1.bufFlag = false;
 				}
 			}
 			break;

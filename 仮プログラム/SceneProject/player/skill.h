@@ -88,6 +88,10 @@ struct player
 	int defense;	// player‚Ì–hŒä—Í(•t—^‚³‚ê‚½”’l)
 	int speed;		// player‚ÌˆÚ“®‘¬“x
 	int count;
+	bool SSflag;	//”­“®‚P‰ñ—p
+	bool skillFlag;
+	bool hitFlag;
+	bool bufFlag;
 	SScount kisi;
 	SScount maho;
 	SScount buto;
@@ -163,10 +167,7 @@ private:
 	SScount maho;
 	SScount buto;
 	SScount nazo;*/
-	bool SSflag;	//”­“®‚P‰ñ—p
-	bool skillFlag;
-	bool hitFlag;
-	bool bufFlag;
+	
 	~Skill();
 
 };

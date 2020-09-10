@@ -359,13 +359,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		{
 			if (CheckHitKey(KEY_INPUT_T) == 1)
 			{
-				DrawRotaGraph(P1.hitPos.x +25, P1.hitPos.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
-
-
+				DrawRotaGraph(P1.posp.x +25, P1.posp.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
 			}
 			else
 			{
-				DrawGraph(P1.hitPos.x, P1.hitPos.y, swordImage, true);
+				DrawGraph(P1.posp.x, P1.posp.y, swordImage, true);
 				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)

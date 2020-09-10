@@ -857,10 +857,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				{
 					DrawGraph(150, 60, uiles, true);
 				}
-				else
-				{
-					DrawBox(150, 60, 200, 110, 0x000000, true);
-				}
+				
+			}
+			else
+			{
+				DrawBox(150, 60, 200, 110, 0x000000, true);
 			}
 		}
 		if (player1 == CHAR_ID::CHAR_ID_BTOU)
@@ -901,10 +902,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				{
 					DrawGraph(150, 60, uiheal, true);
 				}
-				else
-				{
-					DrawBox(150, 60, 200, 110, 0x000000, true);
-				}
+				
+			}
+			else
+			{
+				DrawBox(150, 60, 200, 110, 0x000000, true);
 			}
 			
 		}
@@ -945,10 +947,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				{
 					DrawGraph(150, 60, uisra, true);
 				}
-				else
-				{
-					DrawBox(150, 60, 200, 110, 0x0000, true);
-				}
+				
+			}
+			else
+			{
+				DrawBox(150, 60, 200, 110, 0x0000, true);
 			}
 		}
 	}
@@ -1035,10 +1038,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				{
 					DrawGraph(950, 60, uiles, true);
 				}
-				else
-				{
-					DrawBox(950, 60, 1000, 110, 0x000000, true);
-				}
+				
+			}
+			else
+			{
+				DrawBox(950, 60, 1000, 110, 0x000000, true);
 			}
 		}
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)

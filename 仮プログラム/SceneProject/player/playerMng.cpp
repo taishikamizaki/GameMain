@@ -19,7 +19,7 @@ void PlayerMng::Render()
 
 void PlayerMng::Update()
 {
-	if (player != nullptr) player->PlayerCtl();
+	//if (player != nullptr) player->PlayerCtl();
 }
 
 PlayerMng::PlayerMng(int charID_1, int ID_1, int charID_2, int ID_2)

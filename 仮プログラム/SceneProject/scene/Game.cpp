@@ -52,7 +52,7 @@ int Game::GameCtl()
 		if (stage != nullptr) stage->StageCtl(stageID);
 		if (player != nullptr) player->charCtl(player1, player2);
 	}
-	if (player != nullptr) player->PlayerCtl();
+	if (player != nullptr) player->PlayerCtl(stageID);
 	return 0;
 }
 
@@ -69,7 +69,7 @@ int Game::Draw()
 		GameCtl();
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
-		if(stage != nullptr) stage->StageDraw();
+		if(stage != nullptr) stage->StageDraw(stageID);
 		if (player != nullptr)
 		{
 			player->PlayerDraw();

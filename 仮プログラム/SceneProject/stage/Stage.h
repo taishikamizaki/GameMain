@@ -30,11 +30,13 @@ public:
 	}
 	Vector2 PosToIndex(Vector2 pos);
 	Vector2 IndexToPos(Vector2 index);
-	bool IsPass(Vector2 pos);
-	STAGE_ID map;
+	bool IsPassY(Vector2 pos);
+	bool IsPassM(Vector2 pos);
+	bool IsPassT(Vector2 pos);
+	STAGE_ID mapID;
 	
 	bool StageCtl(STAGE_ID stage);
-	void StageDraw(void);
+	void StageDraw(STAGE_ID id);
 
 	Stage();
 	~Stage();
@@ -47,6 +49,7 @@ private:
 	int yamaImage[23];
 	Vector2 mapSize;
 
+	int map[MAP_Y][MAP_X];
 
 	int maphamaguri[MAP_Y][MAP_X] = {
 	{6,0,0,0 ,1,0,0,1 ,0,0,0,0 ,1,0,0,1 ,0,0,0,6,},

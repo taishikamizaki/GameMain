@@ -22,7 +22,7 @@ bool Stage::StageInit(void)
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, yamaImage, false);
 
-	map =  STAGE_ID::STAGE_ID_MAX;
+	mapID =  STAGE_ID::STAGE_ID_MAX;
 
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
@@ -39,9 +39,10 @@ bool Stage::StageCtl(STAGE_ID stage)
 {
 	bool rtnFlag = true;
 
-	map = stage;
 
-	switch (map)
+	mapID = stage;
+
+	switch (mapID)
 	{
 	case STAGE_ID::STAGE_ID_YAMA:
 		for (int y = 0; y < mapSize.y; y++)
@@ -51,15 +52,18 @@ bool Stage::StageCtl(STAGE_ID stage)
 				yamaImage[mapyama[y][x]];
 			}
 		}
+		yamaF = true;
 		break;
 	case STAGE_ID::STAGE_ID_MACHI:
 		for (int y = 0; y < mapSize.y; y++)
 		{
 			for (int x = 0; x < mapSize.x; x++)
 			{
+				
 				matiImage[mapmati[y][x]];
 			}
 		}
+		matiF - true;
 		break;
 	case STAGE_ID::STAGE_ID_COLOSSEUM:
 		for (int y = 0; y < mapSize.y; y++)
@@ -69,6 +73,7 @@ bool Stage::StageCtl(STAGE_ID stage)
 				tougiImage[maptougi[y][x]];
 			}
 		}
+		tougiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_HAMAGURI:
 		for (int y = 0; y < mapSize.y; y++)
@@ -87,9 +92,9 @@ bool Stage::StageCtl(STAGE_ID stage)
 }
 
 // •`‰æ
-void Stage::StageDraw(void)
+void Stage::StageDraw(STAGE_ID id)
 {
-	if (map == STAGE_ID::STAGE_ID_YAMA)
+	if (id == STAGE_ID::STAGE_ID_YAMA)
 	{
 		for (int y = 0; y < mapSize.y; y++)
 		{
@@ -99,7 +104,7 @@ void Stage::StageDraw(void)
 			}
 		}
 	}
-	if (map == STAGE_ID::STAGE_ID_MACHI)
+	else if (id == STAGE_ID::STAGE_ID_MACHI)
 	{
 		for (int y = 0; y < mapSize.y; y++)
 		{
@@ -109,7 +114,7 @@ void Stage::StageDraw(void)
 			}
 		}
 	}
-	if (map == STAGE_ID::STAGE_ID_COLOSSEUM)
+	else if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 	{
 		for (int y = 0; y < mapSize.y; y++)
 		{
@@ -118,6 +123,10 @@ void Stage::StageDraw(void)
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, tougiImage[maptougi[y][x]], true);
 			}
 		}
+	}
+	else if (id == STAGE_ID::STAGE_ID_MAX)
+	{
+
 	}
 	/*DrawGraph(SCREEN_SIZE_X, SCREEN_SIZE_Y, stageID[STAGE_ID_MAX], true);*/
 	
@@ -141,8 +150,45 @@ Vector2 Stage::IndexToPos(Vector2 index)
 	return pos;
 }
 
+bool Stage::IsPassM(Vector2 pos)
+{
+	Vector2 index;
+	index = PosToIndex(pos);
+	// ŠX
+
+	switch (mapmati[index.y][index.x])
+	{
+	case 0:
+	case 8:
+	case 22:
+	case 23:
+		return false;
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+
+bool Stage::IsPassT(Vector2 pos)
+{
+	Vector2 index;
+	index = PosToIndex(pos);
+	// “¬‹Zê
+
+	switch (maptougi[index.y][index.x])
+	{
+	case 7:
+		return false;
+		break;
+	default:
+		break;
+	}
+	return true;
+}
+
 // Žw’è‚³‚ê‚½À•W‚ª’Ê‰ß‰Â”\‚©‚ð”»’f‚·‚é(true:’Ê‚Á‚Ä‚æ‚¢)
-bool Stage::IsPass(Vector2 pos)
+bool Stage::IsPassY(Vector2 pos)
 {
 	Vector2 index;
 	index = PosToIndex(pos);
@@ -170,6 +216,7 @@ bool Stage::IsPass(Vector2 pos)
 	}*/
 
 	// ŽR
+	
 		switch (mapyama[index.y][index.x])
 		{
 		case 1:
@@ -181,28 +228,7 @@ bool Stage::IsPass(Vector2 pos)
 		default:
 			break;
 		}
-	// ŠX
-		switch (mapmati[index.y][index.x])
-		{
-		case 0:
-		case 8:
-		case 22:
-		case 23:
-			return false;
-			break;
-		default:
-			break;
-		}
-
-	// “¬‹Zê
-		switch (maptougi[index.y][index.x])
-		{
-		case 7:
-			return false;
-			break;
-		default:
-			break;
-		}
+	
 	return true;
 }
 

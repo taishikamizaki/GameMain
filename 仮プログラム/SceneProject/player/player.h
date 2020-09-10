@@ -68,7 +68,7 @@ public:
 	//ƒƒ“ƒoŠÖ”
 	void PlayerSysInit(void);
 	void PlayerGameInit(void);
-	void PlayerCtl(void);
+	void PlayerCtl(STAGE_ID id);
 	void PlayerDraw(void);
 
 	void SetPlayerID(Vector2 pos1, Vector2 pos2);

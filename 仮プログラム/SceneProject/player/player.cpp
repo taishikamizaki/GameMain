@@ -97,7 +97,7 @@ void Player::PlayerGameInit(void)
 }
 
 // ｺﾝﾄﾛｰﾙ
-void Player::PlayerCtl(void)
+void Player::PlayerCtl(STAGE_ID id)
 {
 	if (!GameOverFlag)
 	{
@@ -168,16 +168,49 @@ void Player::PlayerCtl(void)
 			playerPosHitRight = playerPosHit;
 			playerPosHitRight.x += player1.hitPosE.x;
 
-			if (!lpStage.IsPass(playerPosHit) || !lpStage.IsPass(playerPosHitRight) || !lpStage.IsPass(playerPosHitLeft))
+			
+			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
-				//移動キャンセル
-				Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
-				blockIndex.y = blockIndex.y + 1;
-				Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
+				if (!lpStage.IsPassY(playerPosHit) || !lpStage.IsPassY(playerPosHitRight) || !lpStage.IsPassY(playerPosHitLeft))
+				{
+					//移動キャンセル
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
+					blockIndex.y = blockIndex.y + 1;
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
 
-				playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
-				player1.velocity.fy = 0;
+					playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
+					player1.velocity.fy = 0;
+				}
 			}
+			if (id == STAGE_ID::STAGE_ID_MACHI)
+			{
+				if (!lpStage.IsPassM(playerPosHit) || !lpStage.IsPassM(playerPosHitRight) || !lpStage.IsPassM(playerPosHitLeft))
+				{
+					//移動キャンセル
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
+					blockIndex.y = blockIndex.y + 1;
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
+
+					playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
+					player1.velocity.fy = 0;
+				}
+
+			}
+			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+			{
+				if (!lpStage.IsPassT(playerPosHit) || !lpStage.IsPassT(playerPosHitRight) || !lpStage.IsPassT(playerPosHitLeft))
+				{
+					//移動キャンセル
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
+					blockIndex.y = blockIndex.y + 1;
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
+
+					playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
+					player1.velocity.fy = 0;
+				}
+			}
+
+
 
 			//足元の計算
 			playerPosHit.y = playerPosBK.y + player1.hitPosE.y;
@@ -188,34 +221,95 @@ void Player::PlayerCtl(void)
 			playerPosHitRight = playerPosHit;
 			playerPosHitRight.x += player1.hitPosE.x;
 
-			//足元チェック
-			if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitRight) && lpStage.IsPass(playerPosHitLeft))
+			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
-				//ブロックない時
-				player1.pos.y = playerPosBK.y;
-			}
-			else
-			{
-				//ブロックあるなら上に乗る
-				Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
-				Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
-
-				player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
-
-				player1.jumpFlag = false;
-				player1.velocity.fy = 0;
-
-				if (player1.jumpFlag == false)
+				//足元チェック
+				if (lpStage.IsPassY(playerPosHit) && lpStage.IsPassY(playerPosHitRight) && lpStage.IsPassY(playerPosHitLeft))
 				{
-					if (keyNew[KEY_ID_JUMP1])
+					//ブロックない時
+					player1.pos.y = playerPosBK.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
+
+					player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player1.jumpFlag = false;
+					player1.velocity.fy = 0;
+
+					if (player1.jumpFlag == false)
 					{
-						player1.jumpFlag = true;
-						player1.velocity.fy = INIT_VELOCITY;
-						player1.pos.y -= player1.moveSpeed;
+						if (keyNew[KEY_ID_JUMP1])
+						{
+							player1.jumpFlag = true;
+							player1.velocity.fy = INIT_VELOCITY;
+							player1.pos.y -= player1.moveSpeed;
+						}
 					}
 				}
 			}
+			if (id == STAGE_ID::STAGE_ID_MACHI)
+			{
+				if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitRight) && lpStage.IsPassM(playerPosHitLeft))
+				{
+					player1.pos.y = playerPosBK.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
 
+					player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player1.jumpFlag = false;
+					player1.velocity.fy = 0;
+
+					if (player1.jumpFlag == false)
+					{
+						if (keyNew[KEY_ID_JUMP1])
+						{
+							player1.jumpFlag = true;
+							player1.velocity.fy = INIT_VELOCITY;
+							player1.pos.y -= player1.moveSpeed;
+						}
+					}
+				}
+			}
+			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+			{
+				if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitRight) && lpStage.IsPassT(playerPosHitLeft))
+				{
+					player1.pos.y = playerPosBK.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
+					Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
+
+					player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player1.jumpFlag = false;
+					player1.velocity.fy = 0;
+
+					if (player1.jumpFlag == false)
+					{
+						if (keyNew[KEY_ID_JUMP1])
+						{
+							player1.jumpFlag = true;
+							player1.velocity.fy = INIT_VELOCITY;
+							player1.pos.y -= player1.moveSpeed;
+						}
+					}
+				}
+			}
+		
+			
+			
 			playerPosBK = player1.pos;
 			playerPosHit = player1.pos;
 
@@ -229,6 +323,7 @@ void Player::PlayerCtl(void)
 					{
 						playerPosBK.x += player1.moveSpeed;
 					}
+					
 					playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
 
 					playerPosHitUp = playerPosHit;
@@ -237,13 +332,38 @@ void Player::PlayerCtl(void)
 					playerPosHitDown = playerPosHit;
 					playerPosHitDown.y += player1.hitPosE.y - 1;  //1は床の上に足を乗せるよう
 
-					if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
+					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
-						player1.pos.x = playerPosBK.x;
+						if (lpStage.IsPassY(playerPosHit) && lpStage.IsPassY(playerPosHitUp) && lpStage.IsPassY(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
 					}
-					else
+					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
-						player1.moveSpeed = 0;
+						if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitUp) && lpStage.IsPassM(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
+					}
+					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+					{
+						if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitUp) && lpStage.IsPassT(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
 					}
 				}
 				else if (player1.moveDir == DIR::DIR_ID_LEFT)
@@ -266,13 +386,38 @@ void Player::PlayerCtl(void)
 					if (player1.velocity.fx < -6) { player1.velocity.fx = -6; }
 
 
-					if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
+					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
-						player1.pos.x = playerPosBK.x;
+						if (lpStage.IsPassY(playerPosHit) && lpStage.IsPassY(playerPosHitUp) && lpStage.IsPassY(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
 					}
-					else
+					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
-						player1.moveSpeed = 0;
+						if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitUp) && lpStage.IsPassM(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
+					}
+					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+					{
+						if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitUp) && lpStage.IsPassT(playerPosHitDown))
+						{
+							player1.pos.x = playerPosBK.x;
+						}
+						else
+						{
+							player1.moveSpeed = 0;
+						}
 					}
 				}
 			}
@@ -317,17 +462,45 @@ void Player::PlayerCtl(void)
 			playerPosHitRight2 = playerPosHit2;
 			playerPosHitRight2.x += player2.hitPosE.x;
 
-			if (!lpStage.IsPass(playerPosHit2) || !lpStage.IsPass(playerPosHitRight2) || !lpStage.IsPass(playerPosHitLeft2))
+			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
-				//移動キャンセル
-				Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
-				blockIndex2.y = blockIndex2.y + 1;
-				Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
+				if (!lpStage.IsPassY(playerPosHit2) || !lpStage.IsPassY(playerPosHitRight2) || !lpStage.IsPassY(playerPosHitLeft2))
+				{
+					//移動キャンセル
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
+					blockIndex2.y = blockIndex2.y + 1;
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
 
-				playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
-				player2.velocity.fy = 0;
+					playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
+					player2.velocity.fy = 0;
+				}
 			}
+			if (id == STAGE_ID::STAGE_ID_MACHI)
+			{
+				if (!lpStage.IsPassM(playerPosHit2) || !lpStage.IsPassM(playerPosHitRight2) || !lpStage.IsPassM(playerPosHitLeft2))
+				{
+					// 移動キャンセル
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
+					blockIndex2.y = blockIndex2.y + 1;
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
 
+					playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
+					player2.velocity.fy = 0;
+				}
+			}
+			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+			{
+				if (!lpStage.IsPassT(playerPosHit2) || !lpStage.IsPassT(playerPosHitRight2) || !lpStage.IsPassT(playerPosHitLeft2))
+				{
+					// 移動キャンセル
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
+					blockIndex2.y = blockIndex2.y + 1;
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
+
+					playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
+					player2.velocity.fy = 0;
+				}
+			}
 			//足元の計算
 			playerPosHit2.y = playerPosBK2.y + player2.hitPosE.y;
 
@@ -337,34 +510,92 @@ void Player::PlayerCtl(void)
 			playerPosHitRight2 = playerPosHit2;
 			playerPosHitRight2.x += player2.hitPosE.x;
 
-			//足元チェック
-			if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitRight2) && lpStage.IsPass(playerPosHitLeft2))
+			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
-				//ブロックない時
-				player2.pos.y = playerPosBK2.y;
-			}
-			else
-			{
-				//ブロックあるなら上に乗る
-				Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
-				Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
-
-				player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
-
-				player2.jumpFlag = false;
-				player2.velocity.fy = 0;
-
-				if (player2.jumpFlag == false)
+				//足元チェック
+				if (lpStage.IsPassY(playerPosHit2) && lpStage.IsPassY(playerPosHitRight2) && lpStage.IsPassY(playerPosHitLeft2))
 				{
-					if (keyNew[KEY_ID_JUMP2])
+					//ブロックない時
+					player2.pos.y = playerPosBK2.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
+
+					player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player2.jumpFlag = false;
+					player2.velocity.fy = 0;
+
+					if (player2.jumpFlag == false)
 					{
-						player2.jumpFlag = true;
-						player2.velocity.fy = INIT_VELOCITY;
-						player2.pos.y -= player2.moveSpeed;
+						if (keyNew[KEY_ID_JUMP2])
+						{
+							player2.jumpFlag = true;
+							player2.velocity.fy = INIT_VELOCITY;
+							player2.pos.y -= player2.moveSpeed;
+						}
 					}
 				}
 			}
+			if (id == STAGE_ID::STAGE_ID_MACHI)
+			{
+				if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitRight2) && lpStage.IsPassM(playerPosHitLeft2))
+				{
+					player2.pos.y = playerPosBK2.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
 
+					player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player2.jumpFlag = false;
+					player2.velocity.fy = 0;
+
+					if (player2.jumpFlag == false)
+					{
+						if (keyNew[KEY_ID_JUMP2])
+						{
+							player2.jumpFlag = true;
+							player2.velocity.fy = INIT_VELOCITY;
+							player2.pos.y -= player2.moveSpeed;
+						}
+					}
+				}
+			}
+			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+			{
+				if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitRight2) && lpStage.IsPassT(playerPosHitLeft2))
+				{
+					player2.pos.y = playerPosBK2.y;
+				}
+				else
+				{
+					//ブロックあるなら上に乗る
+					Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
+					Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
+
+					player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+					player2.jumpFlag = false;
+					player2.velocity.fy = 0;
+
+					if (player2.jumpFlag == false)
+					{
+						if (keyNew[KEY_ID_JUMP2])
+						{
+							player2.jumpFlag = true;
+							player2.velocity.fy = INIT_VELOCITY;
+							player2.pos.y -= player2.moveSpeed;
+						}
+					}
+				}
+			}
 			playerPosBK2 = player2.pos;
 			playerPosHit2 = player2.pos;
 
@@ -386,14 +617,40 @@ void Player::PlayerCtl(void)
 					playerPosHitDown2 = playerPosHit2;
 					playerPosHitDown2.y += player2.hitPosE.y - 1;  //1は床の上に足を乗せるよう
 
-					if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
+					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
-						player2.pos.x = playerPosBK2.x;
+						if (lpStage.IsPassY(playerPosHit2) && lpStage.IsPassY(playerPosHitUp2) && lpStage.IsPassY(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
 					}
-					else
+					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
-						player2.moveSpeed = 0;
+						if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitUp2) && lpStage.IsPassM(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
 					}
+					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+					{
+						if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitUp2) && lpStage.IsPassT(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
+					}
+					
 				}
 				else if (player2.moveDir == DIR::DIR_ID_LEFT)
 				{
@@ -413,16 +670,40 @@ void Player::PlayerCtl(void)
 
 					if (player2.velocity.fx < -6) { player2.velocity.fx = -6; }
 
-
-					if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
+					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
-						player2.pos.x = playerPosBK2.x;
+						if (lpStage.IsPassY(playerPosHit2) && lpStage.IsPassY(playerPosHitUp2) && lpStage.IsPassY(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
 					}
-					else
+					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
-						player2.moveSpeed = 0;
+						if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitUp2) && lpStage.IsPassM(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
 					}
-				}
+					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
+					{
+						if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitUp2) && lpStage.IsPassT(playerPosHitDown2))
+						{
+							player2.pos.x = playerPosBK2.x;
+						}
+						else
+						{
+							player2.moveSpeed = 0;
+						}
+					}
+				}	
 			}
 		}
 

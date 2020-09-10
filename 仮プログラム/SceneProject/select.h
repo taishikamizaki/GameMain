@@ -56,8 +56,10 @@ private:
 	int p1;
 	int p2;
 
-	int p1_waku;
-	int p2_waku;
+	int p1_waku;	// ˜g•`‰æ
+	int p2_waku;	// ˜g•`‰æ
+	int p_waku1;	// ˜gˆ—
+	int p_waku2;	// ˜gˆ—
 
 	int pList[12];
 
@@ -65,8 +67,8 @@ private:
 	int matiImage[2];
 	int tougiImage[2];
 
-	int stage_waku;
-	int waku;
+	int stage_waku;		// ˜g•`‰æ
+	int s_waku;				// ˜gˆ—
 
 	bool p1IF;		// ƒLƒƒƒ‰˜g—p
 	bool p2IF;		// ƒLƒƒƒ‰˜g—p

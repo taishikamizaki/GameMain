@@ -258,19 +258,19 @@ int Select::SelectCtl()
 	{
 		if (p2 == 0)
 		{
-			player1 = CHAR_ID::CHAR_ID_KISI;
+			player2 = CHAR_ID::CHAR_ID_KISI;
 		}
 		if (p2 == 1)
 		{
-			player1 = CHAR_ID::CHAR_ID_MDOU;
+			player2 = CHAR_ID::CHAR_ID_MDOU;
 		}
 		if (p2 == 2)
 		{
-			player1 = CHAR_ID::CHAR_ID_BTOU;
+			player2 = CHAR_ID::CHAR_ID_BTOU;
 		}
 		if (p2 == 3)
 		{
-			player1 = CHAR_ID::CHAR_ID_4;
+			player2 = CHAR_ID::CHAR_ID_4;
 		}
 	}
 	// ステージIDの代入

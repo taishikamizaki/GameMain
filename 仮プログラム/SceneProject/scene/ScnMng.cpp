@@ -2,6 +2,7 @@
 #include <DxLib.h>
 #include "ScnMng.h"
 #include "../Common.h"
+#include "../key/GetKeyState.h"
 #include "Title.h"
 #include "Game.h"
 #include "GameOver.h"
@@ -20,6 +21,7 @@ int ScnMng::Init()
 
 	SetDrawScreen(DX_SCREEN_BACK);
 
+	KeyInit();
 	// èâä˙âª
 	if (title == nullptr) title = new Title();
 	if (game == nullptr) game = new Game();
@@ -41,6 +43,7 @@ int ScnMng::ScnCtl()
     {
         ClsDrawScreen();
 
+		KeyCheck();
 		GetKeyState();
         ScnDraw();
 

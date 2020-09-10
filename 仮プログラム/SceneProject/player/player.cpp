@@ -207,7 +207,10 @@ void Player::PlayerCtl(void)
 			{
 				player1.moveSpeed = P_DSP;
 	
-				playerPosBK.x += player1.moveSpeed;
+				if ((player1.pos.x + player1.hitPosE.x) < screen_size.x)
+				{
+					playerPosBK.x += player1.moveSpeed;
+				}
 				playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
 	
 				playerPosHitUp = playerPosHit;
@@ -229,7 +232,10 @@ void Player::PlayerCtl(void)
 			{
 				player1.moveSpeed = P_DSP;
 	
-				playerPosBK.x -= player1.moveSpeed;
+				if ((player1.pos.x - player1.hitPosS.x) > 0)
+				{
+					playerPosBK.x -= player1.moveSpeed;
+				}
 				playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
 	
 				playerPosHitUp = playerPosHit;
@@ -350,7 +356,10 @@ void Player::PlayerCtl(void)
 			{
 				player2.moveSpeed = P_DSP;
 
-				playerPosBK2.x += player2.moveSpeed;
+				if ((player2.pos.x + player2.hitPosE.x) < screen_size.x)
+				{
+					playerPosBK2.x += player2.moveSpeed;
+				}
 				playerPosHit2.x = playerPosBK2.x + player2.hitPosE.x;
 
 				playerPosHitUp2 = playerPosHit2;
@@ -371,8 +380,10 @@ void Player::PlayerCtl(void)
 			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
 				player2.moveSpeed = P_DSP;
-
-				playerPosBK2.x -= player2.moveSpeed;
+				if ((player2.pos.x - player2.hitPosS.x) > 0)
+				{
+					playerPosBK2.x -= player2.moveSpeed;
+				}
 				playerPosHit2.x = playerPosBK2.x - player2.hitPosS.x;
 
 				playerPosHitUp2 = playerPosHit2;
@@ -500,7 +511,7 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos2 = player2.pos;
 }
 
-Player::Player()
+Player::Player():screen_size(1000,600)
 {
 	PlayerSysInit();
 }

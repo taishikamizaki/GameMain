@@ -42,8 +42,8 @@ void KeyCheck(void)
 	keyNew[KEY_ID_JUMP1]  = CheckHitKey(KEY_INPUT_W);
 
 	// ÌßÚ²Ô°‘€ì‚Ì·°î•ñ
-	keyNew[KEY_ID_RIGHT1] = CheckHitKey(KEY_INPUT_A);
-	keyNew[KEY_ID_LEFT1]  = CheckHitKey(KEY_INPUT_D);
+	keyNew[KEY_ID_RIGHT1] = CheckHitKey(KEY_INPUT_D);
+	keyNew[KEY_ID_LEFT1]  = CheckHitKey(KEY_INPUT_A);
 
 	// ’e”­Ë—p·°
 	keyNew[KEY_ID_SHOT1]  = CheckHitKey(KEY_INPUT_LCONTROL);

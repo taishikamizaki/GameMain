@@ -81,7 +81,7 @@ private:
 	CHARACTER player1;
 	CHARACTER player2;
 
-
+	const Vector2 screen_size;
 	DIR dir;
 
 	MapInt charcter;

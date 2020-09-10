@@ -49,7 +49,7 @@ void Player::PlayerSysInit(void)
 	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
-
+	hp = LoadGraph("image/hp/bar.png");
 
 	if (skill == nullptr) skill = new Skill();
 
@@ -496,7 +496,7 @@ void Player::PlayerDraw(void)
 	default:
 		break;
 	}
-
+	DrawGraph(0,0,hp,true);
 	// プレイヤー座標
 	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
 	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);

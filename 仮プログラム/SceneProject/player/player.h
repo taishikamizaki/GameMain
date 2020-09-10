@@ -78,6 +78,7 @@ private:
 	std::map<std::string, int> images;
 	int playerPosX;
 	int playerPosY;
+	int hp;
 
 	CHARACTER player1;
 	CHARACTER player2;

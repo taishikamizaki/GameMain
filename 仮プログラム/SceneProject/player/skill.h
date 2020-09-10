@@ -151,7 +151,15 @@ private:
 	int slash2Image[16];
 	int slash3Image[12];
 	int laserImage[5];
-
+	int uibuffU;
+	int uiken;
+	int uiheal;
+	int uiles;
+	int uihand;
+	int uisra;
+	int uitate;
+	int uimaho;
+	int uilej;
 	int swordImage;
 
 	//bool hamaFlag;

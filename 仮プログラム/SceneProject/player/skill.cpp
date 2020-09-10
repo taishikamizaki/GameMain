@@ -37,7 +37,15 @@ void Skill::StageSysInit(void)
 	LoadDivGraph("image/skill/buff/buff_d.png", 10, 10, 1, 120, 120, buffDImage, false);
 	LoadDivGraph("image/skill/buff/buff_s.png", 10, 10, 1, 120, 120, buffSImage, false);
 	LoadDivGraph("image/skill/buff/buff_u.png", 10, 10, 1, 120, 120, buffUImage, false);
-
+	uibuffU = LoadGraph("image/ui/uibuff.png");
+	uiken = LoadGraph("image/ui/uiken.png");
+	uisra = LoadGraph("image/ui/uisra.png");
+	uimaho = LoadGraph("image/ui/uimaho.png");
+	uiles = LoadGraph("image/ui/uile.png");
+	uitate = LoadGraph("image/ui/uitate.png");
+	uihand = LoadGraph("image/ui/uite.png");
+	uilej = LoadGraph("image/ui/uilej.png");
+	uiheal = LoadGraph("image/ui/uiheal.png");
 	swordImage = LoadGraph("image/player/turugi2.png", true);
 
 	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
@@ -702,6 +710,74 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			}
 		}
 	}
+
+
+	//ƒXƒLƒ‹UI
+	if (player1 != CHAR_ID::CHAR_ID_MAX)
+	{
+		if (player1 == CHAR_ID::CHAR_ID_KISI)
+		{
+			DrawGraph(0,70,uiheal,true);
+			DrawGraph(100, 70, uibuffU, true);
+			DrawGraph(50,70, uitate, true);
+			DrawGraph(150, 70, uisra, true);
+
+		}
+		if (player1 == CHAR_ID::CHAR_ID_MDOU)
+		{
+			DrawGraph(0, 70, uibuffU, true);
+			DrawGraph(100, 70, uibuffU, true);
+			DrawGraph(50, 70, uimaho, true);
+			DrawGraph(150, 70, uiles, true);
+		}
+		if (player1 == CHAR_ID::CHAR_ID_BTOU)
+		{
+			DrawGraph(0, 70, uibuffU, true);
+			DrawGraph(100, 70, uibuffU, true);
+			DrawGraph(50, 70, uihand, true);
+			DrawGraph(150, 70, uiheal, true);
+		}
+		if (player1 == CHAR_ID::CHAR_ID_4)
+		{
+			DrawGraph(0, 70, uibuffU, true);
+			DrawGraph(100, 70, uiken, true);
+			DrawGraph(50, 70, uilej, true);
+			DrawGraph(150, 70, uisra, true);
+		}
+	}
+	if (player2 != CHAR_ID::CHAR_ID_MAX)
+	{
+		if (player2 == CHAR_ID::CHAR_ID_KISI)
+		{
+			DrawGraph(800, 70, uiheal, true);
+			DrawGraph(900, 70, uibuffU, true);
+			DrawGraph(850, 70, uitate, true);
+			DrawGraph(950, 70, uisra, true);
+		}
+		if (player2 == CHAR_ID::CHAR_ID_MDOU)
+		{
+			DrawGraph(800, 70, uibuffU, true);
+			DrawGraph(900, 70, uibuffU, true);
+			DrawGraph(850, 70, uimaho, true);
+			DrawGraph(950, 70, uiles, true);
+		}
+		if (player2 == CHAR_ID::CHAR_ID_BTOU)
+		{
+			DrawGraph(800, 70, uibuffU, true);
+			DrawGraph(900, 70, uibuffU, true);
+			DrawGraph(850, 70, uihand, true);
+			DrawGraph(950, 70, uiheal, true);
+		}
+		if (player2 == CHAR_ID::CHAR_ID_4)
+		{
+			DrawGraph(800, 70, uibuffU, true);
+			DrawGraph(900, 70, uiken, true);
+			DrawGraph(850, 70, uilej, true);
+			DrawGraph(950, 70, uisra, true);
+		}
+	}
+
+
 }
 
 void Skill::SkillDraw(void)

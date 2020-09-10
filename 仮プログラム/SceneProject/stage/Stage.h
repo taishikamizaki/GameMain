@@ -33,7 +33,7 @@ public:
 	bool IsPass(Vector2 pos);
 	STAGE_ID map;
 	
-	bool StageCtl(void);
+	bool StageCtl(STAGE_ID stage);
 	void StageDraw(void);
 
 	Stage();

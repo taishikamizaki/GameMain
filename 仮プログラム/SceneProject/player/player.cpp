@@ -81,6 +81,7 @@ void Player::PlayerGameInit(void)
 						 player2.pos, player2.hitPosS, 
 						 player2.hitPosE, player2.sizeOffset, player2.size);
 		skill->HPCtl(player1.Hp,player2.Hp);
+		skill->SpeedCtl(player1.moveSpeed,player2.moveSpeed);
 
 		skill->StageGameInit();
 	}
@@ -107,12 +108,12 @@ void Player::PlayerCtl(void)
 	Vector2	playerPosHitUp2    = player2.pos;
 	Vector2	playerPosHitDown2  = player2.pos;
 	
-	player1.moveSpeed = 0;
+	player1.moveSpeed = 1;
 	player1.runFlag   = false;
 	player1.shotFlag  = false;
 	player1.jumpFlag  = true;
 
-	player2.moveSpeed = 0;
+	player2.moveSpeed = 1;
 	player2.runFlag = false;
 	player2.shotFlag = false;
 	player2.jumpFlag = true;
@@ -530,27 +531,31 @@ bool Player::HPmng(bool p1flag,bool p2flag,bool dflag)
 	if(player1.Hp<=0)
 	{
 		p1flag = true;
+		return true;
 	}
 	else
 	{
 		p1flag = false;
 	}
-	if(plaeyr2.Hp<=0)
+	if(player2.Hp<=0)
 	{
 		p2flag = true;
+		return true;
 	}
 	else
 	{
 		p2flag = false;
 	}
-	if((player1.Hp<=0)&&(plaeyr2.Hp<=0))
+	if((player1.Hp<=0)&&(player2.Hp<=0))
 	{
 		dflag = true;
+		return true;
 	}
 	else
 	{
 		dflag = false;
 	}
+	return false;
 }
 
 

@@ -9,7 +9,7 @@
 // 初期化処理
 int Game::Init()
 {
-	selectB = LoadGraph("image/TestGraph/Select.png");
+	selectB = LoadGraph("image/TestGraph/seleB.png");
 	game = LoadGraph("image/TestGraph/Game.png");
 	space = LoadGraph("image/logo/space.png");
 
@@ -26,18 +26,14 @@ int Game::Init()
 // セレクトの操作処理
 int Game::SelectCtl()
 {
-	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
+	if (select != nullptr)
 	{
-		if (select != nullptr)
+		select->SelectCtl();
+
+		if (select->GetSelectFlag())
 		{
-			select->SelectCtl();
-		}
-		selectF = false;
-		gameF = true;
-		if (select != nullptr)
-		{
-			delete select;
-			select = nullptr;
+			selectF = false;
+			gameF = true;
 		}
 	}
 	return 0;
@@ -46,8 +42,15 @@ int Game::SelectCtl()
 // ゲームの操作処理
 int Game::GameCtl()
 {
-	lpStage.StageCtl();
-	if (player != nullptr) player->charCtl(player1, player2);
+	if (select != nullptr)
+	{
+		player1 = select->GetP1();
+		player2 = select->GetP2();
+		stageID = select->GetStage();
+
+		if (stage != nullptr) stage->StageCtl(stageID);
+		if (player != nullptr) player->charCtl(player1, player2);
+	}
 	if (player != nullptr) player->PlayerCtl();
 	return 0;
 }
@@ -58,7 +61,7 @@ int Game::Draw()
 	if (selectF && !gameF)
 	{
 		DrawGraph(0, 0, selectB, true);
-		DrawGraph(250, 540, space, true);
+		if (select != nullptr) select->Draw();
 	}
 	else if(!selectF && gameF)
 	{
@@ -93,6 +96,11 @@ Game::Game()
 // デストラクタ
 Game::~Game()
 {
+	if (select != nullptr)
+	{
+		delete select;
+		select = nullptr;
+	}
 	if (player != nullptr)
 	{
 		delete player;

@@ -29,6 +29,8 @@ int Select::Init()
 	stageL[1].waku_pos =  {240, 490};
 	stageL[2].waku_pos =  {390, 490};
 
+	waku = 0;
+
 	p1IF = false;
 	p2IF = false;
 
@@ -59,6 +61,7 @@ int Select::SelectCtl()
 	// プレイヤー選択判定
 	if (!selectF && !stageF)
 	{
+		// 1p↑
 		if (keyNew[KEY_ID_UP1])
 		{
 			for (int i = 0; i < 4; i++)
@@ -71,6 +74,7 @@ int Select::SelectCtl()
 				break;
 			}
 		}
+		// 1p↓
 		if (keyNew[KEY_ID_DOWN1])
 		{
 			for (int i = 4; i > 0; i--)
@@ -83,6 +87,7 @@ int Select::SelectCtl()
 				break;
 			}
 		}
+		// 2p↑
 		if (keyNew[KEY_ID_UP2])
 		{
 			for (int i = 0; i < 4; i++)
@@ -95,6 +100,7 @@ int Select::SelectCtl()
 				break;
 			}
 		}
+		// 2p↓
 		if (keyNew[KEY_ID_DOWN2])
 		{
 			for (int i = 4; i > 0; i--)
@@ -107,18 +113,30 @@ int Select::SelectCtl()
 				break;
 			}
 		}
+		// 1p決定
 		if (keyNew[KEY_ID_1SKILL1])
+		{
+			// ID競合判定
+			if (p1 != p2)
+			{
+				p1IF = true;
+			}
+		}
+		// 1pキャンセル
+		if (keyNew[KEY_ID_1SKILL2])
 		{
 			p1IF = true;
 		}
+		// 2p決定
 		if (keyNew[KEY_ID_2SKILL1])
 		{
-			p2IF = true;
+			// ID競合判定
+			if (p2 != p1)
+			{
+				p2IF = true;
+			}
 		}
-		if (keyNew[KEY_ID_1SKILL2])
-		{
-			p1IF = false;
-		}
+		// 2pキャンセル
 		if (keyNew[KEY_ID_2SKILL2])
 		{
 			p2IF = false;
@@ -129,25 +147,25 @@ int Select::SelectCtl()
 	{
 		if (p1Flag && p2Flag)
 		{
-			auto waku = 0;
+			// 枠→
 			if (keyNew[KEY_ID_RIGHT1])
 			{
-				DrawGraph(stageL[waku].waku_pos.x, stageL[waku].waku_pos.y, stage_waku, true);
 				waku++;
 				if (waku > 3)
 				{
 					waku = 0;
 				}
 			}
+			// 枠←
 			if (keyNew[KEY_ID_LEFT1])
 			{
-				DrawGraph(stageL[waku].waku_pos.x, stageL[waku].waku_pos.y, stage_waku, true);
 				waku--;
 				if (waku < 0)
 				{
 					waku = 3;
 				}
 			}
+			// 決定（画像切り替え）
 			if (keyNew[KEY_ID_1SKILL1])
 			{
 				stageIF = true;
@@ -170,6 +188,7 @@ int Select::SelectCtl()
 					tougiF = true;
 				}
 			}
+			// キャンセル（切り替え）
 			if (keyNew[KEY_ID_1SKILL2])
 			{
 				stageIF = false;
@@ -177,6 +196,7 @@ int Select::SelectCtl()
 				matiF = false;
 				tougiF = false;
 			}
+			// 最終確認
 			if (p1Flag && p2Flag && stageIF)
 			{
 				stageF = true;
@@ -237,15 +257,34 @@ int Select::SelectCtl()
 			player1 = CHAR_ID::CHAR_ID_4;
 		}
 	}
+	// ステージIDの代入
+	if (stageIF)
+	{
+		if (waku == 0)
+		{
+			stageID = STAGE_ID::STAGE_ID_YAMA;
+		}
+		if (waku == 1)
+		{
+			stageID = STAGE_ID::STAGE_ID_MACHI;
+		}
+		if (waku == 2)
+		{
+			stageID = STAGE_ID::STAGE_ID_COLOSSEUM;
+		}
+	}
 
 	return 0;
 }
 
 void Select::Draw()
 {
+	// 1pアイコン
 	DrawGraph(0, 0, p1Image, true);
+	// 2pアイコン
 	DrawGraph(878, 0, p2Image, true);
 
+	// プレイヤー１枠操作
 	if (!p1IF)
 	{
 		DrawGraph(90, 190, p1_waku, true);
@@ -254,6 +293,7 @@ void Select::Draw()
 	{
 
 	}
+	// プレイヤー２枠操作
 	if (!p1IF)
 	{
 		DrawGraph(690, 190, p2_waku, true);
@@ -262,6 +302,7 @@ void Select::Draw()
 	{
 
 	}
+	// プレイヤー１キャラ切り替え操作
 	if (!p1IF)
 	{
 		DrawGraph(100, 200, pList[p1], true);
@@ -270,6 +311,7 @@ void Select::Draw()
 	{
 		DrawGraph(100, 200, pList[p1 + 4], true);
 	}
+	// プレイヤー２キャラ切り替え操作
 	if (!p2IF)
 	{
 		DrawGraph(700, 200, pList[p2], true);
@@ -278,7 +320,9 @@ void Select::Draw()
 	{
 		DrawGraph(700, 200, pList[p2 + 4], true);
 	}
-	
+	// ステージ枠
+	DrawGraph(stageL[waku].waku_pos.x, stageL[waku].waku_pos.y, stage_waku, true);
+	// ステージ画像切り替え処理
 	if (p1IF && p2IF && !stageF)
 	{
 		DrawGraph(stageL[0].pos.x, stageL[0].pos.y, yamaImage[0], true);
@@ -300,7 +344,6 @@ void Select::Draw()
 			DrawGraph(stageL[2].pos.x, stageL[2].pos.y, tougiImage[1], true);
 		}
 	}
-
 }
 
 Select::Select()

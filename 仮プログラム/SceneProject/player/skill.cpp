@@ -1966,7 +1966,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	
 	StageGameInit();
 }
-
+// player1‚ªplayer2‚ÌUŒ‚‚ðŽó‚¯‚é“–‚½‚è”»’è
 bool Skill::CheckHitP1()
 {
 	if ((P2.hitoffsetPos.x > P1.posp.x) &&
@@ -1981,7 +1981,7 @@ bool Skill::CheckHitP1()
 	return false;
 }
 
-
+// player2‚ªplayer1‚ÌUŒ‚‚ðŽó‚¯‚é“–‚½‚è”»’è
 bool Skill::CheckHitP2()
 {
 	if ((P1.hitoffsetPos.x > P2.posp.x) &&
@@ -2616,6 +2616,111 @@ void Skill::HPCtl(int p1hp, int p2hp)
 {
 	p1hp = P1.LP;
 	p2hp = P2.LP;
+}
+
+void Skill::DmageCtl(void)
+{
+	int LPhold = 0;;
+	if(CheckHitP1())
+	{
+		if(P1.defense>0)
+		{
+			if(P2.attack>0)
+			{
+				P2.HP=P2.dmage + P2.attack;
+				LPhold=(P1.LP+P1.defense)-P2.HP;
+				P1.LP = LPhold;
+			}
+			else
+			{
+				P2.HP=P2.dmage;
+				LPhold=(P1.LP+P1.defense)-P2.HP;
+				P1.LP = LPhold;
+			}
+		}
+		else
+		{
+			if(P2.attack>0)
+			{
+				P2.HP=P2.dmage + P2.attack;
+				LPhold=P1.LP-P2.HP;
+				P1.LP = LPhold;
+			}
+			else
+			{
+				P2.HP=P2.dmage;
+				LPhold=P1.LP-P2.HP;
+				P1.LP = LPhold;
+			}
+		}
+	}
+	else
+	{
+
+	}
+	int LPhold2 = 0;
+	if(CheckHitP2())
+	{
+		if (P2.defense > 0)
+		{
+
+			if (P1.attack > 0)
+			{
+				P1.HP = P1.dmage + P1.attack;
+				LPhold = (P2.LP +P2.defense)- P1.HP;
+				P2.LP = LPhold;
+			}
+			else
+			{
+				P1.HP = P1.dmage;
+				LPhold = (P2.LP+P2.defense) - P1.HP;
+				P2.LP = LPhold;
+			}
+		}
+		else
+		{
+			if (P1.attack > 0)
+			{
+				P1.HP = P1.dmage + P1.attack;
+				LPhold = P2.LP - P1.HP;
+				P2.LP = LPhold;
+			}
+			else
+			{
+				P1.HP = P1.dmage;
+				LPhold = P2.LP - P1.HP;
+				P2.LP = LPhold;
+			}
+		}
+	}
+	else
+	{
+
+	}
+}
+
+void Skill::SpeedCtl(int p1,int p2)
+{
+	int sphold = 0;
+	if(P1.speed>0)
+	{
+		sphold = p1;
+		p1 = sphold+P1.speed;
+	}
+	else
+	{
+
+	}
+	int sphold2 = 0;
+	if(P2.speed>0)
+	{
+		sphold2 = p2;
+		p2 = sphold2+P2.speed;
+	}
+	else
+	{
+
+	}
 }
 
 

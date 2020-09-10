@@ -66,6 +66,7 @@ private:
 	int tougiImage[2];
 
 	int stage_waku;
+	int waku;
 
 	bool p1IF;		// キャラ枠用
 	bool p2IF;		// キャラ枠用

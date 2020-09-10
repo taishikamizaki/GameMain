@@ -136,7 +136,8 @@ public:
 	bool P4skill(CHAR_ID player1, CHAR_ID player2);
 
 	void HPCtl(int p1hp, int p2hp);
-
+	void DmageCtl(void);
+	void SpeedCtl(int p1,int p2);
 
 	Skill();
 private:

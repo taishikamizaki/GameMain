@@ -22,7 +22,7 @@ bool Stage::StageInit(void)
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, yamaImage, false);
 
-	map =  STAGE_ID::STAGE_ID_YAMA;
+	map =  STAGE_ID::STAGE_ID_MAX;
 
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
@@ -31,9 +31,11 @@ bool Stage::StageInit(void)
 }
 
 // ½Ã°¼Þ¼°Ý
-bool Stage::StageCtl(void)
+bool Stage::StageCtl(STAGE_ID stage)
 {
 	bool rtnFlag = true;
+
+	map = stage;
 
 	switch (map)
 	{

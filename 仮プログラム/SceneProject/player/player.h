@@ -72,7 +72,7 @@ public:
 	void SetPlayerID(Vector2 pos1, Vector2 pos2);
 	void charCtl(CHAR_ID p1, CHAR_ID p2);
 
-	bool HPmng(bool p1flag,bool p2flag);
+	bool HPmng(bool p1flag,bool p2flag,bool dflag);
 
 	Player();
 	~Player();

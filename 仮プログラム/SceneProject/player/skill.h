@@ -162,6 +162,9 @@ private:
 	int uimaho;
 	int uilej;
 	int swordImage;
+	int punchImage;
+	int wandImage;
+	int dImage;
 
 	//bool hamaFlag;
 	//int yamabgm;

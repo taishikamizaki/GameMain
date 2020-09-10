@@ -48,6 +48,9 @@ void Skill::StageSysInit(void)
 	uilej = LoadGraph("image/ui/uilej.png");
 	uiheal = LoadGraph("image/ui/uiheal.png");
 	swordImage = LoadGraph("image/player/turugi2.png", true);
+	punchImage= LoadGraph("image/player/punch.png", true);
+	wandImage = LoadGraph("image/player/wand.png", true);
+	dImage = LoadGraph("image/player/turugi.png", true);
 
 	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
 	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
@@ -368,11 +371,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		{
 			if (CheckHitKey(KEY_INPUT_T) == 1)
 			{
-				DrawRotaGraph(P1.posp.x +25, P1.posp.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
+				DrawRotaGraph(P1.posp.x +25+6, P1.posp.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
 			}
 			else
 			{
-				DrawGraph(P1.posp.x, P1.posp.y, swordImage, true);
+				DrawGraph(P1.posp.x+6, P1.posp.y, swordImage, true);
 				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)
@@ -417,6 +420,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player1 == CHAR_ID::CHAR_ID_MDOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P1.posp.x+25+6, P1.posp.y + 50 - 25, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
+			}
+			else
+			{
+				DrawGraph(P1.posp.x+6 , P1.posp.y-25 , wandImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -546,6 +558,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚P
 		if (player2 == CHAR_ID::CHAR_ID_KISI)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x + 25-25, P2.posp.y + 50, 1.0f, 3.1415926535897932384626433832795f , swordImage, true);
+			}
+			else
+			{
+				DrawRotaGraph(P2.posp.x + 25-25, P2.posp.y + 25, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -588,6 +609,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player2 == CHAR_ID::CHAR_ID_MDOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x , P2.posp.y -25 + 50, 1.0f, -3.1415926535897932384626433832795f/2, wandImage, true);
+			}
+			else
+			{
+				DrawGraph(P2.posp.x-25, P2.posp.y-25, wandImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -630,6 +660,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚R
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x + 25, P2.posp.y + 50, 1.0f, 3.1415926535897932384626433832795f / 2, punchImage, true);
+			}
+			else
+			{
+				DrawGraph(P2.posp.x, P2.posp.y, punchImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)

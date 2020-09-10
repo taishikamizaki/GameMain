@@ -13,7 +13,7 @@ int Select::Init()
 	p1_waku = LoadGraph("image/1p_waku.png", true);
 	p2_waku = LoadGraph("image/2p_waku.png", true);
 
-	LoadDivGraph("image/select/charSele.png", 12, 4, 3, 138, 140, pList);
+	LoadDivGraph("image/select/charSele.png", 12, 4, 3, 140, 140, pList);
 
 	LoadDivGraph("image/select/yama.png", 2, 1, 2, 100, 60, yamaImage);
 	LoadDivGraph("image/select/mati.png", 2, 1, 2, 100, 60, matiImage);
@@ -62,27 +62,27 @@ int Select::Init()
 int Select::SelectCtl()
 {
 	// プレイヤー選択判定
-	if (!selectF && !stageF)
+	if (!selectF)
 	{
  		if (!p1IF)
 		{
 			// 1p↑
-			if (keyNew[KEY_ID_UP1])
+			if (keyDownTrigger[KEY_ID_UP1])
 			{
 				p_waku1++;
-				if (p_waku1 < 4)
+				if (p_waku1 > 3)
 				{
 					p_waku1 = 0;
 				}
 				this->p1 = p_waku1;
 			}
 			// 1p↓
-			if (keyNew[KEY_ID_DOWN1])
+			if (keyDownTrigger[KEY_ID_DOWN1])
 			{
 				p_waku1--;
-				if (p_waku1 > 0)
+				if (p_waku1 < 0)
 				{
-					p_waku1 = 4;
+					p_waku1 = 3;
 				}
 				this->p1 = p_waku1;
 			}
@@ -90,79 +90,98 @@ int Select::SelectCtl()
 		if (!p2IF)
 		{
 			// 2p↑
-			if (keyNew[KEY_ID_UP2])
+			if (keyDownTrigger[KEY_ID_UP2])
 			{
-					if (p_waku2 < 4)
+				p_waku2++;
+					if (p_waku2 > 3)
 					{
 						p_waku2 = 0;
 					}
 					this->p2 = p_waku2;
 			}
 			// 2p↓
-			if (keyNew[KEY_ID_DOWN2])
+			if (keyDownTrigger[KEY_ID_DOWN2])
 			{
 				p_waku2--;
-				if (p_waku2 > 0)
+				if (p_waku2 < 0)
 				{
-					p_waku2 = 4;
+					p_waku2 = 3;
 				}
 				this->p2 = p_waku2;
 			}
 		}
-		// 1p決定
-		if (keyNew[KEY_ID_1SKILL1])
+		if (!p1Flag)
 		{
-			// ID競合判定
-			if (p1 != p2)
+			// 1p決定
+			if (keyDownTrigger[KEY_ID_1SKILL1])
 			{
-				p1IF = true;
+				// ID競合判定
+				if (p1 != p2)
+				{
+					p1IF = true;
+					p1Flag = true;
+				}
+				else
+				{
+					DrawString(10, 100, "エラー：同じキャラクターは選択できません", 0xff0000);
+				}
 			}
 		}
 		// 1pキャンセル
-		if (keyNew[KEY_ID_1SKILL2])
+		if (keyDownTrigger[KEY_ID_1SKILL2])
 		{
-			p1IF = true;
+			p1IF = false;
+			p1Flag = false;
 		}
-		// 2p決定
-		if (keyNew[KEY_ID_2SKILL1])
+		if (!p2Flag)
 		{
-			// ID競合判定
-			if (p2 != p1)
+			// 2p決定
+			if (keyDownTrigger[KEY_ID_2SKILL1])
 			{
-				p2IF = true;
+				// ID競合判定
+				if (p2 != p1)
+				{
+					p2IF = true;
+					p1Flag = true;
+				}
+				else
+				{
+					DrawString(600, 100, "エラー：同じキャラクターは選択できません", 0xff0000);
+				}
 			}
 		}
 		// 2pキャンセル
-		if (keyNew[KEY_ID_2SKILL2])
+		if (keyDownTrigger[KEY_ID_2SKILL2])
 		{
 			p2IF = false;
+			p2Flag = false;
 		}
 	}
 	// ステージ選択判定
-	else if (!selectF && stageF)
+	if (!selectF && !stageF)
 	{
 		if (p1Flag && p2Flag)
 		{
 			// 枠→
-			if (keyNew[KEY_ID_RIGHT1])
+			if (keyDownTrigger[KEY_ID_RIGHT1])
 			{
 				s_waku++;
-				if (s_waku > 3)
+				if (s_waku > 2)
 				{
 					s_waku = 0;
 				}
 			}
 			// 枠←
-			if (keyNew[KEY_ID_LEFT1])
+			if (keyDownTrigger[KEY_ID_LEFT1])
 			{
 				s_waku--;
 				if (s_waku < 0)
 				{
-					s_waku = 3;
+					s_waku = 2;
 				}
 			}
 			// 決定（画像切り替え）
-			if (keyNew[KEY_ID_1SKILL1])
+			if (keyDownTrigger[KEY_ID_1SKILL1])
 			{
 				stageIF = true;
 				if (s_waku == 0)
@@ -177,7 +196,7 @@ int Select::SelectCtl()
 					matiF = true;
 					tougiF = false;
 				}
-				else if (s_waku == 3)
+				else if (s_waku == 2)
 				{
 					yamaF = false;
 					matiF = false;
@@ -185,7 +204,7 @@ int Select::SelectCtl()
 				}
 			}
 			// キャンセル（切り替え）
-			if (keyNew[KEY_ID_1SKILL2])
+			if (keyDownTrigger[KEY_ID_1SKILL2])
 			{
 				stageIF = false;
 				yamaF = false;
@@ -314,7 +333,7 @@ void Select::Draw()
 	}
 	else
 	{
-		DrawGraph(700, 200, pList[p2 + 4], true);
+		DrawGraph(700, 200, pList[p2 + 8], true);
 	}
 	// ステージ枠
 	DrawGraph(stageL[s_waku].waku_pos.x, stageL[s_waku].waku_pos.y, stage_waku, true);

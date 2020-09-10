@@ -27,6 +27,10 @@ bool Stage::StageInit(void)
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
 
+	yamaF = false;
+	matiF = false;
+	tougiF = false;
+
 	return rtnFlag;
 }
 
@@ -85,11 +89,34 @@ bool Stage::StageCtl(STAGE_ID stage)
 // •`‰æ
 void Stage::StageDraw(void)
 {
-	for (int y = 0; y< mapSize.y;y++)
+	if (map == STAGE_ID::STAGE_ID_YAMA)
 	{
-		for (int x = 0; x < mapSize.x;x++)
+		for (int y = 0; y < mapSize.y; y++)
 		{
-			DrawGraph(x*CHIP_SIZE_X, y*CHIP_SIZE_Y, yamaImage[mapyama[y][x]],true);
+			for (int x = 0; x < mapSize.x; x++)
+			{
+				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, yamaImage[mapyama[y][x]], true);
+			}
+		}
+	}
+	if (map == STAGE_ID::STAGE_ID_MACHI)
+	{
+		for (int y = 0; y < mapSize.y; y++)
+		{
+			for (int x = 0; x < mapSize.x; x++)
+			{
+				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, matiImage[mapmati[y][x]], true);
+			}
+		}
+	}
+	if (map == STAGE_ID::STAGE_ID_COLOSSEUM)
+	{
+		for (int y = 0; y < mapSize.y; y++)
+		{
+			for (int x = 0; x < mapSize.x; x++)
+			{
+				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, tougiImage[maptougi[y][x]], true);
+			}
 		}
 	}
 	/*DrawGraph(SCREEN_SIZE_X, SCREEN_SIZE_Y, stageID[STAGE_ID_MAX], true);*/
@@ -143,42 +170,39 @@ bool Stage::IsPass(Vector2 pos)
 	}*/
 
 	// ŽR
-	switch (mapyama[index.y][index.x])
-	{
-	case 1:
-	case 20:
-	case 21:
-	case 22:
-		return false;
-		break;
-	default:
-		break;
-	}
+		switch (mapyama[index.y][index.x])
+		{
+		case 1:
+		case 20:
+		case 21:
+		case 22:
+			return false;
+			break;
+		default:
+			break;
+		}
+	// ŠX
+		switch (mapmati[index.y][index.x])
+		{
+		case 0:
+		case 8:
+		case 22:
+		case 23:
+			return false;
+			break;
+		default:
+			break;
+		}
 
-	//// ŠX
-	//switch (mapmati[index.y][index.x])
-	//{
-	//case 0:
-	//case 8:
-	//case 22:
-	//case 23:
-	//	return false;
-	//	break;
-	//default:
-	//	break;
-	//}
-
-	//// “¬‹Zê
-	//switch (maptougi[index.y][index.x])
-	//{
-	//case 7:
-	//	return false;
-	//	break;
-	//default:
-	//	break;
-	//}
-	
-
+	// “¬‹Zê
+		switch (maptougi[index.y][index.x])
+		{
+		case 7:
+			return false;
+			break;
+		default:
+			break;
+		}
 	return true;
 }
 

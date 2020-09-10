@@ -41,6 +41,8 @@ struct CHARACTER
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）
 	bool damageFlag;	//キャラクタの状態（ダメージ受けているか？）
 	bool surinukeFlag;	//1部ブロックすり抜け用
+	bool nonFlag;
+	bool winFlag;
 	int moveSpeed;		//キャラクタの移動量
 	int animCnt;		//キャラクタのアニメーション用カウンタ
 	int Hp;
@@ -72,7 +74,8 @@ public:
 	void SetPlayerID(Vector2 pos1, Vector2 pos2);
 	void charCtl(CHAR_ID p1, CHAR_ID p2);
 
-	bool HPmng(bool p1flag,bool p2flag,bool dflag);
+	bool HPmng(void);
+	bool playerWin(void);
 
 	Player();
 	~Player();
@@ -84,6 +87,11 @@ private:
 	int hp;
 	int iconp1;
 	int iconp2;
+	int p1win;
+	int p2win;
+	int draw;
+	bool DrawFlag;
+	bool GameOverFlag;
 
 	CHARACTER player1;
 	CHARACTER player2;

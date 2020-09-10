@@ -24,6 +24,8 @@ void Player::PlayerSysInit(void)
 	player1.shotFlag	 = false;					// キャラクタの状態（弾撃っているか？）
 	player1.damageFlag	 = false;					// キャラクタの状態（ダメージ受けているか？）
 	player1.surinukeFlag = false;					// 1部ブロックすり抜け用
+	player1.nonFlag		 = false;
+	player1.winFlag		 = false;
 	player1.moveSpeed	 = 0;						// キャラクタの移動量
 	player1.animCnt		 = 0;						// キャラクタのアニメーション用カウンタ
 	player1.Hp			 = 0;						// キャラクターのHP
@@ -42,11 +44,15 @@ void Player::PlayerSysInit(void)
 	player2.shotFlag     = false;					// キャラクタの状態（弾撃っているか？）
 	player2.damageFlag   = false;					// キャラクタの状態（ダメージ受けているか？）
 	player2.surinukeFlag = false;				    // 1部ブロックすり抜け用
+	player2.nonFlag		 = false;
+	player2.winFlag		 = false;
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
 	player2.Hp			 = 0;						// キャラクターのHP
 	player2.charID = CHAR_ID::CHAR_ID_MAX;
 
+	DrawFlag = false;
+	GameOverFlag = false;
 	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
 	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
@@ -54,6 +60,8 @@ void Player::PlayerSysInit(void)
 	hp = LoadGraph("image/hp/bar.png");
 	iconp1 = LoadGraph("image/serect/1P.png");
 	iconp2 = LoadGraph("image/serect/2P.png");
+	p1win = LoadGraph("image/logo/1p_win.png");
+	p2win = LoadGraph("image/logo/2p_win.png");
 
 	if (skill == nullptr) skill = new Skill();
 
@@ -505,10 +513,26 @@ void Player::PlayerDraw(void)
 	//DrawGraph(0, 0, iconp1, true);
 	//DrawGraph(920, 0, iconp2, true);
 	DrawBox(0,0,1000,60,0xcc9966,true);
+	DrawBox(40, 14, 480, 60, 0x000000, true);
+	DrawBox(520, 14, 960, 60, 0x000000, true);
 	DrawBox(40, 14, 480, 60, 0x33ff66, true);
 	DrawBox(520, 14, 960, 60, 0x33ff66, true);
 	DrawGraph(500,0,hp,true);
 	DrawTurnGraph(0,0,hp,true);
+
+	if (player1.winFlag)
+	{
+		DrawGraph(200,100,p1win,true);
+	}
+	if (player2.winFlag)
+	{
+		DrawGraph(200, 100, p2win, true);
+	}
+	if (DrawFlag)
+	{
+
+	}
+
 	// プレイヤー座標
 	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
 	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
@@ -526,34 +550,58 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos2 = player2.pos;
 }
 
-bool Player::HPmng(bool p1flag,bool p2flag,bool dflag)
+bool Player::HPmng(void)
 {
 	if(player1.Hp<=0)
 	{
-		p1flag = true;
+		player1.nonFlag = true;
 		return true;
 	}
 	else
 	{
-		p1flag = false;
+		player1.nonFlag = false;
 	}
 	if(player2.Hp<=0)
 	{
-		p2flag = true;
+		player2.nonFlag = true;
 		return true;
 	}
 	else
 	{
-		p2flag = false;
+		player2.nonFlag = false;
 	}
 	if((player1.Hp<=0)&&(player2.Hp<=0))
 	{
-		dflag = true;
+		DrawFlag = true;
 		return true;
 	}
 	else
 	{
-		dflag = false;
+		DrawFlag = false;
+	}
+	playerWin();
+	return false;
+}
+
+bool Player::playerWin(void)
+{
+	if (player1.nonFlag)
+	{
+		GameOverFlag = true;
+		player2.winFlag = true;
+	}
+	else
+	{
+
+	}
+	if (player2.nonFlag)
+	{
+		GameOverFlag = true;
+		player1.winFlag = true;
+	}
+	else
+	{
+
 	}
 	return false;
 }

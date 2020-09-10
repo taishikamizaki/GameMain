@@ -1104,7 +1104,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		}
 	}
 
-
 }
 
 void Skill::SkillDraw(void)

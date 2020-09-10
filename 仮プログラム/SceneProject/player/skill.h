@@ -151,6 +151,7 @@ private:
 	int slash2Image[16];
 	int slash3Image[12];
 	int laserImage[5];
+	int charicon[12];
 	int uibuffU;
 	int uiken;
 	int uiheal;

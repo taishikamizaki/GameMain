@@ -79,6 +79,8 @@ private:
 	int playerPosX;
 	int playerPosY;
 	int hp;
+	int iconp1;
+	int iconp2;
 
 	CHARACTER player1;
 	CHARACTER player2;

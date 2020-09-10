@@ -22,7 +22,7 @@ bool Stage::StageInit(void)
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, yamaImage, false);
 
-	map =  STAGE_ID_YAMA;
+	map =  STAGE_ID::STAGE_ID_YAMA;
 
 	mapSize.x = MAP_X;
 	mapSize.y = MAP_Y;
@@ -37,7 +37,7 @@ bool Stage::StageCtl(void)
 
 	switch (map)
 	{
-	case STAGE_ID_YAMA:
+	case STAGE_ID::STAGE_ID_YAMA:
 		for (int y = 0; y < mapSize.y; y++)
 		{
 			for (int x = 0; x < mapSize.x; x++)
@@ -46,7 +46,7 @@ bool Stage::StageCtl(void)
 			}
 		}
 		break;
-	case STAGE_ID_MACHI:
+	case STAGE_ID::STAGE_ID_MACHI:
 		for (int y = 0; y < mapSize.y; y++)
 		{
 			for (int x = 0; x < mapSize.x; x++)
@@ -55,7 +55,7 @@ bool Stage::StageCtl(void)
 			}
 		}
 		break;
-	case STAGE_ID_COLOSSEUM:
+	case STAGE_ID::STAGE_ID_COLOSSEUM:
 		for (int y = 0; y < mapSize.y; y++)
 		{
 			for (int x = 0; x < mapSize.x; x++)
@@ -64,7 +64,7 @@ bool Stage::StageCtl(void)
 			}
 		}
 		break;
-	case STAGE_ID_HAMAGURI:
+	case STAGE_ID::STAGE_ID_HAMAGURI:
 		for (int y = 0; y < mapSize.y; y++)
 		{
 			for (int x = 0; x < mapSize.x; x++)

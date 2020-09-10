@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../stage/Stage.h"
 
 enum class CHAR_ID
 {
@@ -11,7 +11,9 @@ enum class CHAR_ID
 };
 
 // ゲームクラス
+class Select;
 class Player;
+class Stage;
 class Game
 {
 public:
@@ -29,13 +31,14 @@ public:
 	Game();		// コンストラクタ
 	~Game();	// デストラクタ
 
-	Player* player;
+	
+
 
 private:
 
 	int Init();		// 初期化
 
-	int select;		// 仮置き画像用
+	int selectB;		// 仮置き画像用
 	int game;		// 仮置き画像用
 	int space;
 
@@ -46,7 +49,16 @@ private:
 	CHAR_ID player1;
 	CHAR_ID player2;
 
+	STAGE_ID stageID;
+
+	Select* select;
+	Player* player;
+	Stage* stage;
+
+	friend class Select;
 	friend class Player;
+	friend class Stage;
+
 
 };
 

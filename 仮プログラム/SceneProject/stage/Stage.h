@@ -10,7 +10,7 @@
 #define lpStage Stage::GetInstance()
 
 // ステージ種別
- enum STAGE_ID
+ enum class STAGE_ID
 {
 	STAGE_ID_YAMA,
 	STAGE_ID_MACHI,
@@ -31,15 +31,16 @@ public:
 	Vector2 PosToIndex(Vector2 pos);
 	Vector2 IndexToPos(Vector2 index);
 	bool IsPass(Vector2 pos);
-	int map;
+	STAGE_ID map;
 	
 	bool StageCtl(void);
 	void StageDraw(void);
 
+	Stage();
+	~Stage();
 private:
 	bool StageInit(void);
 	
-	int stageID[STAGE_ID_MAX];
 	int hamaroomImage[7];
 	int matiImage[43];
 	int tougiImage[12];
@@ -115,8 +116,6 @@ private:
 	{7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7,},
 	};
 
-	Stage();
-	~Stage();
 };
 
 

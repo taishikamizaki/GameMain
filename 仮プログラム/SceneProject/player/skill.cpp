@@ -21,6 +21,7 @@ void Skill::StageSysInit(void)
 	P1.SSflag = true;
 	P1.bufFlag = false;
 	P1.hitFlag = false;
+	P1.atFlag = false;
 	P2.skillFlag = false;
 	P2.SSflag = true;
 	P2.bufFlag = false;
@@ -32,10 +33,13 @@ void Skill::StageSysInit(void)
 	P1.skill = SKILL_ID::SKILL_MAX;
 	P2.skill = SKILL_ID::SKILL_MAX;
 	LoadDivGraph("image/skill/buff/Heal.png", 10, 10, 1, 120, 120, healImage, false);
-	LoadDivGraph("image/skill/buff/Attackbuff.png", 10, 10, 1, 120, 120, buffAImage, false);
-	LoadDivGraph("image/skill/buff/Defensebuff.png", 10, 10, 1, 120, 120, buffDImage, false);
-	LoadDivGraph("image/skill/buff/Speedbuff.png", 10, 10, 1, 120, 120, buffSImage, false);
-	LoadDivGraph("image/skill/buff/Uniquebuff.png", 10, 10, 1, 120, 120, buffUImage, false);
+	LoadDivGraph("image/skill/buff/buff_a.png", 10, 10, 1, 120, 120, buffAImage, false);
+	LoadDivGraph("image/skill/buff/buff_d.png", 10, 10, 1, 120, 120, buffDImage, false);
+	LoadDivGraph("image/skill/buff/buff_s.png", 10, 10, 1, 120, 120, buffSImage, false);
+	LoadDivGraph("image/skill/buff/buff_u.png", 10, 10, 1, 120, 120, buffUImage, false);
+
+	swordImage = LoadGraph("image/player/turugi2.png", true);
+
 	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
 	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
 	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
@@ -353,6 +357,17 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚P
 		if (player1 == CHAR_ID::CHAR_ID_KISI)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P1.hitPos.x +25, P1.hitPos.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
+
+
+			}
+			else
+			{
+				DrawGraph(P1.hitPos.x, P1.hitPos.y, swordImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -365,7 +380,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, healImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, healImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -375,7 +390,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -407,7 +422,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffSImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffSImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -417,7 +432,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -449,7 +464,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -457,7 +472,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawBox(posp.x, posp.y, offsetPosp.x, offsetPosp.y,  0x88ffff, true);
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
 				}
 
 				//if (skillFlag == true)
@@ -471,7 +486,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, healImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, healImage[Anim], true);
 						//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, laserImage[AnimL], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
 				}
@@ -492,7 +507,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 40, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -536,7 +551,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, healImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, healImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -546,7 +561,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -578,7 +593,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffSImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffSImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -588,7 +603,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffUImage[Anim], true);
 					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
 				}
 			}
@@ -620,7 +635,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffDImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
@@ -628,7 +643,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawBox(posp.x, posp.y, offsetPosp.x, offsetPosp.y,  0x88ffff, true);
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffUImage[Anim], true);
 				}
 
 				//if (skillFlag == true)
@@ -642,7 +657,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, healImage[Anim], true);
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, healImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, healImage[Anim], true);
 					//DrawGraph(P1.posp.x - 10, P1.posp.y - 10, laserImage[AnimL], true);
 				//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
 
@@ -664,7 +679,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 40, buffDImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)

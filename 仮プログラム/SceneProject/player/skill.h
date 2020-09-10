@@ -92,6 +92,7 @@ struct player
 	bool skillFlag;
 	bool hitFlag;
 	bool bufFlag;
+	bool atFlag;
 	SScount kisi;
 	SScount maho;
 	SScount buto;
@@ -150,6 +151,9 @@ private:
 	int slash2Image[16];
 	int slash3Image[12];
 	int laserImage[5];
+
+	int swordImage;
+
 	//bool hamaFlag;
 	//int yamabgm;
 	//int matibgm;

@@ -35,6 +35,7 @@ struct CHARACTER
 	Vector2 hitPosS;		//当たり判定用の左上
 	Vector2 hitPosE;		//当たり判定用の右下
 	Vector2f velocity;
+	bool atFlag;
 	bool runFlag;		//キャラクタの状態（走っているか？）
 	bool jumpFlag;		//キャラクタの状態（ジャンプしているか？）
 	bool shotFlag;		//キャラクタの状態（弾撃っているか？）

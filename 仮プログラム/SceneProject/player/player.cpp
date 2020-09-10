@@ -50,6 +50,7 @@ void Player::PlayerSysInit(void)
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
+
 	if (skill == nullptr) skill = new Skill();
 
 }
@@ -207,7 +208,7 @@ void Player::PlayerCtl(void)
 			{
 				player1.moveSpeed = P_DSP;
 	
-				if ((player1.pos.x + player1.hitPosE.x) < screen_size.x)
+				if ((player1.pos.x + player1.hitPosE.x) < screen_size.x-1)
 				{
 					playerPosBK.x += player1.moveSpeed;
 				}
@@ -232,7 +233,7 @@ void Player::PlayerCtl(void)
 			{
 				player1.moveSpeed = P_DSP;
 	
-				if ((player1.pos.x - player1.hitPosS.x) > 0)
+				if ((player1.pos.x - player1.hitPosS.x) > 1)
 				{
 					playerPosBK.x -= player1.moveSpeed;
 				}
@@ -356,7 +357,7 @@ void Player::PlayerCtl(void)
 			{
 				player2.moveSpeed = P_DSP;
 
-				if ((player2.pos.x + player2.hitPosE.x) < screen_size.x)
+				if ((player2.pos.x + player2.hitPosE.x) < screen_size.x-1)
 				{
 					playerPosBK2.x += player2.moveSpeed;
 				}
@@ -380,7 +381,7 @@ void Player::PlayerCtl(void)
 			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
 				player2.moveSpeed = P_DSP;
-				if ((player2.pos.x - player2.hitPosS.x) > 0)
+				if ((player2.pos.x - player2.hitPosS.x) > 1)
 				{
 					playerPosBK2.x -= player2.moveSpeed;
 				}
@@ -432,6 +433,8 @@ void Player::PlayerDraw(void)
 	case CHAR_ID::CHAR_ID_KISI:
 		DrawExtendGraph(player1.pos.x-(player1.size.x/2), player1.pos.y-(player1.size.y/2),
 			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
+		
+
 		break;
 
 	case CHAR_ID::CHAR_ID_MDOU:

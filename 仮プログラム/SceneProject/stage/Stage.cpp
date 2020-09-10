@@ -175,7 +175,7 @@ bool Stage::IsPass(Vector2 pos)
 	//default:
 	//	break;
 	//}
-	//
+	
 
 	return true;
 }

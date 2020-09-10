@@ -153,6 +153,7 @@
     <ClCompile Include="scene\GameOver.cpp" />
     <ClCompile Include="scene\ScnMng.cpp" />
     <ClCompile Include="scene\Title.cpp" />
+    <ClCompile Include="select.cpp" />
     <ClCompile Include="stage\Stage.cpp" />
     <ClCompile Include="vector\Vector2.cpp" />
     <ClCompile Include="vector\Vector2f.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="scene\GameOver.h" />
     <ClInclude Include="scene\ScnMng.h" />
     <ClInclude Include="scene\Title.h" />
+    <ClInclude Include="select.h" />
     <ClInclude Include="stage\Stage.h" />
     <ClInclude Include="vector\Vector2.h" />
     <ClInclude Include="vector\Vector2f.h" />

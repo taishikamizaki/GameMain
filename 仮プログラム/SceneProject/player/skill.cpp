@@ -37,6 +37,7 @@ void Skill::StageSysInit(void)
 	LoadDivGraph("image/skill/buff/buff_d.png", 10, 10, 1, 120, 120, buffDImage, false);
 	LoadDivGraph("image/skill/buff/buff_s.png", 10, 10, 1, 120, 120, buffSImage, false);
 	LoadDivGraph("image/skill/buff/buff_u.png", 10, 10, 1, 120, 120, buffUImage, false);
+	LoadDivGraph("image/serect/charList.png", 12, 4, 3, 138, 140, charicon,false);
 	uibuffU = LoadGraph("image/ui/uibuff.png");
 	uiken = LoadGraph("image/ui/uiken.png");
 	uisra = LoadGraph("image/ui/uisra.png");
@@ -47,6 +48,9 @@ void Skill::StageSysInit(void)
 	uilej = LoadGraph("image/ui/uilej.png");
 	uiheal = LoadGraph("image/ui/uiheal.png");
 	swordImage = LoadGraph("image/player/turugi2.png", true);
+	punchImage= LoadGraph("image/player/punch.png", true);
+	wandImage = LoadGraph("image/player/wand.png", true);
+	dImage = LoadGraph("image/player/turugi.png", true);
 
 	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
 	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
@@ -367,11 +371,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		{
 			if (CheckHitKey(KEY_INPUT_T) == 1)
 			{
-				DrawRotaGraph(P1.posp.x +25, P1.posp.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
+				DrawRotaGraph(P1.posp.x +25+6, P1.posp.y+50, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
 			}
 			else
 			{
-				DrawGraph(P1.posp.x, P1.posp.y, swordImage, true);
+				DrawGraph(P1.posp.x+6, P1.posp.y, swordImage, true);
 				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)
@@ -416,6 +420,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player1 == CHAR_ID::CHAR_ID_MDOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P1.posp.x+25+6, P1.posp.y + 50 - 25, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
+			}
+			else
+			{
+				DrawGraph(P1.posp.x+6 , P1.posp.y-25 , wandImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -545,6 +558,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚P
 		if (player2 == CHAR_ID::CHAR_ID_KISI)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x + 25-25, P2.posp.y + 50, 1.0f, 3.1415926535897932384626433832795f , swordImage, true);
+			}
+			else
+			{
+				DrawRotaGraph(P2.posp.x + 25-25, P2.posp.y + 25, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -587,6 +609,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player2 == CHAR_ID::CHAR_ID_MDOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x , P2.posp.y -25 + 50, 1.0f, -3.1415926535897932384626433832795f/2, wandImage, true);
+			}
+			else
+			{
+				DrawGraph(P2.posp.x-25, P2.posp.y-25, wandImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -629,6 +660,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚R
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)
 		{
+			if (CheckHitKey(KEY_INPUT_T) == 1)
+			{
+				DrawRotaGraph(P2.posp.x + 25, P2.posp.y + 50, 1.0f, 3.1415926535897932384626433832795f / 2, punchImage, true);
+			}
+			else
+			{
+				DrawGraph(P2.posp.x, P2.posp.y, punchImage, true);
+				/*DrawRotaGraph2(325, 190, 0, 0, 1.5f, 0, swordImage, true);*/
+			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -717,63 +757,350 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 	{
 		if (player1 == CHAR_ID::CHAR_ID_KISI)
 		{
-			DrawGraph(0,70,uiheal,true);
-			DrawGraph(100, 70, uibuffU, true);
-			DrawGraph(50,70, uitate, true);
-			DrawGraph(150, 70, uisra, true);
+			DrawExtendGraph(0, 0,60,60, charicon[0], true);
 
+			if (P1.kisi.s1 / 300)
+			{
+				DrawGraph(50, 60, uitate, true);
+			}
+			else
+			{
+				DrawBox(50,60,100,110,0x000000,true);
+			}
+
+			if (P1.kisi.s2 / 4200)
+			{
+				DrawGraph(0, 60, uiheal, true);
+			}
+			else
+			{
+				DrawBox(0, 60, 50, 110, 0x000000, true);
+			}
+
+			if (P1.kisi.s3 / 60)
+			{
+				DrawGraph(100, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(100, 60, 150, 110, 0x000000, true);
+			}
+
+			if (P1.LP<=10)
+			{
+				DrawGraph(150, 60, uisra, true);
+			}
+			else
+			{
+				DrawBox(150, 60, 200, 110, 0x000000, true);
+			}
+
+
+			//DrawExtendGraph(0,0,140/2,140/2,charicon[0],true);
 		}
 		if (player1 == CHAR_ID::CHAR_ID_MDOU)
 		{
-			DrawGraph(0, 70, uibuffU, true);
-			DrawGraph(100, 70, uibuffU, true);
-			DrawGraph(50, 70, uimaho, true);
-			DrawGraph(150, 70, uiles, true);
+
+
+
+
+			DrawExtendGraph(0, 0, 60, 60, charicon[3], true);
+			if (P1.maho.s1/300)
+			{
+				DrawGraph(50, 60, uimaho, true);
+			}
+			else
+			{
+				DrawBox(50, 60, 100, 110, 0x000000, true);
+			}
+			if (P1.maho.s2/1200)
+			{
+				DrawGraph(0, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(0, 60, 50, 110, 0x000000, true);
+			}
+			if (P1.maho.s3/1000)
+			{
+				DrawGraph(100, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(100, 60, 150, 110, 0x000000, true);
+			}
+			if (P1.LP <= 50)
+			{
+				if (P1.maho.s4/1800)
+				{
+					DrawGraph(150, 60, uiles, true);
+				}
+				else
+				{
+					DrawBox(150, 60, 200, 110, 0x000000, true);
+				}
+			}
 		}
 		if (player1 == CHAR_ID::CHAR_ID_BTOU)
 		{
-			DrawGraph(0, 70, uibuffU, true);
-			DrawGraph(100, 70, uibuffU, true);
-			DrawGraph(50, 70, uihand, true);
-			DrawGraph(150, 70, uiheal, true);
+
+
+
+
+			DrawExtendGraph(0, 0, 60, 60, charicon[2], true);
+
+			if (P1.buto.s1/300)
+			{
+				DrawGraph(50, 60, uihand, true);
+			}
+			else
+			{
+				DrawBox(50, 60, 100, 110, 0x000000, true);
+			}
+			if (P1.buto.s2 / 600)
+			{
+				DrawGraph(0, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(0, 60, 50, 110, 0x000000, true);
+			}
+			if (P1.buto.s3 / 1200)
+			{
+				DrawGraph(100, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(100, 60, 150, 110, 0x000000, true);
+			}
+			if (P1.buto.s4 / 600)
+			{
+				if (P1.LP <= 30)
+				{
+					DrawGraph(150, 60, uiheal, true);
+				}
+				else
+				{
+					DrawBox(150, 60, 200, 110, 0x000000, true);
+				}
+			}
+			
 		}
 		if (player1 == CHAR_ID::CHAR_ID_4)
 		{
-			DrawGraph(0, 70, uibuffU, true);
-			DrawGraph(100, 70, uiken, true);
-			DrawGraph(50, 70, uilej, true);
-			DrawGraph(150, 70, uisra, true);
+
+
+
+
+			DrawExtendGraph(0, 0, 60, 60, charicon[1], true);
+			if (P1.nazo.s1/300)
+			{
+				DrawGraph(50, 60, uilej, true);
+			}
+			else
+			{
+				DrawBox(50,60,100,110,0x0000,true);
+			}
+			if (P1.nazo.s2 / 600)
+			{
+				DrawGraph(0, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(0, 60, 50, 110, 0x0000, true);
+			}
+			if (P1.nazo.s3 / 1000)
+			{
+				DrawGraph(100, 60, uiken, true);
+			}
+			else
+			{
+				DrawBox(100, 60, 150, 110, 0x0000, true);
+			}
+			if (P1.LP <= 50)
+			{
+				if (P1.nazo.s4 / 1800)
+				{
+					DrawGraph(150, 60, uisra, true);
+				}
+				else
+				{
+					DrawBox(150, 60, 200, 110, 0x0000, true);
+				}
+			}
 		}
 	}
 	if (player2 != CHAR_ID::CHAR_ID_MAX)
 	{
 		if (player2 == CHAR_ID::CHAR_ID_KISI)
 		{
-			DrawGraph(800, 70, uiheal, true);
-			DrawGraph(900, 70, uibuffU, true);
-			DrawGraph(850, 70, uitate, true);
-			DrawGraph(950, 70, uisra, true);
+
+
+
+
+			DrawExtendGraph(930, 0, 1000, 60, charicon[0], true);
+
+			if (P2.kisi.s1 / 300)
+			{
+				DrawGraph(850, 60, uitate, true);
+			}
+			else
+			{
+				DrawBox(850, 60, 900, 110, 0x000000, true);
+			}
+
+			if (P2.kisi.s2 / 4200)
+			{
+				DrawGraph(800, 60, uiheal, true);
+			}
+			else
+			{
+				DrawBox(800, 60, 850, 110, 0x000000, true);
+			}
+
+			if (P2.kisi.s3 / 60)
+			{
+				DrawGraph(900, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(900, 60, 950, 110, 0x000000, true);
+			}
+
+			if (P2.LP <= 10)
+			{
+				DrawGraph(950, 60, uisra, true);
+			}
+			else
+			{
+				DrawBox(950, 60, 1000, 110, 0x000000, true);
+			}
 		}
 		if (player2 == CHAR_ID::CHAR_ID_MDOU)
 		{
-			DrawGraph(800, 70, uibuffU, true);
-			DrawGraph(900, 70, uibuffU, true);
-			DrawGraph(850, 70, uimaho, true);
-			DrawGraph(950, 70, uiles, true);
+			
+			
+
+			
+			DrawExtendGraph(930, 0, 1000, 60, charicon[3], true);
+			if (P2.maho.s1 / 300)
+			{
+				DrawGraph(850, 60, uimaho, true);
+			}
+			else
+			{
+				DrawBox(850, 60, 900, 110, 0x000000, true);
+			}
+			if (P2.maho.s2 / 1200)
+			{
+				DrawGraph(800, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(800, 60, 850, 110, 0x000000, true);
+			}
+			if (P2.maho.s3 / 1000)
+			{
+				DrawGraph(900, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(900, 60, 950, 110, 0x000000, true);
+			}
+			if (P2.LP <= 50)
+			{
+				if (P2.maho.s4 / 1800)
+				{
+					DrawGraph(950, 60, uiles, true);
+				}
+				else
+				{
+					DrawBox(950, 60, 1000, 110, 0x000000, true);
+				}
+			}
 		}
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)
 		{
-			DrawGraph(800, 70, uibuffU, true);
-			DrawGraph(900, 70, uibuffU, true);
-			DrawGraph(850, 70, uihand, true);
-			DrawGraph(950, 70, uiheal, true);
+			
+			DrawExtendGraph(930, 0, 1000, 60, charicon[2], true);
+			if (P2.buto.s1 / 300)
+			{
+				DrawGraph(850, 60, uihand, true);
+			}
+			else
+			{
+				DrawBox(850, 60, 900, 110, 0x000000, true);
+			}
+			if (P2.buto.s2 / 600)
+			{
+				DrawGraph(800, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(800, 60, 850, 110, 0x000000, true);
+			}
+			if (P2.buto.s3 / 1200)
+			{
+				DrawGraph(900, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(900, 60, 950, 110, 0x000000, true);
+			}
+			if (P2.buto.s4 / 600)
+			{
+				if (P2.LP <= 30)
+				{
+					DrawGraph(950, 60, uiheal, true);
+				}
+				else
+				{
+					DrawBox(950, 60, 1000, 110, 0x000000, true);
+				}
+			}
 		}
 		if (player2 == CHAR_ID::CHAR_ID_4)
 		{
-			DrawGraph(800, 70, uibuffU, true);
-			DrawGraph(900, 70, uiken, true);
-			DrawGraph(850, 70, uilej, true);
-			DrawGraph(950, 70, uisra, true);
+			
+			
+		
+			
+			DrawExtendGraph(930, 0, 1000, 60, charicon[1], true);
+			if (P2.nazo.s1 / 300)
+			{
+				DrawGraph(850, 60, uilej, true);
+			}
+			else
+			{
+				DrawBox(850, 60, 900, 110, 0x0000, true);
+			}
+			if (P2.nazo.s2 / 600)
+			{
+				DrawGraph(800, 60, uibuffU, true);
+			}
+			else
+			{
+				DrawBox(800, 60, 850, 110, 0x0000, true);
+			}
+			if (P2.nazo.s3 / 1000)
+			{
+				DrawGraph(900, 60, uiken, true);
+			}
+			else
+			{
+				DrawBox(900, 60, 950, 110, 0x0000, true);
+			}
+			if (P2.LP <= 50)
+			{
+				if (P2.nazo.s4 / 1800)
+				{
+					DrawGraph(950, 60, uisra, true);
+				}
+				else
+				{
+					DrawBox(950, 60, 1000, 110, 0x0000, true);
+				}
+			}
 		}
 	}
 
@@ -855,7 +1182,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 		}
 		if (CheckHitKey(KEY_INPUT_J) == 1)
 		{
-			if (P1.kisi.s3 / 360)
+			if (P1.kisi.s3 / 60)
 			{
 				P1.skill = SKILL_ID::SKILL_3;
 

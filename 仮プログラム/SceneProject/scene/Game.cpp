@@ -14,7 +14,7 @@ int Game::Init()
 	space = LoadGraph("image/logo/space.png");
 
 	player1 = CHAR_ID::CHAR_ID_KISI;
-	player2 = CHAR_ID::CHAR_ID_4;
+	player2 = CHAR_ID::CHAR_ID_KISI;
 
     if (select == nullptr) select = new Select();
 	if (player == nullptr) player = new Player();

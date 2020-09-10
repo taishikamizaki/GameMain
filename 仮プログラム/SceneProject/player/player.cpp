@@ -50,6 +50,8 @@ void Player::PlayerSysInit(void)
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 	hp = LoadGraph("image/hp/bar.png");
+	iconp1 = LoadGraph("image/serect/1P.png");
+	iconp2 = LoadGraph("image/serect/2P.png");
 
 	if (skill == nullptr) skill = new Skill();
 
@@ -476,27 +478,33 @@ void Player::PlayerDraw(void)
 	{
 	case CHAR_ID::CHAR_ID_KISI:
 	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[5], true);
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[11], true);
 		break;
 
 	case CHAR_ID::CHAR_ID_MDOU:
 	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[5], true);
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[11], true);
 		break;
 
 	case CHAR_ID::CHAR_ID_BTOU:
 	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[5], true);
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[11], true);
 		break;
 
 	case CHAR_ID::CHAR_ID_4:
 	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[5], true);
+		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[11], true);
 		break;
 	default:
 		break;
 	}
-	DrawGraph(0,0,hp,true);
+	//DrawGraph(0, 0, iconp1, true);
+	//DrawGraph(920, 0, iconp2, true);
+	DrawBox(0,0,1000,60,0xcc9966,true);
+	DrawBox(40, 14, 480, 60, 0x33ff66, true);
+	DrawBox(520, 14, 960, 60, 0x33ff66, true);
+	DrawGraph(500,0,hp,true);
+	DrawTurnGraph(0,0,hp,true);
 	// プレイヤー座標
 	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
 	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);

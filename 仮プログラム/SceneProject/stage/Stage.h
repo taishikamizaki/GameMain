@@ -116,6 +116,10 @@ private:
 	{7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7,},
 	};
 
+	bool yamaF;
+	bool matiF;
+	bool tougiF;
+
 };
 
 

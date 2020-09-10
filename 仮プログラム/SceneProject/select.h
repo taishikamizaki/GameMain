@@ -23,14 +23,8 @@ public:
 	{
 		return selectF;
 	}
-	CHAR_ID GetP1()
-	{
-		return  player1;
-	}
-	CHAR_ID GetP2()
-	{
-		return player2;
-	}
+	CHAR_ID GetP1();
+	CHAR_ID GetP2();
 	STAGE_ID GetStage()
 	{
 		return stageID;

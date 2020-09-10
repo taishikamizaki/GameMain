@@ -59,6 +59,16 @@ int Select::Init()
 	return 0;
 }
 
+CHAR_ID Select::GetP1()
+{
+	return player1;
+}
+
+CHAR_ID Select::GetP2()
+{
+	return player2;
+}
+
 int Select::SelectCtl()
 {
 	// プレイヤー選択判定
@@ -142,7 +152,7 @@ int Select::SelectCtl()
 				if (p2 != p1)
 				{
 					p2IF = true;
-					p1Flag = true;
+					p2Flag = true;
 				}
 				else
 				{
@@ -183,7 +193,7 @@ int Select::SelectCtl()
 			// 決定（画像切り替え）
 			if (keyDownTrigger[KEY_ID_1SKILL1])
 			{
-				stageIF = true;
+				stageF = true;
 				if (s_waku == 0)
 				{
 					yamaF = true;
@@ -206,19 +216,10 @@ int Select::SelectCtl()
 			// キャンセル（切り替え）
 			if (keyDownTrigger[KEY_ID_1SKILL2])
 			{
-				stageIF = false;
+				stageF = false;
 				yamaF = false;
 				matiF = false;
 				tougiF = false;
-			}
-			// 最終確認
-			if (p1Flag && p2Flag && stageIF)
-			{
-				stageF = true;
-			}
-			else
-			{
-				stageF = false;
 			}
 		}
 	}
@@ -233,7 +234,7 @@ int Select::SelectCtl()
 	}
 
 	// プレイヤー１のID代入
-	if (p1IF)
+	if (p1Flag)
 	{
 		if (p1 == 0)
 		{
@@ -253,7 +254,7 @@ int Select::SelectCtl()
 		}
 	}
 	// プレイヤー２のID代入
-	if (p2IF)
+	if (p2Flag)
 	{
 		if (p2 == 0)
 		{
@@ -273,7 +274,7 @@ int Select::SelectCtl()
 		}
 	}
 	// ステージIDの代入
-	if (stageIF)
+	if (stageF)
 	{
 		if (s_waku == 0)
 		{

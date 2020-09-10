@@ -13,13 +13,14 @@ int Game::Init()
 	game = LoadGraph("image/TestGraph/Game.png");
 	space = LoadGraph("image/logo/space.png");
 
-	player1 = CHAR_ID::CHAR_ID_KISI;
-	player2 = CHAR_ID::CHAR_ID_KISI;
+	player1 = CHAR_ID::CHAR_ID_MAX;
+	player2 = CHAR_ID::CHAR_ID_MAX;
 
     if (select == nullptr) select = new Select();
 	if (player == nullptr) player = new Player();
 	if (stage == nullptr) stage = new Stage();
 
+	if (select != nullptr) select->Select::Select();
 	return 0;
 }
 
@@ -68,7 +69,7 @@ int Game::Draw()
 		GameCtl();
 		DrawGraph(0, 0, game, true);
 		DrawGraph(250, 540, space, true);
-		lpStage.StageDraw();
+		if(stage != nullptr) stage->StageDraw();
 		if (player != nullptr)
 		{
 			player->PlayerDraw();

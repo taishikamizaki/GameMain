@@ -43,6 +43,7 @@ struct CHARACTER
 	bool surinukeFlag;	//1部ブロックすり抜け用
 	int moveSpeed;		//キャラクタの移動量
 	int animCnt;		//キャラクタのアニメーション用カウンタ
+	int Hp;
 	CHAR_ID charID;
 };
 
@@ -70,6 +71,8 @@ public:
 
 	void SetPlayerID(Vector2 pos1, Vector2 pos2);
 	void charCtl(CHAR_ID p1, CHAR_ID p2);
+
+	bool HPmng(bool p1flag,bool p2flag);
 
 	Player();
 	~Player();

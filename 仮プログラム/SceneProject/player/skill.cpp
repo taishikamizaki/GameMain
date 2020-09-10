@@ -150,7 +150,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player1 == CHAR_ID::CHAR_ID_MDOU)
 		{
 			P1.HP = 0;
-			P1.LP = 50;
+			P1.LP = 100;
 			P1.dmage = 10;
 			P1.attack = 0;
 			P1.defense = 0;
@@ -159,7 +159,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player1 == CHAR_ID::CHAR_ID_BTOU)
 		{
 			P1.HP = 0;
-			P1.LP = 30;
+			P1.LP = 100;
 			P1.dmage = 10;
 			P1.attack = 0;
 			P1.defense = 0;
@@ -168,7 +168,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player1 == CHAR_ID::CHAR_ID_4)
 		{
 			P1.HP = 0;
-			P1.LP = 50;
+			P1.LP = 100;
 			P1.dmage = 10;
 			P1.attack = 0;
 			P1.defense = 0;
@@ -189,7 +189,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player2 == CHAR_ID::CHAR_ID_MDOU)
 		{
 			P2.HP = 0;
-			P2.LP = 50;
+			P2.LP = 100;
 			P2.dmage = 10;
 			P2.attack = 0;
 			P2.defense = 0;
@@ -198,7 +198,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)
 		{
 			P2.HP = 0;
-			P2.LP = 30;
+			P2.LP = 100;
 			P2.dmage = 10;
 			P2.attack = 0;
 			P2.defense = 0;
@@ -207,7 +207,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		if (player2 == CHAR_ID::CHAR_ID_4)
 		{
 			P2.HP = 0;
-			P2.LP = 50;
+			P2.LP = 100;
 			P2.dmage = 10;
 			P2.attack = 0;
 			P2.defense = 0;
@@ -1967,16 +1967,33 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	StageGameInit();
 }
 
-void Skill::CheckHit()
+bool Skill::CheckHitP1()
+{
+	if ((P2.hitoffsetPos.x > P1.posp.x) &&
+		(P2.hitPos.x < P1.offsetPosp.x) &&
+		(P2.hitoffsetPos.y > P1.posp.y) &&
+		(P2.hitPos.y < P1.offsetPosp.y))
+	{
+		P2.skillFlag = false;
+		P1.hitFlag = true;
+		return true;
+	}
+	return false;
+}
+
+
+bool Skill::CheckHitP2()
 {
 	if ((P1.hitoffsetPos.x > P2.posp.x) &&
 		(P1.hitPos.x < P2.offsetPosp.x) &&
 		(P1.hitoffsetPos.y > P2.posp.y) &&
 		(P1.hitPos.y < P2.offsetPosp.y))
 	{
-		P2.skillFlag = false;
+		P1.skillFlag = false;
 		P2.hitFlag = true;
+		return true;
 	}
+	return false;
 }
 
 bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
@@ -2594,6 +2611,13 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 	}
 	return false;
 }
+
+void Skill::HPCtl(int p1hp, int p2hp)
+{
+	p1hp = P1.LP;
+	p2hp = P2.LP;
+}
+
 
 Skill::Skill()
 {

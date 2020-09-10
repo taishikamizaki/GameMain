@@ -11,6 +11,7 @@ struct Pos
 struct StageL
 {
 	Pos pos;
+	Pos waku_pos;
 };
 
 class Stage;
@@ -22,9 +23,17 @@ public:
 	{
 		return selectF;
 	}
-	int GetP1()
+	CHAR_ID GetP1()
 	{
-		return;
+		return  player1;
+	}
+	CHAR_ID GetP2()
+	{
+		return player2;
+	}
+	STAGE_ID GetStage()
+	{
+		return stageID;
 	}
 	int SelectCtl();
 	void Draw();
@@ -35,6 +44,8 @@ private:
 	int Init();
 
 	StageL stageL[3];
+	STAGE_ID stageID;
+
 
 	CHAR_ID player1;
 	CHAR_ID player2;

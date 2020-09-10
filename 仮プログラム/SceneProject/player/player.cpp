@@ -26,6 +26,7 @@ void Player::PlayerSysInit(void)
 	player1.surinukeFlag = false;					// 1部ブロックすり抜け用
 	player1.moveSpeed	 = 0;						// キャラクタの移動量
 	player1.animCnt		 = 0;						// キャラクタのアニメーション用カウンタ
+	player1.Hp			 = 0;						// キャラクターのHP
 	player1.charID = CHAR_ID::CHAR_ID_MAX;
 
 	player2.moveDir		 = DIR::DIR_ID_LEFT;		// 向いている方向
@@ -43,6 +44,7 @@ void Player::PlayerSysInit(void)
 	player2.surinukeFlag = false;				    // 1部ブロックすり抜け用
 	player2.moveSpeed    = 0;						// キャラクタの移動量
 	player2.animCnt      = 0;						// キャラクタのアニメーション用カウンタ
+	player2.Hp			 = 0;						// キャラクターのHP
 	player2.charID = CHAR_ID::CHAR_ID_MAX;
 
 	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
@@ -78,6 +80,7 @@ void Player::PlayerGameInit(void)
 						 player1.hitPosE, player1.sizeOffset, player1.size, 
 						 player2.pos, player2.hitPosS, 
 						 player2.hitPosE, player2.sizeOffset, player2.size);
+		skill->HPCtl(player1.Hp,player2.Hp);
 
 		skill->StageGameInit();
 	}
@@ -521,6 +524,35 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos1 = player1.pos;
 	pos2 = player2.pos;
 }
+
+bool Player::HPmng(bool p1flag,bool p2flag,bool dflag)
+{
+	if(player1.Hp<=0)
+	{
+		p1flag = true;
+	}
+	else
+	{
+		p1flag = false;
+	}
+	if(plaeyr2.Hp<=0)
+	{
+		p2flag = true;
+	}
+	else
+	{
+		p2flag = false;
+	}
+	if((player1.Hp<=0)&&(plaeyr2.Hp<=0))
+	{
+		dflag = true;
+	}
+	else
+	{
+		dflag = false;
+	}
+}
+
 
 Player::Player():screen_size(1000,600)
 {

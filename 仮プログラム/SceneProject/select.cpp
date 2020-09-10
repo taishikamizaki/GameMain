@@ -13,7 +13,7 @@ int Select::Init()
 	p1_waku = LoadGraph("image/1p_waku.png", true);
 	p2_waku = LoadGraph("image/2p_waku.png", true);
 
-	LoadDivGraph("image/select/charList.png", 12, 4, 3, 138, 140, pList);
+	LoadDivGraph("image/select/charSele.png", 12, 4, 3, 138, 140, pList);
 
 	LoadDivGraph("image/select/yama.png", 2, 1, 2, 100, 60, yamaImage);
 	LoadDivGraph("image/select/mati.png", 2, 1, 2, 100, 60, matiImage);
@@ -24,6 +24,10 @@ int Select::Init()
 	stageL[0].pos = { 100,500 };
 	stageL[1].pos = { 250,500 };
 	stageL[2].pos = { 400,500 };
+
+	stageL[0].waku_pos = {90, 490};
+	stageL[1].waku_pos =  {240, 490};
+	stageL[2].waku_pos =  {390, 490};
 
 	p1IF = false;
 	p2IF = false;
@@ -42,6 +46,8 @@ int Select::Init()
 	p1 = 0;
 	p2 = 0;
 
+	stageID = STAGE_ID::STAGE_ID_MAX;
+
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
@@ -50,6 +56,7 @@ int Select::Init()
 
 int Select::SelectCtl()
 {
+	// プレイヤー選択判定
 	if (!selectF && !stageF)
 	{
 		if (keyNew[KEY_ID_UP1])
@@ -117,30 +124,70 @@ int Select::SelectCtl()
 			p2IF = false;
 		}
 	}
-	else if (!select && stageF)
+	// ステージ選択判定
+	else if (!selectF && stageF)
 	{
 		if (p1Flag && p2Flag)
 		{
+			auto waku = 0;
 			if (keyNew[KEY_ID_RIGHT1])
 			{
-
+				DrawGraph(stageL[waku].waku_pos.x, stageL[waku].waku_pos.y, stage_waku, true);
+				waku++;
+				if (waku > 3)
+				{
+					waku = 0;
+				}
 			}
 			if (keyNew[KEY_ID_LEFT1])
 			{
-
+				DrawGraph(stageL[waku].waku_pos.x, stageL[waku].waku_pos.y, stage_waku, true);
+				waku--;
+				if (waku < 0)
+				{
+					waku = 3;
+				}
 			}
 			if (keyNew[KEY_ID_1SKILL1])
 			{
-
+				stageIF = true;
+				if (waku == 0)
+				{
+					yamaF = true;
+					matiF = false;
+					tougiF = false;
+				}
+				else if (waku == 1)
+				{
+					yamaF = false;
+					matiF = true;
+					tougiF = false;
+				}
+				else if (waku == 3)
+				{
+					yamaF = false;
+					matiF = false;
+					tougiF = true;
+				}
 			}
 			if (keyNew[KEY_ID_1SKILL2])
 			{
-
+				stageIF = false;
+				yamaF = false;
+				matiF = false;
+				tougiF = false;
 			}
-
+			if (p1Flag && p2Flag && stageIF)
+			{
+				stageF = true;
+			}
+			else
+			{
+				stageF = false;
+			}
 		}
 	}
-
+	// 最終確認判定
 	if (p1Flag && p2Flag && stageF)
 	{
 		selectF = true;
@@ -148,6 +195,47 @@ int Select::SelectCtl()
 	else
 	{
 		selectF = false;
+	}
+
+	// プレイヤー１のID代入
+	if (p1IF)
+	{
+		if (p1 == 0)
+		{
+			player1 = CHAR_ID::CHAR_ID_KISI;
+		}
+		if (p1 == 1)
+		{
+			player1 = CHAR_ID::CHAR_ID_MDOU;
+		}
+		if (p1 == 2)
+		{
+			player1 = CHAR_ID::CHAR_ID_BTOU;
+		}
+		if (p1 == 3)
+		{
+			player1 = CHAR_ID::CHAR_ID_4;
+		}
+	}
+	// プレイヤー２のID代入
+	if (p2IF)
+	{
+		if (p2 == 0)
+		{
+			player1 = CHAR_ID::CHAR_ID_KISI;
+		}
+		if (p2 == 1)
+		{
+			player1 = CHAR_ID::CHAR_ID_MDOU;
+		}
+		if (p2 == 2)
+		{
+			player1 = CHAR_ID::CHAR_ID_BTOU;
+		}
+		if (p2 == 3)
+		{
+			player1 = CHAR_ID::CHAR_ID_4;
+		}
 	}
 
 	return 0;

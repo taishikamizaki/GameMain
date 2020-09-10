@@ -127,12 +127,16 @@ public:
 	void HamaTime(void);
 
 	void SkillCtl(CHAR_ID player1, CHAR_ID player2);
-	void CheckHit();
+	bool CheckHitP2();
+	bool CheckHitP1();
 
 	bool P1skill(CHAR_ID player1, CHAR_ID player2);
 	bool P2skill(CHAR_ID player1, CHAR_ID player2);
 	bool P3skill(CHAR_ID player1, CHAR_ID player2);
 	bool P4skill(CHAR_ID player1, CHAR_ID player2);
+
+	void HPCtl(int p1hp, int p2hp);
+
 
 	Skill();
 private:

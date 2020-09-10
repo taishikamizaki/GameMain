@@ -38,6 +38,10 @@ void KeyCheck(void)
 	keyNew[KEY_ID_PAUSE] = CheckHitKey(KEY_INPUT_P);			// Pｷｰでﾎﾟｰｽﾞ起動
 
 	// 1P
+	// 選択用
+	keyNew[KEY_ID_UP1] = CheckHitKey(KEY_INPUT_W);
+	keyNew[KEY_ID_DOWN1] = CheckHitKey(KEY_INPUT_S);
+
 	// ジャンプ
 	keyNew[KEY_ID_JUMP1]  = CheckHitKey(KEY_INPUT_W);
 
@@ -54,6 +58,10 @@ void KeyCheck(void)
 	keyNew[KEY_ID_1SKILL4] = CheckHitKey(KEY_INPUT_4);
 
 	// 2P
+	// 選択用
+	keyNew[KEY_ID_UP2] = CheckHitKey(KEY_INPUT_UP);
+	keyNew[KEY_ID_DOWN2] = CheckHitKey(KEY_INPUT_DOWN);
+
 	// ジャンプ
 	keyNew[KEY_ID_JUMP2] = CheckHitKey(KEY_INPUT_UP);
 

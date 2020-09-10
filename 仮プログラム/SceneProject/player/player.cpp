@@ -62,6 +62,7 @@ void Player::PlayerSysInit(void)
 	iconp2 = LoadGraph("image/serect/2P.png");
 	p1win = LoadGraph("image/logo/1p_win.png");
 	p2win = LoadGraph("image/logo/2p_win.png");
+	draw = LoadGraph("image/logo/Draw.png");
 
 	if (skill == nullptr) skill = new Skill();
 
@@ -98,417 +99,426 @@ void Player::PlayerGameInit(void)
 // ｺﾝﾄﾛｰﾙ
 void Player::PlayerCtl(void)
 {
-	PlayerGameInit();
-	bool moveFlag1 = false;
-	bool moveFlag2 = false;
-	
-	Vector2	playerPosBK       = player1.pos;
-	Vector2	playerPosHit      = player1.pos;
-	Vector2	playerPosHitLeft  = player1.pos;
-	Vector2	playerPosHitRight = player1.pos;
-	Vector2	playerPosHitUp    = player1.pos;
-	Vector2	playerPosHitDown  = player1.pos;
-
-	Vector2	playerPosBK2       = player2.pos;
-	Vector2	playerPosHit2      = player2.pos;
-	Vector2	playerPosHitLeft2  = player2.pos;
-	Vector2	playerPosHitRight2 = player2.pos;
-	Vector2	playerPosHitUp2    = player2.pos;
-	Vector2	playerPosHitDown2  = player2.pos;
-	
-	player1.moveSpeed = 1;
-	player1.runFlag   = false;
-	player1.shotFlag  = false;
-	player1.jumpFlag  = true;
-
-	player2.moveSpeed = 1;
-	player2.runFlag = false;
-	player2.shotFlag = false;
-	player2.jumpFlag = true;
-	
-	// 1P
-
-	//右
-	if (keyNew[KEY_ID_RIGHT1])
+	if (!GameOverFlag)
 	{
-		player1.runFlag = true;
-	
-		player1.pos.x += player1.moveSpeed;
+		PlayerGameInit();
+		bool moveFlag1 = false;
+		bool moveFlag2 = false;
 
-		moveFlag1 = true;
-		player1.moveDir = DIR::DIR_ID_RIGHT;
-	}
-	
-	//左
-	if (keyNew[KEY_ID_LEFT1])
-	{
-		player1.runFlag = true;
-	
-		player1.pos.x -= player1.moveSpeed;
+		Vector2	playerPosBK = player1.pos;
+		Vector2	playerPosHit = player1.pos;
+		Vector2	playerPosHitLeft = player1.pos;
+		Vector2	playerPosHitRight = player1.pos;
+		Vector2	playerPosHitUp = player1.pos;
+		Vector2	playerPosHitDown = player1.pos;
 
-		moveFlag1 = true;
-		player1.moveDir = DIR::DIR_ID_LEFT;
-	}
-	
-	//ｼﾞｬﾝﾌﾟ判定
-	if (player1.jumpFlag)
-	{
-		//重力による移動処理
-		player1.velocity.fy -= ACC_G * FRAME_TIME;
-	
-		playerPosBK.y -= player1.velocity.fy * FRAME_TIME;
-	
-		playerPosHit.y = playerPosBK.y - player1.hitPosS.y;
-		playerPosHitLeft = playerPosHit;
-		playerPosHitLeft.x -= player1.hitPosS.x;
-	
-		playerPosHitRight = playerPosHit;
-		playerPosHitRight.x += player1.hitPosE.x;
-	
-		if (!lpStage.IsPass(playerPosHit) || !lpStage.IsPass(playerPosHitRight) || !lpStage.IsPass(playerPosHitLeft))
+		Vector2	playerPosBK2 = player2.pos;
+		Vector2	playerPosHit2 = player2.pos;
+		Vector2	playerPosHitLeft2 = player2.pos;
+		Vector2	playerPosHitRight2 = player2.pos;
+		Vector2	playerPosHitUp2 = player2.pos;
+		Vector2	playerPosHitDown2 = player2.pos;
+
+		player1.moveSpeed = 1;
+		player1.runFlag = false;
+		player1.shotFlag = false;
+		player1.jumpFlag = true;
+
+		player2.moveSpeed = 1;
+		player2.runFlag = false;
+		player2.shotFlag = false;
+		player2.jumpFlag = true;
+
+		// 1P
+
+		//右
+		if (keyNew[KEY_ID_RIGHT1])
 		{
-			//移動キャンセル
-			Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
-			blockIndex.y = blockIndex.y + 1;
-			Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
-														
-			playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
-			player1.velocity.fy = 0;
+			player1.runFlag = true;
+
+			player1.pos.x += player1.moveSpeed;
+
+			moveFlag1 = true;
+			player1.moveDir = DIR::DIR_ID_RIGHT;
 		}
-	
-		//足元の計算
-		playerPosHit.y = playerPosBK.y + player1.hitPosE.y;
-	
-		playerPosHitLeft = playerPosHit;
-		playerPosHitLeft.x -= player1.hitPosS.x;
-	
-		playerPosHitRight = playerPosHit;
-		playerPosHitRight.x += player1.hitPosE.x;
-	
-		//足元チェック
-		if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitRight) && lpStage.IsPass(playerPosHitLeft))
+
+		//左
+		if (keyNew[KEY_ID_LEFT1])
 		{
-			//ブロックない時
-			player1.pos.y = playerPosBK.y;
+			player1.runFlag = true;
+
+			player1.pos.x -= player1.moveSpeed;
+
+			moveFlag1 = true;
+			player1.moveDir = DIR::DIR_ID_LEFT;
 		}
-		else
+
+		//ｼﾞｬﾝﾌﾟ判定
+		if (player1.jumpFlag)
 		{
-			//ブロックあるなら上に乗る
-			Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
-			Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
-														
-			player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
-	
-			player1.jumpFlag = false;
-			player1.velocity.fy = 0;
-	
-			if (player1.jumpFlag == false)
+			//重力による移動処理
+			player1.velocity.fy -= ACC_G * FRAME_TIME;
+
+			playerPosBK.y -= player1.velocity.fy * FRAME_TIME;
+
+			playerPosHit.y = playerPosBK.y - player1.hitPosS.y;
+			playerPosHitLeft = playerPosHit;
+			playerPosHitLeft.x -= player1.hitPosS.x;
+
+			playerPosHitRight = playerPosHit;
+			playerPosHitRight.x += player1.hitPosE.x;
+
+			if (!lpStage.IsPass(playerPosHit) || !lpStage.IsPass(playerPosHitRight) || !lpStage.IsPass(playerPosHitLeft))
 			{
-				if (keyNew[KEY_ID_JUMP1])
+				//移動キャンセル
+				Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);	//ブロックの配列座標
+				blockIndex.y = blockIndex.y + 1;
+				Vector2	blockPos = lpStage.IndexToPos(blockIndex);				//ブロックの左上のピクセル座標
+
+				playerPosBK.y = blockPos.y + player1.hitPosS.y;						//足元の座標からプレイヤーの座標を計算する
+				player1.velocity.fy = 0;
+			}
+
+			//足元の計算
+			playerPosHit.y = playerPosBK.y + player1.hitPosE.y;
+
+			playerPosHitLeft = playerPosHit;
+			playerPosHitLeft.x -= player1.hitPosS.x;
+
+			playerPosHitRight = playerPosHit;
+			playerPosHitRight.x += player1.hitPosE.x;
+
+			//足元チェック
+			if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitRight) && lpStage.IsPass(playerPosHitLeft))
+			{
+				//ブロックない時
+				player1.pos.y = playerPosBK.y;
+			}
+			else
+			{
+				//ブロックあるなら上に乗る
+				Vector2	blockIndex = lpStage.PosToIndex(playerPosHit);		//ブロックの配列座標
+				Vector2	blockPos = lpStage.IndexToPos(blockIndex);			//ブロックの左上のピクセル座標
+
+				player1.pos.y = blockPos.y - player1.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+				player1.jumpFlag = false;
+				player1.velocity.fy = 0;
+
+				if (player1.jumpFlag == false)
 				{
-					player1.jumpFlag = true;
-					player1.velocity.fy = INIT_VELOCITY;
-					player1.pos.y -= player1.moveSpeed;
+					if (keyNew[KEY_ID_JUMP1])
+					{
+						player1.jumpFlag = true;
+						player1.velocity.fy = INIT_VELOCITY;
+						player1.pos.y -= player1.moveSpeed;
+					}
 				}
 			}
-		}
-	
-		playerPosBK  = player1.pos;
-		playerPosHit = player1.pos;
-	
-		if (moveFlag1)
-		{
-			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+
+			playerPosBK = player1.pos;
+			playerPosHit = player1.pos;
+
+			if (moveFlag1)
 			{
-				player1.moveSpeed = P_DSP;
-	
-				if ((player1.pos.x + player1.hitPosE.x) < screen_size.x-1)
+				if (player1.moveDir == DIR::DIR_ID_RIGHT)
 				{
-					playerPosBK.x += player1.moveSpeed;
+					player1.moveSpeed = P_DSP;
+
+					if ((player1.pos.x + player1.hitPosE.x) < screen_size.x - 1)
+					{
+						playerPosBK.x += player1.moveSpeed;
+					}
+					playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
+
+					playerPosHitUp = playerPosHit;
+					playerPosHitUp.y -= player1.hitPosS.y;
+
+					playerPosHitDown = playerPosHit;
+					playerPosHitDown.y += player1.hitPosE.y - 1;  //1は床の上に足を乗せるよう
+
+					if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
+					{
+						player1.pos.x = playerPosBK.x;
+					}
+					else
+					{
+						player1.moveSpeed = 0;
+					}
 				}
-				playerPosHit.x = playerPosBK.x + player1.hitPosE.x;
-	
-				playerPosHitUp = playerPosHit;
-				playerPosHitUp.y -= player1.hitPosS.y;
-	
-				playerPosHitDown = playerPosHit;
-				playerPosHitDown.y += player1.hitPosE.y - 1;  //1は床の上に足を乗せるよう
-	
-				if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
+				else if (player1.moveDir == DIR::DIR_ID_LEFT)
 				{
-					player1.pos.x = playerPosBK.x;
-				}
-				else
-				{
-					player1.moveSpeed = 0;
-				}
-			}
-			else if (player1.moveDir == DIR::DIR_ID_LEFT)
-			{
-				player1.moveSpeed = P_DSP;
-	
-				if ((player1.pos.x - player1.hitPosS.x) > 1)
-				{
-					playerPosBK.x -= player1.moveSpeed;
-				}
-				playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
-	
-				playerPosHitUp = playerPosHit;
-				playerPosHitUp.y -= player1.hitPosS.y;
-	
-				playerPosHitDown = playerPosHit;
-				playerPosHitDown.y += player1.hitPosE.y - 1;//1は床の上に足を乗せるよう
-	
-	
-				if (player1.velocity.fx < -6) { player1.velocity.fx = -6; }
-	
-	
-				if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
-				{
-					player1.pos.x = playerPosBK.x;
-				}
-				else
-				{
-					player1.moveSpeed = 0;
-				}
-			}
-		}
-	}
+					player1.moveSpeed = P_DSP;
 
-	// 2P
+					if ((player1.pos.x - player1.hitPosS.x) > 1)
+					{
+						playerPosBK.x -= player1.moveSpeed;
+					}
+					playerPosHit.x = playerPosBK.x - player1.hitPosS.x;
 
-	//右
-	if (keyNew[KEY_ID_RIGHT2])
-	{
-		player2.runFlag = true;
+					playerPosHitUp = playerPosHit;
+					playerPosHitUp.y -= player1.hitPosS.y;
 
-		player2.pos.x += player2.moveSpeed;
+					playerPosHitDown = playerPosHit;
+					playerPosHitDown.y += player1.hitPosE.y - 1;//1は床の上に足を乗せるよう
 
-		moveFlag2 = true;
-		player2.moveDir = DIR::DIR_ID_RIGHT;
-	}
 
-	//左
-	if (keyNew[KEY_ID_LEFT2])
-	{
-		player2.runFlag = true;
+					if (player1.velocity.fx < -6) { player1.velocity.fx = -6; }
 
-		player2.pos.x -= player2.moveSpeed;
 
-		moveFlag2 = true;
-		player2.moveDir = DIR::DIR_ID_LEFT;
-	}
-
-	//ｼﾞｬﾝﾌﾟ判定
-	if (player2.jumpFlag)
-	{
-		//重力による移動処理
-		player2.velocity.fy -= ACC_G * FRAME_TIME;
-
-		playerPosBK2.y -= player2.velocity.fy * FRAME_TIME;
-
-		playerPosHit2.y = playerPosBK2.y - player2.hitPosS.y;
-		playerPosHitLeft2 = playerPosHit2;
-		playerPosHitLeft2.x -= player2.hitPosS.x;
-
-		playerPosHitRight2 = playerPosHit2;
-		playerPosHitRight2.x += player2.hitPosE.x;
-
-		if (!lpStage.IsPass(playerPosHit2) || !lpStage.IsPass(playerPosHitRight2) || !lpStage.IsPass(playerPosHitLeft2))
-		{
-			//移動キャンセル
-			Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
-			blockIndex2.y = blockIndex2.y + 1;
-			Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
-
-			playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
-			player2.velocity.fy = 0;
-		}
-
-		//足元の計算
-		playerPosHit2.y = playerPosBK2.y + player2.hitPosE.y;
-
-		playerPosHitLeft2 = playerPosHit2;
-		playerPosHitLeft2.x -= player2.hitPosS.x;
-
-		playerPosHitRight2 = playerPosHit2;
-		playerPosHitRight2.x += player2.hitPosE.x;
-
-		//足元チェック
-		if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitRight2) && lpStage.IsPass(playerPosHitLeft2))
-		{
-			//ブロックない時
-			player2.pos.y = playerPosBK2.y;
-		}
-		else
-		{
-			//ブロックあるなら上に乗る
-			Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
-			Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
-
-			player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
-
-			player2.jumpFlag = false;
-			player2.velocity.fy = 0;
-
-			if (player2.jumpFlag == false)
-			{
-				if (keyNew[KEY_ID_JUMP2])
-				{
-					player2.jumpFlag = true;
-					player2.velocity.fy = INIT_VELOCITY;
-					player2.pos.y -= player2.moveSpeed;
+					if (lpStage.IsPass(playerPosHit) && lpStage.IsPass(playerPosHitUp) && lpStage.IsPass(playerPosHitDown))
+					{
+						player1.pos.x = playerPosBK.x;
+					}
+					else
+					{
+						player1.moveSpeed = 0;
+					}
 				}
 			}
 		}
 
-		playerPosBK2 = player2.pos;
-		playerPosHit2 = player2.pos;
+		// 2P
 
-		if (moveFlag2)
+		//右
+		if (keyNew[KEY_ID_RIGHT2])
 		{
-			if (player2.moveDir == DIR::DIR_ID_RIGHT)
+			player2.runFlag = true;
+
+			player2.pos.x += player2.moveSpeed;
+
+			moveFlag2 = true;
+			player2.moveDir = DIR::DIR_ID_RIGHT;
+		}
+
+		//左
+		if (keyNew[KEY_ID_LEFT2])
+		{
+			player2.runFlag = true;
+
+			player2.pos.x -= player2.moveSpeed;
+
+			moveFlag2 = true;
+			player2.moveDir = DIR::DIR_ID_LEFT;
+		}
+
+		//ｼﾞｬﾝﾌﾟ判定
+		if (player2.jumpFlag)
+		{
+			//重力による移動処理
+			player2.velocity.fy -= ACC_G * FRAME_TIME;
+
+			playerPosBK2.y -= player2.velocity.fy * FRAME_TIME;
+
+			playerPosHit2.y = playerPosBK2.y - player2.hitPosS.y;
+			playerPosHitLeft2 = playerPosHit2;
+			playerPosHitLeft2.x -= player2.hitPosS.x;
+
+			playerPosHitRight2 = playerPosHit2;
+			playerPosHitRight2.x += player2.hitPosE.x;
+
+			if (!lpStage.IsPass(playerPosHit2) || !lpStage.IsPass(playerPosHitRight2) || !lpStage.IsPass(playerPosHitLeft2))
 			{
-				player2.moveSpeed = P_DSP;
+				//移動キャンセル
+				Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);	//ブロックの配列座標
+				blockIndex2.y = blockIndex2.y + 1;
+				Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);		   //ブロックの左上のピクセル座標
 
-				if ((player2.pos.x + player2.hitPosE.x) < screen_size.x-1)
+				playerPosBK2.y = blockPos2.y + player2.hitPosS.y;					   //足元の座標からプレイヤーの座標を計算する
+				player2.velocity.fy = 0;
+			}
+
+			//足元の計算
+			playerPosHit2.y = playerPosBK2.y + player2.hitPosE.y;
+
+			playerPosHitLeft2 = playerPosHit2;
+			playerPosHitLeft2.x -= player2.hitPosS.x;
+
+			playerPosHitRight2 = playerPosHit2;
+			playerPosHitRight2.x += player2.hitPosE.x;
+
+			//足元チェック
+			if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitRight2) && lpStage.IsPass(playerPosHitLeft2))
+			{
+				//ブロックない時
+				player2.pos.y = playerPosBK2.y;
+			}
+			else
+			{
+				//ブロックあるなら上に乗る
+				Vector2	blockIndex2 = lpStage.PosToIndex(playerPosHit2);		//ブロックの配列座標
+				Vector2	blockPos2 = lpStage.IndexToPos(blockIndex2);			//ブロックの左上のピクセル座標
+
+				player2.pos.y = blockPos2.y - player2.hitPosE.y;				//足元の座標からプレイヤーの座標を計算する
+
+				player2.jumpFlag = false;
+				player2.velocity.fy = 0;
+
+				if (player2.jumpFlag == false)
 				{
-					playerPosBK2.x += player2.moveSpeed;
-				}
-				playerPosHit2.x = playerPosBK2.x + player2.hitPosE.x;
-
-				playerPosHitUp2 = playerPosHit2;
-				playerPosHitUp2.y -= player2.hitPosS.y;
-
-				playerPosHitDown2 = playerPosHit2;
-				playerPosHitDown2.y += player2.hitPosE.y - 1;  //1は床の上に足を乗せるよう
-
-				if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
-				{
-					player2.pos.x = playerPosBK2.x;
-				}
-				else
-				{
-					player2.moveSpeed = 0;
+					if (keyNew[KEY_ID_JUMP2])
+					{
+						player2.jumpFlag = true;
+						player2.velocity.fy = INIT_VELOCITY;
+						player2.pos.y -= player2.moveSpeed;
+					}
 				}
 			}
-			else if (player2.moveDir == DIR::DIR_ID_LEFT)
+
+			playerPosBK2 = player2.pos;
+			playerPosHit2 = player2.pos;
+
+			if (moveFlag2)
 			{
-				player2.moveSpeed = P_DSP;
-				if ((player2.pos.x - player2.hitPosS.x) > 1)
+				if (player2.moveDir == DIR::DIR_ID_RIGHT)
 				{
-					playerPosBK2.x -= player2.moveSpeed;
+					player2.moveSpeed = P_DSP;
+
+					if ((player2.pos.x + player2.hitPosE.x) < screen_size.x - 1)
+					{
+						playerPosBK2.x += player2.moveSpeed;
+					}
+					playerPosHit2.x = playerPosBK2.x + player2.hitPosE.x;
+
+					playerPosHitUp2 = playerPosHit2;
+					playerPosHitUp2.y -= player2.hitPosS.y;
+
+					playerPosHitDown2 = playerPosHit2;
+					playerPosHitDown2.y += player2.hitPosE.y - 1;  //1は床の上に足を乗せるよう
+
+					if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
+					{
+						player2.pos.x = playerPosBK2.x;
+					}
+					else
+					{
+						player2.moveSpeed = 0;
+					}
 				}
-				playerPosHit2.x = playerPosBK2.x - player2.hitPosS.x;
-
-				playerPosHitUp2 = playerPosHit2;
-				playerPosHitUp2.y -= player2.hitPosS.y;
-
-				playerPosHitDown2 = playerPosHit2;
-				playerPosHitDown2.y += player2.hitPosE.y - 1;//1は床の上に足を乗せるよう
-
-
-				if (player2.velocity.fx < -6) { player2.velocity.fx = -6; }
-
-
-				if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
+				else if (player2.moveDir == DIR::DIR_ID_LEFT)
 				{
-					player2.pos.x = playerPosBK2.x;
-				}
-				else
-				{
-					player2.moveSpeed = 0;
+					player2.moveSpeed = P_DSP;
+					if ((player2.pos.x - player2.hitPosS.x) > 1)
+					{
+						playerPosBK2.x -= player2.moveSpeed;
+					}
+					playerPosHit2.x = playerPosBK2.x - player2.hitPosS.x;
+
+					playerPosHitUp2 = playerPosHit2;
+					playerPosHitUp2.y -= player2.hitPosS.y;
+
+					playerPosHitDown2 = playerPosHit2;
+					playerPosHitDown2.y += player2.hitPosE.y - 1;//1は床の上に足を乗せるよう
+
+
+					if (player2.velocity.fx < -6) { player2.velocity.fx = -6; }
+
+
+					if (lpStage.IsPass(playerPosHit2) && lpStage.IsPass(playerPosHitUp2) && lpStage.IsPass(playerPosHitDown2))
+					{
+						player2.pos.x = playerPosBK2.x;
+					}
+					else
+					{
+						player2.moveSpeed = 0;
+					}
 				}
 			}
 		}
+
+		skill->SkillCtl(player1.charID, player2.charID);
 	}
-	
-	skill->SkillCtl(player1.charID, player2.charID);
 }
 
 // 描画
 void Player::PlayerDraw(void)
 {
-
-	// 1P
-	// プレイヤー枠
-	DrawBox(player1.pos.x - player1.sizeOffset.x , player1.pos.y - player1.sizeOffset.y ,
-			player1.pos.x + player1.size.x - player1.sizeOffset.x ,
+	if (!GameOverFlag)
+	{
+		// 1P
+		// プレイヤー枠
+		DrawBox(player1.pos.x - player1.sizeOffset.x, player1.pos.y - player1.sizeOffset.y,
+			player1.pos.x + player1.size.x - player1.sizeOffset.x,
 			player1.pos.y + player1.size.y - player1.sizeOffset.y, 0xFFFFF, false);
 
-	//プレイヤーの当たり判定枠表示
-	DrawBox(player1.pos.x - player1.hitPosS.x , player1.pos.y - player1.hitPosS.y,
-			player1.pos.x + player1.hitPosE.x , player1.pos.y + player1.hitPosE.y , 0xFFF000, false);
+		//プレイヤーの当たり判定枠表示
+		DrawBox(player1.pos.x - player1.hitPosS.x, player1.pos.y - player1.hitPosS.y,
+			player1.pos.x + player1.hitPosE.x, player1.pos.y + player1.hitPosE.y, 0xFFF000, false);
 
- 		/*DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);*/
+		/*DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);*/
 
-	switch (player1.charID)
-	{
-	case CHAR_ID::CHAR_ID_KISI:
-		DrawExtendGraph(player1.pos.x-(player1.size.x/2), player1.pos.y-(player1.size.y/2),
-			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
-		
+		switch (player1.charID)
+		{
+		case CHAR_ID::CHAR_ID_KISI:
+			DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+				player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
 
-		break;
 
-	case CHAR_ID::CHAR_ID_MDOU:
-		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[5], true);
-		break;
+			break;
 
-	case CHAR_ID::CHAR_ID_BTOU:
-		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[5], true);
-		break;
+		case CHAR_ID::CHAR_ID_MDOU:
+			DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+				player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[5], true);
+			break;
 
-	case CHAR_ID::CHAR_ID_4:
-		DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-			player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[5], true);
-		break;
-	default:
-		break;
-	}
+		case CHAR_ID::CHAR_ID_BTOU:
+			DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+				player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[5], true);
+			break;
 
-	// プレイヤー座標
-	DrawFormatString(10, 32, 0xff0000, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
-	DrawFormatString(10, 48, 0xff0000, "player1.moveSpeed(%d,)", player1.moveSpeed);
-	DrawFormatString(10, 60, 0xff0000, "player1.id(%d)", player1.charID);
+		case CHAR_ID::CHAR_ID_4:
+			DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+				player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[5], true);
+			break;
+		default:
+			break;
+		}
 
-	// 2P
-	// プレイヤー枠
-	DrawBox(player2.pos.x - player2.sizeOffset.x, player2.pos.y - player2.sizeOffset.y,
-		player2.pos.x + player2.size.x - player2.sizeOffset.x,
-		player2.pos.y + player2.size.y - player2.sizeOffset.y, 0xFFFFF, false);
+		// プレイヤー座標
+		DrawFormatString(10, 32, 0xff0000, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
+		DrawFormatString(10, 48, 0xff0000, "player1.moveSpeed(%d,)", player1.moveSpeed);
+		DrawFormatString(10, 60, 0xff0000, "player1.id(%d)", player1.charID);
 
-	//プレイヤーの当たり判定枠表示
-	DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
-		player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
+		// 2P
+		// プレイヤー枠
+		DrawBox(player2.pos.x - player2.sizeOffset.x, player2.pos.y - player2.sizeOffset.y,
+			player2.pos.x + player2.size.x - player2.sizeOffset.x,
+			player2.pos.y + player2.size.y - player2.sizeOffset.y, 0xFFFFF, false);
 
-	/*DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);*/
+		//プレイヤーの当たり判定枠表示
+		DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
+			player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
-	switch (player2.charID)
-	{
-	case CHAR_ID::CHAR_ID_KISI:
-	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[11], true);
-		break;
+		/*DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);*/
 
-	case CHAR_ID::CHAR_ID_MDOU:
-	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[11], true);
-		break;
+		switch (player2.charID)
+		{
+		case CHAR_ID::CHAR_ID_KISI:
+			DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+				player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[11], true);
+			break;
 
-	case CHAR_ID::CHAR_ID_BTOU:
-	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[11], true);
-		break;
+		case CHAR_ID::CHAR_ID_MDOU:
+			DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+				player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[11], true);
+			break;
 
-	case CHAR_ID::CHAR_ID_4:
-	DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-		player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[11], true);
-		break;
-	default:
-		break;
+		case CHAR_ID::CHAR_ID_BTOU:
+			DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+				player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[11], true);
+			break;
+
+		case CHAR_ID::CHAR_ID_4:
+			DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+				player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[11], true);
+			break;
+		default:
+			break;
+		}
+		// プレイヤー座標
+		DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
+		DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
+		DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
 	}
 	//DrawGraph(0, 0, iconp1, true);
 	//DrawGraph(920, 0, iconp2, true);
@@ -530,13 +540,10 @@ void Player::PlayerDraw(void)
 	}
 	if (DrawFlag)
 	{
-
+		DrawGraph(350,100,draw,true);
 	}
 
-	// プレイヤー座標
-	DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
-	DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
-	DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
+	
 
 	if (skill != nullptr)
 	{
@@ -598,6 +605,14 @@ bool Player::playerWin(void)
 	{
 		GameOverFlag = true;
 		player1.winFlag = true;
+	}
+	else
+	{
+
+	}
+	if (DrawFlag)
+	{
+		GameOverFlag = true;
 	}
 	else
 	{

@@ -46,6 +46,7 @@ struct CHARACTER
 	int moveSpeed;		//キャラクタの移動量
 	int animCnt;		//キャラクタのアニメーション用カウンタ
 	int Hp;
+	int dirS;
 	CHAR_ID charID;
 };
 

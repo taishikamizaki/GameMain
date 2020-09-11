@@ -97,6 +97,7 @@ struct player
 	SScount maho;
 	SScount buto;
 	SScount nazo;
+	int dir;
 };
 
 
@@ -139,6 +140,8 @@ public:
 	int HPCtlP2(void);
 	void DmageCtl(void);
 	void SpeedCtl(int p1,int p2);
+
+	void Dir(int p1, int p2);
 
 	Skill();
 private:

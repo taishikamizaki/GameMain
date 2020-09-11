@@ -94,6 +94,7 @@ void Player::PlayerGameInit(void)
 		skill->SpeedCtl(player1.moveSpeed,player2.moveSpeed);
 		player1.Hp = skill->HPCtlP1();
 		player2.Hp = skill->HPCtlP2();
+		skill->Dir(player1.dirS, player2.dirS);
 		skill->StageGameInit();
 	}
 }
@@ -142,6 +143,10 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_RIGHT;
+			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+			{
+				player1.dirS = 0;
+			}
 		}
 
 		//ç∂
@@ -153,6 +158,10 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_LEFT;
+			if (player1.moveDir == DIR::DIR_ID_LEFT)
+			{
+				player1.dirS = 1;
+			}
 		}
 
 		//ºﬁ¨›ÃﬂîªíË
@@ -436,6 +445,10 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_RIGHT;
+			if (player2.moveDir == DIR::DIR_ID_RIGHT)
+			{
+				player2.dirS = 0;
+			}
 		}
 
 		//ç∂
@@ -447,6 +460,10 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_LEFT;
+			if (player2.moveDir == DIR::DIR_ID_LEFT)
+			{
+				player2.dirS = 1;
+			}
 		}
 
 		//ºﬁ¨›ÃﬂîªíË

@@ -62,19 +62,22 @@ private:
 	int tougiImage[2];
 
 	int stage_waku;		// 枠描画
-	int s_waku;				// 枠処理
+	int s_waku;			// 枠処理
 
 	bool p1IF;		// キャラ枠用
 	bool p2IF;		// キャラ枠用
 
-	bool p1Flag;		// キャラ選択用
-	bool p2Flag;		// キャラ選択用
+	bool p1Flag;	// キャラ選択用
+	bool p2Flag;	// キャラ選択用
 
 	bool yamaF;		// ステ選択用
 	bool matiF;		// ステ選択用
-	bool tougiF;		// ステ選択用
+	bool tougiF;	// ステ選択用
 
-	bool stageF;		// ステ決定用
+	bool stage1F;	// ステ決定１
+	bool stage2F;	// ステ決定２
+
+	bool stageF;	// ステ決定用
 	bool stageIF;	// ステ枠用
 
 	bool selectF;	// 全体の決定用

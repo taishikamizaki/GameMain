@@ -1,5 +1,6 @@
 
 #include <DxLib.h>
+#include "../key/GetKeyState.h"
 #include "ScnMng.h"
 #include "../select.h"
 #include "../stage/Stage.h"

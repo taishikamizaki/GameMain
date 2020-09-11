@@ -2149,11 +2149,11 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P2.kisi.s2 = 0;
 				P2.skillFlag = false;
 			}
-			else if (P1.skillFlag == false)
+			else if (P2.skillFlag == false)
 			{
-				if (P1.kisi.s2 / 120)
+				if (P2.kisi.s2 / 120)
 				{
-					P1.bufFlag = false;
+					P2.bufFlag = false;
 				}
 			}
 			//P1.Scount = 4200;//‘å‘Ì70•b
@@ -2177,11 +2177,11 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 				P2.kisi.s3 = 0;
 				P2.skillFlag = false;
 			}
-			else if (P1.skillFlag == false)
+			else if (P2.skillFlag == false)
 			{
-				if (P1.kisi.s3 / 120)
+				if (P2.kisi.s3 / 120)
 				{
-					P1.bufFlag = false;
+					P2.bufFlag = false;
 				}
 			}
 

@@ -44,6 +44,9 @@ int Select::Init()
 	matiF  = false;
 	tougiF = false;
 
+	stage1F = false;
+	stage2F = false;
+
 	stageF = false;
 
 	selectF = false;
@@ -55,6 +58,8 @@ int Select::Init()
 
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
+
+	KeyInit();
 
 	return 0;
 }
@@ -190,8 +195,35 @@ int Select::SelectCtl()
 					s_waku = 2;
 				}
 			}
+			// 枠→
+			if (keyDownTrigger[KEY_ID_RIGHT2])
+			{
+				s_waku++;
+				if (s_waku > 2)
+				{
+					s_waku = 0;
+				}
+			}
+			// 枠←
+			if (keyDownTrigger[KEY_ID_LEFT2])
+			{
+				s_waku--;
+				if (s_waku < 0)
+				{
+					s_waku = 2;
+				}
+			}
+			
 			// 決定（画像切り替え）
 			if (keyDownTrigger[KEY_ID_1SKILL1])
+			{
+				stage1F = true;
+			}
+			if (keyDownTrigger[KEY_ID_2SKILL1])
+			{
+				stage2F = true;
+			}
+			if(stage1F && stage2F)
 			{
 				stageF = true;
 				if (s_waku == 0)
@@ -216,10 +248,26 @@ int Select::SelectCtl()
 			// キャンセル（切り替え）
 			if (keyDownTrigger[KEY_ID_1SKILL2])
 			{
+				stage1F = false;
+			}
+			if (keyDownTrigger[KEY_ID_2SKILL2])
+			{
+				stage2F = false;
+			}
+			if (!stage1F && !stage2F)
+			{
 				stageF = false;
-				yamaF = false;
-				matiF = false;
+				yamaF  = false;
+				matiF  = false;
 				tougiF = false;
+			}
+			if (stage1F)
+			{
+				DrawString(10, 100, "1P決定！", 0xff0000);
+			}
+			if (stage2F)
+			{
+				DrawString(700, 100, "2P決定！", 0xff0000);
 			}
 		}
 	}

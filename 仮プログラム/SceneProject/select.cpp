@@ -128,7 +128,7 @@ int Select::SelectCtl()
 		if (!p1Flag)
 		{
 			// 1p決定
-			if (keyDownTrigger[KEY_ID_1SKILL1])
+			if (keyDownTrigger[KEY_ID_1B])
 			{
 				// ID競合判定
 				if (p1 != p2)
@@ -143,7 +143,7 @@ int Select::SelectCtl()
 			}
 		}
 		// 1pキャンセル
-		if (keyDownTrigger[KEY_ID_1SKILL2])
+		if (keyDownTrigger[KEY_ID_1A])
 		{
 			p1IF = false;
 			p1Flag = false;
@@ -151,7 +151,7 @@ int Select::SelectCtl()
 		if (!p2Flag)
 		{
 			// 2p決定
-			if (keyDownTrigger[KEY_ID_2SKILL1])
+			if (keyDownTrigger[KEY_ID_2B])
 			{
 				// ID競合判定
 				if (p2 != p1)
@@ -215,11 +215,11 @@ int Select::SelectCtl()
 			}
 			
 			// 決定（画像切り替え）
-			if (keyDownTrigger[KEY_ID_1SKILL1])
+			if (keyDownTrigger[KEY_ID_1B])
 			{
 				stage1F = true;
 			}
-			if (keyDownTrigger[KEY_ID_2SKILL1])
+			if (keyDownTrigger[KEY_ID_2B])
 			{
 				stage2F = true;
 			}
@@ -246,11 +246,11 @@ int Select::SelectCtl()
 				}
 			}
 			// キャンセル（切り替え）
-			if (keyDownTrigger[KEY_ID_1SKILL2])
+			if (keyDownTrigger[KEY_ID_1A])
 			{
 				stage1F = false;
 			}
-			if (keyDownTrigger[KEY_ID_2SKILL2])
+			if (keyDownTrigger[KEY_ID_2A])
 			{
 				stage2F = false;
 			}

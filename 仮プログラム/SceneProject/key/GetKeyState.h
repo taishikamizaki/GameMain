@@ -16,6 +16,10 @@ enum KEY_ID_
 	KEY_ID_1SKILL2,		// Ω∑Ÿ2
 	KEY_ID_1SKILL3,		// Ω∑Ÿ3
 	KEY_ID_1SKILL4,		// Ω∑Ÿ4
+	KEY_ID_1A,
+	KEY_ID_1B,
+	KEY_ID_1X,
+	KEY_ID_1Y,
 
 	KEY_ID_UP2,			// Å™
 	KEY_ID_RIGHT2,		// Å®
@@ -27,6 +31,10 @@ enum KEY_ID_
 	KEY_ID_2SKILL2,		// Ω∑Ÿ2
 	KEY_ID_2SKILL3,		// Ω∑Ÿ3
 	KEY_ID_2SKILL4,		// Ω∑Ÿ4
+	KEY_ID_2A,
+	KEY_ID_2B,
+	KEY_ID_2X,
+	KEY_ID_2Y,
 
 	KEY_ID_SAVE,		// æ∞Ãﬁóp
 	KEY_ID_LOAD,		// €∞ƒﬁóp

@@ -51,6 +51,7 @@ void Player::PlayerSysInit(void)
 	player2.Hp			 = 0;						// キャラクターのHP
 	player2.charID = CHAR_ID::CHAR_ID_MAX;
 
+	HPsize = {4.4f,0};
 	DrawFlag = false;
 	GameOverFlag = false;
 	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
@@ -89,9 +90,10 @@ void Player::PlayerGameInit(void)
 						 player1.hitPosE, player1.sizeOffset, player1.size, 
 						 player2.pos, player2.hitPosS, 
 						 player2.hitPosE, player2.sizeOffset, player2.size);
-		skill->HPCtl(player1.Hp,player2.Hp);
-		skill->SpeedCtl(player1.moveSpeed,player2.moveSpeed);
 
+		skill->SpeedCtl(player1.moveSpeed,player2.moveSpeed);
+		player1.Hp = skill->HPCtlP1();
+		player2.Hp = skill->HPCtlP2();
 		skill->StageGameInit();
 	}
 }
@@ -806,8 +808,14 @@ void Player::PlayerDraw(void)
 	DrawBox(0,0,1000,60,0xcc9966,true);
 	DrawBox(40, 14, 480, 60, 0x000000, true);
 	DrawBox(520, 14, 960, 60, 0x000000, true);
-	DrawBox(40, 14, 480, 60, 0x33ff66, true);
-	DrawBox(520, 14, 960, 60, 0x33ff66, true);
+	for (int x = player1.Hp; x > 0; x--)
+	{
+		DrawBox(35+x*HPsize.fx, 14, 35+(x+1)*HPsize.fx, 60, 0x33ff66, true);
+	}
+	for (int x = 0; x < player1.Hp; x++)
+	{
+		DrawBox(520+x*HPsize.fx, 14, 520+(x+1)*HPsize.fx, 60, 0x33ff66, true);
+	}
 	DrawGraph(500,0,hp,true);
 	DrawTurnGraph(0,0,hp,true);
 
@@ -837,6 +845,7 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos1 = player1.pos;
 	pos2 = player2.pos;
 }
+
 
 bool Player::HPmng(void)
 {

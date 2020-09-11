@@ -1,8 +1,8 @@
 #pragma once
+#include<memory>
 #include"../scene/Game.h"
 #include "player.h"
 #include"../vector/Vector2.h"
-
 
 #define lpSkill Skill::GetInstance()
 
@@ -135,12 +135,16 @@ public:
 	bool P3skill(CHAR_ID player1, CHAR_ID player2);
 	bool P4skill(CHAR_ID player1, CHAR_ID player2);
 
-	void HPCtl(int p1hp, int p2hp);
+	int HPCtlP1(void);
+	int HPCtlP2(void);
 	void DmageCtl(void);
 	void SpeedCtl(int p1,int p2);
 
 	Skill();
 private:
+
+
+
 	/*int chipImage[7];
 	int matiImage[43];
 	int tougiImage[12];

@@ -113,10 +113,9 @@ void Skill::StageGameInit(void)
 
 void Skill::PlayerInit(Vector2 pos,Vector2 hitposS, Vector2 hitposE, Vector2 offset,Vector2 size, Vector2 pos2, Vector2 hitposS2, Vector2 hitposE2, Vector2 offset2, Vector2 size2)
 {
-	P1.posp = { pos.x-hitposS.x,pos.y-hitposS.y };
-	P1.offsetPosp = { offset.x+hitposE.x,offset.y+hitposE.y };
-	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-	P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+	P1.posp = { pos.x-hitposS.x,pos.y-hitposE.y };
+	P1.offsetPosp = { offset.x+hitposE.x,offset.y+hitposS.y };
+	
 	P1.AttackRange = { pos.x - offset.x , pos.y - offset.y };
 	P1.Attackoffset = { pos.x + size.x - offset.x ,
 			pos.y + size.y - offset.y };
@@ -125,12 +124,22 @@ void Skill::PlayerInit(Vector2 pos,Vector2 hitposS, Vector2 hitposE, Vector2 off
 
 	P2.posp = { pos2.x-hitposS2.x,pos2.y-hitposS2.y };
 	P2.offsetPosp = { offset2.x+hitposE2.x,offset2.y+hitposE2.y };
-	P2.hitPos = { P2.offsetPosp.x + 10,P2.posp.y + 10 };
-	P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 70 };
+	
 	P2.AttackRange = { pos2.x - offset2.x , pos2.y - offset2.y };
 	P2.Attackoffset = {pos2.x + size2.x - offset2.x ,
 			pos2.y + size2.y - offset2.y };
-	
+
+
+	if (!P1.skillFlag)
+	{
+		P1.hitPos = { (pos.x + hitposS.x) + 10,(pos.y - hitposE.y )+ 10 };
+		P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+	}
+	if (!P2.skillFlag)
+	{
+		P2.hitPos = { (offset2.x + hitposE2.x) + 10,(offset2.y + hitposE2.y) + 10 };
+		P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 70 };
+	}
 
 }
 
@@ -1380,7 +1389,6 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	{
 		if (CheckHitKey(KEY_INPUT_U) == 1)
 		{
-
 			P1.skill = SKILL_ID::SKILL_1;
 			if (P1.maho.s1 / 300)
 			{
@@ -1391,6 +1399,8 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 		{
 			if (P1.skillFlag == true)
 			{
+
+			
 				if (P1.hitoffsetPos.x < P1.Attackoffset.x + 300)
 				{
 					P1.hitPos.x += 10;
@@ -1399,8 +1409,8 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				else
 				{
 					P1.skillFlag = false;
-					P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+					/*P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
 				}
 			}
 		}
@@ -2637,10 +2647,14 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 	return false;
 }
 
-void Skill::HPCtl(int p1hp, int p2hp)
+int Skill::HPCtlP1(void)
 {
-	p1hp = P1.LP;
-	p2hp = P2.LP;
+	return P1.LP;
+}
+
+int Skill::HPCtlP2(void)
+{
+	return	P2.LP;;
 }
 
 void Skill::DmageCtl(void)

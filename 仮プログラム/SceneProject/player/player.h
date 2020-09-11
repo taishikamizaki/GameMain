@@ -92,6 +92,7 @@ private:
 	int draw;
 	bool DrawFlag;
 	bool GameOverFlag;
+	Vector2f HPsize;
 
 	CHARACTER player1;
 	CHARACTER player2;

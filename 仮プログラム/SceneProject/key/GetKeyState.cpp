@@ -106,7 +106,7 @@ void KeyCheck(void)
 	keyNew[KEY_ID_2SKILL3] = (input2.LeftTrigger >= 100);
 	keyNew[KEY_ID_2SKILL4] = (input2.RightTrigger >= 100);
 	keyNew[KEY_ID_2A] = (input2.Buttons[12]);
-	keyNew[KEY_ID_2B] = (input2.Buttons[13]);
+	keyNew[KEY_ID_2B] = CheckHitKey(KEY_INPUT_T);//(input2.Buttons[13]);
 	keyNew[KEY_ID_2X] = (input2.Buttons[14]);
 	keyNew[KEY_ID_2Y] = (input2.Buttons[15]);
 

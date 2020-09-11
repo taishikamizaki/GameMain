@@ -727,6 +727,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		skill->SkillCtl(player1.charID, player2.charID);
+		skill->DmageCtl(player2.pos);
 	}
 }
 

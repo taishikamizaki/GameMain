@@ -128,7 +128,7 @@ public:
 	void HamaTime(void);
 
 	void SkillCtl(CHAR_ID player1, CHAR_ID player2);
-	bool CheckHitP2();
+	bool CheckHitP2(Vector2 pos);
 	bool CheckHitP1();
 
 	bool P1skill(CHAR_ID player1, CHAR_ID player2);
@@ -138,7 +138,7 @@ public:
 
 	int HPCtlP1(void);
 	int HPCtlP2(void);
-	void DmageCtl(void);
+	void DmageCtl(Vector2 pos);
 	void SpeedCtl(int p1,int p2);
 
 	void Dir(int p1, int p2);

@@ -13,6 +13,7 @@ enum class CHAR_ID
 // ゲームクラス
 class Select;
 class Player;
+class Skill;
 class Stage;
 class Game
 {
@@ -38,6 +39,8 @@ private:
 
 	int Init();		// 初期化
 
+	int charCnt;
+
 	int selectB;		// 仮置き画像用
 	int game;		// 仮置き画像用
 	int space;
@@ -49,10 +52,14 @@ private:
 	CHAR_ID player1;
 	CHAR_ID player2;
 
+	CHAR_ID P1[5];
+	CHAR_ID P2[5];
+
 	STAGE_ID stageID;
 
 	Select* select;
 	Player* player;
+	Skill* skill;
 	Stage* stage;
 
 	friend class Select;

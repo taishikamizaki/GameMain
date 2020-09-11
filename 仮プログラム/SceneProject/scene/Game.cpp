@@ -17,6 +17,29 @@ int Game::Init()
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
+	P1[0] = CHAR_ID::CHAR_ID_KISI;
+	P1[1] = CHAR_ID::CHAR_ID_MDOU;
+	P1[2] = CHAR_ID::CHAR_ID_BTOU;
+	P1[3] = CHAR_ID::CHAR_ID_4;
+	P1[4] = CHAR_ID::CHAR_ID_MAX;
+
+	P2[0] = CHAR_ID::CHAR_ID_KISI;
+	P2[1] = CHAR_ID::CHAR_ID_MDOU;
+	P2[2] = CHAR_ID::CHAR_ID_BTOU;
+	P2[3] = CHAR_ID::CHAR_ID_4;
+	P2[4] = CHAR_ID::CHAR_ID_MAX;
+
+	if (skill == nullptr)
+	{
+		skill = new Skill();
+
+	}
+
+	{
+		if (skill != nullptr)skill->CharInit(P1[charCnt], P2[charCnt]);
+		charCnt++;
+	}while (charCnt > 5);
+
     if (select == nullptr) select = new Select();
 	if (player == nullptr) player = new Player();
 	if (stage == nullptr) stage = new Stage();
@@ -86,7 +109,7 @@ int Game::Draw()
 }
 
 // コンストラクタ
-Game::Game()
+Game::Game():charCnt(0)
 {
 	selectF = true;
 	gameF = false;

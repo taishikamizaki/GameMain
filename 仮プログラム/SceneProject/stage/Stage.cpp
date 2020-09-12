@@ -31,6 +31,8 @@ bool Stage::StageInit(void)
 	matiF = false;
 	tougiF = false;
 
+	SetVolumeMusic(10);
+
 	return rtnFlag;
 }
 
@@ -100,6 +102,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, yamaImage[mapyama[y][x]], true);
+				PlaySoundFile("sound/bgm/yama.mp3", DX_PLAYTYPE_LOOP);
 			}
 		}
 	}
@@ -110,6 +113,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, matiImage[mapmati[y][x]], true);
+				PlaySoundFile("sound/bgm/mati.mp3", DX_PLAYTYPE_LOOP);
 			}
 		}
 	}
@@ -120,6 +124,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, tougiImage[maptougi[y][x]], true);
+				PlaySoundFile("sound/bgm/tougi.mp3", DX_PLAYTYPE_LOOP);
 			}
 		}
 	}
@@ -127,8 +132,6 @@ void Stage::StageDraw(STAGE_ID id)
 	{
 
 	}
-	/*DrawGraph(SCREEN_SIZE_X, SCREEN_SIZE_Y, stageID[STAGE_ID_MAX], true);*/
-	
 }
 
 // Ëß¸¾Ù‚ÌÀ•W‚ðÏ¯Ìß”z—ñ‚ÌÀ•W‚É•ÏŠ·‚·‚é

@@ -82,5 +82,10 @@ private:
 
 	bool selectF;	// 全体の決定用
 
+	int selectS;	// セレクトBGM
+	int keyS1;		// キー移動
+	int keyS2;		// キー決定
+	int keyS3;		// キーキャンセル
+
 };
 

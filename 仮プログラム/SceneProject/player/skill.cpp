@@ -200,6 +200,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		}
 	}
 	charF = true;
+	SetVolumeMusic(10);
 }
 
 void Skill::SScountInit(void)
@@ -2320,6 +2321,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P1.kisi.s1 / 300)
 			{
 				P1.dmage = 10;
+				PlaySoundFile("../sound/skill/kisi/ss1.mp3", DX_PLAYTYPE_BACK);
 				if (P1.defense < 20)
 				{
 					Dehold = P1.defense + 5;
@@ -2335,6 +2337,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P1.skillFlag == true)
 			{
 				P1.HP = 50;
+				PlaySoundFile("../sound/skill/kisi/ss2.mp3", DX_PLAYTYPE_BACK);
 				if (P1.HP == 50)
 				{
 					LPhold = P1.LP + P1.HP;
@@ -2360,6 +2363,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/skill/kisi/ss3.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP > 10)
 				{
 					P1.HP = 10;
@@ -2385,6 +2389,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			break;
 		case SKILL_ID::SKILL_4:
+			PlaySoundFile("../sound/skill/kisi/ss4.mp3", DX_PLAYTYPE_BACK);
 			if (P1.HP <= 10)
 			{
 				P1.dmage = 40;
@@ -2408,6 +2413,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P2.kisi.s1 / 300)
 			{
 				P2.dmage = 10;
+				PlaySoundFile("../sound/skill/kisi/ss1.mp3", DX_PLAYTYPE_BACK);
 				if (P2.defense < 20)
 				{
 					Dehold2 = P2.defense + 5;
@@ -2423,6 +2429,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P2.skillFlag == true)
 			{
 				P2.HP = 50;
+				PlaySoundFile("../sound/skill/kisi/ss2.mp3", DX_PLAYTYPE_BACK);
 				if (P2.HP == 50)
 				{
 					LPhold2 = P2.LP + P2.HP;
@@ -2448,6 +2455,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/skill/kisi/ss3.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP > 10)
 				{
 					P2.HP = 10;
@@ -2473,6 +2481,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			break;
 		case SKILL_ID::SKILL_4:
+			PlaySoundFile("../sound/skill/kisi/ss4.mp3", DX_PLAYTYPE_BACK);
 			if (P2.HP <= 10)
 			{
 				P2.dmage = 40;
@@ -2501,6 +2510,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 7;
 				P1.maho.s1 = 0;
 			}
@@ -2508,6 +2518,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.speed = 6;
 				P1.maho.s2 = 0;
 				P1.skillFlag = false;
@@ -2526,7 +2537,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
-
+				PlaySoundFile("../sound/char/maho/ss3.mp3", DX_PLAYTYPE_BACK);
 				P1.defense = 30;
 				P1.HP = 5;
 				if (P1.HP == 5)
@@ -2552,6 +2563,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.HP <= 50)
 				{
 					P1.dmage = 40;
@@ -2577,6 +2589,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 7;
 				P2.maho.s1 = 0;
 			}
@@ -2584,6 +2597,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.speed = 6;
 				P2.maho.s2 = 0;
 				P2.skillFlag = false;
@@ -2601,7 +2615,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
-
+				PlaySoundFile("../sound/char/maho/ss3.mp3", DX_PLAYTYPE_BACK);
 				P2.defense = 30;
 				P2.HP = 5;
 				if (P2.HP == 5)
@@ -2626,6 +2640,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/maho/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.HP <= 50)
 				{
 					P2.dmage = 40;
@@ -2657,14 +2672,15 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
-
 			}
 
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.defense = 5;
 				P1.skillFlag = false;
 				P1.buto.s2 = 0;
@@ -2682,6 +2698,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss3.mp3", DX_PLAYTYPE_BACK);
 				P1.attack = 10;
 				P1.buto.s3 = 0;
 			}
@@ -2697,6 +2714,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP <= 30)
 				{
 					P1.HP = 20;
@@ -2734,14 +2752,15 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
-
 			}
 
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.defense = 5;
 				P2.skillFlag = false;
 				P2.buto.s2 = 0;
@@ -2758,6 +2777,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss3.mp3", DX_PLAYTYPE_BACK);
 				P2.attack = 10;
 				P2.buto.s3 = 0;
 			}
@@ -2772,6 +2792,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("../sound/char/butou/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP <= 30)
 				{
 					P2.HP = 20;
@@ -2813,13 +2834,14 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
-
 			}
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.defense = 5;
 				P1.nazo.s2 = 0;
 				P1.skillFlag = false;
@@ -2836,6 +2858,7 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss3.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
 				if (P1.hitFlag == true)
 				{
@@ -2848,6 +2871,7 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP <= 50)
 				{
 					P1.dmage = 60;
@@ -2872,13 +2896,14 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
-
 			}
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.defense = 5;
 				P2.nazo.s2 = 0;
 				P2.skillFlag = false;
@@ -2895,6 +2920,7 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss3.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
 				if (P2.hitFlag == true)
 				{
@@ -2907,6 +2933,7 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
+				PlaySoundFile("sound/char/nazo/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP <= 50)
 				{
 					P2.dmage = 60;

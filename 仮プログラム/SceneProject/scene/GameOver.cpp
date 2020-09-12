@@ -10,6 +10,7 @@ int GameOver::Init()
 	thank = LoadGraph("image/logo/Thank.png");
 	space = LoadGraph("image/logo/space.png");
 
+	SetVolumeMusic(10);
 	return 0;
 }
 
@@ -21,6 +22,7 @@ int GameOver::GameOverCtl()
 		keyDownTrigger[CONFIRM1] ||
 		keyDownTrigger[CONFIRM2])
 	{
+		PlaySoundFile("sound/button/confirm", DX_PLAYTYPE_BACK);
 		goF = true;
 	}
 	return 0;
@@ -32,6 +34,8 @@ int GameOver::Draw()
 	DrawGraph(0, 0, gameOver, true);
 	DrawGraph(74, 0, thank, true);
 	DrawGraph(250, 540, space, true);
+
+	PlaySoundFile("sound/bgm/–l‚½‚¿‚Ì–¢—ˆ‚Ö.mp3", DX_PLAYTYPE_LOOP);
 
 	return 0;
 }

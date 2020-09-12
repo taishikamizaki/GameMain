@@ -11,6 +11,7 @@ int Title::Init()
 	titleL = LoadGraph("image/logo/Title.png");
 	space = LoadGraph("image/logo/space.png");
 
+	SetVolumeMusic(10);
 	return 0;
 }
 
@@ -22,6 +23,7 @@ int Title::TitleCtl()
 		keyDownTrigger[CONFIRM1] || 
 		keyDownTrigger[CONFIRM2])
 	{
+		PlaySoundFile("sound/button/confirm.mp3",DX_PLAYTYPE_BACK);
 		titleF = true;
 	}
 	return 0;
@@ -33,6 +35,8 @@ int Title::Draw()
 	DrawGraph(0, 0, title, true);
 	DrawGraph(200, 120, titleL, true);
 	DrawGraph(250, 540, space, true);
+
+	PlaySoundFile("sound/bgm/title/title.mp3", DX_PLAYTYPE_LOOP);
 
 	return 0;
 }

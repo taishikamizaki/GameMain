@@ -57,6 +57,8 @@ int Select::Init()
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
+	SetVolumeMusic(10);
+
 	KeyInit();
 
 	return 0;
@@ -88,6 +90,7 @@ int Select::SelectCtl()
 					p_waku1 = 0;
 				}
 				this->p1 = p_waku1;
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			// 1p↓
 			if (keyDownTrigger[KEY_ID_DOWN1] || keyDownTrigger[DOWN1])
@@ -98,6 +101,7 @@ int Select::SelectCtl()
 					p_waku1 = 3;
 				}
 				this->p1 = p_waku1;
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 		}
 		if (!p2IF)
@@ -111,6 +115,7 @@ int Select::SelectCtl()
 						p_waku2 = 0;
 					}
 					this->p2 = p_waku2;
+					PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			// 2p↓
 			if (keyDownTrigger[KEY_ID_DOWN2] || keyDownTrigger[DOWN2])
@@ -121,6 +126,7 @@ int Select::SelectCtl()
 					p_waku2 = 3;
 				}
 				this->p2 = p_waku2;
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 		}
 		if (!p1Flag)
@@ -133,6 +139,7 @@ int Select::SelectCtl()
 				{
 					p1IF = true;
 					p1Flag = true;
+					PlaySoundFile("sound/button/confirm.mp3", DX_PLAYTYPE_NORMAL);
 				}
 				else
 				{
@@ -145,6 +152,7 @@ int Select::SelectCtl()
 		{
 			p1IF = false;
 			p1Flag = false;
+			PlaySoundFile("sound/button/cancel.mp3", DX_PLAYTYPE_NORMAL);
 		}
 		if (!p2Flag)
 		{
@@ -156,6 +164,7 @@ int Select::SelectCtl()
 				{
 					p2IF = true;
 					p2Flag = true;
+					PlaySoundFile("sound/button/confirm.mp3", DX_PLAYTYPE_NORMAL);
 				}
 				else
 				{
@@ -168,6 +177,7 @@ int Select::SelectCtl()
 		{
 			p2IF = false;
 			p2Flag = false;
+			PlaySoundFile("sound/button/cancel.mp3", DX_PLAYTYPE_NORMAL);
 		}
 	}
 	// ステージ選択判定
@@ -183,6 +193,7 @@ int Select::SelectCtl()
 				{
 					s_waku = 0;
 				}
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			// 枠←
 			if (keyDownTrigger[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
@@ -192,6 +203,7 @@ int Select::SelectCtl()
 				{
 					s_waku = 2;
 				}
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			// 枠→
 			if (keyDownTrigger[KEY_ID_RIGHT2] || keyDownTrigger[RIGHT2])
@@ -201,6 +213,7 @@ int Select::SelectCtl()
 				{
 					s_waku = 0;
 				}
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			// 枠←
 			if (keyDownTrigger[KEY_ID_LEFT2] || keyDownTrigger[LEFT2])
@@ -210,16 +223,19 @@ int Select::SelectCtl()
 				{
 					s_waku = 2;
 				}
+				PlaySoundFile("sound/button/key_move.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			
 			// 決定（画像切り替え）
 			if (keyDownTrigger[KEY_ID_1B] || keyDownTrigger[CONFIRM1])
 			{
 				stage1F = true;
+				PlaySoundFile("sound/button/confirm.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			if (keyDownTrigger[KEY_ID_2B] || keyDownTrigger[CONFIRM2])
 			{
 				stage2F = true;
+				PlaySoundFile("sound/button/confirm.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			if(stage1F && stage2F)
 			{
@@ -247,10 +263,12 @@ int Select::SelectCtl()
 			if (keyDownTrigger[KEY_ID_1A] || keyDownTrigger[CANCEL1])
 			{
 				stage1F = false;
+				PlaySoundFile("sound/button/cancel.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			if (keyDownTrigger[KEY_ID_2A] || keyDownTrigger[CANCEL2])
 			{
 				stage2F = false;
+				PlaySoundFile("sound/button/cancel.mp3", DX_PLAYTYPE_NORMAL);
 			}
 			if (!stage1F && !stage2F)
 			{
@@ -341,6 +359,8 @@ int Select::SelectCtl()
 
 void Select::Draw()
 {
+	PlaySoundFile("sound/bgm/select/select.mp3", DX_PLAYTYPE_LOOP);
+
 	// 1pアイコン
 	DrawGraph(0, 0, p1Image, true);
 	// 2pアイコン

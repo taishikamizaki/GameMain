@@ -1056,7 +1056,7 @@ void Player::PlayerDraw(void)
 		DxLib::DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
 	}
 	DxLib::DrawBox(0,0,1000,60,0xcc9966,true);
-	DxLib::DrawBox(40, 14, 480, 60, 0x000000, true);
+	/*DxLib::DrawBox(40, 14, 480, 60, 0x000000, true);
 	DxLib::DrawBox(520, 14, 960, 60, 0x000000, true);
 	for (int x = player1.Hp; x > 0; x--)
 	{
@@ -1067,8 +1067,8 @@ void Player::PlayerDraw(void)
 		DxLib::DrawBox(520+x*HPsize.fx, 14, 520+(x+1)*HPsize.fx, 60, 0x33ff66, true);
 	}
 	DxLib::DrawGraph(500,0,hp,true);
-	DxLib::DrawTurnGraph(0,0,hp,true);
-
+	DxLib::DrawTurnGraph(0,0,hp,true);*/
+	
 	if (player1.winFlag)
 	{
 		DrawGraph(200,100,p1win,true);

@@ -53,6 +53,8 @@ void Skill::StageSysInit(void)
 	wandImage = LoadGraph("image/player/wand.png", true);
 	dImage = LoadGraph("image/player/turugi.png", true);
 
+	charF = false;
+
 	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
 	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
 	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
@@ -250,6 +252,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 			break;
 		}
 	}
+	charF = true;
 }
 
 void Skill::SScountInit(void)

@@ -3,8 +3,6 @@
 #include "../key/GetKeyState.h"
 #include "ScnMng.h"
 #include "../select.h"
-#include "../stage/Stage.h"
-#include "../player/player.h"
 #include "Game.h"
 
 // ‰Šú‰»ˆ—
@@ -29,18 +27,8 @@ int Game::Init()
 	P2[3] = CHAR_ID::CHAR_ID_4;
 	P2[4] = CHAR_ID::CHAR_ID_MAX;
 
-	if (skill == nullptr)
-	{
-		skill = new Skill();
-
-	}
-
-	{
-		if (skill != nullptr)skill->CharInit(P1[charCnt], P2[charCnt]);
-		charCnt++;
-	}while (charCnt > 5);
-
     if (select == nullptr) select = new Select();
+	if (skill == nullptr) skill = new Skill();
 	if (player == nullptr) player = new Player();
 	if (stage == nullptr) stage = new Stage();
 
@@ -75,6 +63,13 @@ int Game::GameCtl()
 
 		if (stage != nullptr) stage->StageCtl(stageID);
 		if (player != nullptr) player->charCtl(player1, player2);
+		if (skill != nullptr)
+		{
+			if (skill->GetCharF())
+			{
+				skill->CharInit(player1, player2);
+			}
+		}
 	}
 	if (player != nullptr) player->PlayerCtl(stageID);
 	return 0;

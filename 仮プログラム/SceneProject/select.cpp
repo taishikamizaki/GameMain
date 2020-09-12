@@ -1,8 +1,6 @@
 
 #include <DxLib.h>
 #include "key/GetKeyState.h"
-#include "player/player.h"
-#include "stage/Stage.h"
 #include "select.h"
 
 int Select::Init()

@@ -116,6 +116,11 @@ public:
 		return s_instance;
 	}
 
+	bool GetCharF()
+	{
+		return charF;
+	}
+
 	void StageSysInit(void);
 	void StageGameInit(void);
 
@@ -145,8 +150,6 @@ public:
 
 	Skill();
 private:
-
-
 
 	/*int chipImage[7];
 	int matiImage[43];
@@ -178,6 +181,8 @@ private:
 	int wandImage;
 	int dImage;
 
+	bool charF;
+
 	//bool hamaFlag;
 	//int yamabgm;
 	//int matibgm;
@@ -197,7 +202,6 @@ private:
 	SScount nazo;*/
 	
 	~Skill();
-
 };
 
 

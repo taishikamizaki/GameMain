@@ -1,6 +1,7 @@
 
 #include <DxLib.h>
 #include "ScnMng.h"
+#include "../key/GetKeyState.h"
 #include "Title.h"
 
 // ‰Šú‰»ˆ—
@@ -16,7 +17,10 @@ int Title::Init()
 // ‘€ìˆ—
 int Title::TitleCtl()
 {
-	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
+	if (keyDownTrigger[KEY_ID_1START] || 
+		keyDownTrigger[KEY_ID_2START] || 
+		keyDownTrigger[CONFIRM1] || 
+		keyDownTrigger[CONFIRM2])
 	{
 		titleF = true;
 	}

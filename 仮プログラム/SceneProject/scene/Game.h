@@ -13,7 +13,6 @@ enum class CHAR_ID
 // ゲームクラス
 class Select;
 class Player;
-class Skill;
 class Stage;
 class Game
 {
@@ -32,9 +31,6 @@ public:
 	Game();		// コンストラクタ
 	~Game();	// デストラクタ
 
-	
-
-
 private:
 
 	int Init();		// 初期化
@@ -52,14 +48,10 @@ private:
 	CHAR_ID player1;
 	CHAR_ID player2;
 
-	CHAR_ID P1[5];
-	CHAR_ID P2[5];
-
 	STAGE_ID stageID;
 
 	Select* select;
 	Player* player;
-	Skill* skill;
 	Stage* stage;
 
 	friend class Select;

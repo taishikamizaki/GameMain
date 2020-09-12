@@ -70,15 +70,18 @@ void Player::PlayerSysInit(void)
 }
 void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
 {
-
 	player1.charID = p1;
 	player2.charID = p2;
-	if ((skill != nullptr)&&
-		(player1.charID != CHAR_ID::CHAR_ID_MAX)&&
-		(player2.charID != CHAR_ID::CHAR_ID_MAX))
+	if (skill != nullptr)
 	{
-
-		skill->CharInit(player1.charID,player2.charID);
+		if ((player1.charID != CHAR_ID::CHAR_ID_MAX) &&
+			  (player2.charID != CHAR_ID::CHAR_ID_MAX))
+		{
+			if (skill->GetCharF())
+			{
+				skill->CharInit(player1.charID, player2.charID);
+			}
+		}
 	}
 }
 // ƒQ[ƒ€’†‚Ì‰Šú‰»
@@ -937,6 +940,10 @@ Player::Player():screen_size(1000,600)
 
 Player::~Player()
 {
-
+	if (skill != nullptr)
+	{
+		delete skill;
+		skill = nullptr;
+	}
 }
 

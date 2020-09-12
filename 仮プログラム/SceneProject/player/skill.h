@@ -149,6 +149,7 @@ public:
 	void Dir(int p1, int p2);
 
 	Skill();
+	~Skill();
 private:
 
 	/*int chipImage[7];
@@ -200,8 +201,6 @@ private:
 	SScount maho;
 	SScount buto;
 	SScount nazo;*/
-	
-	~Skill();
 };
 
 

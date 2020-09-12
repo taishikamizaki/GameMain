@@ -20,6 +20,7 @@ enum KEY_ID_
 	KEY_ID_1B,
 	KEY_ID_1X,
 	KEY_ID_1Y,
+	KEY_ID_1START,
 
 	KEY_ID_UP2,			// ↑
 	KEY_ID_RIGHT2,		// →
@@ -35,6 +36,34 @@ enum KEY_ID_
 	KEY_ID_2B,
 	KEY_ID_2X,
 	KEY_ID_2Y,
+	KEY_ID_2START,
+
+	// デバッグ用キーコンフィグ
+	UP1,
+	DOWN1,
+	RIGHT1,
+	LEFT1,
+	CONFIRM1,
+	CANCEL1,
+	P1A1,
+	P1A2,
+	P1S1,
+	P1S2,
+	P1S3,
+	P1S4,
+
+	UP2,
+	DOWN2,
+	RIGHT2,
+	LEFT2,
+	CONFIRM2,
+	CANCEL2,
+	P2A1,
+	P2A2,
+	P2S1,
+	P2S2,
+	P2S3,
+	P2S4,
 
 	KEY_ID_SAVE,		// ｾｰﾌﾞ用
 	KEY_ID_LOAD,		// ﾛｰﾄﾞ用

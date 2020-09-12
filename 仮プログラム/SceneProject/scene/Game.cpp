@@ -1,7 +1,6 @@
 
 #include <DxLib.h>
 #include "../key/GetKeyState.h"
-#include "ScnMng.h"
 #include "../select.h"
 #include "Game.h"
 
@@ -15,20 +14,7 @@ int Game::Init()
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
-	P1[0] = CHAR_ID::CHAR_ID_KISI;
-	P1[1] = CHAR_ID::CHAR_ID_MDOU;
-	P1[2] = CHAR_ID::CHAR_ID_BTOU;
-	P1[3] = CHAR_ID::CHAR_ID_4;
-	P1[4] = CHAR_ID::CHAR_ID_MAX;
-
-	P2[0] = CHAR_ID::CHAR_ID_KISI;
-	P2[1] = CHAR_ID::CHAR_ID_MDOU;
-	P2[2] = CHAR_ID::CHAR_ID_BTOU;
-	P2[3] = CHAR_ID::CHAR_ID_4;
-	P2[4] = CHAR_ID::CHAR_ID_MAX;
-
     if (select == nullptr) select = new Select();
-	if (skill == nullptr) skill = new Skill();
 	if (player == nullptr) player = new Player();
 	if (stage == nullptr) stage = new Stage();
 
@@ -63,13 +49,6 @@ int Game::GameCtl()
 
 		if (stage != nullptr) stage->StageCtl(stageID);
 		if (player != nullptr) player->charCtl(player1, player2);
-		if (skill != nullptr)
-		{
-			if (skill->GetCharF())
-			{
-				skill->CharInit(player1, player2);
-			}
-		}
 	}
 	if (player != nullptr) player->PlayerCtl(stageID);
 	return 0;
@@ -94,7 +73,10 @@ int Game::Draw()
 			player->PlayerDraw();
 		}
 
-		if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
+		if (keyDownTrigger[KEY_ID_1START] ||
+			keyDownTrigger[KEY_ID_2START] ||
+			keyDownTrigger[CONFIRM1] ||
+			keyDownTrigger[CONFIRM2])
 		{
 			gameF = false;
 			_gameF = true;

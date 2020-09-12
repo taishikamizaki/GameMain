@@ -1,6 +1,6 @@
 
 #include <DxLib.h>
-#include "ScnMng.h"
+#include "../key/GetKeyState.h"
 #include "GameOver.h"
 
 // èâä˙âªèàóù
@@ -21,7 +21,10 @@ int GameOver::GameOverCtl()
 		now = GetNowCount();
 		goF = true;
 	}*/
-	if (SCN_MNG.keyFlagSp && !SCN_MNG.keyFlagOld)
+	if (keyDownTrigger[KEY_ID_1START] ||
+		keyDownTrigger[KEY_ID_2START] ||
+		keyDownTrigger[CONFIRM1] ||
+		keyDownTrigger[CONFIRM2])
 	{
 		goF = true;
 	}

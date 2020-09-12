@@ -81,6 +81,7 @@ void KeyCheck(void)
 	keyNew[KEY_ID_1B] = (input1.Buttons[13]);
 	keyNew[KEY_ID_1X] = (input1.Buttons[14]);
 	keyNew[KEY_ID_1Y] = (input1.Buttons[15]);
+	keyNew[KEY_ID_1START] = input1.Buttons[4];
 
 	// 2P
 	// 選択用
@@ -106,9 +107,39 @@ void KeyCheck(void)
 	keyNew[KEY_ID_2SKILL3] = (input2.LeftTrigger >= 100);
 	keyNew[KEY_ID_2SKILL4] = (input2.RightTrigger >= 100);
 	keyNew[KEY_ID_2A] = (input2.Buttons[12]);
-	keyNew[KEY_ID_2B] = CheckHitKey(KEY_INPUT_T);//(input2.Buttons[13]);
+	keyNew[KEY_ID_2B] = (input2.Buttons[13]);
 	keyNew[KEY_ID_2X] = (input2.Buttons[14]);
 	keyNew[KEY_ID_2Y] = (input2.Buttons[15]);
+	keyNew[KEY_ID_2START] = input1.Buttons[4];
+
+	// デバッグ用キーコンフィグ
+	// 1P
+	keyNew[UP1] = CheckHitKey(KEY_INPUT_W);
+	keyNew[DOWN1] = CheckHitKey(KEY_INPUT_S);
+	keyNew[RIGHT1] = CheckHitKey(KEY_INPUT_D);
+	keyNew[LEFT1] = CheckHitKey(KEY_INPUT_A);
+	keyNew[CONFIRM1] = CheckHitKey(KEY_INPUT_1);
+	keyNew[CANCEL1] = CheckHitKey(KEY_INPUT_2);
+	keyNew[P1A1] = CheckHitKey(KEY_INPUT_R);
+	keyNew[P1A2] = CheckHitKey(KEY_INPUT_F);
+	keyNew[P1S1] = CheckHitKey(KEY_INPUT_1);
+	keyNew[P1S2] = CheckHitKey(KEY_INPUT_2);
+	keyNew[P1S3] = CheckHitKey(KEY_INPUT_3);
+	keyNew[P1S4] = CheckHitKey(KEY_INPUT_4);
+
+	// 2P
+	keyNew[UP1] = CheckHitKey(KEY_INPUT_UP);
+	keyNew[DOWN1] = CheckHitKey(KEY_INPUT_DOWN);
+	keyNew[RIGHT1] = CheckHitKey(KEY_INPUT_RIGHT);
+	keyNew[LEFT1] = CheckHitKey(KEY_INPUT_LEFT);
+	keyNew[CONFIRM1] = CheckHitKey(KEY_INPUT_NUMPAD1);
+	keyNew[CANCEL1] = CheckHitKey(KEY_INPUT_NUMPAD2);
+	keyNew[P2A1] = CheckHitKey(KEY_INPUT_NUMPAD5);
+	keyNew[P2A2] = CheckHitKey(KEY_INPUT_NUMPAD6);
+	keyNew[P2S1] = CheckHitKey(KEY_INPUT_NUMPAD1);
+	keyNew[P2S2] = CheckHitKey(KEY_INPUT_NUMPAD2);
+	keyNew[P2S3] = CheckHitKey(KEY_INPUT_NUMPAD3);
+	keyNew[P2S4] = CheckHitKey(KEY_INPUT_NUMPAD4);
 
 	// ｾｰﾌﾞ&ﾛｰﾄﾞ用ｷｰ
 	keyNew[KEY_ID_SAVE]  = CheckHitKey(KEY_INPUT_S);		// ｾｰﾌﾞ

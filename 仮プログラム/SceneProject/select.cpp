@@ -80,7 +80,7 @@ int Select::SelectCtl()
  		if (!p1IF)
 		{
 			// 1p↑
-			if (keyDownTrigger[KEY_ID_UP1])
+			if (keyDownTrigger[KEY_ID_UP1] || keyDownTrigger[UP1])
 			{
 				p_waku1++;
 				if (p_waku1 > 3)
@@ -90,7 +90,7 @@ int Select::SelectCtl()
 				this->p1 = p_waku1;
 			}
 			// 1p↓
-			if (keyDownTrigger[KEY_ID_DOWN1])
+			if (keyDownTrigger[KEY_ID_DOWN1] || keyDownTrigger[DOWN1])
 			{
 				p_waku1--;
 				if (p_waku1 < 0)
@@ -103,7 +103,7 @@ int Select::SelectCtl()
 		if (!p2IF)
 		{
 			// 2p↑
-			if (keyDownTrigger[KEY_ID_UP2])
+			if (keyDownTrigger[KEY_ID_UP2] || keyDownTrigger[UP2])
 			{
 				p_waku2++;
 					if (p_waku2 > 3)
@@ -113,7 +113,7 @@ int Select::SelectCtl()
 					this->p2 = p_waku2;
 			}
 			// 2p↓
-			if (keyDownTrigger[KEY_ID_DOWN2])
+			if (keyDownTrigger[KEY_ID_DOWN2] || keyDownTrigger[DOWN2])
 			{
 				p_waku2--;
 				if (p_waku2 < 0)
@@ -126,7 +126,7 @@ int Select::SelectCtl()
 		if (!p1Flag)
 		{
 			// 1p決定
-			if (keyDownTrigger[KEY_ID_1B])
+			if (keyDownTrigger[KEY_ID_1B] || keyDownTrigger[CONFIRM1])
 			{
 				// ID競合判定
 				if (p1 != p2)
@@ -141,7 +141,7 @@ int Select::SelectCtl()
 			}
 		}
 		// 1pキャンセル
-		if (keyDownTrigger[KEY_ID_1A])
+		if (keyDownTrigger[KEY_ID_1A] || keyDownTrigger[CANCEL1])
 		{
 			p1IF = false;
 			p1Flag = false;
@@ -149,7 +149,7 @@ int Select::SelectCtl()
 		if (!p2Flag)
 		{
 			// 2p決定
-			if (keyDownTrigger[KEY_ID_2B])
+			if (keyDownTrigger[KEY_ID_2B] || keyDownTrigger[CONFIRM2])
 			{
 				// ID競合判定
 				if (p2 != p1)
@@ -164,7 +164,7 @@ int Select::SelectCtl()
 			}
 		}
 		// 2pキャンセル
-		if (keyDownTrigger[KEY_ID_2SKILL2])
+		if (keyDownTrigger[KEY_ID_2A] || keyDownTrigger[CANCEL2])
 		{
 			p2IF = false;
 			p2Flag = false;
@@ -176,7 +176,7 @@ int Select::SelectCtl()
 		if (p1Flag && p2Flag)
 		{
 			// 枠→
-			if (keyDownTrigger[KEY_ID_RIGHT1])
+			if (keyDownTrigger[KEY_ID_RIGHT1] || keyDownTrigger[RIGHT1])
 			{
 				s_waku++;
 				if (s_waku > 2)
@@ -185,7 +185,7 @@ int Select::SelectCtl()
 				}
 			}
 			// 枠←
-			if (keyDownTrigger[KEY_ID_LEFT1])
+			if (keyDownTrigger[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
 			{
 				s_waku--;
 				if (s_waku < 0)
@@ -194,7 +194,7 @@ int Select::SelectCtl()
 				}
 			}
 			// 枠→
-			if (keyDownTrigger[KEY_ID_RIGHT2])
+			if (keyDownTrigger[KEY_ID_RIGHT2] || keyDownTrigger[RIGHT2])
 			{
 				s_waku++;
 				if (s_waku > 2)
@@ -203,7 +203,7 @@ int Select::SelectCtl()
 				}
 			}
 			// 枠←
-			if (keyDownTrigger[KEY_ID_LEFT2])
+			if (keyDownTrigger[KEY_ID_LEFT2] || keyDownTrigger[LEFT2])
 			{
 				s_waku--;
 				if (s_waku < 0)
@@ -213,11 +213,11 @@ int Select::SelectCtl()
 			}
 			
 			// 決定（画像切り替え）
-			if (keyDownTrigger[KEY_ID_1B])
+			if (keyDownTrigger[KEY_ID_1B] || keyDownTrigger[CONFIRM1])
 			{
 				stage1F = true;
 			}
-			if (keyDownTrigger[KEY_ID_2B])
+			if (keyDownTrigger[KEY_ID_2B] || keyDownTrigger[CONFIRM2])
 			{
 				stage2F = true;
 			}
@@ -244,11 +244,11 @@ int Select::SelectCtl()
 				}
 			}
 			// キャンセル（切り替え）
-			if (keyDownTrigger[KEY_ID_1A])
+			if (keyDownTrigger[KEY_ID_1A] || keyDownTrigger[CANCEL1])
 			{
 				stage1F = false;
 			}
-			if (keyDownTrigger[KEY_ID_2A])
+			if (keyDownTrigger[KEY_ID_2A] || keyDownTrigger[CANCEL2])
 			{
 				stage2F = false;
 			}

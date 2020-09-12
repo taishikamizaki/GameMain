@@ -818,7 +818,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_RIGHT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -831,7 +831,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_LEFT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -847,7 +847,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_RIGHT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -860,7 +860,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_LEFT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -876,7 +876,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_RIGHT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -889,7 +889,7 @@ void Player::PlayerDraw(void)
 				if (player1.runFlag)
 				{
 					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_LEFT][player1.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -902,13 +902,29 @@ void Player::PlayerDraw(void)
 		case CHAR_ID::CHAR_ID_4:
 			if (player1.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[5], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoRunImage[DIR_RIGHT][player1.animCnt % 40 / 10], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[5], true);
+				}
 			}
 			else if (player1.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[11], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoRunImage[DIR_LEFT][player1.animCnt % 40 / 10], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), nazoImage[11], true);
+				}
 			}
 			break;
 		default:
@@ -938,7 +954,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_RIGHT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -951,7 +967,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_LEFT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -967,7 +983,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_RIGHT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -980,7 +996,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_LEFT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -996,7 +1012,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_RIGHT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -1009,7 +1025,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_LEFT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -1025,7 +1041,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_RIGHT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{
@@ -1038,7 +1054,7 @@ void Player::PlayerDraw(void)
 				if (player2.runFlag)
 				{
 					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_LEFT][player2.animCnt % 40 / 10], true);
 				}
 				else
 				{

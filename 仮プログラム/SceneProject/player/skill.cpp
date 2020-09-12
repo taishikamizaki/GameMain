@@ -377,22 +377,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 , 1.0f, DX_PI_F / 2, swordImage, true);
 				}
 				else
 				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y + 15, swordImage, true);
+					DrawGraph(P1.posp.x + 6, P1.posp.y, swordImage, true);
 				}
 			}
 			else if (P1.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
 				}
 			}
 
@@ -448,22 +448,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
 				}
 				else
 				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y - 25 + 15, wandImage, true);
+					DrawGraph(P1.posp.x + 6, P1.posp.y - 25, wandImage, true);
 				}
 			}
 			else if (P1.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, wandImage, true);
+					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50 , 1.0f, -DX_PI_F / 2, wandImage, true);
 				}
 				else
 				{
-					DrawGraph(P1.posp.x - 25, P1.posp.y - 25 + 15, wandImage, true);
+					DrawGraph(P1.posp.x - 25, P1.posp.y - 25, wandImage, true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)
@@ -544,22 +544,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawGraph(P1.posp.x + 6 + 5, P1.posp.y + 15, punchImage, true);
+					DrawGraph(P1.posp.x + 6 + 5, P1.posp.y, punchImage, true);
 				}
 				else
 				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y + 15, punchImage, true);
+					DrawGraph(P1.posp.x + 6, P1.posp.y , punchImage, true);
 				}
 			}
 			else if (P1.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawTurnGraph(P1.posp.x - 30, P1.posp.y + 15, punchImage, true);
+					DrawTurnGraph(P1.posp.x - 30, P1.posp.y , punchImage, true);
 				}
 				else
 				{
-					DrawTurnGraph(P1.posp.x - 25, P1.posp.y + 15, punchImage, true);
+					DrawTurnGraph(P1.posp.x - 25, P1.posp.y , punchImage, true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)
@@ -607,22 +607,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, dImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 , 1.0f, DX_PI_F / 2, dImage, true);
 				}
 				else
 				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y + 15, dImage, true);
+					DrawGraph(P1.posp.x + 6, P1.posp.y , dImage, true);
 				}
 			}
 			else if (P1.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, dImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, dImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 , 1.0f, -DX_PI_F / 2, dImage, true);
 				}
 			}
 
@@ -714,22 +714,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 1, 1.0f, DX_PI_F / 2, swordImage, true);
 				}
 				else
 				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y + 15, swordImage, true);
+					DrawGraph(P2.posp.x + 6, P2.posp.y, swordImage, true);
 				}
 			}
 			else if (P2.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)
@@ -784,22 +784,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
 				}
 				else
 				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y - 25 + 15, wandImage, true);
+					DrawGraph(P2.posp.x + 6, P2.posp.y - 25 , wandImage, true);
 				}
 			}
 			else if (P2.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, wandImage, true);
+					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50 , 1.0f, -DX_PI_F / 2, wandImage, true);
 				}
 				else
 				{
-					DrawGraph(P2.posp.x - 25, P2.posp.y - 25 + 15, wandImage, true);
+					DrawGraph(P2.posp.x - 25, P2.posp.y - 25 , wandImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)
@@ -880,22 +880,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawGraph(P2.posp.x + 6 + 5, P2.posp.y + 15, punchImage, true);
+					DrawGraph(P2.posp.x + 6 + 5, P2.posp.y, punchImage, true);
 				}
 				else
 				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y + 15, punchImage, true);
+					DrawGraph(P2.posp.x + 6, P2.posp.y , punchImage, true);
 				}
 			}
 			else if (P2.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawTurnGraph(P2.posp.x - 30, P2.posp.y + 15, punchImage, true);
+					DrawTurnGraph(P2.posp.x - 30, P2.posp.y , punchImage, true);
 				}
 				else
 				{
-					DrawTurnGraph(P2.posp.x - 25, P2.posp.y + 15, punchImage, true);
+					DrawTurnGraph(P2.posp.x - 25, P2.posp.y , punchImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)
@@ -943,22 +943,22 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50, 1.0f, DX_PI_F / 2, dImage, true);
 				}
 				else
 				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y + 15, dImage, true);
+					DrawGraph(P2.posp.x + 6, P2.posp.y, dImage, true);
 				}
 			}
 			else if (P2.dir == 1)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 , 1.0f, -DX_PI_F / 2, dImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)

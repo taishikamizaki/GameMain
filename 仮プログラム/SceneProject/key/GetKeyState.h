@@ -71,8 +71,8 @@ enum KEY_ID_
 };
 
 // ÌßÛÄÀ²ÌßéŒ¾
-void KeyInit(void);								// ‰Šú‰»
-void KeyCheck(void);							// ·°”»’è
+void KeyInit(void);					// ‰Šú‰»
+void KeyCheck(void);				// ·°”»’è
 
 // ´¸½ÀİéŒ¾
 extern bool keyNew[KEY_ID_MAX];							// ·°‰Ÿ‰º”»’èiŒ»İj

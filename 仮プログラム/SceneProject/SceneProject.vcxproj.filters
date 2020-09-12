@@ -51,9 +51,6 @@
     <ClCompile Include="player\player.cpp">
       <Filter>game\player</Filter>
     </ClCompile>
-    <ClCompile Include="player\playerMng.cpp">
-      <Filter>game\player</Filter>
-    </ClCompile>
     <ClCompile Include="player\skill.cpp">
       <Filter>game\player</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
       <Filter>game\vector</Filter>
     </ClInclude>
     <ClInclude Include="player\player.h">
-      <Filter>game\player</Filter>
-    </ClInclude>
-    <ClInclude Include="player\playerMng.h">
       <Filter>game\player</Filter>
     </ClInclude>
     <ClInclude Include="player\skill.h">

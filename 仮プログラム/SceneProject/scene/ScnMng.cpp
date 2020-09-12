@@ -44,7 +44,6 @@ int ScnMng::ScnCtl()
         ClsDrawScreen();
 
 		KeyCheck();
-		GetKeyState();
         ScnDraw();
 
 		++fadeCnt;
@@ -182,13 +181,6 @@ int ScnMng::ScnDraw()
     return 0;
 }
 
-// キー判定用
-void ScnMng::GetKeyState(void)
-{
-	keyFlagOld = keyFlagSp;						// 1ﾌﾚｰﾑ前
-	keyFlagSp = CheckHitKey(KEY_INPUT_SPACE);	// 現在
-}
-
 // ﾌｪｰﾄﾞｲﾝ関数
 bool ScnMng::FadeInScreen(int fadeStep)
 {
@@ -233,9 +225,6 @@ ScnMng::ScnMng():
 	scnCnt(0),
 	scnCntOld(0)
 {
-	keyFlagSp = false;
-	keyFlagOld = false;
-
 	fadeIn = false;
 	fadeOut = false;
 

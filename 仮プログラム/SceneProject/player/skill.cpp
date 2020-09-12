@@ -7,9 +7,6 @@
 
 void Skill::StageSysInit(void)
 {
-	/*hamaFlag = false;
-	hamaPos = { 0,0 };
-	hamaCnt = 0;*/
 	P1.skillFlag = false;
 	P1.SSflag = true;
 	P1.bufFlag = false;
@@ -51,12 +48,6 @@ void Skill::StageSysInit(void)
 	magic = LoadGraph("image/skill/effect/magic5.png", true);
 
 	charF = false;
-
-	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
-	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
-	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
-	//LoadDivGraph("image/laser.png", 5, 1, 5, 320, 120, laserImage, false);
-	//mapID = MAP_ID::MAP_ID_MATI;
 }
 
 void Skill::StageGameInit(void)
@@ -2279,6 +2270,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	//CheckHitP1();
 	//CheckHitP2();
 }
+
 // player1Ç™player2ÇÃçUåÇÇéÛÇØÇÈìñÇΩÇËîªíË
 bool Skill::CheckHitP1(Vector2 pos)
 {

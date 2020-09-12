@@ -36,9 +36,6 @@ public:
 	bool fadeIn;	// ﾌｪｰﾄﾞｲﾝ
 	bool fadeOut;	// ﾌｪｰﾄﾞｱｳﾄ
 
-	bool keyFlagSp;		// キー押下判定用前フラグ
-	bool keyFlagOld;	// キー押下判定用後フラグ
-
 private:
 	Title*    title;		// class:Title
 	Game*     game;			// class:Game
@@ -46,8 +43,6 @@ private:
 
 	int Init();		// 初期化
 	int ScnDraw();	// 描画
-
-	void GetKeyState(void);		// キー押下判定関数
 
 	int windowSizeX;	// 画面横サイズ
 	int windowSizeY;	// 画面縦サイズ

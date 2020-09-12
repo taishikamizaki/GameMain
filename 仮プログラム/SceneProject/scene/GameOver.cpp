@@ -16,11 +16,6 @@ int GameOver::Init()
 // ‘€ìˆ—
 int GameOver::GameOverCtl()
 {
-	/*if (GetNowCount() - now >= 6000)
-	{
-		now = GetNowCount();
-		goF = true;
-	}*/
 	if (keyDownTrigger[KEY_ID_1START] ||
 		keyDownTrigger[KEY_ID_2START] ||
 		keyDownTrigger[CONFIRM1] ||

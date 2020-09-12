@@ -142,7 +142,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		// 1P
 
 		//âE
-		if (keyNew[KEY_ID_RIGHT1])
+		if (keyDownTrigger[KEY_ID_RIGHT1] || keyDownTrigger[RIGHT1])
 		{
 			player1.runFlag = true;
 
@@ -157,7 +157,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		//ç∂
-		if (keyNew[KEY_ID_LEFT1])
+		if (keyDownTrigger[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
 		{
 			player1.runFlag = true;
 
@@ -444,7 +444,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		// 2P
 
 		//âE
-		if (keyNew[KEY_ID_RIGHT2])
+		if (keyDownTrigger[KEY_ID_RIGHT2] || keyDownTrigger[RIGHT2])
 		{
 			player2.runFlag = true;
 
@@ -459,7 +459,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		//ç∂
-		if (keyNew[KEY_ID_LEFT2])
+		if (keyDownTrigger[KEY_ID_LEFT2] || keyDownTrigger[LEFT2])
 		{
 			player2.runFlag = true;
 
@@ -753,8 +753,6 @@ void Player::PlayerDraw(void)
 		DrawBox(player1.pos.x - player1.hitPosS.x, player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x, player1.pos.y + player1.hitPosE.y, 0xFFF000, false);
 
-		/*DrawGraph(player1.pos.x, player1.pos.y, kisiImage[5], true);*/
-
 		switch (player1.charID)
 		{
 		case CHAR_ID::CHAR_ID_KISI:
@@ -797,8 +795,6 @@ void Player::PlayerDraw(void)
 		DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
 			player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
-		/*DrawGraph(player2.pos.x, player2.pos.y, mahoImage[10], true);*/
-
 		switch (player2.charID)
 		{
 		case CHAR_ID::CHAR_ID_KISI:
@@ -828,8 +824,6 @@ void Player::PlayerDraw(void)
 		DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
 		DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
 	}
-	//DrawGraph(0, 0, iconp1, true);
-	//DrawGraph(920, 0, iconp2, true);
 	DrawBox(0,0,1000,60,0xcc9966,true);
 	DrawBox(40, 14, 480, 60, 0x000000, true);
 	DrawBox(520, 14, 960, 60, 0x000000, true);
@@ -856,8 +850,6 @@ void Player::PlayerDraw(void)
 	{
 		DrawGraph(350,100,draw,true);
 	}
-
-	
 
 	if (skill != nullptr)
 	{
@@ -934,7 +926,6 @@ bool Player::playerWin(void)
 	}
 	return false;
 }
-
 
 Player::Player():screen_size(1000,600)
 {

@@ -44,11 +44,9 @@ void KeyCheck(void)
 
 	// 1P
 	// 選択用
-
 		keyNew[KEY_ID_UP1]= (input1.ThumbLY >= 20000) &&
 			(input1.ThumbLX <= 4000) &&
 			(input1.ThumbLX >= -4000);
-	
 	
 	keyNew[KEY_ID_DOWN1] = (input1.ThumbLY <= -20000) &&
 		(input1.ThumbLX <= 4000) &&
@@ -56,19 +54,10 @@ void KeyCheck(void)
 
 	// ジャンプ
 	keyNew[KEY_ID_JUMP1] = (input1.ThumbLY >= 20000);
-		/*&&
-		(input1.ThumbLX <= 7000) &&
-		(input1.ThumbLX >= -7000)*/
 
 	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
 	keyNew[KEY_ID_RIGHT1] = (input1.ThumbLX >= 30000);
-		/*&&
-		(input1.ThumbLY <= 4000) &&
-		(input1.ThumbLY >= -4000);*/
 	keyNew[KEY_ID_LEFT1] = (input1.ThumbLX <= -30000);
-		/*&&
-		(input1.ThumbLY <= 4000) &&
-		(input1.ThumbLY >= -4000);*/
 
 	// 弾発射用ｷｰ
 	keyNew[KEY_ID_SHOT1]  = CheckHitKey(KEY_INPUT_LCONTROL);
@@ -107,7 +96,7 @@ void KeyCheck(void)
 	keyNew[KEY_ID_2SKILL3] = (input2.LeftTrigger >= 100);
 	keyNew[KEY_ID_2SKILL4] = (input2.RightTrigger >= 100);
 	keyNew[KEY_ID_2A] = (input2.Buttons[12]);
-	keyNew[KEY_ID_2B] = CheckHitKey(KEY_INPUT_T);//(input2.Buttons[13]);
+	keyNew[KEY_ID_2B] = (input2.Buttons[13]);
 	keyNew[KEY_ID_2X] = (input2.Buttons[14]);
 	keyNew[KEY_ID_2Y] = (input2.Buttons[15]);
 	keyNew[KEY_ID_2START] = input1.Buttons[4];

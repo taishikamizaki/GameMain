@@ -53,6 +53,7 @@ bool Stage::StageCtl(STAGE_ID stage)
 				yamaImage[mapyama[y][x]];
 			}
 		}
+		//PlayMusic("sound/bgm/yama.mp3", DX_PLAYTYPE_LOOP);
 		yamaF = true;
 		break;
 	case STAGE_ID::STAGE_ID_MACHI:
@@ -64,6 +65,7 @@ bool Stage::StageCtl(STAGE_ID stage)
 				matiImage[mapmati[y][x]];
 			}
 		}
+		//PlayMusic("sound/bgm/mati.mp3", DX_PLAYTYPE_LOOP);
 		matiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_COLOSSEUM:
@@ -74,6 +76,7 @@ bool Stage::StageCtl(STAGE_ID stage)
 				tougiImage[maptougi[y][x]];
 			}
 		}
+		//PlayMusic("sound/bgm/tougi.mp3", DX_PLAYTYPE_LOOP);
 		tougiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_HAMAGURI:
@@ -102,7 +105,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, yamaImage[mapyama[y][x]], true);
-				PlaySoundFile("sound/bgm/yama.mp3", DX_PLAYTYPE_LOOP);
+
 			}
 		}
 	}
@@ -113,7 +116,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, matiImage[mapmati[y][x]], true);
-				PlaySoundFile("sound/bgm/mati.mp3", DX_PLAYTYPE_LOOP);
+
 			}
 		}
 	}
@@ -124,7 +127,7 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, tougiImage[maptougi[y][x]], true);
-				PlaySoundFile("sound/bgm/tougi.mp3", DX_PLAYTYPE_LOOP);
+
 			}
 		}
 	}

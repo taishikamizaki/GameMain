@@ -74,15 +74,15 @@ void KeyCheck(void)
 
 	// 2P
 	// 選択用
-	keyNew[KEY_ID_UP2] = (input2.ThumbLY >= 20000) &&
+	keyNew[KEY_ID_UP2] = (input2.ThumbLY >= 30000) &&
 		(input2.ThumbLX <= 4000) &&
 		(input2.ThumbLX >= -4000);
-	keyNew[KEY_ID_DOWN2] = (input2.ThumbLY <= -20000) &&
+	keyNew[KEY_ID_DOWN2] = (input2.ThumbLY <= -30000) &&
 		(input2.ThumbLX <= 4000) &&
 		(input2.ThumbLX >= -4000);
 
 	// ジャンプ
-	keyNew[KEY_ID_JUMP2] = (input2.ThumbLY >= 20000);
+	keyNew[KEY_ID_JUMP2] = (input2.ThumbLY >= 30000);
 
 	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
 	keyNew[KEY_ID_RIGHT2] = (input2.ThumbLX >= 30000);
@@ -117,12 +117,12 @@ void KeyCheck(void)
 	keyNew[P1S4] = CheckHitKey(KEY_INPUT_4);
 
 	// 2P
-	keyNew[UP1] = CheckHitKey(KEY_INPUT_UP);
-	keyNew[DOWN1] = CheckHitKey(KEY_INPUT_DOWN);
-	keyNew[RIGHT1] = CheckHitKey(KEY_INPUT_RIGHT);
-	keyNew[LEFT1] = CheckHitKey(KEY_INPUT_LEFT);
-	keyNew[CONFIRM1] = CheckHitKey(KEY_INPUT_NUMPAD1);
-	keyNew[CANCEL1] = CheckHitKey(KEY_INPUT_NUMPAD2);
+	keyNew[UP2] = CheckHitKey(KEY_INPUT_UP);
+	keyNew[DOWN2] = CheckHitKey(KEY_INPUT_DOWN);
+	keyNew[RIGHT2] = CheckHitKey(KEY_INPUT_RIGHT);
+	keyNew[LEFT2] = CheckHitKey(KEY_INPUT_LEFT);
+	keyNew[CONFIRM2] = CheckHitKey(KEY_INPUT_NUMPAD1);
+	keyNew[CANCEL2] = CheckHitKey(KEY_INPUT_NUMPAD2);
 	keyNew[P2A1] = CheckHitKey(KEY_INPUT_NUMPAD5);
 	keyNew[P2A2] = CheckHitKey(KEY_INPUT_NUMPAD6);
 	keyNew[P2S1] = CheckHitKey(KEY_INPUT_NUMPAD1);

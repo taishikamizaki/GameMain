@@ -7,6 +7,9 @@
 
 void Skill::StageSysInit(void)
 {
+	/*hamaFlag = false;
+	hamaPos = { 0,0 };
+	hamaCnt = 0;*/
 	P1.skillFlag = false;
 	P1.SSflag = true;
 	P1.bufFlag = false;
@@ -26,6 +29,14 @@ void Skill::StageSysInit(void)
 	P2.Scount = 0;
 	P1.skill = SKILL_ID::SKILL_MAX;
 	P2.skill = SKILL_ID::SKILL_MAX;
+	SSpos = 0;
+	SSposoffset = 0;
+	SSX=0;
+	SetPos = 0;
+	SetoffPos = 0;
+	SetoffX = 0;
+	P1.posSetFlag = false;
+	P1.laserFlag = false;
 	LoadDivGraph("image/skill/buff/Heal.png", 10, 10, 1, 120, 120, healImage, false);
 	LoadDivGraph("image/skill/buff/buff_a.png", 10, 10, 1, 120, 120, buffAImage, false);
 	LoadDivGraph("image/skill/buff/buff_d.png", 10, 10, 1, 120, 120, buffDImage, false);
@@ -46,8 +57,25 @@ void Skill::StageSysInit(void)
 	wandImage = LoadGraph("image/player/wand.png", true);
 	dImage = LoadGraph("image/player/turugi.png", true);
 	magic = LoadGraph("image/skill/effect/magic5.png", true);
+	magic2 = LoadGraph("image/skill/magic/magic6.png", true);
+	magic3 = LoadGraph("image/skill/magic/magic7.png", true);
+	kensla1 = LoadGraph("image/skill/slash/ken.png", true);
+	kensla2 = LoadGraph("image/skill/slash/ken1.png", true);
+	kensla3 = LoadGraph("image/skill/slash/ken2.png", true);
+	kensla4 = LoadGraph("image/skill/slash/ken3.png", true);
 
 	charF = false;
+
+	//LoadDivGraph("image/slash1.png", 16, 4, 4, 320, 240, slashImage, false);
+	//LoadDivGraph("image/slash2.png", 16, 4, 4, 320, 240, slash2Image, false);
+	//LoadDivGraph("image/slash3.png", 12, 5, 3, 192, 192, slash3Image, false);
+	LoadDivGraph("image/skill/cut-in/m/laser2.png", 5, 1, 5, 640, 240, laserImage, false);
+	LoadDivGraph("image/skill/cut-in/m/laser1.png", 10, 1, 10, 640, 480, laserSetImage, false);
+	LoadDivGraph("image/skill/cut-in/m/laser4.png", 10, 1, 10, 640, 480, laserSet2, false);
+	LoadDivGraph("image/skill/cut-in/m/laser5.png", 5, 1, 5, 640, 240, laser2, false);
+	LoadDivGraph("image/skill/slash/ken/up.png", 5, 5, 1, 192, 192, upImage, false);
+	LoadDivGraph("image/skill/guard/png/gd.png", 5, 5, 1, 100, 100, guardImage, false);
+	//mapID = MAP_ID::MAP_ID_MATI;
 }
 
 void Skill::StageGameInit(void)
@@ -86,26 +114,26 @@ void Skill::PlayerInit(Vector2 pos,Vector2 hitposS,
 	{
 		if (P1.dir == 0)
 		{
-			P1.hitPos = { (pos.x + hitposS.x) + 10,(pos.y - hitposS.y) + 10 };
-			P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+			P1.hitPos = { (pos.x + hitposS.x) + 10,(pos.y - hitposS.y)-20 };
+			P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
 		}
 		else if(P1.dir==1)
 		{
-			P1.hitPos = { (pos.x - hitposS.x) - 10,(pos.y - hitposS.y) + 10 };
-			P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+			P1.hitPos = { (pos.x - hitposS.x) - 10,(pos.y - hitposS.y) -20 };
+			P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
 		}
 	}
 	if (!P2.skillFlag)
 	{
 		if (P2.dir == 0)
 		{
-			P2.hitPos = { (pos2.x + hitposS2.x) + 10,(pos2.y + hitposE2.y) + 10 };
-			P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 70 };
+			P2.hitPos = { (pos2.x + hitposS2.x) + 10,(pos2.y + hitposE2.y) -20 };
+			P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
 		}
 		else if (P2.dir == 1)
 		{
-			P2.hitPos = { (pos.x - hitposE.x) - 10,(pos.y + hitposS.y) + 10 };
-			P2.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y - 70 };
+			P2.hitPos = { (pos.x - hitposE.x) - 10,(pos.y + hitposS.y) -20 };
+			P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y +60 };
 		}
 	}
 
@@ -127,11 +155,12 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 			break;
 		case CHAR_ID::CHAR_ID_MDOU:
 			P1.HP = 0;
-			P1.LP = 50;
+			P1.LP = 100;
 			P1.dmage = 10;
 			P1.attack = 0;
 			P1.defense = 0;
 			P1.speed = 0;
+			
 			break;
 		case CHAR_ID::CHAR_ID_BTOU:
 			P1.HP = 0;
@@ -143,7 +172,7 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 			break;
 		case CHAR_ID::CHAR_ID_4:
 			P1.HP = 0;
-			P1.LP = 100;
+			P1.LP = 50;
 			P1.dmage = 10;
 			P1.attack = 0;
 			P1.defense = 0;
@@ -200,7 +229,6 @@ void Skill::CharInit(CHAR_ID player1,CHAR_ID player2)
 		}
 	}
 	charF = true;
-	SetVolumeMusic(10);
 }
 
 void Skill::SScountInit(void)
@@ -252,6 +280,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 	int AnimS = (P1.Scount / 5) % 16;
 	int AnimI = (P1.Scount / 5) % 12;
 	int AnimL = (P1.Scount / 5) % 5;
+	int AnimG = (P1.Scount/2)%5;
 
 	if (player1 != CHAR_ID::CHAR_ID_MAX)
 	{
@@ -340,7 +369,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, DX_PI_F / 2, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
 				}
 				else
 				{
@@ -351,11 +380,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50 + 15, 1.0f, DX_PI_F, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, swordImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -DX_PI_F / 2, swordImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
 				}
 			}
 		
@@ -364,6 +393,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				if (P1.skillFlag == true)
 				{
 					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffff88, true);
+					if (P1.Rflag)
+					{
+						DrawTurnGraph(P1.hitPos.x-30,P1.hitPos.y-20,guardImage[AnimG],true);
+					}
+					if(P1.Lflag)
+					{
+						DrawGraph(P1.hitoffsetPos.x+30, P1.hitPos.y+20, guardImage[AnimG], true);
+					}
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_2)
@@ -384,7 +421,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.skillFlag == true)
 				{
-						DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
+					//DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
+					if (P1.Rflag)
+					{
+						DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, kensla1,true);
+					}
+					if (P1.Lflag)
+					{
+						DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, kensla2, true);
+					}
 				}
 			}
 		}
@@ -395,7 +440,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25 + 15, 1.0f, DX_PI_F / 2, wandImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
 				}
 				else
 				{
@@ -406,7 +451,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50 + 15, 1.0f, -DX_PI_F / 2, wandImage, true);
+					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, wandImage, true);
 				}
 				else
 				{
@@ -445,9 +490,42 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
 			{
+				P1.laserFlag = true;
 				if (P1.skillFlag == true)
 				{
-						DrawGraph(P1.posp.x - 10, P1.posp.y - 10, laserImage[AnimL], true);
+
+					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffff88, true);
+
+					if (P1.Lflag)
+					{
+
+						DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, laserSetImage[Anim], true);
+
+						if (P1.count / 240)
+						{
+
+							DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, laserImage[AnimL], true);
+						}
+						else if (P1.count / 540)
+						{
+							P1.laserFlag = false;
+						}
+					}
+					if (P1.Rflag)
+					{
+
+						DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, laserSetImage[Anim], true);
+
+						if (P1.count / 240)
+						{
+
+							DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, laserImage[AnimL], true);
+						}
+						else if (P1.count / 540)
+						{
+							P1.laserFlag = false;
+						}
+					}
 				}
 			}
 		}
@@ -481,6 +559,15 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				if (P1.skillFlag == true)
 				{
 					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffff88, true);
+
+					if (P1.Rflag)
+					{
+						DrawExtendGraph(P1.hitPos.x - 20, P1.hitPos.y - 30, P1.hitoffsetPos.x + 20, P1.hitoffsetPos.y + 30, upImage[AnimL], true);
+					}
+					if (P1.Lflag)
+					{
+						DrawExtendGraph(P1.hitoffsetPos.x - 20, P1.hitPos.y - 30, P1.hitPos.x + 20, P1.hitoffsetPos.y + 30, upImage[AnimL], true);
+					}
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_2)
@@ -512,7 +599,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[KEY_ID_1X]) || keyDownTrigger[P1A1] || keyDownTrigger[P1A2])
 				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, DX_PI_F / 2, dImage, true);
+					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, dImage, true);
 				}
 				else
 				{
@@ -527,7 +614,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				}
 				else
 				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -DX_PI_F / 2, dImage, true);
+					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, dImage, true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_1)
@@ -535,6 +622,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				if (P1.skillFlag == true)
 				{
 					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffff88, true);
+					if (P1.Rflag)
+					{
+						DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y,kensla3,true);
+					}
+					if (P1.Lflag)
+					{
+						DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y,kensla4,true );
+					}
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_2)
@@ -548,14 +643,54 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.skillFlag == true)
 				{
+					
 					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0x88ffff, true);
+					if (P1.Rflag)
+					{
+						DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, magic2,true);
+
+					}
+					if (P1.Lflag)
+					{
+						DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, magic3, true);
+					}
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
 			{
 				if (P1.skillFlag == true)
-				{
-						DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
+			{
+					DrawBox(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, 0xffffff, true);
+					if (P1.Lflag)
+					{
+
+						DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, laserSet2[Anim], true);
+
+						if (P1.count / 120)
+						{
+
+							DrawExtendGraph(P1.hitoffsetPos.x, P1.hitPos.y, P1.hitPos.x, P1.hitoffsetPos.y, laser2[AnimL], true);
+						}
+						else if (P1.count / 360)
+						{
+							P1.laserFlag = false;
+						}
+					}
+					if (P1.Rflag)
+					{
+
+						DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, laserSet2[Anim], true);
+
+						if (P1.count / 120)
+						{
+
+							DrawExtendGraph(P1.hitPos.x, P1.hitPos.y, P1.hitoffsetPos.x, P1.hitoffsetPos.y, laser2[AnimL], true);
+						}
+						else if (P1.count / 360)
+						{
+							P1.laserFlag = false;
+						}
+					}
 				}
 			}
 		}
@@ -569,7 +704,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, DX_PI_F / 2, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, swordImage, true);
 				}
 				else
 				{
@@ -580,11 +715,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, DX_PI_F, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, swordImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -DX_PI_F / 2, swordImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, swordImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)
@@ -623,7 +758,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25 + 15, 1.0f, DX_PI_F / 2, wandImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, wandImage, true);
 				}
 				else
 				{
@@ -634,7 +769,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50 + 15, 1.0f, -DX_PI_F / 2, wandImage, true);
+					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, wandImage, true);
 				}
 				else
 				{
@@ -731,7 +866,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, DX_PI_F / 2, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f / 2, dImage, true);
 				}
 				else
 				{
@@ -742,11 +877,11 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[KEY_ID_2X]) || keyDownTrigger[P2A1] || keyDownTrigger[P2A2])
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, DX_PI_F, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50 + 15, 1.0f, 3.1415926535897932384626433832795f, dImage, true);
 				}
 				else
 				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -DX_PI_F / 2, dImage, true);
+					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 + 15, 1.0f, -3.1415926535897932384626433832795f / 2, dImage, true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_1)
@@ -911,7 +1046,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			DrawExtendGraph(0, 0, 60, 60, charicon[1], true);
 			if (P1.nazo.s1/300)
 			{
-				DrawGraph(50, 60, uilej, true);
+				DrawGraph(50, 60, uiken, true);
 			}
 			else
 			{
@@ -927,7 +1062,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			}
 			if (P1.nazo.s3 / 1000)
 			{
-				DrawGraph(100, 60, uiken, true);
+				DrawGraph(100, 60, uilej, true);
 			}
 			else
 			{
@@ -938,6 +1073,10 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 				if (P1.nazo.s4 / 1800)
 				{
 					DrawGraph(150, 60, uisra, true);
+				}
+				else
+				{
+					DrawBox(150, 60, 200, 110, 0x0000, true);
 				}
 			}
 			else
@@ -1114,23 +1253,32 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	/// player(ãRém)
 	if (player1 == CHAR_ID::CHAR_ID_KISI)
 	{
-		if (P1.dir == 0)
+		
+		if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
 		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
-			{
 
-				P1.hitPos.x = P1.offsetPosp.x;
-				P1.hitoffsetPos.x = P1.offsetPosp.x + 50;
-				P1.skill = SKILL_ID::SKILL_1;
-				if (P1.kisi.s1 / 300)//ëÂëÃ5ïb
-				{
-					P1.skillFlag = true;
-					P1.count = 0;
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
+			//P1.hitPos.x = P1.offsetPosp.x;
+			//P1.hitoffsetPos.x = P1.offsetPosp.x + 50;
+			P1.skill = SKILL_ID::SKILL_1;
+			if (P1.kisi.s1 / 300)//ëÂëÃ5ïb
 			{
-				if (P1.skillFlag == true)
+				P1.skillFlag = true;
+				if (P1.dir == 0)
+				{
+					P1.Rflag = true;
+				}
+				if (P1.dir == 1)
+				{
+					P1.Lflag = true;
+				}
+				P1.count = 0;
+			}
+		}
+		if (P1.skill == SKILL_ID::SKILL_1)
+		{
+			if (P1.skillFlag == true)
+			{
+				if (P1.Rflag)
 				{
 
 					if (P1.count / 10)
@@ -1140,146 +1288,228 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 							P1.hitPos.x += 2;
 							P1.hitoffsetPos.x += 2;
 						}
-						else
+						if (P1.hitoffsetPos.x > P1.Attackoffset.x + 40)
 						{
 							P1.skillFlag = false;
-							P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-							P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-						}
-						if (P1.offsetPosp.x > P1.hitPos.x)
-						{
-							P1.skillFlag = false;
-							P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-							P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+							P1.Rflag = false;
+						/*	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+							P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
 						}
 					}
-					P1.kisi.s1 = 0;
+					
 				}
-
-			}
-			if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
-			{
-				if (P1.SSflag == true)
+				if (P1.Lflag)
 				{
-					if (P1.LP <= 10)
-					{
-						P1.skill = SKILL_ID::SKILL_4;
-						P1.skillFlag = true;
-						P1.count = 0;
-					}
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_4)
-			{
-				if (P1.skillFlag == true)
-				{
-					if (P1.count / 5)
-					{
-						if (P1.hitPos.y > 450)
-						{
-							P1.hitPos.y -= 10;
-						}
-						if (P1.hitoffsetPos.x < P1.Attackoffset.x + 120)
-						{
-							P1.hitoffsetPos.x += 10;
-						}
-						else
-						{
-							P1.skillFlag = false;
-						}
-					}
-				}
-				else if (P1.skillFlag == false)
-				{
-					P1.SSflag = false;
-					P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-				}
-			}
-		}
-		else if (P1.dir == 1)
-		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
-			{
-
-				P1.hitPos.x = P1.posp.x;
-				P1.hitoffsetPos.x = P1.posp.x - 50;
-				P1.skill = SKILL_ID::SKILL_1;
-				if (P1.kisi.s1 / 300)//ëÂëÃ5ïb
-				{
-					P1.skillFlag = true;
-					P1.count = 0;
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
-			{
-				if (P1.skillFlag == true)
-				{
-
 					if (P1.count / 10)
 					{
-						if (P1.hitoffsetPos.x > P1.AttackRange.x - 40)
+						if (P1.hitoffsetPos.x >= P1.AttackRange.x - 40)
 						{
 							P1.hitPos.x -= 2;
 							P1.hitoffsetPos.x -= 2;
 						}
-						else
+						if (P1.hitoffsetPos.x < P1.AttackRange.x - 40)
 						{
 							P1.skillFlag = false;
-							P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-							P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
-						}
-						if (P1.offsetPosp.x > P1.hitPos.x)
-						{
-							P1.skillFlag = false;
-							P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-							P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+							P1.Lflag = false;
+						/*	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+							P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
 						}
 					}
-					P1.kisi.s1 = 0;
 				}
-
+				P1.kisi.s1 = 0;
 			}
-			if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
+
+		}
+		if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
+		{
+			if (P1.SSflag == true)
 			{
-				if (P1.SSflag == true)
+				if (P1.kisi.s4/600)
 				{
 					if (P1.LP <= 10)
 					{
 						P1.skill = SKILL_ID::SKILL_4;
 						P1.skillFlag = true;
+						if (P1.dir == 0)
+						{
+							P1.Rflag = true;
+						}
+						if (P1.dir == 1)
+						{
+							P1.Lflag = true;
+						}
 						P1.count = 0;
 					}
 				}
 			}
-			if (P1.skill == SKILL_ID::SKILL_4)
+		}
+		if (P1.skill == SKILL_ID::SKILL_4)
+		{
+			if (P1.skillFlag == true)
 			{
-				if (P1.skillFlag == true)
+				if (P1.Rflag)
 				{
+					SSposoffset = P1.Attackoffset.y + 100;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.Attackoffset.x + 1000;
+					if (!P1.posSetFlag)
+					{
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
 					if (P1.count / 5)
 					{
-						if (P1.hitPos.y > 450)
+						if (P1.hitPos.y > SetPos)
 						{
 							P1.hitPos.y -= 10;
 						}
-						if (P1.hitoffsetPos.x > P1.AttackRange.x - 120)
+						if (P1.hitoffsetPos.y < SetoffPos)
 						{
-							P1.hitoffsetPos.x -= 10;
+							P1.hitoffsetPos.y += 10;
 						}
-						else
+						if (P1.hitoffsetPos.x < SetoffX)
 						{
-							P1.skillFlag = false;
+							P1.hitoffsetPos.x += 10;
+							P1.hitPos.x += 10;
 						}
+						
+					}
+					if (P1.count/480)
+					{
+						P1.skillFlag = false;
+						P1.Rflag = false;
+						P1.posSetFlag = false;
 					}
 				}
-				else if (P1.skillFlag == false)
+				if (P1.Lflag)
 				{
-					P1.SSflag = false;
-					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+					SSposoffset = P1.Attackoffset.y + 100;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.AttackRange.x - 1000;
+					if (!P1.posSetFlag)
+					{
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
+					if (P1.count / 5)
+					{
+						if (P1.hitPos.y > SetPos)
+						{
+							P1.hitPos.y -= 10;
+						}
+						if (P1.hitoffsetPos.y < SetoffPos)
+						{
+							P1.hitoffsetPos.y += 10;
+						}
+						if (P1.hitoffsetPos.x > SetoffX)
+						{
+							P1.hitoffsetPos.x -= 10;
+							P1.hitPos.x -= 10;
+						}
+					}
+					if (P1.count / 480)
+					{
+						P1.skillFlag = false;
+						P1.Rflag = false;
+						P1.posSetFlag = false;
+					}
 				}
 			}
+			else if (P1.skillFlag == false)
+			{
+				P1.SSflag = false;
+				P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+				P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+			}
 		}
+		
+		//else if (P1.dir == 1)
+		//{
+		//	if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
+		//	{
+
+		//		P1.hitPos.x = P1.posp.x;
+		//		P1.hitoffsetPos.x = P1.posp.x - 50;
+		//		P1.skill = SKILL_ID::SKILL_1;
+		//		if (P1.kisi.s1 / 300)//ëÂëÃ5ïb
+		//		{
+		//			P1.skillFlag = true;
+		//			P1.count = 0;
+		//		}
+		//	}
+		//	if (P1.skill == SKILL_ID::SKILL_1)
+		//	{
+		//		if (P1.skillFlag == true)
+		//		{
+
+		//			if (P1.count / 10)
+		//			{
+		//				if (P1.hitoffsetPos.x > P1.AttackRange.x - 40)
+		//				{
+		//					P1.hitPos.x -= 2;
+		//					P1.hitoffsetPos.x -= 2;
+		//				}
+		//				else
+		//				{
+		//					P1.skillFlag = false;
+		//					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
+		//					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+		//				}
+		//				if (P1.offsetPosp.x > P1.hitPos.x)
+		//				{
+		//					P1.skillFlag = false;
+		//					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
+		//					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+		//				}
+		//			}
+		//			P1.kisi.s1 = 0;
+		//		}
+
+		//	}
+		//	if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
+		//	{
+		//		if (P1.SSflag == true)
+		//		{
+		//			if (P1.LP <= 10)
+		//			{
+		//				P1.skill = SKILL_ID::SKILL_4;
+		//				P1.skillFlag = true;
+		//				P1.count = 0;
+		//			}
+		//		}
+		//	}
+		//	if (P1.skill == SKILL_ID::SKILL_4)
+		//	{
+		//		if (P1.skillFlag == true)
+		//		{
+		//			if (P1.count / 5)
+		//			{
+		//				if (P1.hitPos.y > 450)
+		//				{
+		//					P1.hitPos.y -= 10;
+		//				}
+		//				if (P1.hitoffsetPos.x > P1.AttackRange.x - 120)
+		//				{
+		//					P1.hitoffsetPos.x -= 10;
+		//				}
+		//				else
+		//				{
+		//					P1.skillFlag = false;
+		//				}
+		//			}
+		//		}
+		//		else if (P1.skillFlag == false)
+		//		{
+		//			P1.SSflag = false;
+		//			P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
+		//			P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+		//		}
+		//	}
+		//}
 		if (keyDownTrigger[KEY_ID_1SKILL2] || keyDownTrigger[P1S2])
 		{
 			if (P1.kisi.s2 / 4200)
@@ -1443,7 +1673,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				{
 					P1.Lflag = true;
 				}
-				P1.count = 0;
+				
 			}
 		}
 
@@ -1499,6 +1729,14 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				{
 					P1.count = 0;
 					P1.skillFlag = true;
+					if (P1.dir == 0)
+					{
+						P1.Rflag = true;
+					}
+					if (P1.dir == 1)
+					{
+						P1.Lflag = true;
+					}
 				}
 			}
 		}
@@ -1506,67 +1744,84 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 		{
 			if (P1.skillFlag == true)
 			{
-				if (P1.count / 240)
+				if (P1.Rflag)
 				{
-					if (P1.hitPos.y > 250)
+					SSposoffset = P1.Attackoffset.y + 100;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.Attackoffset.x + 1000;
+					if (!P1.posSetFlag)
 					{
-						P1.hitPos.y -= 20;
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
 					}
-					if (P1.hitoffsetPos.x < 1000)
+					if ((P1.count / 240)&&(P1.Rflag))
 					{
-						P1.hitoffsetPos.x += 20;
+						
+
+						if (P1.hitPos.y > SetPos)
+						{
+							P1.hitPos.y -= 20;
+						}
+						if (P1.hitoffsetPos.y < SetoffPos)
+						{
+							P1.hitoffsetPos.y += 20;
+						}
+						if (P1.hitoffsetPos.x < SetoffX)
+						{
+							P1.hitoffsetPos.x += 20;
+						}
+					}
+					if (P1.count / 540)
+					{
+						P1.skillFlag = false;
+						P1.Rflag = false;
+						P1.posSetFlag = false;
 					}
 				}
-				if (P1.count / 540)
+				if (P1.Lflag)
 				{
-					P1.skillFlag = false;
+					SSposoffset = P1.Attackoffset.y + 100;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.AttackRange.x - 1000;
+					if (!P1.posSetFlag)
+					{
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
+					if ((P1.count / 240)&&(P1.Lflag))
+					{
+						
+
+						if (P1.hitPos.y > SetPos)
+						{
+							P1.hitPos.y -= 20;
+						}
+						if (P1.hitoffsetPos.y < SetoffPos)
+						{
+							P1.hitoffsetPos.y += 20;
+						}
+						if (P1.hitoffsetPos.x > SetoffX)
+						{
+							P1.hitoffsetPos.x -= 20;
+						}
+					}
+					if (P1.count / 540)
+					{
+						P1.skillFlag = false;
+						P1.Lflag = false;
+						P1.posSetFlag = false;
+					}
 				}
 			}
 			else if (P1.skillFlag == false)
 			{
-				P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-				P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-			}
-		}
-
-		//P1.Lflag = false;
-
-		if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
-		{
-			if (P1.LP <= 50)
-			{
-				P1.skill = SKILL_ID::SKILL_4;
-				if (P1.maho.s4 / 1800)
-				{
-					P1.count = 0;
-					P1.skillFlag = true;
-				}
-			}
-		}
-		if (P1.skill == SKILL_ID::SKILL_4)
-		{
-			if (P1.skillFlag == true)
-			{
-				if (P1.count / 240)
-				{
-					if (P1.hitPos.y > 250)
-					{
-						P1.hitPos.y -= 20;
-					}
-					if (P1.hitoffsetPos.x > 0)
-					{
-						P1.hitoffsetPos.x -= 20;
-					}
-				}
-				if (P1.count / 540)
-				{
-					P1.skillFlag = false;
-				}
-			}
-			else if (P1.skillFlag == false)
-			{
-				P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-				P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
+				P1.posSetFlag = false;
+			/*	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+				P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
 			}
 		}
 
@@ -1589,6 +1844,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 				P1.bufFlag = true;
 			}
 		}
+	
 		
 	}
 	if (player2 == CHAR_ID::CHAR_ID_MDOU)
@@ -1680,86 +1936,74 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	///plaeyr(ïêì¨â∆)
 	if (player1 == CHAR_ID::CHAR_ID_BTOU)
 	{
-		if (P1.dir == 0)
+		if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
 		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
-			{
 
-				P1.skill = SKILL_ID::SKILL_1;
-				if (P1.buto.s1 / 300)
+			P1.skill = SKILL_ID::SKILL_1;
+			if (P1.buto.s1 / 300)
+			{
+				P1.skillFlag = true;
+				if (P1.dir == 0)
 				{
-					P1.skillFlag = true;
+					P1.Rflag = true;
 				}
-
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
-			{
-				if (P1.skillFlag == true)
+				if (P1.dir == 1)
 				{
-					if (P1.hitPos.y > 400)
+					P1.Lflag = true;
+				}
+			}
+
+		}
+		if (P1.skill == SKILL_ID::SKILL_1)
+		{
+			if (P1.skillFlag == true)
+			{
+				if (P1.Rflag)
+				{
+					if (P1.hitPos.y > P1.AttackRange.y - 20)
 					{
-						P1.hitPos.y -= 10;
-						P1.hitoffsetPos.y -= 10;
+						P1.hitPos.y -= 5;
+						P1.hitoffsetPos.y -= 5;
 					}
-					if (P1.hitoffsetPos.x < P1.Attackoffset.x+30)
+					if (P1.hitoffsetPos.x < P1.Attackoffset.x + 10)
 					{
-						P1.hitPos.x += 10;
-						P1.hitoffsetPos.x += 10;
+						P1.hitPos.x += 5;
+						P1.hitoffsetPos.x += 5;
 					}
-					else
+					if ((P1.hitoffsetPos.x > P1.Attackoffset.x + 10) && (P1.hitPos.y < P1.AttackRange.y - 20))
 					{
 						P1.skillFlag = false;
+						P1.Rflag = false;
 					}
-					P1.buto.s1 = 0;
 				}
-				else if (P1.skillFlag == false)
+				if (P1.Lflag)
 				{
-
-					P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-				}
-			}
-		}
-		else if (P1.dir == 1)
-		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
-			{
-
-				P1.skill = SKILL_ID::SKILL_1;
-				if (P1.buto.s1 / 300)
-				{
-					P1.skillFlag = true;
-				}
-
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
-			{
-				if (P1.skillFlag == true)
-				{
-					if (P1.hitPos.y > 400)
+					if (P1.hitPos.y > P1.AttackRange.y - 20)
 					{
-						P1.hitPos.y -= 10;
-						P1.hitoffsetPos.y -= 10;
+						P1.hitPos.y -= 5;
+						P1.hitoffsetPos.y -= 5;
 					}
-					if (P1.hitoffsetPos.x > P1.AttackRange.x-30)
+					if (P1.hitoffsetPos.x > P1.AttackRange.x - 10)
 					{
-						P1.hitPos.x -= 10;
-						P1.hitoffsetPos.x -= 10;
+						P1.hitPos.x -= 5;
+						P1.hitoffsetPos.x -= 5;
 					}
-					else
+					if ((P1.hitoffsetPos.x < P1.AttackRange.x - 10) && (P1.hitPos.y < P1.AttackRange.y - 20))
 					{
 						P1.skillFlag = false;
+						P1.Lflag = false;
 					}
-					P1.buto.s1 = 0;
 				}
-				else if (P1.skillFlag == false)
-				{
+				P1.buto.s1 = 0;
+			}
+			else if (P1.skillFlag == false)
+			{
 
-					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
-				}
+				P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+				P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
 			}
 		}
+		
 		if (keyDownTrigger[KEY_ID_1SKILL2] || keyDownTrigger[P1S2])
 		{
 			if (P1.buto.s2 / 600)
@@ -1866,228 +2110,265 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	///player(íj)
 	if (player1 == CHAR_ID::CHAR_ID_4)
 	{
-		if (P1.dir == 0)
+		if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
 		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
+			if (P1.nazo.s1 / 300)
 			{
-				if (P1.nazo.s1 / 300)
+				P1.skillFlag = true;
+				P1.skill = SKILL_ID::SKILL_1;
+				if (P1.dir == 0)
 				{
-					P1.skillFlag = true;
-					P1.skill = SKILL_ID::SKILL_1;
+					P1.Rflag = true;
 				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
-			{
-				if (P1.skillFlag == true)
+				if (P1.dir == 1)
 				{
-					if ((P1.hitoffsetPos.x > P1.Attackoffset.x - 50) && (P1.hitPos.y > 300))
+					P1.Lflag = true;
+				}
+				P1.count = 0;
+			}
+		}
+		if (P1.skill == SKILL_ID::SKILL_1)
+		{
+			if (P1.skillFlag == true)
+			{
+				if (P1.Rflag)
+				{
+					SSposoffset = P1.Attackoffset.x - 50;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.Attackoffset.x + 300;
+					if (!P1.posSetFlag)
 					{
-						P1.hitPos.y -= 10;
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
+					if (P1.count / 5)
+					{
+						if ((P1.hitoffsetPos.x > SetoffPos) && (P1.hitPos.y > SetPos))
+						{
+							P1.hitPos.y -= 10;
 
+						}
+						if (P1.hitoffsetPos.x < SetoffX)
+						{
+							P1.hitPos.x += 10;
+							P1.hitoffsetPos.x += 10;
+						}
+						else
+						{
+							P1.skillFlag = false;
+							P1.Rflag = false;
+							P1.posSetFlag = false;
+								
+							/*	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+								P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
+						}
 					}
-					if (P1.hitoffsetPos.x < P1.Attackoffset.x + 100)
+				}
+				if(P1.Lflag)
+				{
+					SSposoffset = P1.AttackRange.x + 50;
+					SSpos = P1.AttackRange.y - 100;
+					SSX = P1.AttackRange.x - 300;
+					if (!P1.posSetFlag)
 					{
-						P1.hitPos.x += 10;
-						P1.hitoffsetPos.x += 10;
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
 					}
-					else
+					if (P1.count / 5)
+					{
+						if ((P1.hitoffsetPos.x < SetoffPos) && (P1.hitPos.y > SetPos))
+						{
+							P1.hitPos.y -= 10;
+
+						}
+						if (P1.hitoffsetPos.x > SetoffX)
+						{
+							P1.hitPos.x -= 10;
+							P1.hitoffsetPos.x -= 10;
+						}
+						else
+						{
+							P1.skillFlag = false;
+							P1.Lflag = false;
+							P1.posSetFlag = false;
+							/*	P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+								P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
+						}
+					}
+				}
+				P1.nazo.s1 = 0;
+			}
+		}
+		if (keyDownTrigger[KEY_ID_1SKILL3] || keyDownTrigger[P1S3])
+		{
+			if (P1.nazo.s3 / 1000)
+			{
+				P1.skillFlag = true;
+				P1.skill = SKILL_ID::SKILL_3;
+				if (P1.dir == 0)
+				{
+					P1.Rflag = true;
+				}
+				if (P1.dir == 1)
+				{
+					P1.Lflag = true;
+				}
+				/*P1.hitPos.x = P1.offsetPosp.x;
+				P1.hitoffsetPos.x = P1.offsetPosp.x + 50;*/
+			}
+		}
+		if (P1.skill == SKILL_ID::SKILL_3)
+		{
+			if (P1.skillFlag == true)
+			{
+
+				if (P1.Rflag)
+				{
+					if (P1.hitPos.y > P1.AttackRange.y - 20)
+					{
+						P1.hitPos.y -= 5;
+						P1.hitoffsetPos.y -= 5;
+					}
+					if (P1.hitoffsetPos.x < P1.Attackoffset.x + 10)
+					{
+						P1.hitPos.x += 5;
+						P1.hitoffsetPos.x += 5;
+					}
+					if ((P1.hitoffsetPos.x > P1.Attackoffset.x + 10) && (P1.hitPos.y < P1.AttackRange.y - 20))
 					{
 						P1.skillFlag = false;
-						P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
+						P1.Rflag = false;
 					}
-					P1.nazo.s1 = 0;
 				}
-			}
-			if (keyDownTrigger[KEY_ID_1SKILL3] || keyDownTrigger[P1S3])
-			{
-				if (P1.nazo.s3 / 1000)
+				if (P1.Lflag)
 				{
-					P1.skillFlag = true;
-					P1.skill = SKILL_ID::SKILL_3;
-					P1.hitPos.x = P1.offsetPosp.x;
-					P1.hitoffsetPos.x = P1.offsetPosp.x + 50;
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_3)
-			{
-				if (P1.skillFlag == true)
-				{
-					P1.nazo.s3 = 0;
-					if (P1.hitPos.y > 450)
+					if (P1.hitPos.y > P1.AttackRange.y - 20)
 					{
-						P1.hitPos.y -= 1;
-						P1.hitoffsetPos.y -= 1;
+						P1.hitPos.y -= 5;
+						P1.hitoffsetPos.y -= 5;
 					}
-					if (P1.hitoffsetPos.x < P1.Attackoffset.x - 40)
+					if (P1.hitoffsetPos.x > P1.AttackRange.x - 10)
 					{
-						P1.hitPos.x += 1;
-						P1.hitoffsetPos.x += 1;
-
+						P1.hitPos.x -= 5;
+						P1.hitoffsetPos.x -= 5;
 					}
-					else
+					if ((P1.hitoffsetPos.x < P1.AttackRange.x - 10) && (P1.hitPos.y < P1.AttackRange.y - 20))
 					{
 						P1.skillFlag = false;
+						P1.Lflag = false;
 					}
-
 				}
-				else if (P1.skillFlag == false)
-				{
-					P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-				}
+				P1.nazo.s3 = 0;
 			}
-			if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
+				
+		}
+		if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
+		{
+			if (P1.LP <= 50)
 			{
-				if (P1.LP <= 50)
+				if (P1.nazo.s4 / 300)
 				{
-					if (P1.nazo.s4 / 1800)
+					P1.skillFlag = true;
+					P1.count = 0;
+					P1.skill = SKILL_ID::SKILL_4;
+					if (P1.dir == 0)
 					{
-						P1.skillFlag = true;
-						P1.count = 0;
-						P1.skill = SKILL_ID::SKILL_4;
+						P1.Rflag = true;
 					}
-
+					if (P1.dir == 1)
+					{
+						P1.Lflag = true;
+					}
 				}
 
 			}
-			if (P1.skill == SKILL_ID::SKILL_4)
+
+		}
+		if (P1.skill == SKILL_ID::SKILL_4)
+		{
+			if (P1.skillFlag == true)
 			{
-				if (P1.skillFlag == true)
+				if (P1.Rflag)
 				{
-					if (P1.count / 60)
+					SSposoffset = P1.Attackoffset.y + 20;
+					SSpos = P1.AttackRange.y - 20;
+					SSX = P1.Attackoffset.x + 1000;
+					if (!P1.posSetFlag)
 					{
-						if (P1.hitPos.y > 450)
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
+					if ((P1.count / 120) && (P1.Rflag))
+					{
+
+
+						if (P1.hitPos.y > SetPos)
 						{
 							P1.hitPos.y -= 20;
 						}
-						if (P1.hitoffsetPos.x < P1.Attackoffset.x + 100)
+						if (P1.hitoffsetPos.y < SetoffPos)
+						{
+							P1.hitoffsetPos.y += 20;
+						}
+						if (P1.hitoffsetPos.x < SetoffX)
 						{
 							P1.hitoffsetPos.x += 20;
 						}
 					}
-					if (P1.count / 120)
+					if (P1.count / 360)
 					{
 						P1.skillFlag = false;
+						P1.Rflag = false;
+						P1.posSetFlag = false;
 					}
 				}
-				else if (P1.skillFlag == false)
+				if (P1.Lflag)
 				{
-					P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };
-				}
-			}
-		}
-		else if (P1.dir == 1)
-		{
-			if (keyDownTrigger[KEY_ID_1SKILL1] || keyDownTrigger[P1S1])
-			{
-				if (P1.nazo.s1 / 300)
-				{
-					P1.skillFlag = true;
-					P1.skill = SKILL_ID::SKILL_1;
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_1)
-			{
-				if (P1.skillFlag == true)
-				{
-					if ((P1.hitoffsetPos.x < P1.AttackRange.x - 50) && (P1.hitPos.y > 300))
+					SSposoffset = P1.Attackoffset.y + 20;
+					SSpos = P1.AttackRange.y - 20;
+					SSX = P1.AttackRange.x - 1000;
+					if (!P1.posSetFlag)
 					{
-						P1.hitPos.y -= 10;
+						SetPos = SSpos;
+						SetoffPos = SSposoffset;
+						SetoffX = SSX;
+						P1.posSetFlag = true;
+					}
+					if ((P1.count / 120) && (P1.Lflag))
+					{
 
-					}
-					if (P1.hitoffsetPos.x > P1.AttackRange.x - 100)
-					{
-						P1.hitPos.x -= 10;
-						P1.hitoffsetPos.x -= 10;
-					}
-					else
-					{
-						P1.skillFlag = false;
-						P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
-					}
-					P1.nazo.s1 = 0;
-				}
-			}
-			if (keyDownTrigger[KEY_ID_1SKILL3] || keyDownTrigger[P1S3])
-			{
-				if (P1.nazo.s3 / 1000)
-				{
-					P1.skillFlag = true;
-					P1.skill = SKILL_ID::SKILL_3;
-					P1.hitPos.x = P1.offsetPosp.x;
-					P1.hitoffsetPos.x = P1.offsetPosp.x - 50;
-				}
-			}
-			if (P1.skill == SKILL_ID::SKILL_3)
-			{
-				if (P1.skillFlag == true)
-				{
-					P1.nazo.s3 = 0;
-					if (P1.hitPos.y > 450)
-					{
-						P1.hitPos.y -= 1;
-						P1.hitoffsetPos.y -= 1;
-					}
-					if (P1.hitoffsetPos.x > P1.AttackRange.x - 10)
-					{
-						P1.hitPos.x -= 1;
-						P1.hitoffsetPos.x -= 1;
 
-					}
-					else
-					{
-						P1.skillFlag = false;
-					}
-
-				}
-				else if (P1.skillFlag == false)
-				{
-					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
-				}
-			}
-			if (keyDownTrigger[KEY_ID_1SKILL4] || keyDownTrigger[P1S4])
-			{
-				if (P1.LP <= 50)
-				{
-					if (P1.nazo.s4 / 1800)
-					{
-						P1.skillFlag = true;
-						P1.count = 0;
-						P1.skill = SKILL_ID::SKILL_4;
-					}
-
-				}
-
-			}
-			if (P1.skill == SKILL_ID::SKILL_4)
-			{
-				if (P1.skillFlag == true)
-				{
-					if (P1.count / 60)
-					{
-						if (P1.hitPos.y > 450)
+						if (P1.hitPos.y > SetPos)
 						{
 							P1.hitPos.y -= 20;
 						}
-						if (P1.hitoffsetPos.x > P1.AttackRange.x - 100)
+						if (P1.hitoffsetPos.y < SetoffPos)
+						{
+							P1.hitoffsetPos.y += 20;
+						}
+						if (P1.hitoffsetPos.x > SetoffX)
 						{
 							P1.hitoffsetPos.x -= 20;
 						}
 					}
-					if (P1.count / 120)
+					if (P1.count / 360)
 					{
 						P1.skillFlag = false;
+						P1.Lflag = false;
+						P1.posSetFlag = false;
 					}
 				}
-				else if (P1.skillFlag == false)
-				{
-					P1.hitPos = { P1.offsetPosp.x - 10,P1.posp.y + 10 };
-					P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 70 };
-				}
+			}
+			else if (P1.skillFlag == false)
+			{
+				/*P1.hitPos = { P1.offsetPosp.x + 10,P1.posp.y + 10 };
+				P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 70 };*/
 			}
 		}
 		if (keyDownTrigger[KEY_ID_1SKILL2] || keyDownTrigger[P1S2])
@@ -2271,7 +2552,6 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 	//CheckHitP1();
 	//CheckHitP2();
 }
-
 // player1Ç™player2ÇÃçUåÇÇéÛÇØÇÈìñÇΩÇËîªíË
 bool Skill::CheckHitP1(Vector2 pos)
 {
@@ -2321,7 +2601,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P1.kisi.s1 / 300)
 			{
 				P1.dmage = 10;
-				PlaySoundFile("../sound/skill/kisi/ss1.mp3", DX_PLAYTYPE_BACK);
 				if (P1.defense < 20)
 				{
 					Dehold = P1.defense + 5;
@@ -2337,7 +2616,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P1.skillFlag == true)
 			{
 				P1.HP = 50;
-				PlaySoundFile("../sound/skill/kisi/ss2.mp3", DX_PLAYTYPE_BACK);
 				if (P1.HP == 50)
 				{
 					LPhold = P1.LP + P1.HP;
@@ -2363,7 +2641,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/skill/kisi/ss3.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP > 10)
 				{
 					P1.HP = 10;
@@ -2389,7 +2666,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			break;
 		case SKILL_ID::SKILL_4:
-			PlaySoundFile("../sound/skill/kisi/ss4.mp3", DX_PLAYTYPE_BACK);
 			if (P1.HP <= 10)
 			{
 				P1.dmage = 40;
@@ -2413,7 +2689,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P2.kisi.s1 / 300)
 			{
 				P2.dmage = 10;
-				PlaySoundFile("../sound/skill/kisi/ss1.mp3", DX_PLAYTYPE_BACK);
 				if (P2.defense < 20)
 				{
 					Dehold2 = P2.defense + 5;
@@ -2429,7 +2704,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 			if (P2.skillFlag == true)
 			{
 				P2.HP = 50;
-				PlaySoundFile("../sound/skill/kisi/ss2.mp3", DX_PLAYTYPE_BACK);
 				if (P2.HP == 50)
 				{
 					LPhold2 = P2.LP + P2.HP;
@@ -2455,7 +2729,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/skill/kisi/ss3.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP > 10)
 				{
 					P2.HP = 10;
@@ -2481,7 +2754,6 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 
 			break;
 		case SKILL_ID::SKILL_4:
-			PlaySoundFile("../sound/skill/kisi/ss4.mp3", DX_PLAYTYPE_BACK);
 			if (P2.HP <= 10)
 			{
 				P2.dmage = 40;
@@ -2510,7 +2782,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 7;
 				P1.maho.s1 = 0;
 			}
@@ -2518,7 +2789,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.speed = 6;
 				P1.maho.s2 = 0;
 				P1.skillFlag = false;
@@ -2537,7 +2807,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss3.mp3", DX_PLAYTYPE_BACK);
+
 				P1.defense = 30;
 				P1.HP = 5;
 				if (P1.HP == 5)
@@ -2563,7 +2833,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.HP <= 50)
 				{
 					P1.dmage = 40;
@@ -2589,7 +2858,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 7;
 				P2.maho.s1 = 0;
 			}
@@ -2597,7 +2865,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.speed = 6;
 				P2.maho.s2 = 0;
 				P2.skillFlag = false;
@@ -2615,7 +2882,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss3.mp3", DX_PLAYTYPE_BACK);
+
 				P2.defense = 30;
 				P2.HP = 5;
 				if (P2.HP == 5)
@@ -2640,7 +2907,6 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/maho/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.HP <= 50)
 				{
 					P2.dmage = 40;
@@ -2672,15 +2938,14 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
+				P1.buto.s1 = 0;
 			}
 
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.defense = 5;
 				P1.skillFlag = false;
 				P1.buto.s2 = 0;
@@ -2698,7 +2963,6 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss3.mp3", DX_PLAYTYPE_BACK);
 				P1.attack = 10;
 				P1.buto.s3 = 0;
 			}
@@ -2714,7 +2978,6 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP <= 30)
 				{
 					P1.HP = 20;
@@ -2752,15 +3015,14 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
+				P2.buto.s1 = 0;
 			}
 
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.defense = 5;
 				P2.skillFlag = false;
 				P2.buto.s2 = 0;
@@ -2777,7 +3039,6 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss3.mp3", DX_PLAYTYPE_BACK);
 				P2.attack = 10;
 				P2.buto.s3 = 0;
 			}
@@ -2792,7 +3053,6 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("../sound/char/butou/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP <= 30)
 				{
 					P2.HP = 20;
@@ -2834,14 +3094,13 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss1.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
+
 			}
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss2.mp3", DX_PLAYTYPE_BACK);
 				P1.defense = 5;
 				P1.nazo.s2 = 0;
 				P1.skillFlag = false;
@@ -2858,7 +3117,6 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss3.mp3", DX_PLAYTYPE_BACK);
 				P1.dmage = 15;
 				if (P1.hitFlag == true)
 				{
@@ -2871,7 +3129,6 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P1.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P1.LP <= 50)
 				{
 					P1.dmage = 60;
@@ -2896,14 +3153,13 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_1:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss1.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
+
 			}
 			break;
 		case SKILL_ID::SKILL_2:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss2.mp3", DX_PLAYTYPE_BACK);
 				P2.defense = 5;
 				P2.nazo.s2 = 0;
 				P2.skillFlag = false;
@@ -2920,7 +3176,6 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_3:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss3.mp3", DX_PLAYTYPE_BACK);
 				P2.dmage = 15;
 				if (P2.hitFlag == true)
 				{
@@ -2933,7 +3188,6 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 		case SKILL_ID::SKILL_4:
 			if (P2.skillFlag == true)
 			{
-				PlaySoundFile("sound/char/nazo/ss4.mp3", DX_PLAYTYPE_BACK);
 				if (P2.LP <= 50)
 				{
 					P2.dmage = 60;

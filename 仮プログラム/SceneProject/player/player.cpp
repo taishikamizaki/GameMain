@@ -142,7 +142,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		// 1P
 
 		//âE
-		if (keyDownTrigger[KEY_ID_RIGHT1] || keyDownTrigger[RIGHT1])
+		if (keyNew[KEY_ID_RIGHT1] || keyDownTrigger[RIGHT1])
 		{
 			player1.runFlag = true;
 
@@ -157,7 +157,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		//ç∂
-		if (keyDownTrigger[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
+		if (keyNew[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
 		{
 			player1.runFlag = true;
 

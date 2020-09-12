@@ -59,6 +59,63 @@ void Player::PlayerSysInit(void)
 	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
+
+	LoadDivGraph("image/player/KISHI_run1.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, kisiRunImage[DIR_RIGHT]
+	);
+
+	LoadDivGraph("image/player/KISHI_run2.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, kisiRunImage[DIR_LEFT]
+	);
+
+	LoadDivGraph("image/player/MAHO_run1.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, mahoRunImage[DIR_RIGHT]
+	);
+
+	LoadDivGraph("image/player/MAHO_run2.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, mahoRunImage[DIR_LEFT]
+	);
+
+	LoadDivGraph("image/player/BUTOU_run1.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, butoRunImage[DIR_RIGHT]
+	);
+
+	LoadDivGraph("image/player/BUTOU_run2.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, butoRunImage[DIR_LEFT]
+	);
+
+	LoadDivGraph("image/player/KISHI_run1.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, nazoRunImage[DIR_RIGHT]
+	);
+
+	LoadDivGraph("image/player/KISHI_run2.png"
+		, 4
+		, 4, 1
+		, 25, 33
+		, nazoRunImage[DIR_LEFT]
+	);
+
 	hp = LoadGraph("image/hp/bar.png");
 	iconp1 = LoadGraph("image/serect/1P.png");
 	iconp2 = LoadGraph("image/serect/2P.png");
@@ -142,7 +199,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		// 1P
 
 		//右
-		if (keyNew[KEY_ID_RIGHT1] || keyDownTrigger[RIGHT1])
+		if (keyNew[KEY_ID_RIGHT1] || keyNew[RIGHT1])
 		{
 			player1.runFlag = true;
 
@@ -157,7 +214,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		//左
-		if (keyNew[KEY_ID_LEFT1] || keyDownTrigger[LEFT1])
+		if (keyNew[KEY_ID_LEFT1] || keyNew[LEFT1])
 		{
 			player1.runFlag = true;
 
@@ -260,7 +317,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player1.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP1])
+						if (keyNew[KEY_ID_JUMP1] || keyNew[JUMP1])
 						{
 							player1.jumpFlag = true;
 							player1.velocity.fy = INIT_VELOCITY;
@@ -288,7 +345,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player1.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP1])
+						if (keyNew[KEY_ID_JUMP1] || keyNew[JUMP1])
 						{
 							player1.jumpFlag = true;
 							player1.velocity.fy = INIT_VELOCITY;
@@ -316,7 +373,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player1.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP1])
+						if (keyNew[KEY_ID_JUMP1] || keyNew[JUMP1])
 						{
 							player1.jumpFlag = true;
 							player1.velocity.fy = INIT_VELOCITY;
@@ -325,9 +382,6 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 				}
 			}
-		
-			
-			
 			playerPosBK = player1.pos;
 			playerPosHit = player1.pos;
 
@@ -444,7 +498,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		// 2P
 
 		//右
-		if (keyDownTrigger[KEY_ID_RIGHT2] || keyDownTrigger[RIGHT2])
+		if (keyNew[KEY_ID_RIGHT2] || keyNew[RIGHT2])
 		{
 			player2.runFlag = true;
 
@@ -459,7 +513,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		//左
-		if (keyDownTrigger[KEY_ID_LEFT2] || keyDownTrigger[LEFT2])
+		if (keyNew[KEY_ID_LEFT2] || keyNew[LEFT2])
 		{
 			player2.runFlag = true;
 
@@ -557,7 +611,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player2.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP2])
+						if (keyNew[KEY_ID_JUMP2] || keyNew[JUMP2])
 						{
 							player2.jumpFlag = true;
 							player2.velocity.fy = INIT_VELOCITY;
@@ -585,7 +639,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player2.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP2])
+						if (keyNew[KEY_ID_JUMP2] || keyNew[JUMP2])
 						{
 							player2.jumpFlag = true;
 							player2.velocity.fy = INIT_VELOCITY;
@@ -613,7 +667,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player2.jumpFlag == false)
 					{
-						if (keyNew[KEY_ID_JUMP2])
+						if (keyNew[KEY_ID_JUMP2] || keyNew[JUMP2])
 						{
 							player2.jumpFlag = true;
 							player2.velocity.fy = INIT_VELOCITY;
@@ -733,6 +787,9 @@ void Player::PlayerCtl(STAGE_ID id)
 			}
 		}
 
+		player1.animCnt++;
+		player2.animCnt++;
+
 		skill->SkillCtl(player1.charID, player2.charID);
 		skill->DmageCtl(player1.pos,player2.pos);
 		skill->SpeedCtl(player1.moveSpeed, player2.moveSpeed);
@@ -745,12 +802,12 @@ void Player::PlayerDraw(void)
 	{
 		// 1P
 		// プレイヤー枠
-		DrawBox(player1.pos.x - player1.sizeOffset.x, player1.pos.y - player1.sizeOffset.y,
+		DxLib::DrawBox(player1.pos.x - player1.sizeOffset.x, player1.pos.y - player1.sizeOffset.y,
 			player1.pos.x + player1.size.x - player1.sizeOffset.x,
 			player1.pos.y + player1.size.y - player1.sizeOffset.y, 0xFFFFF, false);
 
 		//プレイヤーの当たり判定枠表示
-		DrawBox(player1.pos.x - player1.hitPosS.x, player1.pos.y - player1.hitPosS.y,
+		DxLib::DrawBox(player1.pos.x - player1.hitPosS.x, player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x, player1.pos.y + player1.hitPosE.y, 0xFFF000, false);
 
 		switch (player1.charID)
@@ -758,40 +815,87 @@ void Player::PlayerDraw(void)
 		case CHAR_ID::CHAR_ID_KISI:
 			if (player1.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[5], true);
+				}
 			}
 			else if (player1.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[11], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), kisiImage[11], true);
+				}
 			}
-
 			break;
 
 		case CHAR_ID::CHAR_ID_MDOU:
 			if (player1.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[5], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[5], true);
+				}
 			}
 			else if (player1.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[11], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), mahoImage[11], true);
+				}
 			}
 			break;
 
 		case CHAR_ID::CHAR_ID_BTOU:
 			if (player1.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[5], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_RIGHT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[5], true);
+				}
 			}
 			else if (player1.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
-					player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[11], true);
+				if (player1.runFlag)
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoRunImage[DIR_LEFT][((player1.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player1.pos.x - (player1.size.x / 2), player1.pos.y - (player1.size.y / 2),
+						player1.pos.x + (player1.size.x / 2), player1.pos.y + (player1.size.y / 2), butoImage[11], true);
+				}
 			}
 			break;
 
@@ -812,94 +916,158 @@ void Player::PlayerDraw(void)
 		}
 
 		// プレイヤー座標
-		DrawFormatString(10, 32, 0xff0000, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
-		DrawFormatString(10, 48, 0xff0000, "player1.moveSpeed(%d,)", player1.moveSpeed);
-		DrawFormatString(10, 60, 0xff0000, "player1.id(%d)", player1.charID);
+		DxLib::DrawFormatString(10, 32, 0xff0000, "player1.Pos(%d,%d)", player1.pos.x, player1.pos.y);
+		DxLib::DrawFormatString(10, 48, 0xff0000, "player1.moveSpeed(%d,)", player1.moveSpeed);
+		DxLib::DrawFormatString(10, 60, 0xff0000, "player1.id(%d)", player1.charID);
 
 		// 2P
 		// プレイヤー枠
-		DrawBox(player2.pos.x - player2.sizeOffset.x, player2.pos.y - player2.sizeOffset.y,
+		DxLib::DrawBox(player2.pos.x - player2.sizeOffset.x, player2.pos.y - player2.sizeOffset.y,
 			player2.pos.x + player2.size.x - player2.sizeOffset.x,
 			player2.pos.y + player2.size.y - player2.sizeOffset.y, 0xFFFFF, false);
 
 		//プレイヤーの当たり判定枠表示
-		DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
+		DxLib::DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
 			player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
 		switch (player2.charID)
 		{
 		case CHAR_ID::CHAR_ID_KISI:
-			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+			if (player2.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[5], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[5], true);
+				}
 			}
-			else if (player1.moveDir == DIR::DIR_ID_LEFT)
+			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[11], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), kisiImage[11], true);
+				}
 			}
 			break;
 
 		case CHAR_ID::CHAR_ID_MDOU:
-			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+			if (player2.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[5], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[5], true);
+				}
 			}
-			else if (player1.moveDir == DIR::DIR_ID_LEFT)
+			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[11], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), mahoImage[11], true);
+				}
 			}
 			break;
 
 		case CHAR_ID::CHAR_ID_BTOU:
-			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+			if (player2.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[5], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[5], true);
+				}
 			}
-			else if (player1.moveDir == DIR::DIR_ID_LEFT)
+			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[11], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), butoImage[11], true);
+				}
 			}
 			break;
 
 		case CHAR_ID::CHAR_ID_4:
-			if (player1.moveDir == DIR::DIR_ID_RIGHT)
+			if (player2.moveDir == DIR::DIR_ID_RIGHT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[5], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_RIGHT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[5], true);
+				}
 			}
-			else if (player1.moveDir == DIR::DIR_ID_LEFT)
+			else if (player2.moveDir == DIR::DIR_ID_LEFT)
 			{
-				DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
-					player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[11], true);
+				if (player2.runFlag)
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoRunImage[DIR_LEFT][((player2.animCnt / 20) % 10) / 3], true);
+				}
+				else
+				{
+					DrawExtendGraph(player2.pos.x - (player2.size.x / 2), player2.pos.y - (player2.size.y / 2),
+						player2.pos.x + (player2.size.x / 2), player2.pos.y + (player2.size.y / 2), nazoImage[11], true);
+				}
 			}
 			break;
 		default:
 			break;
 		}
 		// プレイヤー座標
-		DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
-		DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
-		DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
+		DxLib::DrawFormatString(800, 32, 0xff0000, "player2.Pos(%d,%d)", player2.pos.x, player2.pos.y);
+		DxLib::DrawFormatString(800, 48, 0xff0000, "player2.moveSpeed(%d,)", player2.moveSpeed);
+		DxLib::DrawFormatString(800, 60, 0xff0000, "player2.id(%d)", player2.charID);
 	}
-	DrawBox(0,0,1000,60,0xcc9966,true);
-	DrawBox(40, 14, 480, 60, 0x000000, true);
-	DrawBox(520, 14, 960, 60, 0x000000, true);
+	DxLib::DrawBox(0,0,1000,60,0xcc9966,true);
+	DxLib::DrawBox(40, 14, 480, 60, 0x000000, true);
+	DxLib::DrawBox(520, 14, 960, 60, 0x000000, true);
 	for (int x = player1.Hp; x > 0; x--)
 	{
-		DrawBox(35+x*HPsize.fx, 14, 35+(x+1)*HPsize.fx, 60, 0x33ff66, true);
+		DxLib::DrawBox(35+x*HPsize.fx, 14, 35+(x+1)*HPsize.fx, 60, 0x33ff66, true);
 	}
 	for (int x = 0; x < player1.Hp; x++)
 	{
-		DrawBox(520+x*HPsize.fx, 14, 520+(x+1)*HPsize.fx, 60, 0x33ff66, true);
+		DxLib::DrawBox(520+x*HPsize.fx, 14, 520+(x+1)*HPsize.fx, 60, 0x33ff66, true);
 	}
-	DrawGraph(500,0,hp,true);
-	DrawTurnGraph(0,0,hp,true);
+	DxLib::DrawGraph(500,0,hp,true);
+	DxLib::DrawTurnGraph(0,0,hp,true);
 
 	if (player1.winFlag)
 	{

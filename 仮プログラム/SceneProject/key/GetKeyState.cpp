@@ -107,6 +107,7 @@ void KeyCheck(void)
 	keyNew[DOWN1] = CheckHitKey(KEY_INPUT_S);
 	keyNew[RIGHT1] = CheckHitKey(KEY_INPUT_D);
 	keyNew[LEFT1] = CheckHitKey(KEY_INPUT_A);
+	keyNew[JUMP1] = CheckHitKey(KEY_INPUT_W);
 	keyNew[CONFIRM1] = CheckHitKey(KEY_INPUT_1);
 	keyNew[CANCEL1] = CheckHitKey(KEY_INPUT_2);
 	keyNew[P1A1] = CheckHitKey(KEY_INPUT_R);
@@ -121,6 +122,7 @@ void KeyCheck(void)
 	keyNew[DOWN2] = CheckHitKey(KEY_INPUT_DOWN);
 	keyNew[RIGHT2] = CheckHitKey(KEY_INPUT_RIGHT);
 	keyNew[LEFT2] = CheckHitKey(KEY_INPUT_LEFT);
+	keyNew[JUMP2] = CheckHitKey(KEY_INPUT_UP);
 	keyNew[CONFIRM2] = CheckHitKey(KEY_INPUT_NUMPAD1);
 	keyNew[CANCEL2] = CheckHitKey(KEY_INPUT_NUMPAD2);
 	keyNew[P2A1] = CheckHitKey(KEY_INPUT_NUMPAD5);

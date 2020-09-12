@@ -15,6 +15,10 @@
 
 #define	lpPlayer Player::GetInstance()
 
+constexpr auto DIR_RIGHT=0;
+constexpr auto DIR_LEFT =1;
+
+
 using MapInt = std::map<int, int>;
 using PairChar = std::pair<CHAR_ID, CHAR_ID>;
 //—ñ‹“
@@ -59,6 +63,11 @@ public:
 	int mahoImage[12];
 	int butoImage[12];
 	int nazoImage[12];
+
+	int kisiRunImage[2][4];	// ‘–‚èó‘Ô‚Ì‰æ‘œ
+	int mahoRunImage[2][4];	// ‘–‚èó‘Ô‚Ì‰æ‘œ
+	int butoRunImage[2][4];	// ‘–‚èó‘Ô‚Ì‰æ‘œ
+	int nazoRunImage[2][4];	// ‘–‚èó‘Ô‚Ì‰æ‘œ
 
 	static Player& GetInstance()
 	{

@@ -32,7 +32,7 @@ bool Stage::StageInit(void)
 	tougiF = false;
 
 	SetVolumeMusic(10);
-
+	SoundGameInit();
 	return rtnFlag;
 }
 
@@ -93,6 +93,39 @@ bool Stage::StageCtl(STAGE_ID stage)
 	}
 
 	return rtnFlag;
+}
+void Stage::SoundGameInit(void)
+{
+	switch (mapID)
+	{
+	case STAGE_ID::STAGE_ID_YAMA:
+		SetVolumeMusic(10);
+		PlayMusic("sound/yama.mp3", DX_PLAYTYPE_LOOP);
+		break;
+	case STAGE_ID::STAGE_ID_MACHI:
+		SetVolumeMusic(10);
+		PlayMusic("sound/mati.mp3", DX_PLAYTYPE_LOOP);
+		break;
+	case STAGE_ID::STAGE_ID_COLOSSEUM:
+
+		PlayMusic("sound/tougizyou.mp3", DX_PLAYTYPE_LOOP);
+		break;
+	default:
+		break;
+	}
+	if (mapID == STAGE_ID::STAGE_ID_YAMA)
+	{
+		SetVolumeMusic(80);
+	}
+	if (mapID == STAGE_ID::STAGE_ID_MACHI)
+	{
+		SetVolumeMusic(100);
+	}
+	if (mapID == STAGE_ID::STAGE_ID_COLOSSEUM)
+	{
+		SetVolumeMusic(100);
+	}
+
 }
 
 // •`‰æ

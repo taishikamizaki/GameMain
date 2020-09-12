@@ -60,7 +60,7 @@ int Select::Init()
 	SetVolumeMusic(10);
 
 	KeyInit();
-
+	PlayMusic("sound/bgm/select/select.mp3", DX_PLAYTYPE_LOOP);
 	return 0;
 }
 
@@ -359,7 +359,7 @@ int Select::SelectCtl()
 
 void Select::Draw()
 {
-	//PlaySoundFile("sound/bgm/select/select.mp3", DX_PLAYTYPE_LOOP);
+	
 
 	// 1pÉAÉCÉRÉì
 	DrawGraph(0, 0, p1Image, true);

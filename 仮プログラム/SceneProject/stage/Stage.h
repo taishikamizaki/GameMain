@@ -37,7 +37,7 @@ public:
 	
 	bool StageCtl(STAGE_ID stage);
 	void StageDraw(STAGE_ID id);
-
+	void SoundGameInit(void);
 	Stage();
 	~Stage();
 private:

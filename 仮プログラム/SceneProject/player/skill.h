@@ -93,6 +93,8 @@ struct player
 	bool hitFlag;
 	bool bufFlag;
 	bool atFlag;
+	bool Lflag;
+	bool Rflag;
 	SScount kisi;
 	SScount maho;
 	SScount buto;
@@ -134,7 +136,7 @@ public:
 
 	void SkillCtl(CHAR_ID player1, CHAR_ID player2);
 	bool CheckHitP2(Vector2 pos);
-	bool CheckHitP1();
+	bool CheckHitP1(Vector2 pos);
 
 	bool P1skill(CHAR_ID player1, CHAR_ID player2);
 	bool P2skill(CHAR_ID player1, CHAR_ID player2);
@@ -143,7 +145,7 @@ public:
 
 	int HPCtlP1(void);
 	int HPCtlP2(void);
-	void DmageCtl(Vector2 pos);
+	void DmageCtl(Vector2 pos1, Vector2 pos2);
 	void SpeedCtl(int p1,int p2);
 
 	void Dir(int p1, int p2);
@@ -168,6 +170,7 @@ private:
 	int slash3Image[12];
 	int laserImage[5];
 	int charicon[12];
+	int magic;
 	int uibuffU;
 	int uiken;
 	int uiheal;

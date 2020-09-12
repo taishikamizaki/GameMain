@@ -54,6 +54,7 @@ void Player::PlayerSysInit(void)
 	HPsize = {4.4f,0};
 	DrawFlag = false;
 	GameOverFlag = false;
+	charSelFlag = false;
 	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
 	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
@@ -77,9 +78,10 @@ void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
 		if ((player1.charID != CHAR_ID::CHAR_ID_MAX) &&
 			  (player2.charID != CHAR_ID::CHAR_ID_MAX))
 		{
-			if (skill->GetCharF())
+			if (!charSelFlag)
 			{
 				skill->CharInit(player1.charID, player2.charID);
+				charSelFlag = true;
 			}
 		}
 	}
@@ -108,6 +110,8 @@ void Player::PlayerCtl(STAGE_ID id)
 	if (!GameOverFlag)
 	{
 		PlayerGameInit();
+		HPmng();
+		playerWin();
 		bool moveFlag1 = false;
 		bool moveFlag2 = false;
 
@@ -730,10 +734,10 @@ void Player::PlayerCtl(STAGE_ID id)
 		}
 
 		skill->SkillCtl(player1.charID, player2.charID);
-		skill->DmageCtl(player2.pos);
+		skill->DmageCtl(player1.pos,player2.pos);
+		skill->SpeedCtl(player1.moveSpeed, player2.moveSpeed);
 	}
 }
-
 // •`‰æ
 void Player::PlayerDraw(void)
 {
@@ -867,7 +871,6 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos2 = player2.pos;
 }
 
-
 bool Player::HPmng(void)
 {
 	if(player1.Hp<=0)
@@ -897,7 +900,7 @@ bool Player::HPmng(void)
 	{
 		DrawFlag = false;
 	}
-	playerWin();
+
 	return false;
 }
 

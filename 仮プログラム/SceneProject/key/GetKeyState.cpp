@@ -61,11 +61,11 @@ void KeyCheck(void)
 		(input1.ThumbLX >= -7000)*/
 
 	// ÌßÚ²Ô°‘€ìŽž‚Ì·°î•ñ
-	keyNew[KEY_ID_RIGHT1] = (input1.ThumbLX >= 20000);
+	keyNew[KEY_ID_RIGHT1] = (input1.ThumbLX >= 30000);
 		/*&&
 		(input1.ThumbLY <= 4000) &&
 		(input1.ThumbLY >= -4000);*/
-	keyNew[KEY_ID_LEFT1] = (input1.ThumbLX <= -20000);
+	keyNew[KEY_ID_LEFT1] = (input1.ThumbLX <= -30000);
 		/*&&
 		(input1.ThumbLY <= 4000) &&
 		(input1.ThumbLY >= -4000);*/
@@ -96,8 +96,8 @@ void KeyCheck(void)
 	keyNew[KEY_ID_JUMP2] = (input2.ThumbLY >= 20000);
 
 	// ÌßÚ²Ô°‘€ìŽž‚Ì·°î•ñ
-	keyNew[KEY_ID_RIGHT2] = (input2.ThumbLX >= 20000);
-	keyNew[KEY_ID_LEFT2] = (input2.ThumbLX <= -20000);
+	keyNew[KEY_ID_RIGHT2] = (input2.ThumbLX >= 30000);
+	keyNew[KEY_ID_LEFT2] = (input2.ThumbLX <= -30000);
 
 	// ’e”­ŽË—p·°
 	keyNew[KEY_ID_SHOT2] = CheckHitKey(KEY_INPUT_RCONTROL);
@@ -107,7 +107,7 @@ void KeyCheck(void)
 	keyNew[KEY_ID_2SKILL3] = (input2.LeftTrigger >= 100);
 	keyNew[KEY_ID_2SKILL4] = (input2.RightTrigger >= 100);
 	keyNew[KEY_ID_2A] = (input2.Buttons[12]);
-	keyNew[KEY_ID_2B] = (input2.Buttons[13]);
+	keyNew[KEY_ID_2B] = CheckHitKey(KEY_INPUT_T);//(input2.Buttons[13]);
 	keyNew[KEY_ID_2X] = (input2.Buttons[14]);
 	keyNew[KEY_ID_2Y] = (input2.Buttons[15]);
 	keyNew[KEY_ID_2START] = input1.Buttons[4];

@@ -39,7 +39,6 @@ bool Stage::StageCtl(STAGE_ID stage)
 {
 	bool rtnFlag = true;
 
-
 	mapID = stage;
 
 	switch (mapID)
@@ -63,7 +62,7 @@ bool Stage::StageCtl(STAGE_ID stage)
 				matiImage[mapmati[y][x]];
 			}
 		}
-		matiF - true;
+		matiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_COLOSSEUM:
 		for (int y = 0; y < mapSize.y; y++)

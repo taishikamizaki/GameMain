@@ -62,6 +62,8 @@ struct player
 	int SetoffX;
 	bool SSflag;	//”­“®‚P‰ñ—p
 	bool skillFlag;
+	bool kyouFlag;
+	bool zyakuFlag;
 	bool hitFlag;
 	bool bufFlag;
 	bool atFlag;

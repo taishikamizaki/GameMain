@@ -445,14 +445,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffSImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffSImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
@@ -519,21 +519,21 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffUImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, healImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, healImage[Anim], true);
 				}
 			}
 		}
@@ -559,7 +559,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffDImage[Anim], true);
+					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -643,14 +643,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.hitPos.x - 43, P2.hitPos.y - 55, healImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, healImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.hitPos.x - 43, P2.hitPos.y - 55, buffUImage[Anim], true);
+					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_4)

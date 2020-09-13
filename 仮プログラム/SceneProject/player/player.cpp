@@ -60,61 +60,21 @@ void Player::PlayerSysInit(void)
 	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
 	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
-	LoadDivGraph("image/player/KISHI_run1.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, kisiRunImage[DIR_RIGHT]
-	);
+	LoadDivGraph("image/player/KISHI_run1.png", 4, 4, 1, 25, 33, kisiRunImage[DIR_RIGHT]);
 
-	LoadDivGraph("image/player/KISHI_run2.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, kisiRunImage[DIR_LEFT]
-	);
+	LoadDivGraph("image/player/KISHI_run2.png", 4, 4, 1, 25, 33, kisiRunImage[DIR_LEFT]);
 
-	LoadDivGraph("image/player/MAHO_run1.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, mahoRunImage[DIR_RIGHT]
-	);
+	LoadDivGraph("image/player/MAHO_run1.png", 4, 4, 1, 25, 33, mahoRunImage[DIR_RIGHT]);
 
-	LoadDivGraph("image/player/MAHO_run2.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, mahoRunImage[DIR_LEFT]
-	);
+	LoadDivGraph("image/player/MAHO_run2.png", 4, 4, 1, 25, 33, mahoRunImage[DIR_LEFT]);
 
-	LoadDivGraph("image/player/BUTOU_run1.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, butoRunImage[DIR_RIGHT]
-	);
+	LoadDivGraph("image/player/BUTOU_run1.png", 4, 4, 1, 25, 33, butoRunImage[DIR_RIGHT]);
 
-	LoadDivGraph("image/player/BUTOU_run2.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, butoRunImage[DIR_LEFT]
-	);
+	LoadDivGraph("image/player/BUTOU_run2.png", 4, 4, 1, 25, 33, butoRunImage[DIR_LEFT]);
 
-	LoadDivGraph("image/player/NAZO_run1.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, nazoRunImage[DIR_RIGHT]
-	);
+	LoadDivGraph("image/player/NAZO_run1.png", 4, 4, 1, 25, 33, nazoRunImage[DIR_RIGHT]);
 
-	LoadDivGraph("image/player/NAZO_run2.png"
-		, 4
-		, 4, 1
-		, 25, 33
-		, nazoRunImage[DIR_LEFT]
-	);
+	LoadDivGraph("image/player/NAZO_run2.png", 4, 4, 1, 25, 33, nazoRunImage[DIR_LEFT]);
 
 	player1.dirS = 0;
 	player2.dirS = 1;

@@ -82,6 +82,12 @@ int Game::Draw()
 	return 0;
 }
 
+int Game::GetPlayerInit()
+{
+	if (player != nullptr) player->PlayerSysInit();
+	return 0;
+}
+
 // コンストラクタ
 Game::Game():charCnt(0)
 {

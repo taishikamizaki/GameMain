@@ -93,6 +93,7 @@ int ScnMng::ScnDraw()
 				{
 					gameOver->GameOver::GameOver();
 				}
+				if (game != nullptr) game->GetPlayerInit();
 			}
 		}
 		if (title != nullptr)

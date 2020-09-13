@@ -103,6 +103,7 @@ private:
 	bool DrawFlag;
 	bool GameOverFlag;
 	bool charSelFlag;
+
 	Vector2f HPsize;
 
 	CHARACTER player1;

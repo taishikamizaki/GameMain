@@ -17,7 +17,6 @@ class Stage;
 class Game
 {
 public:
-
 	// フラグゲッター
 	int GetFlag()
 	{
@@ -28,12 +27,12 @@ public:
 	int GameCtl();				// ゲーム操作系
 	int Draw();		// 描画
 
+	int GetPlayerInit();
+
 	Game();		// コンストラクタ
 	~Game();	// デストラクタ
 
 private:
-
-	int Init();		// 初期化
 
 	int charCnt;
 
@@ -44,6 +43,8 @@ private:
 	bool selectF;	// 切り替え用
 	bool gameF;		// 切り替え用
 	bool _gameF;	// シーン遷移用
+
+	bool resetF;
 
 	CHAR_ID player1;
 	CHAR_ID player2;
@@ -58,6 +59,7 @@ private:
 	friend class Player;
 	friend class Stage;
 
+	int Init();
 
 };
 

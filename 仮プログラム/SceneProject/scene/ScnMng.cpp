@@ -31,8 +31,6 @@ int ScnMng::Init()
 	scnID = SCN_ID::SCN_ID_TITLE;		// 初期シーンをタイトルへ
 
 	SetVolumeMusic(10);
-	PlayMusic("sound/bgm/title/fi_Knights.mp3", DX_PLAYTYPE_LOOP);
-
 	/*SetVolumeMusic(5);
 	PlaySoundMem(seleBgm, DX_PLAYTYPE_LOOP);
 	StopMusicMem(seleBgm);*/

@@ -35,7 +35,10 @@ int GameOver::Draw()
 	DrawGraph(74, 0, thank, true);
 	DrawGraph(250, 540, space, true);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 139ec4b61e14886e2ab4791274327e02d5b6b7c9
 	return 0;
 }
 

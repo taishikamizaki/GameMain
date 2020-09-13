@@ -6,10 +6,6 @@ bool Stage::StageInit(void)
 {
 	bool rtnFlag = true;
 
-	LoadDivGraph("image/stage/hamaguriroom.png",7,7,1
-		,CHIP_SIZE_X,CHIP_SIZE_Y
-		,hamaroomImage,false);
-
 	LoadDivGraph("image/stage/mati.png", 43, 43, 1
 		, CHIP_SIZE_X, CHIP_SIZE_Y
 		, matiImage, false);

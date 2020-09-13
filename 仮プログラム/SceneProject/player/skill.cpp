@@ -407,7 +407,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 					}
 					if (P1.Lflag)
 					{
-						DrawGraph(P1.hitoffsetPos.x + 30, P1.hitPos.y + 20, guardImage[AnimG], true);
+						DrawGraph(P1.hitoffsetPos.x + 30, P1.hitPos.y - 20, guardImage[AnimG], true);
 					}
 				}
 			}
@@ -743,7 +743,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 					}
 					if(P2.Lflag)
 					{
-						DrawGraph(P2.hitoffsetPos.x+30, P2.hitPos.y+20, guardImage[AnimG], true);
+						DrawGraph(P2.hitoffsetPos.x+30, P2.hitPos.y-20, guardImage[AnimG], true);
 					}
 				}
 			}
@@ -2959,14 +2959,14 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 }
 
 // player1がplayer2の攻撃を受ける当たり判定
-bool Skill::CheckHitP1(Vector2 pos)
+bool Skill::CheckHitP1(Vector2 pos, Vector2 posS, Vector2 posE)
 {
 	if (P2.skillFlag == true)
 	{
-		if ((P2.hitoffsetPos.x > pos.x) &&
-			(P2.hitPos.x < pos.x) &&
-			(P2.hitoffsetPos.y > pos.y) &&
-			(P2.hitPos.y < pos.y))
+		if ((P2.hitoffsetPos.x > pos.x-posS.x) &&
+			(P2.hitPos.x < pos.x+posE.x) &&
+			(P2.hitoffsetPos.y >pos.y-posS.y) &&
+			(P2.hitPos.y < pos.y+posE.y))
 		{
 			P2.skillFlag = false;
 			P1.hitFlag = true;
@@ -2976,14 +2976,14 @@ bool Skill::CheckHitP1(Vector2 pos)
 	return false;
 }
 // player2がplayer1の攻撃を受ける当たり判定
-bool Skill::CheckHitP2(Vector2 pos)
+bool Skill::CheckHitP2(Vector2 pos, Vector2 posS, Vector2 posE)
 {
 	if (P1.skillFlag == true)
 	{
-		if ((P1.hitoffsetPos.x > pos.x) &&
-			(P1.hitPos.x < pos.x) &&
-			(P1.hitoffsetPos.y > pos.y) &&
-			(P1.hitPos.y < pos.y))
+		if ((P1.hitoffsetPos.x >pos.x-posS.x) &&
+			(P1.hitPos.x < pos.x+posE.x) &&
+			(P1.hitoffsetPos.y > pos.y-posS.y) &&
+			(P1.hitPos.y < pos.y+posE.y))
 		{
 			P1.skillFlag = false;
 			P2.hitFlag = true;
@@ -2993,7 +2993,7 @@ bool Skill::CheckHitP2(Vector2 pos)
 	}
 	return false;
 }
-
+// 騎士のスキル効果
 bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 {
 	int LPhold = 0;
@@ -3174,7 +3174,7 @@ bool Skill::P1skill(CHAR_ID player1,CHAR_ID player2)
 	}
 	return false;
 }
-
+// 魔導士のスキル効果
 bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 {
 	int LPhold = 0;
@@ -3330,7 +3330,7 @@ bool Skill::P2skill(CHAR_ID player1, CHAR_ID player2)
 
 	return false;
 }
-
+// 武闘家のスキル効果
 bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 {
 	int LPhold = 0;
@@ -3486,7 +3486,7 @@ bool Skill::P3skill(CHAR_ID player1, CHAR_ID player2)
 	}
 	return false;
 }
-
+// 謎男のスキル効果
 bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 {
 	int LPhold = 0;
@@ -3609,22 +3609,22 @@ bool Skill::P4skill(CHAR_ID player1, CHAR_ID player2)
 	}
 	return false;
 }
-
+// player1のHPの値
 int Skill::HPCtlP1(void)
 {
 	return P1.LP;
 }
-
+// player2のHPの値
 int Skill::HPCtlP2(void)
 {
 	return	P2.LP;
 }
-
-void Skill::DmageCtl(Vector2 pos1,Vector2 pos2)
+// ダメージの処理
+void Skill::DmageCtl(Vector2 pos1, Vector2 pos2, Vector2 posS, Vector2 posS2, Vector2 posE, Vector2 posE2)
 {
 	int LPhold = 0;
 	
-	if (CheckHitP1(pos1))
+	if (CheckHitP1(pos1,posS,posE))
 	{
 		if (P1.hitFlag)
 		{
@@ -3660,13 +3660,13 @@ void Skill::DmageCtl(Vector2 pos1,Vector2 pos2)
 			}
 		}
 	}
-	else if(!CheckHitP1(pos1))
+	else if(!CheckHitP1(pos1, posS, posE))
 	{
 
 	}
 	
 	int LPhold2 = 0;
-	if (CheckHitP2(pos2))
+	if (CheckHitP2(pos2,posS2,posE2))
 	{
 		if (P2.hitFlag == true)
 		{
@@ -3705,12 +3705,12 @@ void Skill::DmageCtl(Vector2 pos1,Vector2 pos2)
 			}
 		}
 	}
-	else if(!CheckHitP2(pos2))
+	else if(!CheckHitP2(pos2, posS2, posE2))
 	{
 
 	}
 }
-
+// スピードの処理
 void Skill::SpeedCtl(int p1,int p2)
 {
 	int sphold = 0;
@@ -3734,7 +3734,7 @@ void Skill::SpeedCtl(int p1,int p2)
 
 	}
 }
-
+// playerの向き
 void Skill::Dir(int p1, int p2)
 {
 	P1.dir = p1;

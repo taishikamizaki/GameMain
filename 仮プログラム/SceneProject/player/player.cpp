@@ -794,7 +794,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		player2.animCnt++;
 
 		skill->SkillCtl(player1.charID, player2.charID);
-		skill->DmageCtl(player1.pos,player2.pos);
+		skill->DmageCtl(player1.pos,player2.pos,player1.hitPosS,player2.hitPosS,player1.hitPosE,player2.hitPosE);
 		skill->SpeedCtl(player1.moveSpeed, player2.moveSpeed);
 	}
 }

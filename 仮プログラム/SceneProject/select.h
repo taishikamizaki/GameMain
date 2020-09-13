@@ -61,6 +61,7 @@ private:
 	int matiImage[2];
 	int tougiImage[2];
 
+
 	int stage_waku;		// ˜g•`‰æ
 	int s_waku;			// ˜gˆ—
 

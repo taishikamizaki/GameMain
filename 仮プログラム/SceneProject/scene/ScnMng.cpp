@@ -20,6 +20,7 @@ int ScnMng::Init()
 	}
 
 	SetDrawScreen(DX_SCREEN_BACK);
+	SetCreateSoundDataType(DX_SOUNDDATATYPE_FILE);
 
 	KeyInit();
 	// 初期化
@@ -29,6 +30,12 @@ int ScnMng::Init()
 
 	scnID = SCN_ID::SCN_ID_TITLE;		// 初期シーンをタイトルへ
 
+	SetVolumeMusic(10);
+	PlayMusic("sound/bgm/title/fi_Knights.mp3", DX_PLAYTYPE_LOOP);
+
+	/*SetVolumeMusic(5);
+	PlaySoundMem(seleBgm, DX_PLAYTYPE_LOOP);
+	StopMusicMem(seleBgm);*/
 	fadeIn = true;
 	fadeOut = false;
 
@@ -73,13 +80,16 @@ int ScnMng::ScnDraw()
 			if (!FadeInScreen(5))
 			{
 				fadeOut = false;
+
 			}
 		}
 		if (fadeOut && !fadeIn)
 		{
 			if (!FadeOutScreen(5))
 			{
+				//StopMusic();
 				fadeIn = true;
+
 				scnID = SCN_ID_GAME;
 				if (gameOver != nullptr)
 				{
@@ -100,8 +110,10 @@ int ScnMng::ScnDraw()
 		// セレクト＆ゲーム
 	case SCN_ID::SCN_ID_GAME:
 		fadeOut = false;
+	
 		if (game != nullptr)
 		{
+
 			scnCntOld = scnCnt;
 			if (scnCntOld == 0)
 			{

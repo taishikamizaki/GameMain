@@ -53,7 +53,7 @@ void KeyCheck(void)
 		(input1.ThumbLX >= -4000);
 
 	// ジャンプ
-	keyNew[KEY_ID_JUMP1] = (input1.ThumbLY <= -30000);
+	keyNew[KEY_ID_JUMP1] = (input1.ThumbLY >= 30000);
 
 	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
 	keyNew[KEY_ID_RIGHT1] = (input1.ThumbLX >= 30000);
@@ -82,7 +82,7 @@ void KeyCheck(void)
 		(input2.ThumbLX >= -4000);
 
 	// ジャンプ
-	keyNew[KEY_ID_JUMP2] = (input2.ThumbLY <= -30000);
+	keyNew[KEY_ID_JUMP2] = (input2.ThumbLY >= 30000);
 
 	// ﾌﾟﾚｲﾔｰ操作時のｷｰ情報
 	keyNew[KEY_ID_RIGHT2] = (input2.ThumbLX >= 30000);

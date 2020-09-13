@@ -10,8 +10,8 @@ int Title::Init()
 	title = LoadGraph("image/logo/titleB.png");
 	titleL = LoadGraph("image/logo/Title.png");
 	space = LoadGraph("image/logo/space.png");
+	titleBgm = LoadSoundMem("sound/bgm/title/fi_Knights.mp3");
 
-	SetVolumeMusic(10);
 	return 0;
 }
 
@@ -24,6 +24,7 @@ int Title::TitleCtl()
 		keyDownTrigger[CONFIRM2])
 	{
 		PlaySoundFile("sound/button/confirm.mp3",DX_PLAYTYPE_BACK);
+
 		titleF = true;
 	}
 	return 0;
@@ -32,11 +33,12 @@ int Title::TitleCtl()
 // ï`âÊèàóù
 int Title::Draw()
 {
+	PlayMusic("sound/bgm/select/select.mp3", DX_PLAYTYPE_LOOP);
 	DrawGraph(0, 0, title, true);
 	DrawGraph(200, 120, titleL, true);
 	DrawGraph(250, 540, space, true);
 
-	PlaySoundFile("sound/bgm/title/title.mp3", DX_PLAYTYPE_LOOP);
+	
 
 	return 0;
 }

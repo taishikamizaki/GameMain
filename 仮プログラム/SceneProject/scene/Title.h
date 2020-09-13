@@ -24,6 +24,7 @@ private:
 	int titleL;
 	int space;
 
+	int titleBgm;
 	bool titleF;	// ‘JˆÚƒtƒ‰ƒO
 
 };

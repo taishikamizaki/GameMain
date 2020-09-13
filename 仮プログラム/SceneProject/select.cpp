@@ -5,6 +5,7 @@
 
 int Select::Init()
 {
+
 	p1Image = LoadGraph("image/select/1P.png", true);
 	p2Image = LoadGraph("image/select/2P.png", true);
 
@@ -57,10 +58,10 @@ int Select::Init()
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
-	SetVolumeMusic(10);
 
 	KeyInit();
-	PlayMusic("sound/bgm/select/select.mp3", DX_PLAYTYPE_LOOP);
+
+
 	return 0;
 }
 
@@ -76,6 +77,7 @@ CHAR_ID Select::GetP2()
 
 int Select::SelectCtl()
 {
+
 	// プレイヤー選択判定
 	if (!selectF)
 	{
@@ -360,7 +362,7 @@ int Select::SelectCtl()
 void Select::Draw()
 {
 	
-
+	
 	// 1pアイコン
 	DrawGraph(0, 0, p1Image, true);
 	// 2pアイコン
@@ -416,14 +418,17 @@ void Select::Draw()
 		if (yamaF)
 		{
 			DrawGraph(stageL[0].pos.x, stageL[0].pos.y, yamaImage[1], true);
+			PlayMusic("sound/bgm/yama.mp3",DX_PLAYTYPE_LOOP);
 		}
 		if (matiF)
 		{
 			DrawGraph(stageL[1].pos.x, stageL[1].pos.y, matiImage[1], true);
+			PlayMusic("sound/bgm/mati.mp3", DX_PLAYTYPE_LOOP);
 		}
 		if (tougiF)
 		{
 			DrawGraph(stageL[2].pos.x, stageL[2].pos.y, tougiImage[1], true);
+			PlayMusic("sound/bgm/tougi.mp3", DX_PLAYTYPE_LOOP);
 		}
 	}
 }

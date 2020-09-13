@@ -60,6 +60,10 @@ private:
 	int pID_1;
 	int pID_2;
 
+
+
+
+	int titleBgm;
 	ScnMng();
 	~ScnMng();
 

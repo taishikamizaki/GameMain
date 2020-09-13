@@ -2,10 +2,10 @@
 
 #include"../vector/Vector2.h"
 
-#define MAP_X 20
-#define MAP_Y 12
-#define CHIP_SIZE_X 50
-#define CHIP_SIZE_Y 50
+#define MAP_X 20						// マップのマス数(X)
+#define MAP_Y 12						// マップのマス数(Y)
+#define CHIP_SIZE_X 50					// マップの１マスのサイズ(X)
+#define CHIP_SIZE_Y 50					// マップの１マスのサイズ(Y)
 
 #define lpStage Stage::GetInstance()
 
@@ -28,29 +28,28 @@ public:
 		static Stage s_instance;
 		return s_instance;
 	}
-	Vector2 PosToIndex(Vector2 pos);
-	Vector2 IndexToPos(Vector2 index);
-	bool IsPassY(Vector2 pos);
-	bool IsPassM(Vector2 pos);
-	bool IsPassT(Vector2 pos);
-	STAGE_ID mapID;
-	
-	bool StageCtl(STAGE_ID stage);
-	void StageDraw(STAGE_ID id);
-	void SoundGameInit(void);
-	Stage();
-	~Stage();
+	Vector2 PosToIndex(Vector2 pos);			// posの受け渡し
+	Vector2 IndexToPos(Vector2 index);			// posの受け渡し
+	bool IsPassY(Vector2 pos);					// ステージの当たり判定(山)
+	bool IsPassM(Vector2 pos);					// ステージの当たり判定(街)
+	bool IsPassT(Vector2 pos);					// ステージの当たり判定(闘技場)
+	STAGE_ID mapID;								// ステージID
+
+	bool StageCtl(STAGE_ID stage);				// ステージの設定
+	void StageDraw(STAGE_ID id);				// ステージの描画
+	void SoundGameInit(void);					// ステージのゲーム設定
+	Stage();									// コンストラクタ
+	~Stage();									// デストラクタ
 private:
-	bool StageInit(void);
+	bool StageInit(void);						// ステージの初期化
 	
-	int hamaroomImage[7];
-	int matiImage[43];
-	int tougiImage[12];
-	int yamaImage[23];
-	Vector2 mapSize;
+	int matiImage[43];							// 街ステージの描画
+	int tougiImage[12];							// 闘技場ステージの描画
+	int yamaImage[23];							// 山ステージの描画
+	Vector2 mapSize;							// マップのサイズ
 
-	int map[MAP_Y][MAP_X];
-
+	int map[MAP_Y][MAP_X];						// マップの配置
+	// 山
 	int mapyama[MAP_Y][MAP_X] = {
 	{0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 	{13,14,8,8 ,8,8,8,8 ,11,13,14,8 ,8,13,14,8 ,8,8,8,8,},
@@ -67,7 +66,7 @@ private:
 	{15,15,15,15 ,15,15,15,15 ,15,15,15,15 ,15,15,15,15 ,15,15,15,15,},
 	{1,1,1,1 ,1,1,1,1 ,1,1,1,1 ,1,1,1,1 ,1,1,1,1,},
 	};
-
+	// 街
 	int mapmati[MAP_Y][MAP_X] = {
 	{16,16,16,16 ,16,16,16,16 ,16,16,16,16 ,16,16,16,16 ,16,16,16,16,},
 	{19,19,19,19 ,19,19,19,19 ,20,21,19,19 ,19,19,19,19 ,19,19,19,19,},
@@ -84,7 +83,7 @@ private:
 	{9,9,8,9 ,1,1,8,8 ,24,25,25,26 ,22,22,14,9 ,1,1,6,8,},
 	{0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0 ,0,0,0,0,},
 	};
-
+	// 闘技場
 	int maptougi[MAP_Y][MAP_X] = {
 	{10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10 ,10,4,4,10,},
 	{11,11,11,11 ,11,11,11,11 ,11,11,11,11 ,11,11,11,11 ,11,11,11,11,},
@@ -102,9 +101,9 @@ private:
 	{7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7 ,7,7,7,7,},
 	};
 
-	bool yamaF;
-	bool matiF;
-	bool tougiF;
+	bool yamaF;													// 山ステージフラグ
+	bool matiF;													// 街ステージフラグ
+	bool tougiF;												// 闘技場ステージフラグ
 
 };
 

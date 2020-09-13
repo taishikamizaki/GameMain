@@ -142,8 +142,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Input\GamePad.cpp" />
-    <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="key\GetKeyState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="player\player.cpp" />
@@ -159,10 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
-    <ClInclude Include="Input\Controller.h" />
-    <ClInclude Include="Input\GamePad.h" />
-    <ClInclude Include="Input\InputID.h" />
-    <ClInclude Include="Input\Keyboard.h" />
     <ClInclude Include="key\GetKeyState.h" />
     <ClInclude Include="player\player.h" />
     <ClInclude Include="player\skill.h" />

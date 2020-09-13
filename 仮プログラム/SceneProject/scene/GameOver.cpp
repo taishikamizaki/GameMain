@@ -35,6 +35,7 @@ int GameOver::Draw()
 	DrawGraph(74, 0, thank, true);
 	DrawGraph(250, 540, space, true);
 
+
 	return 0;
 }
 

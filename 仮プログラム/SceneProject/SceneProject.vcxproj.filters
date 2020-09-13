@@ -69,12 +69,6 @@
     <ClCompile Include="select.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="Input\GamePad.cpp">
-      <Filter>game\key</Filter>
-    </ClCompile>
-    <ClCompile Include="Input\Keyboard.cpp">
-      <Filter>game\key</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -112,18 +106,6 @@
     </ClInclude>
     <ClInclude Include="select.h">
       <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Keyboard.h">
-      <Filter>game\key</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\GamePad.h">
-      <Filter>game\key</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\InputID.h">
-      <Filter>game\key</Filter>
-    </ClInclude>
-    <ClInclude Include="Input\Controller.h">
-      <Filter>game\key</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1079,7 +1079,7 @@ void Player::PlayerDraw(void)
 	DxLib::DrawBox(520, 14, 960, 60, 0x000000, true);
 	for (int x = player1.Hp; x > 0; x--)
 	{
-		DxLib::DrawBox(35+x*HPsize.fx, 14, 35+(x+1)*HPsize.fx, 60, 0x33ff66, true);
+		DxLib::DrawBox(475-x*HPsize.fx, 14, 475-(x+1)*HPsize.fx, 60, 0x33ff66, true);
 	}
 	for (int x = 0; x < player2.Hp; x++)
 	{

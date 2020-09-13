@@ -72,12 +72,18 @@ int Game::Draw()
 		{
 			player->PlayerDraw();
 		}
-
-		if (CheckHitKey(KEY_INPUT_LCONTROL))
+		if (player != nullptr)
 		{
-			gameF = false;
-			_gameF = true;
+			if (player->win())
+			{
+				if ((keyDownTrigger[KEY_ID_1B])|| (keyDownTrigger[KEY_ID_2B]))
+				{
+					gameF = false;
+					_gameF = true;
+				}
+			}
 		}
+	
 	}
 	return 0;
 }

@@ -86,6 +86,7 @@ public:
 
 	bool HPmng(void);
 	bool playerWin(void);
+	bool win(void);
 
 	Player();
 	~Player();

@@ -35,7 +35,7 @@ int GameOver::Draw()
 	DrawGraph(74, 0, thank, true);
 	DrawGraph(250, 540, space, true);
 
-	PlaySoundFile("sound/bgm/–l‚½‚¿‚Ì–¢—ˆ‚Ö.mp3", DX_PLAYTYPE_LOOP);
+	//PlaySoundFile("sound/bgm/–l‚½‚¿‚Ì–¢—ˆ‚Ö.mp3", DX_PLAYTYPE_LOOP);
 
 	return 0;
 }

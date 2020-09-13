@@ -27,7 +27,6 @@ int ScnMng::Init()
 	if (title == nullptr) title = new Title();
 	if (game == nullptr) game = new Game();
 	if (gameOver == nullptr) gameOver = new GameOver();
-
 	scnID = SCN_ID::SCN_ID_TITLE;		// 初期シーンをタイトルへ
 
 	SetVolumeMusic(10);
@@ -78,7 +77,6 @@ int ScnMng::ScnDraw()
 			if (!FadeInScreen(5))
 			{
 				fadeOut = false;
-
 			}
 		}
 		if (fadeOut && !fadeIn)

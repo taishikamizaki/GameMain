@@ -33,7 +33,7 @@ void Player::PlayerSysInit(void)
 
 	player2.moveDir		 = DIR::DIR_ID_LEFT;		// 向いている方向
 	player2.size		 = { 75,99 };				// キャラクタ画像のサイズ
-	player2.pos          = { 500,100 };
+	player2.pos          = { 800,100 };
 	player2.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player2.hitPosE		 = { 15,32 };				// 当たり判定用の右下
 	player2.velocity	 = { 0.0f,0 };				// 加速度
@@ -87,6 +87,7 @@ void Player::PlayerSysInit(void)
 	draw = LoadGraph("image/logo/Draw.png");
 
 	if (skill == nullptr) skill = new Skill();
+	skill->SScountInit();
 
 }
 void Player::charCtl(CHAR_ID p1, CHAR_ID p2)
@@ -1052,6 +1053,12 @@ void Player::PlayerDraw(void)
 		DrawGraph(350,100,draw,true);
 	}
 
+	if (GameOverFlag)
+	{
+		DrawString(400, 300, "～　PLEASE　PUSH　B　～ ", 0xFF0000, true);
+	}
+
+	
 	if (skill != nullptr)
 	{
 		skill->StageDraw(player1.charID,player2.charID);
@@ -1126,6 +1133,11 @@ bool Player::playerWin(void)
 
 	}
 	return false;
+}
+
+bool Player::win(void)
+{
+	return GameOverFlag;
 }
 
 Player::Player():screen_size(1000,600)

@@ -13,7 +13,7 @@ void Player::PlayerSysInit(void)
 	
 	player1.moveDir		 = DIR::DIR_ID_RIGHT;		// 向いている方向
 	player1.size		 = { 75,99 };				// キャラクタ画像のサイズ
-	player1.pos          = { 200,100 };
+	player1.pos          = { 200,100 };				//初期位置
 	player1.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player1.hitPosE		 = { 15,32 };				// 当たり判定用の右下
 	player1.velocity	 = { 0.0f,0 };				// 加速度
@@ -33,7 +33,7 @@ void Player::PlayerSysInit(void)
 
 	player2.moveDir		 = DIR::DIR_ID_LEFT;		// 向いている方向
 	player2.size		 = { 75,99 };				// キャラクタ画像のサイズ
-	player2.pos          = { 800,100 };
+	player2.pos          = { 800,100 };				//初期位置
 	player2.hitPosS		 = { 15,16 };				// 当たり判定用の左上
 	player2.hitPosE		 = { 15,32 };				// 当たり判定用の右下
 	player2.velocity	 = { 0.0f,0 };				// 加速度
@@ -55,25 +55,29 @@ void Player::PlayerSysInit(void)
 	DrawFlag = false;
 	GameOverFlag = false;
 	charSelFlag = false;
-	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);
-	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);
-	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);
-	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);
 
+	//画像読み込み
+	//通常時
+	LoadDivGraph("image/player/KISHI.png", 12, 3, 4, 25, 33, kisiImage);					//騎士
+	LoadDivGraph("image/player/MAHO.png", 12, 3, 4, 25, 33, mahoImage);						//魔法使い
+	LoadDivGraph("image/player/BUTOU.png", 12, 3, 4, 25, 33, butoImage);					//武闘家
+	LoadDivGraph("image/player/NAZO.png", 12, 3, 4, 25, 33, nazoImage);						//謎の男
+
+	//移動時の画像
+	//騎士
 	LoadDivGraph("image/player/KISHI_run1.png", 4, 4, 1, 25, 33, kisiRunImage[DIR_RIGHT]);
-
 	LoadDivGraph("image/player/KISHI_run2.png", 4, 4, 1, 25, 33, kisiRunImage[DIR_LEFT]);
 
+	//魔法使い
 	LoadDivGraph("image/player/MAHO_run1.png", 4, 4, 1, 25, 33, mahoRunImage[DIR_RIGHT]);
-
 	LoadDivGraph("image/player/MAHO_run2.png", 4, 4, 1, 25, 33, mahoRunImage[DIR_LEFT]);
 
+	//武闘家
 	LoadDivGraph("image/player/BUTOU_run1.png", 4, 4, 1, 25, 33, butoRunImage[DIR_RIGHT]);
-
 	LoadDivGraph("image/player/BUTOU_run2.png", 4, 4, 1, 25, 33, butoRunImage[DIR_LEFT]);
 
+	//謎の男
 	LoadDivGraph("image/player/NAZO_run1.png", 4, 4, 1, 25, 33, nazoRunImage[DIR_RIGHT]);
-
 	LoadDivGraph("image/player/NAZO_run2.png", 4, 4, 1, 25, 33, nazoRunImage[DIR_LEFT]);
 
 	player1.dirS = 0;
@@ -136,6 +140,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		bool moveFlag1 = false;
 		bool moveFlag2 = false;
 
+		//player1の当たり判定直前のpos格納用
 		Vector2	playerPosBK = player1.pos;
 		Vector2	playerPosHit = player1.pos;
 		Vector2	playerPosHitLeft = player1.pos;
@@ -143,6 +148,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		Vector2	playerPosHitUp = player1.pos;
 		Vector2	playerPosHitDown = player1.pos;
 
+		//player2の当たり判定直前のpos格納用
 		Vector2	playerPosBK2 = player2.pos;
 		Vector2	playerPosHit2 = player2.pos;
 		Vector2	playerPosHitLeft2 = player2.pos;
@@ -150,11 +156,13 @@ void Player::PlayerCtl(STAGE_ID id)
 		Vector2	playerPosHitUp2 = player2.pos;
 		Vector2	playerPosHitDown2 = player2.pos;
 
+		//player1のフラグ初期化
 		player1.moveSpeed = 1;
 		player1.runFlag = false;
 		player1.shotFlag = false;
 		player1.jumpFlag = true;
 
+		//player2のフラグ初期化
 		player2.moveSpeed = 1;
 		player2.runFlag = false;
 		player2.shotFlag = false;
@@ -203,7 +211,7 @@ void Player::PlayerCtl(STAGE_ID id)
 			playerPosHitRight = playerPosHit;
 			playerPosHitRight.x += player1.hitPosE.x;
 
-			
+			//山ステージの場合
 			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
 				if (!lpStage.IsPassY(playerPosHit) || !lpStage.IsPassY(playerPosHitRight) || !lpStage.IsPassY(playerPosHitLeft))
@@ -217,6 +225,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					player1.velocity.fy = 0;
 				}
 			}
+			//町ステージの場合
 			if (id == STAGE_ID::STAGE_ID_MACHI)
 			{
 				if (!lpStage.IsPassM(playerPosHit) || !lpStage.IsPassM(playerPosHitRight) || !lpStage.IsPassM(playerPosHitLeft))
@@ -231,6 +240,7 @@ void Player::PlayerCtl(STAGE_ID id)
 				}
 
 			}
+			//闘技場ステージの場合
 			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 			{
 				if (!lpStage.IsPassT(playerPosHit) || !lpStage.IsPassT(playerPosHitRight) || !lpStage.IsPassT(playerPosHitLeft))
@@ -255,6 +265,7 @@ void Player::PlayerCtl(STAGE_ID id)
 			playerPosHitRight = playerPosHit;
 			playerPosHitRight.x += player1.hitPosE.x;
 
+			//山ステージの場合
 			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
 				//足元チェック
@@ -285,6 +296,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 				}
 			}
+			//町ステージの場合
 			if (id == STAGE_ID::STAGE_ID_MACHI)
 			{
 				if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitRight) && lpStage.IsPassM(playerPosHitLeft))
@@ -313,6 +325,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 				}
 			}
+			//闘技場ステージの場合
 			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 			{
 				if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitRight) && lpStage.IsPassT(playerPosHitLeft))
@@ -346,6 +359,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			if (moveFlag1)
 			{
+				//右移動時
 				if (player1.moveDir == DIR::DIR_ID_RIGHT)
 				{
 					player1.moveSpeed = P_DSP;
@@ -363,6 +377,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					playerPosHitDown = playerPosHit;
 					playerPosHitDown.y += player1.hitPosE.y - 1;  //1は床の上に足を乗せるよう
 
+					//山ステージの場合
 					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
 						if (lpStage.IsPassY(playerPosHit) && lpStage.IsPassY(playerPosHitUp) && lpStage.IsPassY(playerPosHitDown))
@@ -374,6 +389,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player1.moveSpeed = 0;
 						}
 					}
+					//町ステージの場合
 					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
 						if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitUp) && lpStage.IsPassM(playerPosHitDown))
@@ -385,6 +401,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player1.moveSpeed = 0;
 						}
 					}
+					//闘技場ステージの場合
 					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 					{
 						if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitUp) && lpStage.IsPassT(playerPosHitDown))
@@ -397,6 +414,7 @@ void Player::PlayerCtl(STAGE_ID id)
 						}
 					}
 				}
+				//左移動時
 				else if (player1.moveDir == DIR::DIR_ID_LEFT)
 				{
 					player1.moveSpeed = P_DSP;
@@ -417,6 +435,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					if (player1.velocity.fx < -6) { player1.velocity.fx = -6; }
 
 
+					//山ステージの場合
 					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
 						if (lpStage.IsPassY(playerPosHit) && lpStage.IsPassY(playerPosHitUp) && lpStage.IsPassY(playerPosHitDown))
@@ -428,6 +447,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player1.moveSpeed = 0;
 						}
 					}
+					//町ステージの場合
 					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
 						if (lpStage.IsPassM(playerPosHit) && lpStage.IsPassM(playerPosHitUp) && lpStage.IsPassM(playerPosHitDown))
@@ -439,6 +459,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player1.moveSpeed = 0;
 						}
 					}
+					//闘技場ステージの場合
 					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 					{
 						if (lpStage.IsPassT(playerPosHit) && lpStage.IsPassT(playerPosHitUp) && lpStage.IsPassT(playerPosHitDown))
@@ -497,6 +518,7 @@ void Player::PlayerCtl(STAGE_ID id)
 			playerPosHitRight2 = playerPosHit2;
 			playerPosHitRight2.x += player2.hitPosE.x;
 
+			//山ステージの場合
 			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
 				if (!lpStage.IsPassY(playerPosHit2) || !lpStage.IsPassY(playerPosHitRight2) || !lpStage.IsPassY(playerPosHitLeft2))
@@ -510,6 +532,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					player2.velocity.fy = 0;
 				}
 			}
+			//町ステージの場合
 			if (id == STAGE_ID::STAGE_ID_MACHI)
 			{
 				if (!lpStage.IsPassM(playerPosHit2) || !lpStage.IsPassM(playerPosHitRight2) || !lpStage.IsPassM(playerPosHitLeft2))
@@ -523,6 +546,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					player2.velocity.fy = 0;
 				}
 			}
+			//闘技場ステージの場合
 			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 			{
 				if (!lpStage.IsPassT(playerPosHit2) || !lpStage.IsPassT(playerPosHitRight2) || !lpStage.IsPassT(playerPosHitLeft2))
@@ -545,6 +569,7 @@ void Player::PlayerCtl(STAGE_ID id)
 			playerPosHitRight2 = playerPosHit2;
 			playerPosHitRight2.x += player2.hitPosE.x;
 
+			//山ステージの場合
 			if (id == STAGE_ID::STAGE_ID_YAMA)
 			{
 				//足元チェック
@@ -575,6 +600,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 				}
 			}
+			//町ステージの場合
 			if (id == STAGE_ID::STAGE_ID_MACHI)
 			{
 				if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitRight2) && lpStage.IsPassM(playerPosHitLeft2))
@@ -603,6 +629,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 				}
 			}
+			//闘技場ステージの場合
 			if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 			{
 				if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitRight2) && lpStage.IsPassT(playerPosHitLeft2))
@@ -636,6 +663,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 			if (moveFlag2)
 			{
+				//右移動時
 				if (player2.moveDir == DIR::DIR_ID_RIGHT)
 				{
 					player2.moveSpeed = P_DSP;
@@ -652,6 +680,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					playerPosHitDown2 = playerPosHit2;
 					playerPosHitDown2.y += player2.hitPosE.y - 1;  //1は床の上に足を乗せるよう
 
+					//山ステージの場合
 					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
 						if (lpStage.IsPassY(playerPosHit2) && lpStage.IsPassY(playerPosHitUp2) && lpStage.IsPassY(playerPosHitDown2))
@@ -663,6 +692,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player2.moveSpeed = 0;
 						}
 					}
+					//町ステージの場合
 					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
 						if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitUp2) && lpStage.IsPassM(playerPosHitDown2))
@@ -674,6 +704,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player2.moveSpeed = 0;
 						}
 					}
+					//闘技場ステージの場合
 					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 					{
 						if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitUp2) && lpStage.IsPassT(playerPosHitDown2))
@@ -687,6 +718,7 @@ void Player::PlayerCtl(STAGE_ID id)
 					}
 					
 				}
+				//左移動時
 				else if (player2.moveDir == DIR::DIR_ID_LEFT)
 				{
 					player2.moveSpeed = P_DSP;
@@ -705,6 +737,7 @@ void Player::PlayerCtl(STAGE_ID id)
 
 					if (player2.velocity.fx < -6) { player2.velocity.fx = -6; }
 
+					//山ステージの場合
 					if (id == STAGE_ID::STAGE_ID_YAMA)
 					{
 						if (lpStage.IsPassY(playerPosHit2) && lpStage.IsPassY(playerPosHitUp2) && lpStage.IsPassY(playerPosHitDown2))
@@ -716,6 +749,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player2.moveSpeed = 0;
 						}
 					}
+					//町ステージの場合
 					if (id == STAGE_ID::STAGE_ID_MACHI)
 					{
 						if (lpStage.IsPassM(playerPosHit2) && lpStage.IsPassM(playerPosHitUp2) && lpStage.IsPassM(playerPosHitDown2))
@@ -727,6 +761,7 @@ void Player::PlayerCtl(STAGE_ID id)
 							player2.moveSpeed = 0;
 						}
 					}
+					//闘技場ステージの場合
 					if (id == STAGE_ID::STAGE_ID_COLOSSEUM)
 					{
 						if (lpStage.IsPassT(playerPosHit2) && lpStage.IsPassT(playerPosHitUp2) && lpStage.IsPassT(playerPosHitDown2))
@@ -742,6 +777,7 @@ void Player::PlayerCtl(STAGE_ID id)
 			}
 		}
 
+		//アニメーション用カウント＋
 		player1.animCnt++;
 		player2.animCnt++;
 
@@ -765,6 +801,8 @@ void Player::PlayerDraw(void)
 		DxLib::DrawBox(player1.pos.x - player1.hitPosS.x, player1.pos.y - player1.hitPosS.y,
 			player1.pos.x + player1.hitPosE.x, player1.pos.y + player1.hitPosE.y, 0xFFF000, false);
 
+
+		//プレイヤー1描画
 		switch (player1.charID)
 		{
 		case CHAR_ID::CHAR_ID_KISI:
@@ -901,6 +939,7 @@ void Player::PlayerDraw(void)
 		DxLib::DrawBox(player2.pos.x - player2.hitPosS.x, player2.pos.y - player2.hitPosS.y,
 			player2.pos.x + player2.hitPosE.x, player2.pos.y + player2.hitPosE.y, 0xFFFFF, false);
 
+		//プレイヤー2描画
 		switch (player2.charID)
 		{
 		case CHAR_ID::CHAR_ID_KISI:
@@ -1071,7 +1110,7 @@ void Player::SetPlayerID(Vector2 pos1,Vector2 pos2)
 	pos2 = player2.pos;
 }
 
-bool Player::HPmng(void)
+bool Player::HPmng(void)		//HPによる勝敗判定
 {
 	if(player1.Hp<=0)
 	{
@@ -1104,7 +1143,7 @@ bool Player::HPmng(void)
 	return false;
 }
 
-bool Player::playerWin(void)
+bool Player::playerWin(void)		//ゲームオーバー画面でのロゴ設定用
 {
 	if (player1.nonFlag)
 	{

@@ -102,19 +102,22 @@ void Player::PlayerSysInit(void)
 		, butoRunImage[DIR_LEFT]
 	);
 
-	LoadDivGraph("image/player/KISHI_run1.png"
+	LoadDivGraph("image/player/NAZO_run1.png"
 		, 4
 		, 4, 1
 		, 25, 33
 		, nazoRunImage[DIR_RIGHT]
 	);
 
-	LoadDivGraph("image/player/KISHI_run2.png"
+	LoadDivGraph("image/player/NAZO_run2.png"
 		, 4
 		, 4, 1
 		, 25, 33
 		, nazoRunImage[DIR_LEFT]
 	);
+
+	player1.dirS = 0;
+	player2.dirS = 1;
 
 	hp = LoadGraph("image/hp/bar.png");
 	iconp1 = LoadGraph("image/serect/1P.png");

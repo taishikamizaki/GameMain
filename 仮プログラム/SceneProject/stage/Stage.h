@@ -2,10 +2,10 @@
 
 #include"../vector/Vector2.h"
 
-#define MAP_X 20
-#define MAP_Y 12
-#define CHIP_SIZE_X 50
-#define CHIP_SIZE_Y 50
+#define MAP_X 20						// マップのマス数(X)
+#define MAP_Y 12						// マップのマス数(Y)
+#define CHIP_SIZE_X 50					// マップの１マスのサイズ(X)
+#define CHIP_SIZE_Y 50					// マップの１マスのサイズ(Y)
 
 #define lpStage Stage::GetInstance()
 

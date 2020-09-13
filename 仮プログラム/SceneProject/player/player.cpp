@@ -117,7 +117,6 @@ void Player::PlayerGameInit(void)
 						 player2.pos, player2.hitPosS, 
 						 player2.hitPosE, player2.sizeOffset, player2.size);
 
-		skill->SpeedCtl(player1.moveSpeed,player2.moveSpeed);
 		player1.Hp = skill->HPCtlP1();
 		player2.Hp = skill->HPCtlP2();
 		skill->Dir(player1.dirS, player2.dirS);
@@ -747,7 +746,6 @@ void Player::PlayerCtl(STAGE_ID id)
 
 		skill->SkillCtl(player1.charID, player2.charID);
 		skill->DmageCtl(player1.pos,player2.pos,player1.hitPosS,player2.hitPosS,player1.hitPosE,player2.hitPosE);
-		skill->SpeedCtl(player1.moveSpeed, player2.moveSpeed);
 	}
 }
 // •`‰æ
@@ -1061,7 +1059,7 @@ void Player::PlayerDraw(void)
 	
 	if (skill != nullptr)
 	{
-		skill->StageDraw(player1.charID,player2.charID);
+		skill->SkillDraw(player1.charID,player2.charID);
 	}
 }
 

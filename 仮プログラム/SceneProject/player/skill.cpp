@@ -9,17 +9,12 @@ void Skill::StageSysInit(void)
 {
 	P1.skillFlag = false;
 	P1.SSflag = true;
-	P1.kyouFlag = false;
-	P1.zyakuFlag = false;
 	P1.bufFlag = false;
 	P1.hitFlag = false;
-	P1.atFlag = false;
 	P1.Lflag = false;
 	P1.Rflag = false;
 	P2.skillFlag = false;
 	P2.SSflag = true;
-	P2.kyouFlag = false;
-	P2.zyakuFlag = false;
 	P2.bufFlag = false;
 	P2.hitFlag = false;
 	P2.Lflag = false;
@@ -61,10 +56,6 @@ void Skill::StageSysInit(void)
 	uihand = LoadGraph("image/ui/uite.png");
 	uilej = LoadGraph("image/ui/uilej.png");
 	uiheal = LoadGraph("image/ui/uiheal.png");
-	swordImage = LoadGraph("image/player/turugi2.png", true);
-	punchImage= LoadGraph("image/player/punch.png", true);
-	wandImage = LoadGraph("image/player/wand.png", true);
-	dImage = LoadGraph("image/player/turugi.png", true);
 	magic = LoadGraph("image/skill/effect/magic5.png", true);
 	magic2 = LoadGraph("image/skill/magic/magic6.png", true);
 	magic3 = LoadGraph("image/skill/magic/magic7.png", true);
@@ -283,7 +274,7 @@ void Skill::SScountInit(void)
 	P2.nazo.s4 = 0;
 }
 
-void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
+void Skill::SkillDraw(CHAR_ID player1,CHAR_ID player2)
 {
 	int Anim = (P1.Scount / 6) % 10;
 	int AnimS = (P1.Scount / 5) % 16;
@@ -3558,30 +3549,6 @@ void Skill::DmageCtl(Vector2 pos1, Vector2 pos2, Vector2 posS, Vector2 posS2, Ve
 		}
 	}
 	else if(!CheckHitP2(pos2, posS2, posE2))
-	{
-
-	}
-}
-// スピードの処理
-void Skill::SpeedCtl(int p1,int p2)
-{
-	int sphold = 0;
-	if(P1.speed>0)
-	{
-		sphold = p1;
-		p1 = sphold+P1.speed;
-	}
-	else
-	{
-
-	}
-	int sphold2 = 0;
-	if(P2.speed>0)
-	{
-		sphold2 = p2;
-		p2 = sphold2+P2.speed;
-	}
-	else
 	{
 
 	}

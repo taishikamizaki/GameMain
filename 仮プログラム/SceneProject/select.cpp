@@ -77,7 +77,6 @@ CHAR_ID Select::GetP2()
 
 int Select::SelectCtl()
 {
-
 	// プレイヤー選択判定
 	if (!selectF)
 	{
@@ -361,8 +360,6 @@ int Select::SelectCtl()
 
 void Select::Draw()
 {
-	
-	
 	// 1pアイコン
 	DrawGraph(0, 0, p1Image, true);
 	// 2pアイコン

@@ -73,10 +73,7 @@ int Game::Draw()
 			player->PlayerDraw();
 		}
 
-		if (keyDownTrigger[KEY_ID_1START] ||
-			keyDownTrigger[KEY_ID_2START] ||
-			keyDownTrigger[CONFIRM1] ||
-			keyDownTrigger[CONFIRM2])
+		if (CheckHitKey(KEY_INPUT_LCONTROL))
 		{
 			gameF = false;
 			_gameF = true;

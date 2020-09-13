@@ -2957,6 +2957,7 @@ void Skill::SkillCtl(CHAR_ID player1, CHAR_ID player2)
 		
 	StageGameInit();
 }
+
 // player1‚ªplayer2‚ÌUŒ‚‚ğó‚¯‚é“–‚½‚è”»’è
 bool Skill::CheckHitP1(Vector2 pos)
 {

@@ -206,8 +206,6 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player1.runFlag = true;
 
-			
-
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_RIGHT;
 			if (player1.moveDir == DIR::DIR_ID_RIGHT)
@@ -220,8 +218,6 @@ void Player::PlayerCtl(STAGE_ID id)
 		if (keyNew[KEY_ID_LEFT1] || keyNew[LEFT1])
 		{
 			player1.runFlag = true;
-
-			
 
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_LEFT;
@@ -287,7 +283,6 @@ void Player::PlayerCtl(STAGE_ID id)
 					player1.velocity.fy = 0;
 				}
 			}
-
 
 
 			//‘«Œ³‚ÌŒvŽZ
@@ -505,8 +500,6 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player2.runFlag = true;
 
-			
-
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_RIGHT;
 			if (player2.moveDir == DIR::DIR_ID_RIGHT)
@@ -519,8 +512,6 @@ void Player::PlayerCtl(STAGE_ID id)
 		if (keyNew[KEY_ID_LEFT2] || keyNew[LEFT2])
 		{
 			player2.runFlag = true;
-
-			
 
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_LEFT;

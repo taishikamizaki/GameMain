@@ -377,96 +377,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚P
 		if (player1 == CHAR_ID::CHAR_ID_KISI)
 		{
-			if (P1.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1]))
-				{
-					P1.hitPos;
-					P1.hitoffsetPos ;
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 , 1.0f, DX_PI_F / 2, swordImage, true);
-					P1.skillFlag = true;
-					
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y, swordImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X]) || (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50, 1.0f, DX_PI_F / 2, swordImage, true);
-					P1.hitPos;
-					P1.hitoffsetPos;
-					P1.skillFlag = true;
-
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y, swordImage, true);
-				}
-				if (P1.skillFlag)
-				{
-					
-					if (P1.kyouFlag)
-					{
-						
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-					
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P1.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || ( keyDownTrigger[P1A1] ))
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X]) || (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
-				}
-				if (P1.skillFlag)
-				{
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
-
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -515,90 +425,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player1 == CHAR_ID::CHAR_ID_MDOU)
 		{
-			if (P1.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y - 25, wandImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X]) || (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y - 25, wandImage, true);
-				}
-				if (P1.skillFlag)
-				{
-					
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-				
-			}
-			else if (P1.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1] ))
-				{
-					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50 , 1.0f, -DX_PI_F / 2, wandImage, true);
-				}
-				else
-				{
-					DrawGraph(P1.posp.x - 25, P1.posp.y - 25, wandImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X])|| (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x, P1.posp.y - 25 + 50, 1.0f, -DX_PI_F / 2, wandImage, true);
-				}
-				else
-				{
-					DrawGraph(P1.posp.x - 25, P1.posp.y - 25, wandImage, true);
-				}
-				if (P1.skillFlag)
-				{
-					
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -619,14 +445,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffSImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffSImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
@@ -673,92 +499,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚R
 		if (player1 == CHAR_ID::CHAR_ID_BTOU)
 		{
-			if (P1.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1] ))
-				{
-					DrawGraph(P1.posp.x + 6 + 5, P1.posp.y, punchImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y , punchImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X])  || (keyDownTrigger[P1A2]))
-				{
-					DrawGraph(P1.posp.x + 6 + 5, P1.posp.y, punchImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y, punchImage, true);
-				}
-				if (P1.skillFlag)
-				{
-
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P1.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1]))
-				{
-					DrawTurnGraph(P1.posp.x - 30, P1.posp.y , punchImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawTurnGraph(P1.posp.x - 25, P1.posp.y , punchImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X]) || (keyDownTrigger[P1A2]))
-				{
-					DrawTurnGraph(P1.posp.x - 30, P1.posp.y, punchImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawTurnGraph(P1.posp.x - 25, P1.posp.y, punchImage, true);
-				}
-				if (P1.skillFlag)
-				{
-
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -779,115 +519,27 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffUImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_4)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, healImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, healImage[Anim], true);
 				}
 			}
 		}
 		// ƒLƒƒƒ‰‚S
 		if (player1 == CHAR_ID::CHAR_ID_4)
 		{
-			if (P1.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1]) )
-				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50 , 1.0f, DX_PI_F / 2, dImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y , dImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X])|| (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 + 6, P1.posp.y + 50, 1.0f, DX_PI_F / 2, dImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P1.posp.x + 6, P1.posp.y, dImage, true);
-				}
-				if (P1.skillFlag)
-				{
-
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x + 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x + 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-
-			}
-			else if (P1.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_1Y]) || (keyDownTrigger[P1A1]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
-					P1.skillFlag = true;
-					P1.zyakuFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25 , 1.0f, -DX_PI_F / 2, dImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_1X])  || (keyDownTrigger[P1A2]))
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
-					P1.skillFlag = true;
-					P1.kyouFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P1.posp.x + 25 - 25, P1.posp.y + 25, 1.0f, -DX_PI_F / 2, dImage, true);
-				}
-				if (P1.skillFlag)
-				{
-
-					if (P1.kyouFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 1;
-						P1.skillFlag = false;
-						P1.kyouFlag = false;
-					}
-					if (P1.zyakuFlag)
-					{
-						P1.hitPos = { P1.posp.x - 10,P1.posp.y - 20 };
-						P1.hitoffsetPos = { P1.hitPos.x - 50,P1.hitPos.y + 60 };
-						P1.dmage = 3;
-						P1.skillFlag = false;
-						P1.zyakuFlag = false;
-					}
-				}
-			}
-
 			if (P1.skill == SKILL_ID::SKILL_1)
 			{
 				if (P1.skillFlag == true)
@@ -907,7 +559,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P1.bufFlag == true)
 				{
-					DrawGraph(P1.posp.x - 43, P1.posp.y - 55, buffDImage[Anim], true);
+					DrawGraph(P1.hitPos.x - 43, P1.hitPos.y - 55, buffDImage[Anim], true);
 				}
 			}
 			if (P1.skill == SKILL_ID::SKILL_3)
@@ -972,92 +624,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚P
 		if (player2 == CHAR_ID::CHAR_ID_KISI)
 		{
-			if (P2.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 1, 1.0f, DX_PI_F / 2, swordImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y, swordImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 + 1, 1.0f, DX_PI_F / 2, swordImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y, swordImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P2.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1] ))
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, swordImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25, 1.0f, -DX_PI_F / 2, swordImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -1077,14 +643,14 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, healImage[Anim], true);
+					DrawGraph(P2.hitPos.x - 43, P2.hitPos.y - 55, healImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_3)
 			{
 				if (P2.bufFlag == true)
 				{
-					DrawGraph(P2.posp.x - 43, P2.posp.y - 55, buffUImage[Anim], true);
+					DrawGraph(P2.hitPos.x - 43, P2.hitPos.y - 55, buffUImage[Anim], true);
 				}
 			}
 			if (P2.skill == SKILL_ID::SKILL_4)
@@ -1106,93 +672,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚Q
 		if (player2 == CHAR_ID::CHAR_ID_MDOU)
 		{
-			if (P2.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y - 25 , wandImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50 - 25, 1.0f, DX_PI_F / 2, wandImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y - 25, wandImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P2.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1]))
-				{
-					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50 , 1.0f, -DX_PI_F / 2, wandImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x - 25, P2.posp.y - 25 , wandImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x, P2.posp.y - 25 + 50, 1.0f, -DX_PI_F / 2, wandImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				
-				else
-				{
-					DrawGraph(P2.posp.x - 25, P2.posp.y - 25, wandImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -1267,90 +746,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚R
 		if (player2 == CHAR_ID::CHAR_ID_BTOU)
 		{
-			if (P2.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1]))
-				{
-					DrawGraph(P2.posp.x + 6 + 5, P2.posp.y, punchImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y , punchImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawGraph(P2.posp.x + 6 + 5, P2.posp.y, punchImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y, punchImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P2.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || ( keyDownTrigger[P2A1]))
-				{
-					DrawTurnGraph(P2.posp.x - 30, P2.posp.y , punchImage, true);
-				}
-				else
-				{
-					DrawTurnGraph(P2.posp.x - 25, P2.posp.y , punchImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawTurnGraph(P2.posp.x - 30, P2.posp.y, punchImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawTurnGraph(P2.posp.x - 25, P2.posp.y, punchImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -1392,92 +787,6 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 		// ƒLƒƒƒ‰‚S
 		if (player2 == CHAR_ID::CHAR_ID_4)
 		{
-			if (P2.dir == 0)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || (keyDownTrigger[P2A1]) )
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50, 1.0f, DX_PI_F / 2, dImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y, dImage, true);
-				}
-				if ( (keyDownTrigger[KEY_ID_2X])  || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 + 6, P2.posp.y + 50, 1.0f, DX_PI_F / 2, dImage, true);
-					P2.skillFlag = true;
-					P2.kyouFlag = true;
-				}
-				else
-				{
-					DrawGraph(P2.posp.x + 6, P2.posp.y, dImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x + 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x + 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
-			else if (P2.dir == 1)
-			{
-				if ((keyDownTrigger[KEY_ID_2Y]) || ( keyDownTrigger[P2A1]) )
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25 , 1.0f, -DX_PI_F / 2, dImage, true);
-				}
-				if ((keyDownTrigger[KEY_ID_2X]) || (keyDownTrigger[P2A2]))
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 50, 1.0f, DX_PI_F, dImage, true);
-					P2.skillFlag = true;
-					P2.zyakuFlag = true;
-				}
-				else
-				{
-					DrawRotaGraph(P2.posp.x + 25 - 25, P2.posp.y + 25, 1.0f, -DX_PI_F / 2, dImage, true);
-				}
-				if (P2.skillFlag)
-				{
-
-					if (P2.kyouFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 1;
-						P2.skillFlag = false;
-						P2.kyouFlag = false;
-					}
-					if (P2.zyakuFlag)
-					{
-						P2.hitPos = { P2.posp.x - 10,P2.posp.y - 20 };
-						P2.hitoffsetPos = { P2.hitPos.x - 50,P2.hitPos.y + 60 };
-						P2.dmage = 3;
-						P2.skillFlag = false;
-						P2.zyakuFlag = false;
-					}
-				}
-			}
 			if (P2.skill == SKILL_ID::SKILL_1)
 			{
 				if (P2.skillFlag == true)
@@ -1520,7 +829,7 @@ void Skill::StageDraw(CHAR_ID player1,CHAR_ID player2)
 			if (P2.skill == SKILL_ID::SKILL_4)
 			{
 				if (P2.skillFlag == true)
-			{
+				{
 					DrawBox(P2.hitPos.x, P2.hitPos.y, P2.hitoffsetPos.x, P2.hitoffsetPos.y, 0xffffff, true);
 					if (P2.Lflag)
 					{

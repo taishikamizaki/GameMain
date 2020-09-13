@@ -206,7 +206,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player1.runFlag = true;
 
-			player1.pos.x += player1.moveSpeed;
+			
 
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_RIGHT;
@@ -221,7 +221,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player1.runFlag = true;
 
-			player1.pos.x -= player1.moveSpeed;
+			
 
 			moveFlag1 = true;
 			player1.moveDir = DIR::DIR_ID_LEFT;
@@ -505,7 +505,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player2.runFlag = true;
 
-			player2.pos.x += player2.moveSpeed;
+			
 
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_RIGHT;
@@ -520,7 +520,7 @@ void Player::PlayerCtl(STAGE_ID id)
 		{
 			player2.runFlag = true;
 
-			player2.pos.x -= player2.moveSpeed;
+			
 
 			moveFlag2 = true;
 			player2.moveDir = DIR::DIR_ID_LEFT;

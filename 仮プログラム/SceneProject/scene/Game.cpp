@@ -83,7 +83,6 @@ int Game::Draw()
 				}
 			}
 		}
-	
 	}
 	return 0;
 }

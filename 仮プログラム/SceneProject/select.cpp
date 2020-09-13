@@ -58,9 +58,7 @@ int Select::Init()
 	player1 = CHAR_ID::CHAR_ID_MAX;
 	player2 = CHAR_ID::CHAR_ID_MAX;
 
-
 	KeyInit();
-
 
 	return 0;
 }

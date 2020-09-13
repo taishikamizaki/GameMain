@@ -53,7 +53,6 @@ bool Stage::StageCtl(STAGE_ID stage)
 				yamaImage[mapyama[y][x]];
 			}
 		}
-		//PlayMusic("sound/bgm/yama.mp3", DX_PLAYTYPE_LOOP);
 		yamaF = true;
 		break;
 	case STAGE_ID::STAGE_ID_MACHI:
@@ -65,7 +64,6 @@ bool Stage::StageCtl(STAGE_ID stage)
 				matiImage[mapmati[y][x]];
 			}
 		}
-		//PlayMusic("sound/bgm/mati.mp3", DX_PLAYTYPE_LOOP);
 		matiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_COLOSSEUM:
@@ -76,17 +74,10 @@ bool Stage::StageCtl(STAGE_ID stage)
 				tougiImage[maptougi[y][x]];
 			}
 		}
-		//PlayMusic("sound/bgm/tougi.mp3", DX_PLAYTYPE_LOOP);
 		tougiF = true;
 		break;
 	case STAGE_ID::STAGE_ID_HAMAGURI:
-		for (int y = 0; y < mapSize.y; y++)
-		{
-			for (int x = 0; x < mapSize.x; x++)
-			{
-				hamaroomImage[maphamaguri[y][x]];
-			}
-		}
+		
 		break;
 	default:
 		break;
@@ -125,7 +116,6 @@ void Stage::SoundGameInit(void)
 	{
 		SetVolumeMusic(100);
 	}
-
 }
 
 // •`‰æ
@@ -138,7 +128,6 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, yamaImage[mapyama[y][x]], true);
-
 			}
 		}
 	}
@@ -149,7 +138,6 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, matiImage[mapmati[y][x]], true);
-
 			}
 		}
 	}
@@ -160,7 +148,6 @@ void Stage::StageDraw(STAGE_ID id)
 			for (int x = 0; x < mapSize.x; x++)
 			{
 				DrawGraph(x * CHIP_SIZE_X, y * CHIP_SIZE_Y, tougiImage[maptougi[y][x]], true);
-
 			}
 		}
 	}
@@ -193,7 +180,6 @@ bool Stage::IsPassM(Vector2 pos)
 	Vector2 index;
 	index = PosToIndex(pos);
 	// ŠX
-
 	switch (mapmati[index.y][index.x])
 	{
 	case 0:
@@ -213,7 +199,6 @@ bool Stage::IsPassT(Vector2 pos)
 	Vector2 index;
 	index = PosToIndex(pos);
 	// “¬‹Zê
-
 	switch (maptougi[index.y][index.x])
 	{
 	case 7:
@@ -230,31 +215,7 @@ bool Stage::IsPassY(Vector2 pos)
 {
 	Vector2 index;
 	index = PosToIndex(pos);
-
-	// ƒnƒ}ƒOƒŠ
-	/*switch (maphamaguri[index.y][index.x])
-	{
-	case 0:
-		return	true;
-		break;
-	case 1:
-		return	true;
-		break;
-	case 2:
-		return false;
-		break;
-	case 3:
-		return false;
-		break;
-	case 6:
-		return false;
-		break;
-	default:
-		break;
-	}*/
-
 	// ŽR
-	
 		switch (mapyama[index.y][index.x])
 		{
 		case 1:
@@ -266,7 +227,6 @@ bool Stage::IsPassY(Vector2 pos)
 		default:
 			break;
 		}
-	
 	return true;
 }
 

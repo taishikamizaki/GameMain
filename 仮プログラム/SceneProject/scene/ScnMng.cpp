@@ -30,9 +30,7 @@ int ScnMng::Init()
 	scnID = SCN_ID::SCN_ID_TITLE;		// 初期シーンをタイトルへ
 
 	SetVolumeMusic(10);
-	/*SetVolumeMusic(5);
-	PlaySoundMem(seleBgm, DX_PLAYTYPE_LOOP);
-	StopMusicMem(seleBgm);*/
+
 	fadeIn = true;
 	fadeOut = false;
 
@@ -83,7 +81,6 @@ int ScnMng::ScnDraw()
 		{
 			if (!FadeOutScreen(5))
 			{
-				//StopMusic();
 				fadeIn = true;
 
 				scnID = SCN_ID_GAME;

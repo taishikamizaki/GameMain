@@ -2963,14 +2963,29 @@ bool Skill::CheckHitP1(Vector2 pos, Vector2 posS, Vector2 posE)
 {
 	if (P2.skillFlag == true)
 	{
-		if ((P2.hitoffsetPos.x > pos.x-posS.x) &&
-			(P2.hitPos.x < pos.x+posE.x) &&
-			(P2.hitoffsetPos.y >pos.y-posS.y) &&
-			(P2.hitPos.y < pos.y+posE.y))
+		if (P2.Rflag)
 		{
-			P2.skillFlag = false;
-			P1.hitFlag = true;
-			return true;
+			if ((P2.hitoffsetPos.x > pos.x - posS.x) &&
+				(P2.hitPos.x < pos.x + posE.x) &&
+				(P2.hitoffsetPos.y > pos.y - posS.y) &&
+				(P2.hitPos.y < pos.y + posE.y))
+			{
+				P2.skillFlag = false;
+				P1.hitFlag = true;
+				return true;
+			}
+		}
+		if(P2.Lflag)
+		{
+			if ((P2.hitoffsetPos.x < pos.x - posS.x) &&
+				(P2.hitPos.x > pos.x + posE.x) &&
+				(P2.hitoffsetPos.y > pos.y - posS.y) &&
+				(P2.hitPos.y < pos.y + posE.y))
+			{
+				P2.skillFlag = false;
+				P1.hitFlag = true;
+				return true;
+			}
 		}
 	}
 	return false;
@@ -2980,14 +2995,30 @@ bool Skill::CheckHitP2(Vector2 pos, Vector2 posS, Vector2 posE)
 {
 	if (P1.skillFlag == true)
 	{
-		if ((P1.hitoffsetPos.x >pos.x-posS.x) &&
-			(P1.hitPos.x < pos.x+posE.x) &&
-			(P1.hitoffsetPos.y > pos.y-posS.y) &&
-			(P1.hitPos.y < pos.y+posE.y))
+		if (P1.Rflag)
 		{
-			P1.skillFlag = false;
-			P2.hitFlag = true;
-			return true;
+			if ((P1.hitoffsetPos.x > pos.x - posS.x) &&
+				(P1.hitPos.x < pos.x + posE.x) &&
+				(P1.hitoffsetPos.y > pos.y - posS.y) &&
+				(P1.hitPos.y < pos.y + posE.y))
+			{
+				P1.skillFlag = false;
+				P2.hitFlag = true;
+				return true;
+			}
+		}
+		if(P1.Lflag)
+		{
+			
+			if ((P1.hitoffsetPos.x < pos.x - posS.x) &&
+				(P1.hitPos.x > pos.x + posE.x) &&
+				(P1.hitoffsetPos.y > pos.y - posS.y) &&
+				(P1.hitPos.y < pos.y + posE.y))
+			{
+				P1.skillFlag = false;
+				P2.hitFlag = true;
+				return true;
+			}
 		}
 		//DmageCtl(pos);
 	}
